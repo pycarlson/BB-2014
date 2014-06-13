@@ -1,0 +1,34 @@
+<div>
+  <h3>Congratulations!</h3>
+  <p>To complete the adoption process, please provide us with your contact information below.</p>
+  <div>
+    <div>
+      <%= form_for @donor do |f| %>
+
+      <div class="form-item"><%= f.label :street %>
+      <%= f.text_field :street %></div>
+
+      <div class="form-item"><%= f.label :city %>
+      <%= f.text_field :city %></div>
+
+      <div class="form-item"><%= f.label :state %>
+      <%= f.text_field :state %></div>
+    </div>
+
+    <div>
+
+      <div class="form-item"><%= f.label :zipcode %>
+      <%= f.text_field :zipcode %></div>
+
+      <div class="form-item"><%= f.label :phone %>
+      <%= f.text_field :phone %></div>
+
+      <div class="form-item"><%= f.label :company %>
+      <%= f.text_field :company %></div>
+    </div>
+
+   <div><%= f.submit %></div> 
+    <% end %>
+  </div>
+</div>
+

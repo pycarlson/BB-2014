@@ -1,0 +1,60 @@
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand main" href="/"><%= image_tag('brighter_beginnings_logo.png')%></a>
+        </div>
+        <div class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <% unless user_signed_in? %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+
+            <% if user_signed_in? && user_is_admin? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+
+                <% if user_is_super_admin? %>
+                <li><%= link_to "Edit BB Info", edit_organization_path(Organization.first) %></li>
+                <li><%= link_to "Create a Drive", new_drive_path %></li>
+                <li><%= link_to "Edit Drive", edit_drive_path(Drive.last) %></li>
+                <% end %>
+
+                <li><%= link_to "Add a Family", new_family_path %></li>
+                <li><%= link_to "Manage Families", manage_families_path %></li>
+                <li><%= link_to "Admin", admin_path %></li>
+                <li><%= link_to "Import Family Data", new_drive_family_member_import_path(Drive.last.id) %></li>
+              </ul>
+
+            </li>
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
+            <% elsif user_signed_in? && user_has_chosen_drop_location(current_user) %>
+
+            <li><%= link_to "Browse Families", families_path %></li>
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
+            <% elsif user_signed_in? && !user_has_chosen_drop_location(current_user)%>
+            <li>
+              <div data-toggle="modal" data-target=".drop-locations-modal">
+                <p><a role="button" class="btn btn-primary btn-lg">Browse Families</a></p>
+              </div>  
+            </li>
+
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
+            <% end %>
+
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>

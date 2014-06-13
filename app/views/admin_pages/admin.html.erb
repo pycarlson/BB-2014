@@ -1,0 +1,24 @@
+
+<h3>Drives</h3>
+<% @drives.each do |drive| %>
+  <%= drive.year %>
+  <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
+<% end %>
+
+
+<h3>ADD ADMINISTRATOR</h3>
+<%= form_tag("/drives/#{Drive.last.id}/add_admin", method: "post") do %>
+<%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
+<div><%= submit_tag("Add New Admin") %></div>
+
+<h4>Current Admins</h4>
+<% if @admins.length > 0 %>
+<% @admins.each do |admin| %>
+<ul>
+  <li><%= admin.user_id %></li>
+</ul>
+<% end %>
+<% end %>
+<% end %>
+</ul>
+

@@ -1,0 +1,62 @@
+
+<%= nested_form_for @drive, :html => {:class => "form form-inline"} do |f| %>
+<div class="form-inline">
+  <div class="form-group col-xs-12">
+    <%= f.label :Year %>
+    <%= f.text_field :year, required: :true, class: "form-control" %>
+  </div>
+  <div class="form-group col-xs-12">
+    <%= f.label :blurb %>
+    <%= f.text_field :blurb, required: :true, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, required: :true, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, required: :true, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <%= f.label :donation_receipt_link %>
+    <%= f.text_field :donation_receipt_link, class: "form-control", placeholder: 'optional - must be a valid url' %>
+  </div>
+
+  <%= f.fields_for :drop_locations do |dl| %>
+  <div class="location-form">
+    <h3>Drop Location Details</h3>
+    <%= dl.fields_for :drop_dates do |dd| %>
+    <%= dd.label :date_and_time %>
+    <%= dd.datetime_select  :date_and_time %>
+    <%= dd.link_to_remove "Remove" %>
+    <%  end %>
+    <div><%= dl.link_to_add "Add drop date and time", :drop_dates %></div><br> 
+    <div class="form-item"><%= dl.label :Name %>
+
+      <%= dl.text_field :name %></div>
+
+      <div class="form-item"><%= dl.label :Street %>
+        <%= dl.text_field :street %></div>
+
+        <div class="form-item"><%= dl.label :City %>
+          <%= dl.text_field :city %></div>
+
+          <div class="form-item"><%= dl.label :State %>
+            <%= dl.text_field :state %></div>
+
+            <div class="form-item"><%= dl.label :Zipcode %>
+              <%= dl.text_field :zipcode %></div>
+
+            </div>
+            <% end %>
+            
+
+            <div><%= f.link_to_add "Add Another Drop Location", :drop_locations %></div> 
+
+          </div>
+          <%= f.submit class: "btn btn-primary" %>
+
+          <% end %>
