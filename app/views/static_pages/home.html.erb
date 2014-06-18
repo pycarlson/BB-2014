@@ -1,7 +1,13 @@
 <div class="home-title">
-<h1>Welcome to the <%= @drive.year %> Brighter Beginnings<br> Adopt-A-Family Gift Giving Program</h1>
+  <% if @drive.status == true %>
+    <h1>Welcome to the <%= @drive.year %> Brighter Beginnings<br> Adopt-A-Family Gift Giving Program</h1>
+    <%= render "modal" %>
+  <% else %>
 
-<%= render "modal" %>
+    <%= render "drives/closed" %>
+  <% end %>
+
+
 </div>
 
   

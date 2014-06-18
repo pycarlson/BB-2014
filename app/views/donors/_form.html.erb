@@ -1,9 +1,18 @@
 <div>
   <h3>Congratulations!</h3>
   <p>To complete the adoption process, please provide us with your contact information below.</p>
-  <div>
-    <div>
       <%= form_for @donor do |f| %>
+      <%= f.hidden_field :family_id, :value => @family_id.to_i %>
+      <%= f.hidden_field :drive_id, :value => Drive.last.id %>
+      <%= f.hidden_field :drop_location_id, :value => current_user.drop_location_id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      
+
+      <div class="form-item"><%= f.label :first_name %>
+      <%= f.text_field :first_name %></div>
+
+      <div class="form-item"><%= f.label :last_name %>
+      <%= f.text_field :last_name %></div>
 
       <div class="form-item"><%= f.label :street %>
       <%= f.text_field :street %></div>
@@ -13,9 +22,6 @@
 
       <div class="form-item"><%= f.label :state %>
       <%= f.text_field :state %></div>
-    </div>
-
-    <div>
 
       <div class="form-item"><%= f.label :zipcode %>
       <%= f.text_field :zipcode %></div>
@@ -25,9 +31,21 @@
 
       <div class="form-item"><%= f.label :company %>
       <%= f.text_field :company %></div>
+
+    <p>
+      Lastly, you have chosen <%= @donor.get_users_drop_location_name(current_user) %> as your drop location. 
+      Before completing this process, please choose the day you would like to drop 
+      your gifts off.
+    </p>
+
+    <div class="form-group col-xs-12">
+      <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time, dd.id]}) %>
     </div>
 
-   <div><%= f.submit %></div> 
+    <div>
+      <%= f.submit %>
+    </div> 
+
     <% end %>
   </div>
 </div>

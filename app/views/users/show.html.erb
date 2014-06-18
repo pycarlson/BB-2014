@@ -1,0 +1,12 @@
+<h2>This is your profile page.</h2>
+
+<h3>For the ... Adopt-a-Family Program</h3>
+
+<h4>Your Adopted Families</h4>
+<ul>
+  <% if @donor  %>
+  <% @donor.families.each do |f| %>
+  <li><%= f.code %></li>
+  <% end %>
+  <% end %>
+

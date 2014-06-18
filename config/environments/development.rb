@@ -27,4 +27,10 @@ BrighterBeginningsAdoptAFamilyProgram::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # Use MailCatcher! It's not in the Gemfile - get it running locally with these commands:
+  # gem install mailcatcher
+  # mailcatcher
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 1025 }
 end

@@ -1,9 +1,14 @@
 
 <h3>Drives</h3>
+<ul>
 <% @drives.each do |drive| %>
+<li>
   <%= drive.year %>
   <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
+  <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
 <% end %>
+</li>
+</ul>
 
 
 <h3>ADD ADMINISTRATOR</h3>
@@ -15,10 +20,27 @@
 <% if @admins.length > 0 %>
 <% @admins.each do |admin| %>
 <ul>
-  <li><%= admin.user_id %></li>
+  <li>
+    <%= admin.user_id %>
+    <%= User.find(admin.user_id).email %>
+    <%= link_to "Remove", admin, method: :delete, class: "delete_link", remote: true %>
+  </li>
 </ul>
 <% end %>
 <% end %>
 <% end %>
 </ul>
 
+<h3>Families that are ready to go live?</h3>
+<ul>
+<li>
+  <% @families.each do |fam| %>
+  <li><%= fam.code %> <%= check_box_tag 'is_live', fam.id , fam.is_live, :class => "makeFamilyLiveCheckbox" %></li>
+  <ul>
+  <% fam.family_members.each do |fm| %>
+  <li><%= fm.id %></li>
+<% end %>
+</ul>
+</li>
+<% end %>
+</ul>

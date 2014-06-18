@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $(".closeDriveCheckbox").bind('change', function(){
-    
     if (this.checked){
       alert("Closing another year's adopt a family gift drive. You guys are amazing people!");
       $.ajax({
@@ -20,7 +19,7 @@ $(document).ready(function() {
  });
 
   $(".makeFamilyLiveCheckbox").bind('change', function(){
-    alert(this);
+    // alert(this);
     if (this.checked){
       $.ajax({
         url: '/families/'+this.value+'/toggle_live_status',

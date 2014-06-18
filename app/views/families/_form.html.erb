@@ -16,7 +16,7 @@
     <%= f.text_field :code, class: "form-control" %>
   </div>
 
-  <% f.fields_for :family_members do |fm| %>
+  <%= f.fields_for :family_members do |fm| %>
   
   <div class="form-group col-xs-12">
     <%= fm.label :first_name %><br>
@@ -58,7 +58,7 @@
     <%= fm.text_field :size_shoes, class: "form-control" %>
   </div>
 
-  <% fm.fields_for :needs do |n| %>
+  <%= fm.fields_for :needs do |n| %>
     <div>
       <%= n.label :need %>
       <%= n.text_field :item %>

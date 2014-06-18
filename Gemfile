@@ -19,6 +19,7 @@ gem 'font-awesome-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-modal-rails'
 gem 'figaro'
+gem 'jquery-turbolinks'
 
 group :development do
   gem 'quiet_assets'

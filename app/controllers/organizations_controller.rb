@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+  
+  before_filter :user_is_super_admin?
 
   def new
     @organization = Organization.new
@@ -10,7 +12,6 @@ class OrganizationsController < ApplicationController
 
   def edit
     @organization = Organization.find(params[:id])
-    p "getting here..."
   end
 
   def update

@@ -1,5 +1,7 @@
 class DrivesController < ApplicationController
 
+  before_filter :user_is_super_admin?
+
   def new
     @drive = Drive.new
     @drive.drop_locations.build
@@ -23,7 +25,7 @@ class DrivesController < ApplicationController
   def destroy
     Drive.destroy(params[:id])
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to admin_path }
       format.js
     end
   end

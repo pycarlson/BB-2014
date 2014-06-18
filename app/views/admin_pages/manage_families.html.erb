@@ -1,14 +1,22 @@
 <h2>Manage All Families</h2>
 <h4>Total Families: <%= @total_fams %></h4>
+
 <ul>
-<li>
   <% @families.each do |fam| %>
-  <li><%= fam.code %> <%= check_box_tag 'is_live', fam.id , fam.is_live, :class => "makeFamilyLiveCheckbox" %></li>
-  <ul>
-  <% fam.family_members.each do |fm| %>
-  <li><%= fm.id %></li>
-<% end %>
-</ul>
-</li>
-<% end %>
+  <div class="col-sm-4">
+  <li>
+    
+    <li><%= fam.code %></li>
+    <%= link_to "Edit", edit_family_path(fam), class: "edit_link" %>
+    <%= link_to "Delete", fam, method: :delete, class: "delete_link", remote: true %>
+
+    <ul class="admin-family-members">
+      <% fam.family_members.each do |fm| %>
+      <li><%= fm.first_name %></li>
+      <% end %>
+    </ul>
+  </li>
+  </div>
+  <% end %>
+
 </ul>

@@ -1,8 +1,11 @@
 class FamiliesController < ApplicationController
   
+  before_filter :user_is_admin?, except: [:index, :show]
+
   def index
     @families = Family.filter_families(current_user)
     @donor = Donor.new
+
     respond_to do |format|
       format.html
       format.csv { send_data @families.to_csv }
@@ -24,16 +27,23 @@ class FamiliesController < ApplicationController
 
   def show
     @drive = Drive.find(@family.drive_id)
+    family = Family.find(params[:id])
   end
 
   def edit 
-    @drive = Drive.find(@family.drive_id)
+    @family = Family.find(params[:id])
+    # @family.family_members.build
+    @drives = Drive.all
+    @drop_locations = DropLocation.where('drive_id = ?', Drive.last.id)
   end
 
   def update
-    drive = Drive.find(@family.drive_id)
-    @family.update_attributes(family_params)
-    redirect_to drive_families_path(drive)
+    family = Family.find(params[:id])
+    if family.update_attributes(family_params)
+      redirect_to admin_path
+    else
+      render :edit
+    end
   end
 
   def destroy
