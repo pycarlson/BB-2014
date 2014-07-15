@@ -17,9 +17,22 @@ class DonorsController < ApplicationController
     family = Family.find(params["donor"]["family_id"])
     if donor 
       donor.families << family
+      p "found the donor"
     else 
       donor = Donor.create!(donor_params)
       donor.families << family
+      p "DID NOT and CREATED ONE"
+
+    end
+    redirect_to user_path(User.find(donor.user_id))
+  end
+
+  def straight_adopt_path
+    donor = Donor.find_by_user_id(current_user.id)
+    family = Family.find(params["donor"]["family_id"])
+    if donor 
+      donor.families << family
+      p "found the donor"
     end
     redirect_to user_path(User.find(donor.user_id))
   end

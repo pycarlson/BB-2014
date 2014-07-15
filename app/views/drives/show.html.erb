@@ -1,51 +1,24 @@
 
-<div class="row home-top-row">
+<div class="row">
   <div class="col-xs-1"></div>
   <% if @drive.status == true %>
   <div class="col-xs-10 home-title">
+    <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
     <h1>Welcome to the <%= @drive.year %> Brighter Beginnings<br> Adopt-a-Family Holiday Gift Giving Program</h1>
-  </div>
   </div>
   <div class="col-xs-1"></div>
 </div>
 
 <div class="row">
-
-  <div class="col-sm-1 col-xs-1"></div>
-  <div class="col-xs-10 drive-description">
-    <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
-    <h2>About this Drive <br>(<%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %>) </h2>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
+    <h2>About this drive</h2>
     <p><%= @drive.blurb %></p>
   </div>
-  <div class="col-sm-1 col-xs-1"></div>
+  <div class="col-xs-1"></div>
 </div>
 
 <div class="row">
-  <div class="col-sm-1 col-xs-1"></div>
-
-  <div class="col-xs-10">
-    <h2>Drop locations and dates:</h2>
-  </div>
-  <div class="col-sm-1 col-xs-1"></div>
-</div>
-
-<div class="row locations">
-  <div class="col-sm-1 col-xs-1"></div>
-
-  <div class="col-sm-3 col-xs-10">
-    <img class="img-resposive" src="http://placehold.it/300x300">
-  </div>
-  <div class="col-sm-3 col-xs-10">
-    <img class="img-resposive" src="http://placehold.it/300x300">
-  </div>
-  <div class="col-sm-3 col-xs-10">
-    <img class="img-resposive" src="http://placehold.it/300x300">
-  </div>
-  <div class="col-lg-1 col-xs-1"></div>
-</div>
-<hr>
-<div class="row">
-
   <div class="col-sm-1 col-xs-1"></div>
 
   <div class="col-sm-6 col-xs-10">

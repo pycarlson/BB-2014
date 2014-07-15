@@ -2,6 +2,12 @@ class DrivesController < ApplicationController
 
   before_filter :user_is_super_admin?
 
+  def show
+    @drive = Drive.last
+    @drop_locations = @drive.drop_locations
+    p "*" * 100
+  end
+
   def new
     @drive = Drive.new
     @drive.drop_locations.build

@@ -29,4 +29,5 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   post '/drives/:id/add_admin' => 'drives#add_admin'
   put '/drives/:id/close_drive' => 'drives#close_drive'
   put '/families/:id/toggle_live_status' => 'families#toggle_live_status'
+  post '/donors/:id/straight_adopt_path' => 'donors#straight_adopt_path'
 end

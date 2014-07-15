@@ -1,0 +1,34 @@
+  <!-- Modal -->
+<div class="modal fade drop-locations-modal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Drop Location Options</h4>
+        <p>Our records show you haven't yet chosen a gift drop location. Please choose a location from the
+          list below and we will show you families in need of adoption in your area.</p>
+      </div>
+      <div class="modal-body">
+        <ul>
+        <% @drop_locations.each do |dl| %>
+        
+        <li><%= dl.name %></li>
+        <li><%= dl.street %></li>
+        <li><%= dl.city %></li>
+        <li><%= dl.state %></li>
+        <li><%= dl.zipcode %></li>
+        <li><%= button_to "Choose Location", add_location_path(:drop_location_id => dl.id), :method => :post %></li>  
+        <br>
+        <% end %>
+      </ul>
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,18 @@
+.families-container {
+  width: 1130px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  height: 400px;
+  .adoptable-families {
+    /*background: image-url(“glyphicons-halflings.png”); */
+    float: left;
+    width: 33.33%;
+    .fam-members {
+      width: 50%;
+      padding-left: 0;
+      float: left;
+      margin-bottom: 20px;
+    }
+  } 
+}
+

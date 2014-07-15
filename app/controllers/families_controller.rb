@@ -26,13 +26,12 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    @family = Family.find(params[:id])
     @drive = Drive.find(@family.drive_id)
-    family = Family.find(params[:id])
   end
 
   def edit 
     @family = Family.find(params[:id])
-    # @family.family_members.build
     @drives = Drive.all
     @drop_locations = DropLocation.where('drive_id = ?', Drive.last.id)
   end
@@ -40,7 +39,7 @@ class FamiliesController < ApplicationController
   def update
     family = Family.find(params[:id])
     if family.update_attributes(family_params)
-      redirect_to admin_path
+      redirect_to manage_families_path
     else
       render :edit
     end
@@ -76,7 +75,7 @@ class FamiliesController < ApplicationController
   end
 
   def family_params
-    params.require(:family).permit(:id, :drive_id, :adopted_by, :received_at_org, :given_to_family, :code, :drop_location_id, :donor_id, :num_boxes, :drop_date_id, :is_live, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
+    params.require(:family).permit(:id, :drive_id, :adopted_by, :received_at_org, :given_to_family, :code, :drop_location_id, :donor_id, :num_boxes, :drop_date_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
   end
 
 end

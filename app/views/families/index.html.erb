@@ -1,23 +1,27 @@
-<h2>Families Available for Adoption</h2>
-<%= link_to "Export",  families_path(format: "xls") %>
-<% @families.each do |f| %>
 
-<ul>
+  <div class="families-container">
+    <h2>Families Available for Adoption</h2>
+    <%= link_to "Export",  families_path(format: "xls") %>
+  <div>
 
-<li><%= f.code %></li>
-<li><%= link_to "Adopt this Family!", new_donor_path(@donor, :family_id => f.id) %></li>
+  <% @families.each do |f| %>
 
+    <ul class="adoptable-families">
+      <li><%= link_to f.code, family_path(f) %></li>
+      <li><%= f.family_members.count %></li>
 
-<li>
-<% f.family_members.each do |fm| %>
-<ul>
-<li><%= fm.bio %></li>
-</ul>
-<% end %>
-</li>
+      <li><%= link_to "Adopt this Family!", new_donor_path(@donor, :family_id => f.id) %></li>
 
-</ul>
-<% end %>
+      <% f.family_members.each do |fm| %>
+      <li>
+          <ul class="fam-members">
+            <li><%= fm.first_name %></li>
+          </ul>
+      </li>
+      <% end %>
+    </ul>
+
+  <% end %>
 
 
 

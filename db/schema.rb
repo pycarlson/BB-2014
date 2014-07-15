@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614141247) do
+ActiveRecord::Schema.define(version: 20140626003644) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140614141247) do
     t.boolean  "is_live",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "members"
   end
 
   create_table "family_members", force: true do |t|

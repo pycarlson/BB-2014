@@ -16,6 +16,8 @@
     <%= f.text_field :code, class: "form-control" %>
   </div>
 
+  <h2>Add Family Members Here</h2>
+
   <%= f.fields_for :family_members do |fm| %>
   
   <div class="form-group col-xs-12">
@@ -71,7 +73,7 @@
   <%  end %>
 
 
-    <%= f.link_to_add "Add Family Member", :family_members %>
+    <%= f.link_to_add "Add Another Family Member", :family_members %>
 
 </div>
 <%= f.submit class: "btn btn-primary" %>

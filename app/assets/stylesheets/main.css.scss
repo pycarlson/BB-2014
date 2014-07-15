@@ -1,82 +1,179 @@
+/*$green: #27ae60;
+$blue: #5BC0DE;
+$blue-hover: #004EBC;*/
+/*red: #C9302C*/
+
 /*BASE STYLES*/
-
-.site-container {
-  width: 1170px;
-  margin: 0 auto;
-  padding: 15px;
-  padding-top: 50px;
-}
-
-li {
-  list-style: none;
-}
-
-/*FORM STYLES*/
-
-.form-control {
-  width: 300px !important;
-  margin-bottom: 10px;
-}
-
-/*HOME STYLES*/
-
-.home-title {
-  margin: 0 auto;
-  text-align: center;
-  background: url('family-with-gifts.jpg') no-repeat 80px 100px;
-  height: 700px;
+body {
 
 }
 
-/*DROP LOC MODAL*/
-
-.drop-locations-modal {
-  text-align: left;
-  li {
-    list-style: none;
-  }
+.alert {
+  display: none;
 }
 
-/*IMPORTS*/
-#import_errors {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0;
-  padding-bottom: 0;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
+/*h1 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    line-height: 46px;
+    font-size: 40px;
+    margin: 0 0 23px 0;
+    }
+h2 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    }
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    }*/
 
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 10px;
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
+  /*h1 {
+    font-family: 'Alegreya', serif;
+    font-weight: 500;
+    line-height: 46px;
+    font-size: 46px;
+    margin: 0 0 43px 0;
+    }
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 23px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 23px 0;
+    }
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    }*/
 
-}
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      line-height: 46px;
+      font-size: 42px;
+      margin: 0 0 23px 0;
+    }
+    h2 {
+      font-family: 'EB Garamond', serif;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 18px;
+      line-height: 23px;
+      letter-spacing: 2px;
+      margin: 0 0 23px 0;
+    }
+    p {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      line-height: 23px;
+      margin: 0 0 23px 0;
+    }
 
-#import_headers {
-  padding-left: 25px;
-}
+    li {
+      list-style: none;
+    }
 
-#import_field {
-  text-align: center;
-  margin-bottom: 50px;
-}
+    /*FORM STYLES*/
 
-#import_file {
-  line-height: 30px;
-}
+    .form-control {
+      width: 300px !important;
+      margin-bottom: 10px;
+    }
 
-#import_blue_link {
-  background-color: #47a9f8;
-  color: white;
-  width: 100px; 
-  padding: 6px;
-  border-radius: 2px;
-  border: 0;
-}
+    /*HOME STYLES*/
+
+    .present {
+      i {
+        color: #27ae60;
+        font-size: 40px;
+        margin: 20px 0 20px 0; 
+      }
+    }
+
+    .home-top-row {
+      margin-top: 0;
+      .home-title {
+        width: 100%;
+        min-height: 200px;
+        background-image: image-url("snowy-background.jpg");
+        text-align: center;
+        h1 {
+          color: #ffffff;
+          padding-top: 70px;
+        }
+      }
+    }
+
+    .drive-description {
+      text-align: center;
+    }
+
+    .contact {
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    /*DROP LOC MODAL*/
+
+    .drop-locations-modal {
+      text-align: left;
+      li {
+        list-style: none;
+      }
+    }
+
+    /*IMPORTS*/
+    #import_errors {
+      width: 400px;
+      border: 2px solid #CF0000;
+      padding: 0;
+      padding-bottom: 0;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+      font-size: 12px;
+
+      h2 {
+        text-align: left;
+        font-weight: bold;
+        padding: 5px 10px;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+    }
+
+    #import_headers {
+      padding-left: 25px;
+    }
+
+    #import_field {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    #import_file {
+      line-height: 30px;
+    }
+
+    #import_blue_link {
+      background-color: #47a9f8;
+      color: white;
+      width: 100px; 
+      padding: 6px;
+      border-radius: 2px;
+      border: 0;
+    }
+
 

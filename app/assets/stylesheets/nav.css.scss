@@ -1,4 +1,17 @@
 .navbar-brand img {
-  width: 250px;
-  margin-top: -12px;
+  width: 200px;
+  margin-top: -7px;
+}
+
+.nav {
+  margin-bottom: 0 !important;
+}
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: #27ae60;
+  height: 40px;
+  &:hover {
+    opacity: .8 !important;
+  }
 }
