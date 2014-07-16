@@ -42,9 +42,14 @@ class DonorsController < ApplicationController
   end
 
   def edit 
+    @donor = Donor.find(params[:id])
+    @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
   end
 
   def update
+    donor = Donor.find(params[:id])
+    donor.update_attributes(donor_params)
+    redirect_to user_path(donor.user_id)
   end
 
   def destroy

@@ -39,7 +39,7 @@
     </p>
 
     <div class="form-group col-xs-12">
-      <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time, dd.id]}) %>
+      <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
     </div>
 
     <div>

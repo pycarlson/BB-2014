@@ -1,0 +1,39 @@
+.navbar-brand img {
+  width: 300px;
+  margin-top: -6px;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+  height: 70px;
+}
+
+.navbar-nav > li {
+  float: left;
+  padding-top: 9px;
+}
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: #27ae60;
+  height: 40px;
+  &:hover {
+    opacity: .8 !important;
+  }
+}
+
+footer {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #A5CADD;
+  li {
+    display: inline;
+    margin-right: 50px;
+    a {
+      color: #ffffff;
+    }
+  }
+}

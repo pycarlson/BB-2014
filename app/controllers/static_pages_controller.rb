@@ -13,10 +13,13 @@ class StaticPagesController < ApplicationController
     redirect_to families_path
   end
 
-  def about
+  def shopping_tips
   end
 
   def faq
+  end
+
+  def about
   end
 
   def how_it_works

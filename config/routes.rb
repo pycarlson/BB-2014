@@ -24,6 +24,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
 
   get '/admin' => 'admin_pages#admin'
+  get '/shopping_tips' => 'static_pages#shopping_tips'
+  get '/faq' => 'static_pages#faq'
   get '/manage_families' => 'admin_pages#manage_families'
   post '/add_location' => 'static_pages#add_location'
   post '/drives/:id/add_admin' => 'drives#add_admin'

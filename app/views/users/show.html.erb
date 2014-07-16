@@ -2,11 +2,33 @@
 
 <h3>For the ... Adopt-a-Family Program</h3>
 
-<h4>Your Adopted Families</h4>
 <ul>
   <% if @donor  %>
+  <h2>Your Adopted Families</h2>
   <% @donor.families.each do |f| %>
-  <li><%= f.code %></li>
+  <li><p><%= f.code %></p></li>
   <% end %>
+</ul>
+<% end %>
+
+<ul>
+  <% if @donor  %>
+  <h2>Your Drop Location Details</h2>
+  <li><p><%= DropLocation.find(@donor.drop_location_id).name %></p></li>
+  <li><p><%= DropLocation.find(@donor.drop_location_id).street %>, <%= DropLocation.find(@donor.drop_location_id).city %>, <%= DropLocation.find(@donor.drop_location_id).zipcode %></p></li>
+  <li><p><%= @donor.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
   <% end %>
+</ul>
+
+
+
+<ul>
+  <% if @donor  %>
+  <h2>Your Personal Info</h2>
+  <li><p>Name: <%= @donor.first_name %> <%= @donor.last_name %><p></li>
+  <li><p>Address: <%= @donor.street %>, <%= @donor.city %>, <%= @donor.zipcode %>, <%= @donor.state %></p></li>
+  <li><p>Phone: <%= @donor.phone %></p></li>
+  <li><%= link_to 'Edit Your Info', edit_donor_path(@donor.id) %></li>
+  <% end %>
+</ul>
 
