@@ -107,6 +107,18 @@ p {
       p {
         margin-bottom: 0;
       }
+      .present {
+      i {
+        color: #E87445;
+        font-size: 50px;
+        margin-left: 140px;
+      }
+      }
+    }
+
+    .about-bb {
+      background-color: #E5E5E5;
+      padding: 40px 0;
     }
 
     /*DROP LOC MODAL*/
@@ -166,4 +178,14 @@ p {
       border: 0;
     }
 
+/*PROFILE*/
+
+.profile-container {
+  width: 1130px;
+  margin: 0 auto;
+  ul {
+    width: 50%;
+    float: left;
+  }
+}
 

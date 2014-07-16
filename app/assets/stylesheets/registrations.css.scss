@@ -1,0 +1,11 @@
+.register {
+  background: image_url('large-snowy-background.jpg') no-repeat;
+  height: 800px !important;
+  background-position: 0 -30px;
+  width: 100%;
+  position: fixed;
+  top: 50px;
+  .form-holder {
+    padding: 60px 0 0 40px;
+  }
+}
