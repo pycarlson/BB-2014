@@ -35,5 +35,9 @@ $(document).ready(function() {
     });
    }
  });
+
+// $('.datatable').dataTable({
+//   "sPaginationType": "bootstrap"
+// });
   
 });

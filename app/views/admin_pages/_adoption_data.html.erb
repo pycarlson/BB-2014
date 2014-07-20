@@ -1,0 +1,28 @@
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
+<tr>
+  <th><h2>ID</h2></th>
+  <th><h2>Code</h2></th>
+  <th><h2>Adopter</h2></th>
+  <th><h2>Drop Date</h2></th>
+  <th><h2>Gifts Received</h2></th>
+  <th><h2>Gifts Given</h2></th>
+</tr>
+<% @adopted_families.each do |af| %>
+<tr>
+  <ul>
+    <td>
+      <li><%= af.id %></li>
+    </td>
+    <td>
+      <li><%= af.code %></li>
+    </td>
+    <td>
+      <li><%= af.donor_id %></li>
+    </td>
+    <td>
+      <li><%= af.drop_off %></li>
+    </td>
+  </ul>
+  <% end %>
+</tr>
+</table>

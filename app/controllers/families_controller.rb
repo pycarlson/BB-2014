@@ -3,7 +3,12 @@ class FamiliesController < ApplicationController
   before_filter :user_is_admin?, except: [:index, :show]
 
   def index
-    @families = Family.filter_families(current_user)
+    if user_is_admin?
+      @families = Family.all
+    else
+      @families = Family.filter_families(current_user)
+    end
+    
     @donor = Donor.new
 
     respond_to do |format|

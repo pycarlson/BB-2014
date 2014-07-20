@@ -16,9 +16,13 @@
 .btn-primary {
   color: #ffffff !important;
   background-color: #27ae60;
-  height: 40px;
+  height: 50px;
   &:hover {
-    opacity: .8 !important;
+    background-color: #27ae60 !important;
+    opacity: .8;
+  }
+  .dropdown-toggle btn:hover {
+    background-color: #27ae60 !important;
   }
 }
 

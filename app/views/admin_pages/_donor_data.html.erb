@@ -1,0 +1,54 @@
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
+<tr>
+  <th><h2>ID</h2></th>
+  <th><h2>First Name</h2></th>
+  <th><h2>Last Name</h2></th>
+  <th><h2>Email</h2></th>
+  <th><h2>Company</h2></th>
+  <th><h2>Street</h2></th>
+  <th><h2>City</h2></th>
+  <th><h2>State</h2></th>
+  <th><h2>Zip</h2></th>
+  <th><h2>Phone</h2></th>
+  <th><h2>Edit</h2></th>
+  <th><h2>Delete</h2></th>
+</tr>
+<% @donors.each do |donor| %>
+<tr>
+  <ul>
+    <td>
+      <li><%= donor.id %></li>
+    </td>
+    <td>
+      <li><%= donor.first_name %></li>
+    </td>
+    <td>
+      <li><%= donor.last_name %></li>
+    </td>
+    <td>
+      <li><%= donor.get_email %></li>
+    </td>
+    <td>
+      <li><%= donor.company %></li>
+    </td>
+    <td>
+      <li><%= donor.street %></li>
+    </td>
+    <td>
+      <li><%= donor.city %></li>
+    </td>
+    <td>
+      <li><%= donor.state %></li>
+    </td>
+    <td>
+      <li><%= donor.zipcode %></li>
+    </td>
+    <td>
+      <li><%= donor.phone %></li>
+    </td>
+    <td><%= link_to "Edit", edit_donor_path(donor), class: "edit_link" %></td>
+    <td><%= link_to "Delete", donor, method: :delete, class: "delete_link", remote: true %></td>
+    <% end %>
+  </ul>
+</tr>
+</table>

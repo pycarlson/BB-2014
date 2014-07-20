@@ -6,6 +6,10 @@ class Donor < ActiveRecord::Base
   has_many :families
   has_one :drop_location
 
+  def get_email
+    User.find(self.user_id).email
+  end
+
   def get_users_drop_location_name(user)
     DropLocation.find(user.drop_location_id).name
   end

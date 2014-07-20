@@ -1,22 +1,32 @@
-<h2>Manage All Families</h2>
+<h2>Manage All Family Members</h2>
 <h4>Total Families: <%= @total_fams %></h4>
 
-<ul>
-  <% @families.each do |fam| %>
-  <div class="col-sm-4">
-  <li>
-    
-    <li><%= fam.code %></li>
-    <%= link_to "Edit", edit_family_path(fam), class: "edit_link" %>
-    <%= link_to "Delete", fam, method: :delete, class: "delete_link", remote: true %>
+<div class="manage-all">
 
-    <ul class="admin-family-members">
-      <% fam.family_members.each do |fm| %>
-      <li><%= fm.first_name %></li>
-      <% end %>
-    </ul>
-  </li>
-  </div>
-  <% end %>
+<%= render 'adoption_data' %>
+<%= render 'donor_data' %>
 
-</ul>
+
+
+
+</div>
+
+<style>
+  #manage-all {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  width: 1200px;
+  #manage_table_filter {
+    float: right;
+    margin-bottom: 20px;
+  }
+
+}
+
+// Fix Firefox bug in Data Tables search field display
+table.dataTable {
+  clear: both;
+}
+
+</style>

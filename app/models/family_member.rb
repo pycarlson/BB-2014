@@ -20,4 +20,8 @@ class FamilyMember < ActiveRecord::Base
     [:id, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age]
   end
 
+  def get_family_code
+    Family.find(self.family_id).code
+  end
+
 end

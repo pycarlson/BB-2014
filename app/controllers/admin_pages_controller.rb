@@ -12,7 +12,17 @@ class AdminPagesController < ApplicationController
 
   def manage_families
     @families = Family.all
+    @family_members = FamilyMember.all
     @total_fams = Family.count
+    @donors = Donor.all
+    
+    @adopted_families = []
+
+    @families.each do |fam| 
+      if fam.adopted == true
+        @adopted_families << fam
+      end
+    end
   end
 
 end

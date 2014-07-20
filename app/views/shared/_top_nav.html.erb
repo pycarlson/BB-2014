@@ -22,10 +22,14 @@
             <% if user_signed_in? && !user_is_admin? %>
             <li><%= link_to 'Shopping Tips', shopping_tips_path %></li>
             <li><%= link_to 'FAQs', faq_path %></a></li>
-            <li><%= link_to "My Profile", user_path(current_user) %></li>
+            <li><%= link_to "My Account", user_path(current_user) %></li>
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
             <% end %>
 
             <% if user_signed_in? && user_is_admin? %>
+            <li><%= link_to 'Shopping Tips', shopping_tips_path %></li>
+            <li><%= link_to 'FAQs', faq_path %></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle btn btn-lg btn-primary" data-toggle="dropdown">Admin <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -41,24 +45,9 @@
                 <li><%= link_to "Manage Families", manage_families_path %></li>
                 <li><%= link_to "Import Family Data", new_drive_family_member_import_path(Drive.last.id) %></li>
               </ul>
-
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             </li>
-            <li><%= link_to 'Shopping Tips', shopping_tips_path %></li>
-            <li><%= link_to 'FAQs', faq_path %></a></li>
-            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-
-            <% elsif user_signed_in? && user_has_chosen_drop_location(current_user) %>
-            <li><%= link_to "Browse Families", families_path %></li>
-            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-
-            <% elsif user_signed_in? && !user_has_chosen_drop_location(current_user)%>
-            <li>
-              <a href="#" class="btn btn-lg btn-success"
-              data-toggle="modal"
-              data-target="#basicModal">Browse Families</a>
-            </li>
-
-            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            
 
             <% end %>
 

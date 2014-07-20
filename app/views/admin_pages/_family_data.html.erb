@@ -1,0 +1,22 @@
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
+<tr>
+  <th><h2>ID</h2></th>
+  <th><h2>Code</h2></th>
+  <th><h2>Edit</h2></th>
+  <th><h2>Delete</h2></th>
+</tr>
+<% @families.each do |family| %>
+<tr>
+  <ul>
+    <td>
+      <li><%= family.id %></li>
+    </td>
+    <td>
+      <li><%= family.code %></li>
+    </td>
+    <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
+    <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+    <% end %>
+  </ul>
+</tr>
+</table>
