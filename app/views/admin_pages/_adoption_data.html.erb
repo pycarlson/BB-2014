@@ -1,3 +1,5 @@
+<h2>Adopted Families</h2>
+
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
 <tr>
   <th><h2>ID</h2></th>
@@ -20,8 +22,10 @@
       <li><%= af.donor_id %></li>
     </td>
     <td>
-      <li><%= af.drop_off %></li>
+      <li><%= af.drop_off.strftime('%B %d, %Y at %l:%M %p') %></li>
     </td>
+    <td>add form</td>
+    <td>add form</td>
   </ul>
   <% end %>
 </tr>

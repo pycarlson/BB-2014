@@ -275,3 +275,24 @@ p {
     float: right;
   }
 }
+
+/*TABLES*/
+
+.manage-all {
+  padding-top: 30px;
+  /*#manage_table_filter {
+    float: right;
+    margin-bottom: 20px;
+  }*/
+  .manage-table {
+    display: none;
+  }
+  /*.manage-table:first-of-type {
+    display: block;
+  }*/
+}
+
+// Fix Firefox bug in Data Tables search field display
+table.dataTable {
+  clear: both;
+}
