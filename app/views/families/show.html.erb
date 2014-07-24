@@ -1,24 +1,26 @@
-<h2>The @family.code Family</h2>
-    <%= link_to "Adopt this Family!", new_donor_path(@donor, :family_id => @family.id) %>
+<h2>The <%= @family.code %> Family</h2>
+
+<% if family_has_been_adopted?(@family) %>
+<p>This family was adopted by <%= User.find(@family.user_id).full_name %></p>
+<% else %>
+<%= link_to "Adopt this Family!", adoption_confirmation_path(:family_id => @family.id) %>
+<% end %>
 
 <br><br>
 <div class="col-sm-12 adoptable-families">
 
 
-    <% @family.family_members.each do |fm| %>
-    <div class="col-sm-4 family-members">
+  <% @family.family_members.each do |fm| %>
+  <div class="col-sm-4 family-members">
     <li>
-        
-            <ul>
-              <li><%= fm.first_name %></li>
-              <li><%= fm.bio %></li>
-            </ul>
-          
-
-          <br>
-      </li>
-      </div>
-      <% end %>
-
+      <ul>
+        <li><%= fm.first_name %></li>
+        <li><%= fm.bio %></li>
+      </ul>
+      <br>
+    </li>
   </div>
+  <% end %>
+
+</div>
 

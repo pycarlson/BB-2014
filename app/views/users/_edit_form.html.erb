@@ -1,0 +1,38 @@
+<div>
+  <%= form_for @user do |f| %>
+
+  <div class="form-item"><%= f.label :email %>
+  <%= f.text_field :email %></div>
+
+  <div class="form-item"><%= f.label :full_name %>
+  <%= f.text_field :full_name %></div>
+
+  <div class="form-item"><%= f.label :street %>
+  <%= f.text_field :street %></div>
+
+  <div class="form-item"><%= f.label :city %>
+  <%= f.text_field :city %></div>
+
+  <div class="form-item"><%= f.label :state %>
+  <%= f.text_field :state %></div>
+
+  <div class="form-item"><%= f.label :zipcode %>
+  <%= f.text_field :zip %></div>
+
+  <div class="form-item"><%= f.label :phone %>
+  <%= f.text_field :phone %></div>
+
+  <div class="form-item"><%= f.label :company %>
+  <%= f.text_field :company %></div>
+
+  <div class="form-group col-xs-12">
+    <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div> 
+
+  <% end %>
+</div>
+

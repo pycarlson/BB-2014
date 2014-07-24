@@ -2,20 +2,49 @@ class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:manage_families]
 
-  before_filter :user_is_super_admin?, only: [:admin]
+  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin]
 
-  def admin
+  def super_admin
     @admins = Admin.all
     @drives = Drive.all
     @families = Family.where('is_live = ?', false)
   end
 
-  def manage_families
+  def add_admin
+    user = User.find_by_email(params[:email])
+    drive = Drive.find(Drive.last.id)
+
+    if user == nil
+      flash[:alert] = "Please have user sign up."
+      redirect_to admin_path
+    else
+      user.drop_location_id = 0
+      user.save
+      new_admin = Admin.create!(user_id: user.id, drive_id: drive.id)
+      redirect_to super_admin_path
+    end
+  end
+
+  def remove_admin
+    p "*" * 100
+    p params
+    admin = Admin.find(params[:format])
+    user = User.find(admin.user_id)
+    user.drop_location_id = nil
+    user.save
+    admin.destroy
+    redirect_to super_admin_path
+    # respond_to do |format|
+    #   format.html { redirect_to admin_path }
+    #   format.js
+    # end
+  end
+
+  def data_tables
     @families = Family.all
     @family_members = FamilyMember.all
     @total_fams = Family.count
-    @donors = Donor.all
-    
+    @adoptors = User.all
     @adopted_families = []
 
     @families.each do |fam| 
@@ -23,6 +52,7 @@ class AdminPagesController < ApplicationController
         @adopted_families << fam
       end
     end
+    @left_unadopted = @total_fams - @adopted_families.count
   end
 
 end

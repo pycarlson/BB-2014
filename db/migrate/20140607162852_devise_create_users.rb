@@ -27,6 +27,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :zip
       t.string  :phone
       t.integer :drop_location_id
+      t.integer :drop_date_id
 
 
       t.timestamps

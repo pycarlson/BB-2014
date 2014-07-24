@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
   def home
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
-    p "*" * 100
   end
 
   def add_location

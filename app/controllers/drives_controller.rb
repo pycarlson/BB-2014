@@ -36,19 +36,6 @@ class DrivesController < ApplicationController
     end
   end
 
-  def add_admin
-    user = User.find_by_email(params[:email])
-    drive = Drive.find(Drive.last.id)
-
-    if user == nil
-      flash[:alert] = "Please have user sign up."
-      redirect_to admin_path
-    else
-      new_admin = Admin.create!(user_id: user.id, drive_id: drive.id)
-      redirect_to admin_path
-    end
-  end
-
   def close_drive
     drive = Drive.find(params[:id])
 

@@ -5,4 +5,35 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :drop_date
+  belongs_to :drop_location
+  has_many :families
+
+  def filter_families
+    if self.drop_location_id == 0
+      @families = Family.all
+    else
+      @families = Family.filter_families(self)
+    end
+    return @families
+  end
+
+  def get_drop_location_name
+    DropLocation.find(self.drop_location_id).name
+  end
+
+  def self.who_have_made_adoptions
+    p "*" * 100
+    users = []
+    User.all.each do |u|
+      if u.families.length > 0
+        p "YUP LARGER THAN )!!!!!"
+        users << u
+      end
+    p "*" * 100
+      
+      return users
+      p users.inspect
+    end
+  end
 end

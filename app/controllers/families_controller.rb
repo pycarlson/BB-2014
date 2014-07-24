@@ -3,19 +3,7 @@ class FamiliesController < ApplicationController
   before_filter :user_is_admin?, except: [:index, :show]
 
   def index
-    if user_is_admin?
-      @families = Family.all
-    else
-      @families = Family.filter_families(current_user)
-    end
-    
-    @donor = Donor.new
-
-    respond_to do |format|
-      format.html
-      format.csv { send_data @families.to_csv }
-      format.xls #{ send_data @families.to_csv(col_sep: "\t") }
-    end
+    @families = current_user.filter_families
   end
 
   def new
@@ -27,7 +15,7 @@ class FamiliesController < ApplicationController
 
   def create
     Family.create!(family_params)
-    redirect_to manage_families_path
+    redirect_to data_tables_path
   end
 
   def show
@@ -80,7 +68,7 @@ class FamiliesController < ApplicationController
   end
 
   def family_params
-    params.require(:family).permit(:id, :drive_id, :adopted_by, :received_at_org, :given_to_family, :code, :drop_location_id, :donor_id, :num_boxes, :drop_date_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
+    params.require(:family).permit(:id, :drive_id, :adopted_by, :received_at_org, :given_to_family, :code, :drop_location_id, :donor_id, :user_id, :num_boxes, :drop_date_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
   end
 
 end

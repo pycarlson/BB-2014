@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720165428) do
+ActiveRecord::Schema.define(version: 20140724045418) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -19,22 +19,6 @@ ActiveRecord::Schema.define(version: 20140720165428) do
     t.boolean  "is_super",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "donors", force: true do |t|
-    t.integer "user_id"
-    t.integer "drive_id"
-    t.integer "drop_location_id"
-    t.integer "family_id"
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "company"
-    t.string  "street"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zipcode"
-    t.string  "phone"
-    t.integer "drop_date_id"
   end
 
   create_table "drives", force: true do |t|
@@ -47,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140720165428) do
     t.string   "donation_receipt_link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",                            default: false
+    t.boolean  "status",                            default: true
   end
 
   create_table "drop_dates", force: true do |t|
@@ -83,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140720165428) do
     t.datetime "updated_at"
     t.integer  "members"
     t.boolean  "adopted",          default: false
+    t.integer  "user_id"
   end
 
   create_table "family_members", force: true do |t|
@@ -122,12 +107,12 @@ ActiveRecord::Schema.define(version: 20140720165428) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -140,8 +125,10 @@ ActiveRecord::Schema.define(version: 20140720165428) do
     t.string   "zip"
     t.string   "phone"
     t.integer  "drop_location_id"
+    t.integer  "drop_date_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "info_complete",          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

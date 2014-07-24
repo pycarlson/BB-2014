@@ -1,48 +1,43 @@
-
 <div class="row">
   <div class="col-xs-1"></div>
   <div class="col-xs-10">
     <div class="profile-container">
-      <% if @donor  %>
-      <h1>Hello <%= @donor.first_name %>.</h1>
-      <% else %>
-      <h1>Welcome!!!</h1>
-      <% end %>
+     
+      <h1>Hello <%= current_user.full_name %> and Welcome!!!</h1>
+      <h1>User ID: <%= current_user.id %></h1>
 
       <p>Welcome to your Brighter Beginnings Adopt-a-Family profile page. Come here to manage your personal information, acquire information about the famil(ies) you will be adopting this year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
 
-      <% if @donor  %>
+      <% if current_user.drop_location_id  %>
       <div class="col-sm-5 col-xs-12">
         <h2>Your Drop Location Details</h2>
         <ul>
-          <li><p><%= DropLocation.find(@donor.drop_location_id).name %></p></li>
-          <li><p><%= DropLocation.find(@donor.drop_location_id).street %>, <%= DropLocation.find(@donor.drop_location_id).city %>, <%= DropLocation.find(@donor.drop_location_id).zipcode %></p></li>
-          <li><p><%= @donor.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
+          <li><p><%= DropLocation.find(current_user.drop_location_id).name %></p></li>
+          <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
+          <li><p><%= current_user.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
         </ul>
         <% end %>
       </div>
       <div class="col-xs-1"></div>
 
-      <% if @donor %>
       <div class="col-sm-5 col-xs-12">
         <h2>Your Personal Info</h2>
         <ul>
-          <li><p>Name: <%= @donor.first_name %> <%= @donor.last_name %><p></li>
-          <li><p>Address: <%= @donor.street %>, <%= @donor.city %>, <%= @donor.zipcode %>, <%= @donor.state %></p></li>
-          <li><p>Phone: <%= @donor.phone %></p></li>
-          <li><%= link_to 'Edit Your Info', edit_donor_path(@donor.id) %></li>
-          <% end %>
+          <li><p>Name: <%= current_user.full_name %><p></li>
+          <li><p>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
+          <li><p>Phone: <%= current_user.phone %></p></li>
+          <li><%= link_to 'Edit Your Info', edit_user_path(current_user) %></li>
         </ul>
       </div>
 
-      <% if @donor  %>
+      <% if current_user.families.length > 0  %>
       <div class="col-sm-5 col-xs-12">
         <h2>Your Adopted Families</h2>
         <ul>
-          <% @donor.families.each do |f| %>
+          <% current_user.families.each do |f| %>
           <li>
             <ul class="col-lg-5">
-              <li><p><%= f.code %></p></li>
+              <li><p><%= link_to f.code, family_path(f) %></p></li>
             </ul>
             <% end %>
           </li>

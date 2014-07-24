@@ -1,15 +1,14 @@
   <div class="inner-container">
     <div class="families-container">
       <h2>Families Available for Adoption</h2>
+      <%= @families.count %>
      
       <% @families.each do |f| %>
 
       <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
         <li><%= link_to f.code, family_path(f) %></li>
         <li><%= f.family_members.count %></li>
-
-        <li><%= link_to "Adopt this Family!", new_donor_path(@donor, :family_id => f.id) %></li>
-
+        <li><%= link_to "Adopt this Family!", adoption_confirmation_path(:family_id => f.id) %></li>
         <% f.family_members.each do |fm| %>
         <li>
           <ul class="fam-members">

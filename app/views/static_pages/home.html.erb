@@ -22,11 +22,9 @@
 </div>
 
 <div class="see-families">
-  <% if user_signed_in? && user_is_admin? %>
+  <% if user_signed_in? && user_has_chosen_drop_location(current_user) %>
     <a href="/families" class="btn btn-lg btn-danger">Browse Families</a>
-  <% elsif user_signed_in? && user_has_chosen_drop_location(current_user) %>
-    <a href="/families" class="btn btn-lg btn-danger">Browse Families</a>
-  <% elsif user_signed_in? && !user_has_chosen_drop_location(current_user)%>
+  <% elsif user_signed_in? && !user_has_chosen_drop_location(current_user) %>
     <a href="#" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#basicModal">Browse Families</a>
   <% end %>
 </div>

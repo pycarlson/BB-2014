@@ -1,6 +1,16 @@
 class FamilyMembersController < ApplicationController
   
   before_filter :user_is_admin?
+
+  def new
+    @family_member = FamilyMember.new
+    @family_members.needs.build
+  end
+
+  def create
+    FamilyMember.create!(family_params)
+    redirect_to manage_families_path
+  end
   
   def edit
     @family_member = FamilyMember.find(params[:id])

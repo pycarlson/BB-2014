@@ -1,51 +1,47 @@
-
-
 <div class="manage-all">
   <h2>Manage All Family Members</h2>
   <h4>Total Families: <%= @total_fams %></h4>
+  <h4>Adopted Families: <%= @adopted_families.count %></h4>
+  <h4>Unadoted Families: <%= @left_unadopted %></h4>
 
   <div class="manage-nav">
     <%= radio_button_tag(:option, "families") %>
     <%= label_tag(:families, "Families") %>
-    <%= radio_button_tag(:option, "family_members") %>
-    <%= label_tag(:family_members, "Family Members") %>
-    <%= radio_button_tag(:option, "donors") %>
-    <%= label_tag(:donors, "Donors") %>
-    <%= radio_button_tag(:option, "adoptions") %>
+    <%= radio_button_tag(:option, "adoptors") %>
+    <%= label_tag(:donors, "Adoptors") %>
+    <%= radio_button_tag(:option, "adoptions", :checked => true) %>
     <%= label_tag(:adoptions, "Adoptions") %>
   </div>
 
   <div class="manage-table families-partial">
     <%= render 'family_data' %>
   </div>
-  <div class="manage-table family-members-partial">
-    <%= render 'family_member_data' %>
-  </div>
   <div class="manage-table adoptions-partial">
-    <%= render 'donor_data' %>
+    <%= render 'adoption_data' %>
   </div>
   <div class="manage-table donors-partial">
-    <%= render 'adoption_data' %>
+    <%= render 'donor_data' %>
   </div>
 
 </div>
 
 <script>
 $(document).ready(function(){
+  if ($("input[name='option']:checked").val() == 'adoptions') {
+      $('.adoptions-partial').show();
+    }
   $("input[name='option']").change(function() {
     $('.manage-table').hide();
     if ($("input[name='option']:checked").val() == 'families') {
       $('.families-partial').show();
     }
-    if ($("input[name='option']:checked").val() == 'family_members') {
-      $('.family-members-partial').show();
-    }
-    if ($("input[name='option']:checked").val() == 'donors') {
+    if ($("input[name='option']:checked").val() == 'adoptors') {
       $('.donors-partial').show();
     }
     if ($("input[name='option']:checked").val() == 'adoptions') {
       $('.adoptions-partial').show();
     }
+
   });
 });
 </script>

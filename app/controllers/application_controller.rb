@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected 
   def user_is_admin?
-    current_user && current_user.email == 'p@me.com' || user_is_super_admin?
+    current_user && Admin.find_by_user_id(current_user.id) || user_is_super_admin?
   end
 
   def user_is_super_admin?
