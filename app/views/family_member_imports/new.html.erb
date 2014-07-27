@@ -1,7 +1,7 @@
 <div class="inner">
   <div class="drive-deets">
     <div class="title">
-      <h1><%= @drive.year %>Adopt-a-Family Gift Drive</h1>
+      <h1><%= @drive.year %></h1>
       <h2>Import Family Data</h2>
       <div class="subnav">
       <%= link_to "Drive Home", drive_path(@drive) %>
@@ -11,14 +11,11 @@
     <hr>
   </div>
 
-
-
   <p>A CSV or Excel file can be used to import family records. Excel formats must be XLS for versions of excel (1997-2003) or XLSX (2007 or later).</p>
 
   <p>Download an import template in <%= link_to "Excel Format", family_member_imports_path(format: "xls") %>.</p>
   <br>
   <p>If you prefer to use your own CSV file or EXCEL spreadsheet, the following column headers are required:</p>
-
 
   <ul id="import_headers">
     <li>first_name</li>
@@ -29,8 +26,8 @@
     <li>size_dress</li>
     <li>size_shoes</li>
     <li>bio</li>
-    <li>family_code</li>
-    <li>drop_location</li>
+    <li>code</li>
+    <li>drop_location_id</li>
     <p style="color:red !important;font-size:11px;margin:0px !important;padding:0px !important;">**The drop location name must match the name(s) you enter when you create the gift drive.<br>BE SURE TO REMOVE ANY TRAILING WHITE SPACE BEFORE OR AFTER THE DROP LOCATION NAME.</p> 
   </ul>
   <br>
@@ -38,11 +35,7 @@
     In addition to these columns, you may also add optional "needs" columns as "need1", "need2", "need3", and so on. Doing so will associate desired gifts/needs with the family member upon spreadsheet import.
   </p>
 
-  
-
-
-  <br>
-  <%= form_for [@drive, @family_members] do |f| %>
+  <%= form_for [@family_members] do |f| %>
   <% if @family_members.errors.any? %>
   <div id="import_errors">
     <h2><%= pluralize(@family_members.errors.count, "error") %> prohibited this import form completing:</h2>
@@ -53,7 +46,6 @@
     </ul>
   </div>
   <% end %>
-
 
   <div id="import_field">
     <%= f.file_field :file, :id => "import_file" %>

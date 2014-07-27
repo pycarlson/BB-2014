@@ -56,10 +56,10 @@ class FamiliesController < ApplicationController
     end
   end
 
-  # def import
-  #   Product.import(params[:file])
-  #   redirect_to root_path, notice: "Products imported."
-  # end 
+  def import
+    Family.import(params[:file])
+    redirect_to super_admin_path
+  end 
 
   protected
 

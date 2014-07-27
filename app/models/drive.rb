@@ -7,4 +7,5 @@ class Drive < ActiveRecord::Base
   has_many :admins
 
   accepts_nested_attributes_for :drop_locations
+
 end

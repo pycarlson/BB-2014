@@ -10,8 +10,7 @@
   <th><h2>Zip</h2></th>
   <th><h2>Phone</h2></th>
   <th><h2>Company</h2></th>
-  <th><h2>Edit</h2></th>
-  <th><h2>Delete</h2></th>
+  <th><h2>Resend Email</h2></th>
 </tr>
 <% @adoptors.each do |a| %>
 <tr>
@@ -40,8 +39,7 @@
     <td>
       <li><%= a.company %></li>
     </td>
-    <td><%= link_to "Edit", edit_user_path(a), class: "edit_link" %></td>
-    <td><%= link_to "Delete", a, method: :delete, class: "delete_link", remote: true %></td>
+    <td><%= link_to "Resend", :class => "btn btn-primary" %></td>
     <% end %>
   </ul>
 </tr>

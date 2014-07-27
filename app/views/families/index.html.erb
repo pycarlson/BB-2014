@@ -1,25 +1,32 @@
-  <div class="inner-container">
-    <div class="families-container">
-      <h2>Families Available for Adoption</h2>
-      <%= @families.count %>
-     
-      <% @families.each do |f| %>
-
-      <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
-        <li><%= link_to f.code, family_path(f) %></li>
-        <li><%= f.family_members.count %></li>
-        <li><%= link_to "Adopt this Family!", adoption_confirmation_path(:family_id => f.id) %></li>
-        <% f.family_members.each do |fm| %>
-        <li>
-          <ul class="fam-members">
-            <li><%= fm.first_name %></li>
-          </ul>
-        </li>
-      <% end %>
-      </ul>
-    <% end %>
-    </div>
+  
+<div class="inner-container">
+  <%= render 'shared/sub_nav' %>
+  <div class="col-lg-12 filtering-deets">
+    <h2>Families Available for Adoption</h2>
+    <p>Filter families by size:</p>
+    <%= render 'filter_by_size_buttons' %>
   </div>
+
+  <div class="families-container">
+
+    <% @families.each do |f| %>
+
+    <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
+      <li><h1><%= f.code %></h1></li>
+      <li><%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-primary" %></li>
+      <li><%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-danger" %></li>
+      <% f.family_members.each do |fm| %>
+      <li>
+        <ul class="fam-members">
+          <li><h2><%= fm.first_name %></h2></li>
+          <li><p><%= truncate(fm.bio, length: 80) %></p></li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+</div>
 
 
 

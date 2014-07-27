@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   def filter_families
     if self.drop_location_id == 0
-      @families = Family.all
+      @families = Family.where('is_live = ?', true)
     else
       @families = Family.filter_families(self)
     end
@@ -23,15 +23,11 @@ class User < ActiveRecord::Base
   end
 
   def self.who_have_made_adoptions
-    p "*" * 100
     users = []
     User.all.each do |u|
       if u.families.length > 0
-        p "YUP LARGER THAN )!!!!!"
         users << u
       end
-    p "*" * 100
-      
       return users
       p users.inspect
     end

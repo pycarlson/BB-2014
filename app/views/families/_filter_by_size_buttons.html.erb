@@ -1,0 +1,29 @@
+<div id="family-size-filter-buttons">
+  <ul>
+    <li>
+      <%= radio_button_tag(:filter, "1") %>
+      <%= label_tag(:filter_1, "1 person") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:filter, "2") %>
+      <%= label_tag(:filter_2, "2 people") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:filter, "3") %>
+      <%= label_tag(:filter_3, "3 people") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:filter, "4") %>
+      <%= label_tag(:filter_4, "4 people") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:filter, "5") %>
+      <%= label_tag(:filter_5, "5+ people") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:filter, "0", :checked => 'checked') %>
+      <%= label_tag(:filter_0, "Show all") %>
+    </li>
+    <li><%= submit_tag "Filter", class: 'hidden' %><li>
+  </ul>
+</div>

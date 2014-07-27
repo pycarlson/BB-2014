@@ -33,6 +33,11 @@ class FamilyMembersController < ApplicationController
     end
   end
 
+  def import
+    FamilyMember.import(params[:file])
+    redirect_to data_tables_path
+  end
+
   protected
 
   def family_member_params

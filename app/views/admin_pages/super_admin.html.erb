@@ -1,17 +1,23 @@
 
-<h3>Drives</h3>
+<h2>Drives</h2>
 <ul>
-<% @drives.each do |drive| %>
-<li>
-  <%= drive.year %>
-  <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
-  <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
-<% end %>
-</li>
+  <% @drives.each do |drive| %>
+  <li>
+    <%= drive.year %>
+    <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
+    <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
+    <% end %>
+  </li>
 </ul>
 
+<h2>Import Family Members</h2>
+<div>
+  <%= link_to "Import Family Data", new_family_member_import_path(@drive) %>
+</div>
 
-<h3>ADD ADMINISTRATOR</h3>
+
+
+<h2>Add Administrator</h2>
 <%= form_tag(add_admin_path, method: "post") do %>
 <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
 <div><%= submit_tag("Add New Admin") %></div>
@@ -21,9 +27,9 @@
 <% @admins.each do |admin| %>
 <ul>
   <li>
-    <%= admin.user_id %>
-    <%= User.find(admin.user_id).email %>
-    <%= link_to "Remove", remove_admin_path(admin), method: :delete, class: "delete_link" %>
+    <p><%= admin.user_id %>: <%= User.find(admin.user_id).email %></p>
+    
+    <p><%= link_to "Remove", remove_admin_path(admin), method: :delete, class: "delete_link", remote: true %></p>
   </li>
 </ul>
 <% end %>
@@ -33,14 +39,14 @@
 
 <h3>Families that are ready to go live?</h3>
 <ul>
-<li>
-  <% @families.each do |fam| %>
-  <li><%= fam.code %> <%= check_box_tag 'is_live', fam.id , fam.is_live, :class => "makeFamilyLiveCheckbox" %></li>
-  <ul>
-  <% fam.family_members.each do |fm| %>
-  <li><%= fm.id %></li>
-<% end %>
-</ul>
-</li>
-<% end %>
+  <li>
+    <% @families.each do |fam| %>
+    <li><%= fam.code %> <%= check_box_tag 'is_live', fam.id , fam.is_live, :class => "makeFamilyLiveCheckbox" %></li>
+    <ul>
+      <% fam.family_members.each do |fm| %>
+      <li><%= fm.id %></li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
 </ul>

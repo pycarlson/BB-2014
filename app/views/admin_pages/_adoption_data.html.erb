@@ -1,13 +1,17 @@
 <h2>Adopted Families</h2>
+<div class="dataTables_filter" id="manage_table_filter"><label>Search: <input type="text" aria-controls="manage_table"></label></div>
 
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
 <tr>
   <th><h2>ID</h2></th>
   <th><h2>Code</h2></th>
   <th><h2>Adopter</h2></th>
+  <th><h2>Phone</h2></th>
+  <th><h2>Email</h2></th>
   <th><h2>Drop Date</h2></th>
-  <th><h2>Gifts Received</h2></th>
-  <th><h2>Gifts Given</h2></th>
+  <th><h2>Received</h2></th>
+  <th><h2>Given</h2></th>
+  <th><h2>Cancel</h2></th>
 </tr>
 <% @adopted_families.each do |af| %>
 <tr>
@@ -19,13 +23,20 @@
       <li><%= af.code %></li>
     </td>
     <td>
-      <li><%= af.user_id %></li>
+      <li><%= User.find(af.user_id).full_name %></li>
+    </td>
+    <td>
+      <li><%= User.find(af.user_id).phone %></li>
+    </td>
+    <td>
+      <li><%= User.find(af.user_id).email %></li>
     </td>
     <td>
       <li><%= af.drop_off.strftime('%B %d, %Y at %l:%M %p') %></li>
     </td>
     <td>add form</td>
     <td>add form</td>
+    <td><%= link_to 'Cancel', cancel_adoption_path(:family_id => af.id), :class => "btn btn-danger" %></td>
   </ul>
   <% end %>
 </tr>

@@ -5,12 +5,12 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   
   root to: "static_pages#home"
 
-  resources :drives do
-    resources :family_member_imports, only: [:new, :create]
-  end
+  resources :drives
+
+  resources :family_member_imports, only: [:new, :create]
+
 
   resources :families do 
-    collection { post :import }
     resources :family_members do 
       resources :needs
     end
@@ -22,6 +22,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :admins, only: [:destroy] 
 
   get '/super_admin' => 'admin_pages#super_admin'
+  get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   get '/shopping_tips' => 'static_pages#shopping_tips'
   get '/faq' => 'static_pages#faq'
   get '/data_tables' => 'admin_pages#data_tables'

@@ -20,3 +20,9 @@
 
 //= require bootstrap
 //= require_tree .
+
+// $(document).ready(function() {
+//   $('.datatable').dataTable({
+//     "bPaginate": false,
+//   });
+// });

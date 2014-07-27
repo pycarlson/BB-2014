@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_attributes(user_params)
+    current_user.adoptor = true
     current_user.info_complete = true
     current_user.save
     if params[:user][:family_id]
@@ -32,8 +33,6 @@ class UsersController < ApplicationController
   def adoption_confirmation
     @user = current_user
     @family = Family.find(params[:family_id])
-    p "*" * 100
-    p @family
     @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
   end
 

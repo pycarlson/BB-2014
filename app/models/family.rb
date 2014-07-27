@@ -12,17 +12,8 @@ class Family < ActiveRecord::Base
   end
 
   def self.filter_families(user)
-    Family.where(drop_location_id: user.drop_location_id, is_live: true)
+    Family.where(drop_location_id: user.drop_location_id, is_live: true, user_id: nil)
   end
-
-  def self.to_csv(options = {}) 
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |family|
-        csv << family.attributes.values_at(*column_names)
-      end
-    end
-  end
-
 
 end
+

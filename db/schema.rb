@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724045418) do
+ActiveRecord::Schema.define(version: 20140725052538) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20140724045418) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "info_complete",          default: false
+    t.boolean  "adoptor",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
