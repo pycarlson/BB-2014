@@ -1,9 +1,9 @@
 <h2>Adopted Families</h2>
-<div class="dataTables_filter" id="manage_table_filter"><label>Search: <input type="text" aria-controls="manage_table"></label></div>
 
-<table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-adoptions">
+
+<thead>  
 <tr>
-  <th><h2>ID</h2></th>
   <th><h2>Code</h2></th>
   <th><h2>Adopter</h2></th>
   <th><h2>Phone</h2></th>
@@ -11,14 +11,15 @@
   <th><h2>Drop Date</h2></th>
   <th><h2>Received</h2></th>
   <th><h2>Given</h2></th>
-  <th><h2>Cancel</h2></th>
+  <% if user_is_super_admin? %>
+    <th><h2>Cancel</h2></th>
+  <% end %>  
 </tr>
+</thead>  
+
 <% @adopted_families.each do |af| %>
 <tr>
   <ul>
-    <td>
-      <li><%= af.id %></li>
-    </td>
     <td>
       <li><%= af.code %></li>
     </td>
@@ -36,7 +37,10 @@
     </td>
     <td>add form</td>
     <td>add form</td>
-    <td><%= link_to 'Cancel', cancel_adoption_path(:family_id => af.id), :class => "btn btn-danger" %></td>
+    <% if user_is_super_admin? %>
+      <td><%= link_to 'Cancel', cancel_adoption_path(:family_id => af.id), :class => "btn btn-danger" %></td>
+    <% end %>
+
   </ul>
   <% end %>
 </tr>

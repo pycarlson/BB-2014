@@ -2,7 +2,7 @@ class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:manage_families]
 
-  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin]
+  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin, :cancel_adoption]
 
   def super_admin
     @admins = Admin.all
@@ -26,7 +26,6 @@ class AdminPagesController < ApplicationController
   end
 
   def remove_admin
-    p params
     admin = Admin.find(params[:format])
     user = User.find(admin.user_id)
     user.drop_location_id = nil
@@ -55,6 +54,7 @@ class AdminPagesController < ApplicationController
     @family_members = FamilyMember.all
     @total_fams = Family.count
     @adoptors = User.where(adoptor: true)
+    @system_users = User.all
 
     @adopted_families = []
 

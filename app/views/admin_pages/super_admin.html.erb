@@ -10,13 +10,6 @@
   </li>
 </ul>
 
-<h2>Import Family Members</h2>
-<div>
-  <%= link_to "Import Family Data", new_family_member_import_path(@drive) %>
-</div>
-
-
-
 <h2>Add Administrator</h2>
 <%= form_tag(add_admin_path, method: "post") do %>
 <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>

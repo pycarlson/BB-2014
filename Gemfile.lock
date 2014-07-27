@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: ee838ffc755e7c205a416870efb4f27400eb2c53
+  specs:
+    jquery-datatables-rails (2.1.10.0.3)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -90,8 +98,6 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-datatables-rails (1.12.2)
-      jquery-rails
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -235,7 +241,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   jbuilder (~> 1.2)
-  jquery-datatables-rails
+  jquery-datatables-rails!
   jquery-rails
   jquery-turbolinks
   launchy

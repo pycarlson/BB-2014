@@ -4,6 +4,11 @@ class FamiliesController < ApplicationController
 
   def index
     @families = current_user.filter_families
+    @fams_five = Family.get_fams_five_and_more(@families)
+    @fams_four = Family.get_fams_four(@families)
+    @fams_three = Family.get_fams_three(@families)
+    @fams_two = Family.get_fams_two(@families)
+    @fams_one = Family.get_fams_one(@families)
   end
 
   def new
@@ -14,7 +19,9 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    Family.create!(family_params)
+    family = Family.create!(family_params)
+    family.drive_id = Drive.last.id
+    family.save
     redirect_to data_tables_path
   end
 
@@ -32,7 +39,9 @@ class FamiliesController < ApplicationController
   def update
     family = Family.find(params[:id])
     if family.update_attributes(family_params)
-      redirect_to manage_families_path
+      family.is_live = false
+      family.save
+      redirect_to families_path
     else
       render :edit
     end

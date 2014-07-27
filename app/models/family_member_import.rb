@@ -54,6 +54,7 @@ class FamilyMemberImport
       family_member.size_shoes = row["size_shoes"]
       family_member.bio = row["bio"]
       family_member.age = row["age"]
+
       drop_location_id = row["drop_location_id"]
       
       if family_member.save

@@ -36,6 +36,14 @@ class UsersController < ApplicationController
     @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
   end
 
+  def destroy
+    user = User.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to manage_families_path }
+      format.js
+    end
+  end 
+
   protected
   def user_params
     params.require(:user).permit(:full_name, :drop_location_id, :drop_date_id, :company, :zip, :street, :city, :state, :phone, :info_complete)

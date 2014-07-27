@@ -1,0 +1,50 @@
+<h2>All System Users</h2>
+
+
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-users">
+<thead>
+<tr>
+  <th><h2>User ID</h2></th>
+  <th><h2>Full Name</h2></th>
+  <th><h2>Email</h2></th>
+  <th><h2>Phone</h2></th>
+  <th><h2>Street</h2></th>
+  <th><h2>City</h2></th>
+  <th><h2>State</h2></th>
+  <% if user_is_super_admin? %>
+    <th><h2>Remove</h2></th>
+  <% end %>
+</tr>
+</thead>
+<% @system_users.each do |u| %>
+<tr>
+  <ul>
+    <td>
+      <li><%= u.id %></li>
+    </td>
+    <td>
+      <li><%= u.full_name %></li>
+    </td>
+    <td>
+      <li><%= u.email %></li>
+    </td>
+    <td>
+      <li><%= u.phone %></li>
+    </td>
+    <td>
+      <li><%= u.street %></li>
+    </td>
+    <td>
+      <li><%= u.city %></li>
+    </td>
+    <td>
+      <li><%= u.state %></li>
+    </td>
+    <% if user_is_super_admin? %>
+      <td><%= link_to "Remove", u, method: :delete, class: "delete_link", remote: true %></td>
+    <% end %>
+    
+  </ul>
+  <% end %>
+</tr>
+</table>

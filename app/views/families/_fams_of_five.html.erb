@@ -1,0 +1,20 @@
+<% if @fams_five.length == 0 %>
+<h2>All of this year's families of five or more people have already been adopted. Thank you!</h2>
+<% else %>
+<% @fams_five.each do |f| %>
+
+<ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
+  <li><h1><%= f.code %></h1></li>
+  <li><%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-primary" %></li>
+  <li><%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-danger" %></li>
+  <% f.family_members.each do |fm| %>
+  <li>
+    <ul class="fam-members">
+      <li><h2><%= fm.first_name %></h2></li>
+      <li><p><%= truncate(fm.bio, length: 80) %></p></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+<% end %>

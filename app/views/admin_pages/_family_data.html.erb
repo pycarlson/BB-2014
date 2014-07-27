@@ -1,19 +1,30 @@
 <h2>All Families</h2>
 
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
+<thead>
 <tr>
   <th><h2>Family Code</h2></th>
+  <th><h2>Adopted?</h2></th>
   <th><h2>Edit</h2></th>
-  <th><h2>Delete</h2></th>
+
+  <% if user_is_super_admin? %>
+    <th><h2>Delete</h2></th>
+  <% end %>
 </tr>
+</thead>
 <% @families.each do |family| %>
 <tr>
   <ul>
     <td>
       <li><%= family.code.upcase %></li>
     </td>
+    <td>
+      <li><%= family.adopted %></li>
+    </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
-    <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+    <% if user_is_super_admin? %>
+      <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+    <% end %>
     <% end %>
   </ul>
 </tr>

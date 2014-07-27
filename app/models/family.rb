@@ -15,5 +15,25 @@ class Family < ActiveRecord::Base
     Family.where(drop_location_id: user.drop_location_id, is_live: true, user_id: nil)
   end
 
+  def self.get_fams_five_and_more(families)
+    families.select {|f| f if f.family_members.length >= 5 }
+  end
+
+  def self.get_fams_four(families)
+    families.select {|f| f if f.family_members.length == 4 }
+  end
+
+  def self.get_fams_three(families)
+    families.select {|f| f if f.family_members.length == 3 }
+  end
+
+  def self.get_fams_two(families)
+    families.select {|f| f if f.family_members.length == 2 }
+  end
+
+  def self.get_fams_one(families)
+    families.select {|f| f if f.family_members.length == 1 }
+  end
+
 end
 

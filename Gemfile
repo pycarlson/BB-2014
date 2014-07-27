@@ -7,7 +7,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'sass-rails', '~> 4.0.0'
 gem 'nested_form'
-gem "jquery-datatables-rails"
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'roo'
 gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-tooltip-rails', '~> 0.1'

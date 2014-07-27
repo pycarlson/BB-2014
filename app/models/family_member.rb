@@ -7,14 +7,6 @@ class FamilyMember < ActiveRecord::Base
   has_many :needs, :dependent => :destroy, :inverse_of => :family_member
   accepts_nested_attributes_for :needs, :allow_destroy => true
   
-  # after_save :update_family_member_number
-
-  def update_family_member_number
-    family = Family.find(self.family_id)
-    family.members = family.family_members.count
-    family.save
-  end
-
   def get_family_code
     Family.find(self.family_id).code
   end
