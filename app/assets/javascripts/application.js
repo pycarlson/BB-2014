@@ -10,12 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
+//= require jquery
+//= require jquery_ujs
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require jquery_nested_form
-//= require jquery
-//= require jquery_ujs
 //= require turbolinks
 //= require jquery.turbolinks
 //= require dataTables/jquery.dataTables
