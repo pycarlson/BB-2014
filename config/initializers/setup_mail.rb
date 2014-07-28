@@ -4,6 +4,6 @@ ActionMailer::Base.smtp_settings = {
 :port => 587,
 :domain => 'test.com',
 :authentication => :plain,
-:user_name => 'pyluftig@gmail.com',
-:password => 'atti2deX44'
+:user_name => ENV["P_EMAIL"],
+:password => ENV["P_PASSWORD"]
 }

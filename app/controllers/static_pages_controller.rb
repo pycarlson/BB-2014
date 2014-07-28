@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  http_basic_authenticate_with :name => "hi", :password => "there"
+  http_basic_authenticate_with :name => ENV["P_EMAIL"], :password => ENV["P_GMAIL_USERNAME"]
 
   def home
     @drive = Drive.last
