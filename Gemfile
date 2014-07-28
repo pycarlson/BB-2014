@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-modal-rails'
 gem 'figaro'
 gem 'jquery-turbolinks'
+gem 'mail'
 
 group :development do
   gem 'quiet_assets'

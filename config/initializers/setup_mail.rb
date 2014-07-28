@@ -1,10 +1,9 @@
-# ActionMailer::Base.delivery_method = :smtp
-# ActionMailer::Base.smtp_settings = {
-#   :address => "smtp.servername.com",
-#   :port => 587,
-#   :domain => "http://www.brighter-beginnings.org/",
-#   :user_name => "pyluftig",
-#   :password => "atti2deX44",
-#   :authentication => "plain",
-#   :enable_starttles_auto => true
-# }
+ActionMailer::Base.smtp_settings = {
+:enable_starttls_auto => true,
+:address => 'smtp.gmail.com',
+:port => 587,
+:domain => 'test.com',
+:authentication => :plain,
+:user_name => 'pyluftig@gmail.com',
+:password => 'atti2deX44'
+}

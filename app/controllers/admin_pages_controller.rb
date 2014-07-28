@@ -49,6 +49,12 @@ class AdminPagesController < ApplicationController
     redirect_to data_tables_path
   end
 
+  def resend_adoption_confirmation_email
+    user = User.find(params[:format])
+    UserMailer.adoption_confirmation(user).deliver
+    redirect_to data_tables_path
+  end
+
   def data_tables
     @families = Family.all
     @family_members = FamilyMember.all

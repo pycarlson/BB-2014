@@ -6,19 +6,19 @@ class Drive < ActiveRecord::Base
 
   accepts_nested_attributes_for :drop_locations
   
-  before_save :delete_the_past_drive_families!
-  before_save :delete_the_past_drive!
+  # before_save :delete_the_past_drive_families!
+  # before_save :delete_the_past_drive!
   
-  def delete_the_past_drive!
-    if Drive.all.length != 0 
-      Drive.last.destroy
-    end
-  end
+  # def delete_the_past_drive!
+  #   if Drive.all.length != 0 
+  #     Drive.last.destroy
+  #   end
+  # end
 
-  def delete_the_past_drive_families!
-    Family.all.each do |f|
-      p "deleting a family"
-      f.destroy
-    end
-  end
+  # def delete_the_past_drive_families!
+  #   Family.all.each do |f|
+  #     p "deleting a family"
+  #     f.destroy
+  #   end
+  # end
 end

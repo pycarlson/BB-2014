@@ -245,6 +245,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   launchy
+  mail
   nested_form
   pg
   quiet_assets

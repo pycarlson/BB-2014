@@ -45,7 +45,7 @@
     <td>
       <li><%= a.company %></li>
     </td>
-    <td><%= link_to "Resend", :class => "btn btn-primary" %></td>
+    <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a), :class => "btn btn-primary" %></td>
     <% end %>
   </ul>
 </tr>

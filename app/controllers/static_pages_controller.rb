@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  http_basic_authenticate_with :name => "hi", :password => "there"
 
   def home
     @drive = Drive.last

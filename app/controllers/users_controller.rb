@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
   def show
     if current_user
       @user = User.find(params[:id])
@@ -15,19 +15,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update_attributes(user_params)
-    current_user.adoptor = true
-    current_user.info_complete = true
-    current_user.save
+    @user = current_user
+    @user.update_attributes(user_params)
+    @user.adoptor = true
+    @user.info_complete = true
+    @user.save
     if params[:user][:family_id]
       family = Family.find(params[:user][:family_id])
       family.adopted = true
       family.save
-      current_user.families << family
-      current_user.info_complete = true
-      current_user.save
+      @user.families << family
+      UserMailer.adoption_confirmation(@user).deliver
+      @user.info_complete = true
+      @user.save
     end
-    redirect_to user_path(current_user)
+    redirect_to user_path(@user)
   end
 
   def adoption_confirmation
