@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725052538) do
+ActiveRecord::Schema.define(version: 20140608235920) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 20140725052538) do
   create_table "drives", force: true do |t|
     t.string   "year"
     t.text     "blurb"
-    t.date     "start_date",            limit: 255
-    t.date     "end_date",              limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
     t.string   "fundraising_url"
     t.text     "fundraising_blurb"
     t.string   "donation_receipt_link"
+    t.boolean  "status",                default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",                            default: true
   end
 
   create_table "drop_dates", force: true do |t|
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140725052538) do
 
   create_table "families", force: true do |t|
     t.integer  "drive_id"
-    t.integer  "adopted_by"
+    t.boolean  "adopted",          default: false
     t.string   "received_at_org",  default: "f"
     t.string   "given_to_family",  default: "f"
     t.string   "code"
@@ -63,11 +63,9 @@ ActiveRecord::Schema.define(version: 20140725052538) do
     t.integer  "num_boxes"
     t.integer  "drop_date_id"
     t.boolean  "is_live",          default: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "members"
-    t.boolean  "adopted",          default: false
-    t.integer  "user_id"
   end
 
   create_table "family_members", force: true do |t|
@@ -126,10 +124,10 @@ ActiveRecord::Schema.define(version: 20140725052538) do
     t.string   "phone"
     t.integer  "drop_location_id"
     t.integer  "drop_date_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "info_complete",          default: false
     t.boolean  "adoptor",                default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

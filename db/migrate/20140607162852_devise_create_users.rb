@@ -28,6 +28,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :phone
       t.integer :drop_location_id
       t.integer :drop_date_id
+      t.boolean :info_complete, default: :false
+      t.boolean :adoptor, default: :false
 
 
       t.timestamps
