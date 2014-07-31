@@ -13,12 +13,13 @@
 //= require jquery_nested_form
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+
+//= require jquery.turbolinks
+//= require dataTables/jquery.dataTables
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.turbolinks
-//= require dataTables/jquery.dataTables
 //= require bootstrap
-
 //= require_tree .
 
