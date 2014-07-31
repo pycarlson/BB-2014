@@ -1,5 +1,18 @@
-.admin-family-members {
-  li {
-    display: inline-block;
+.super-admin {
+  margin-top: 30px;
+}
+
+.fams-to-go-live {
+  margin-top: 40px;
+}
+
+.add-admins {
+  margin-top: 40px;
+  ul {
+    padding-left: 0;
+  }
+  form {
+    margin-top: 40px;
+    display: block;
   }
 }

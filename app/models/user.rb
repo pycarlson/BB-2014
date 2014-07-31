@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
   end
 
   def get_drop_location_name
-    DropLocation.find(self.drop_location_id).name
+    unless self.drop_location_id == 0
+      DropLocation.find(self.drop_location_id).name
+    end
   end
 
   def self.who_have_made_adoptions

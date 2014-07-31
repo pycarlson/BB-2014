@@ -1,45 +1,58 @@
-
-<h2>Drives</h2>
-<ul>
-  <% @drives.each do |drive| %>
-  <li>
-    <%= drive.year %>
-    <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
-    <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
-    <% end %>
-  </li>
-</ul>
-
-<h2>Add Administrator</h2>
-<%= form_tag(add_admin_path, method: "post") do %>
-<%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
-<div><%= submit_tag("Add New Admin") %></div>
-
-<h4>Current Admins</h4>
-<% if @admins.length > 0 %>
-<% @admins.each do |admin| %>
-<ul>
-  <li>
-    <p><%= admin.user_id %>: <%= User.find(admin.user_id).email %></p>
-    
-    <p><%= link_to "Remove", remove_admin_path(admin), method: :delete, class: "delete_link", remote: true %></p>
-  </li>
-</ul>
-<% end %>
-<% end %>
-<% end %>
-</ul>
-
-<h3>Families that are ready to go live?</h3>
-<ul>
-  <li>
-    <% @families.each do |fam| %>
-    <li><%= fam.code %> <%= check_box_tag 'is_live', fam.id , fam.is_live, :class => "makeFamilyLiveCheckbox" %></li>
+<div class="super-admin">
+  <div class="drive-toggle col-lg-6">
+    <h2>Drives</h2>
     <ul>
-      <% fam.family_members.each do |fm| %>
-      <li><%= fm.id %></li>
-      <% end %>
+      <% @drives.each do |drive| %>
+      <li>
+        <%= drive.year %>
+        <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
+        <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
+        <% end %>
+      </li>
     </ul>
-  </li>
+    </div>
+
+<div class="fams-to-go-live col-lg-12">
+  <h2>Families that are ready to go live?</h2>
+    <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
+      <thead>
+        <tr>
+          <th><h2>Family Code</h2></th>
+          <th><h2>Edit</h2></th>
+          <th><h2>Delete</h2></th>
+          <th><h2>Make Live</h2></th>
+        </tr>
+      </thead>
+      <% @families.each do |family| %>
+        <tr>
+          <ul>
+            <td><%= family.code.upcase %></td>
+            <td><a class="btn btn-primary" href="/families/<%= family.id %>/go_live">Make Family Live!</a></td>
+            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
+            <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+          </ul>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+
+  <div class="add-admins col-lg-6">
+  <h2>Current Administrators</h2>
+  <% if @admins.length > 0 %>
+    <% @admins.each do |admin| %>
+      <ul>
+        <li><%= link_to "Remove", remove_admin_path(admin), method: :delete, class: "btn btn-danger", remote: true %></p></li>
+        <li><p><%= User.find(admin.user_id).email %></p></li>
+      </ul>
+    <% end %>
   <% end %>
-</ul>
+
+  <%= form_tag(add_admin_path, method: "post") do %>
+    <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
+    <%= submit_tag("Add New Admin") %>
+  <% end %>
+  </div>
+</div>

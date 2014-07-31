@@ -40,9 +40,11 @@
       <p>(If you've already chosen your date you can update it here or through your account page profile editing options).</p> 
     <% end %>
 
+    <% unless current_user.drop_location_id == 0 %>
     <div class="form-group col-xs-12">
       <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
     </div>
+    <% end %>
 
 
   <div>

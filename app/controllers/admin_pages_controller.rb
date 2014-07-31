@@ -16,13 +16,20 @@ class AdminPagesController < ApplicationController
 
     if user == nil
       flash[:alert] = "Please have user sign up."
-      redirect_to admin_path
+      redirect_to super_admin_path
     else
       user.drop_location_id = 0
       user.save
       new_admin = Admin.create!(user_id: user.id, drive_id: drive.id)
       redirect_to super_admin_path
     end
+  end
+
+  def go_live
+    family = Family.find(params[:id])
+    family.is_live = true
+    family.save
+    redirect_to super_admin_path
   end
 
   def remove_admin

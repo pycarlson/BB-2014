@@ -1,19 +1,17 @@
 
-<%= nested_form_for @family, :html => {:class => "form form-inline"} do |f| %>
-
-<div class="form-inline">
-
-  <div class="form-group col-xs-12">
+<%= nested_form_for @family, :html => {:class => "form form-horizontal"} do |f| %>
+<div class="form-horizontal">
+  <div class="form-group">
     <%= f.select(:drive_id, @drives.reverse.collect {|d| [d.year, d.id]}) %>
+  </div>
+  <div class="form-inline">
+  <div class="form-group col-xs-12">
+    <%= f.label :family_code %><br>
+    <%= f.text_field :code, class: "form-control" %>
   </div>
 
   <div class="form-group col-xs-12">
     <%= f.select(:drop_location_id, @drop_locations.collect {|dl| [dl.name, dl.id]}) %>
-  </div>
-
-  <div class="form-group col-xs-12">
-    <%= f.label :family_code %><br>
-    <%= f.text_field :code, class: "form-control" %>
   </div>
 
   <h2>Add Family Members Here</h2>
@@ -36,11 +34,6 @@
   </div>
 
   <div class="form-group col-xs-12">
-    <%= fm.label :bio %>
-      <%= fm.text_area :bio, size: "24x6", class: "form-control", required: :true %>
-  </div>
-
-  <div class="form-group col-xs-12">
     <%= fm.label :pant_size %><br>
     <%= fm.text_field :size_pants, class: "form-control" %>
   </div>
@@ -60,11 +53,16 @@
     <%= fm.text_field :size_shoes, class: "form-control" %>
   </div>
 
+  <div class="form-group col-xs-12">
+    <%= fm.label :bio %><br>
+      <%= fm.text_area :bio, size: "24x6", class: "form-control", required: :true %>
+  </div>
+
   <%= fm.fields_for :needs do |n| %>
     <div>
-      <%= n.label :need %>
+      <%= n.label :need %><br>
       <%= n.text_field :item %>
-      <%= n.link_to_remove "Remove this need" %><br>
+      <%= n.link_to_remove "Remove this need" %>
     </div>
 
   <%  end %>
@@ -72,12 +70,12 @@
   <%= fm.link_to_add "Add Need", :needs %>
   <%  end %>
 
-
-    <%= f.link_to_add "Add Another Family Member", :family_members %>
+  <%= f.link_to_add "Add Another Family Member", :family_members %>
 
 </div>
 <%= f.submit class: "btn btn-primary" %>
 
 <% end %>
-
+</div>
+</div>
 </div>

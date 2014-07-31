@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
-  
+
+  before_filter :user_is_super_admin?, only: [:destroy]
+
   def show
-    if current_user
-      @user = User.find(params[:id])
-    else
-      redirect_to root_path
-    end
+    @user = User.find(params[:id])
+    p "*" * 100
+    p params
+    redirect_to root_path unless @user
   end
 
   def edit
     @family = false
     @user = User.find(params[:id])
-    @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    unless current_user.drop_location_id == 0
+      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    end
   end
 
   def update
@@ -35,7 +38,9 @@ class UsersController < ApplicationController
   def adoption_confirmation
     @user = current_user
     @family = Family.find(params[:family_id])
-    @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    unless current_user.drop_location_id == 0
+      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    end
   end
 
   def destroy
@@ -50,5 +55,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:full_name, :drop_location_id, :drop_date_id, :company, :zip, :street, :city, :state, :phone, :info_complete)
   end
-
 end

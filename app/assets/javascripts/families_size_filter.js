@@ -1,8 +1,7 @@
 $(document).ready(function(){
-    if ($("input[name='filter']:checked").val() == '5') {
-      console.log("About to show all fams")
-      $('.fams5').show();
-    }
+  if ($("input[name='filter']:checked").val() == '5') {
+    $('.fams5').show();
+  }
   $("input[name='filter']").change(function() {
     $('.fams').hide();
     if ($("input[name='filter']:checked").val() == '1') {
@@ -21,4 +20,4 @@ $(document).ready(function(){
       $('.fams5').show();
     }
   });
-});
+})

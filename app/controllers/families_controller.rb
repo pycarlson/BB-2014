@@ -1,6 +1,8 @@
 class FamiliesController < ApplicationController
-  
+
   before_filter :user_is_admin?, except: [:index, :show]
+  before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
+
 
   def index
     @families = current_user.filter_families
@@ -22,7 +24,11 @@ class FamiliesController < ApplicationController
     family = Family.create!(family_params)
     family.drive_id = Drive.last.id
     family.save
-    redirect_to data_tables_path
+    if user_is_super_admin? 
+      redirect_to super_admin_path 
+    else
+      redirect_to data_tables_path
+    end
   end
 
   def show
@@ -38,10 +44,15 @@ class FamiliesController < ApplicationController
 
   def update
     family = Family.find(params[:id])
+
     if family.update_attributes(family_params)
       family.is_live = false
       family.save
-      redirect_to families_path
+      if user_is_super_admin? 
+        redirect_to super_admin_path 
+      else
+        redirect_to families_path
+      end
     else
       render :edit
     end
@@ -49,19 +60,14 @@ class FamiliesController < ApplicationController
 
   def destroy
     family = Family.destroy(params[:id])
-    respond_to do |format|
-      format.html { redirect_to manage_families_path }
-      format.js
-    end
+    family.destroy
+    redirect_to data_tables_path
   end 
 
-  def toggle_live_status
+  def go_live
     family = Family.find(params[:id])
-
     if family.update_attributes(:is_live => params[:is_live])
-      render :nothing => true
-    else
-      render :nothing => true
+      redirect_to super_admin_path 
     end
   end
 

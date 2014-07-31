@@ -1,4 +1,7 @@
 class FamilyMemberImportsController < ApplicationController
+
+  before_filter :user_is_admin?
+
   def index
     respond_to do |format|
       format.html
@@ -21,4 +24,5 @@ class FamilyMemberImportsController < ApplicationController
       render :new
     end
   end
+
 end

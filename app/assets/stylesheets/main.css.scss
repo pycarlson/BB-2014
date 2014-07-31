@@ -73,13 +73,6 @@ p {
     list-style: none;
   }
 
-  /*FORM STYLES*/
-
-  .form-control {
-    width: 300px !important;
-    margin-bottom: 10px;
-  }
-
   /*HOME STYLES*/
 
   .present {
@@ -284,19 +277,29 @@ p {
 
 .manage-all {
   padding-top: 30px;
-  /*#manage_table_filter {
-    float: right;
-    margin-bottom: 20px;
-  }*/
   .manage-table {
     display: none;
   }
-  /*.manage-table:first-of-type {
-    display: block;
-  }*/
 }
-
-// Fix Firefox bug in Data Tables search field display
+/*Fix Firefox bug in Data Tables search field display*/
 table.dataTable {
   clear: both;
+}
+
+/*FAMILY UPLOADER*/
+
+.family-uploader {
+  padding-top: 30px;
+  #import-headers {
+    margin-bottom: 40px;
+    li {
+      list-style-type: disc;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  #import_file, #import_field_link {
+    display: inline-block;
+  }
 }

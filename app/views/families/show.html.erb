@@ -2,27 +2,44 @@
 
   <div class="family-copy">
     <% if family_has_been_adopted?(@family) %>
-    <p>This family was adopted by <%= User.find(@family.user_id).full_name %></p>
+    <p>Thank you for adopting this family, <%= User.find(@family.user_id).full_name %>!</p>
     <% end %>
   </div>
 
   <div class="col-lg-12 adoptable-family">
-    <h2>The <%= @family.code %> Family</h2>
+    <h1>The <%= @family.code %> Family</h1>
     <% @family.family_members.each do |fm| %>
-    <div class="col-lg-4 col-sm-6 family-members">
+    <div class="col-lg-6 col-sm-6 family-member">
+    <ul>
       <li>
         <ul>
-          <li><%= fm.first_name %></li>
-          <li><%= fm.bio %></li>
+          <li><h1><%= fm.first_name %>, <%= fm.age %></h1></li>
+          <li><p><%= fm.bio %></p></li>
         </ul>
-        <br>
       </li>
+      <li><h2><%= fm.first_name %>'s Needs</h2></li>
+      <li>
+        <ul class="needs">
+          <% fm.needs.each do |n| %>
+            <li><p><%= n.item %></p></li>
+          <% end %>  
+        </ul>
+      </li>
+      <li class="col-lg-12 sizes">
+        <ul>
+          <li class="col-lg-3"><p>Pant Size: <%= fm.size_pants %></p></li>
+          <li class="col-lg-3"><p>Shirt Size: <%= fm.size_shirt %></p></li>
+          <li class="col-lg-3"><p>Dress Size: <%= fm.size_dress %></p></li>
+          <li class="col-lg-3"><p>Shoe Size: <%= fm.size_shoes %></p></li>
+        </ul>
+      </li>
+    </ul>
     </div>
     <% end %>
-    <div class="family-copy">
+    <div class="family-copy col-lg-12">
     <% if !family_has_been_adopted?(@family) %>
-    <%= link_to "GO BACK", families_path, :class => "btn btn-primary" %>
-    <%= link_to "ADOPT THIS FAMILY!", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-danger" %>
+    <%= link_to "< GO BACK", families_path, :class => "btn btn-primary" %>
+    <%= link_to "ADOPT THIS FAMILY >", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-danger" %>
     <% end %>
   </div>
 

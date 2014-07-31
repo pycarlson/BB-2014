@@ -10,7 +10,7 @@
 
       <p>Welcome to your Brighter Beginnings Adopt-a-Family profile page. Come here to manage your personal information, acquire information about the famil(ies) you will be adopting this year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
 
-      <% if current_user.drop_location_id  %>
+      <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
       <div class="col-sm-5 col-xs-12">
         <h2>Your Drop Location Details</h2>
         <ul>
