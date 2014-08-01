@@ -29,8 +29,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   get '/data_tables' => 'admin_pages#data_tables'
   post '/add_location' => 'static_pages#add_location'
   post '/add_admin' => 'admin_pages#add_admin'
-  delete '/remove_admin' => 'admin_pages#remove_admin'
+  get '/remove_admin' => 'admin_pages#remove_admin'
   put '/drives/:id/close_drive' => 'drives#close_drive'
-  get '/families/:id/go_live' => 'families#go_live'
+  get '/go_live' => 'admin_pages#go_live'
   get '/adoption_confirmation' => 'users#adoption_confirmation'
 end

@@ -9,6 +9,15 @@ class User < ActiveRecord::Base
   belongs_to :drop_location
   has_many :families
 
+  after_create :update_super_drop_id
+
+  def update_super_drop_id
+    if self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER"]
+      self.drop_location_id = 0
+      self.save
+    end
+  end
+
   def filter_families
     if self.drop_location_id == 0
       @families = Family.where('is_live = ?', true)

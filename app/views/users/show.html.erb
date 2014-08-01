@@ -2,9 +2,9 @@
   <div class="col-xs-1"></div>
   <div class="col-xs-10">
     <div class="profile-container">
-    <%= render 'shared/sub_nav' %>
+      <%= render 'shared/sub_nav' %>
       
-     
+      
       <h1>Hello <%= current_user.full_name %> and Welcome!!!</h1>
       <h1>User ID: <%= current_user.id %></h1>
 
@@ -15,8 +15,12 @@
         <h2>Your Drop Location Details</h2>
         <ul>
           <li><p><%= DropLocation.find(current_user.drop_location_id).name %></p></li>
+
           <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
+          <% if user_is_a_donor?  %>
           <li><p><%= current_user.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
+          <% end %>
+
         </ul>
         <% end %>
       </div>
@@ -32,7 +36,7 @@
         </ul>
       </div>
 
-      <% if current_user.families.length > 0  %>
+      <% if user_is_a_donor?  %>
       <div class="col-sm-5 col-xs-12">
         <h2>Your Adopted Families</h2>
         <ul>

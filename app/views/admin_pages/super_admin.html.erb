@@ -5,33 +5,33 @@
       <% @drives.each do |drive| %>
       <li>
         <%= drive.year %>
-        <%= check_box_tag 'status', drive.id , drive.status, :class => "closeDriveCheckbox" %>
+        <%= check_box_tag 'status', drive.id, drive.status, :class => "closeDriveCheckbox" %>
         <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
         <% end %>
       </li>
     </ul>
-    </div>
+  </div>
 
-<div class="fams-to-go-live col-lg-12">
-  <h2>Families that are ready to go live?</h2>
+  <div class="fams-to-go-live col-lg-12">
+    <h2>Families that are ready to go live?</h2>
     <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
       <thead>
         <tr>
           <th><h2>Family Code</h2></th>
+          <th><h2>Make Live</h2></th>
           <th><h2>Edit</h2></th>
           <th><h2>Delete</h2></th>
-          <th><h2>Make Live</h2></th>
         </tr>
       </thead>
       <% @families.each do |family| %>
-        <tr>
-          <ul>
-            <td><%= family.code.upcase %></td>
-            <td><a class="btn btn-primary" href="/families/<%= family.id %>/go_live">Make Family Live!</a></td>
-            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
-            <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
-          </ul>
-        </tr>
+      <tr>
+        <ul>
+          <td><%= family.code.upcase %></td>
+          <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-primary" %></td>
+          <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
+          <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+        </ul>
+      </tr>
       <% end %>
     </table>
   </div>
@@ -39,20 +39,23 @@
 
 
 
-  <div class="add-admins col-lg-6">
+<div class="add-admins col-lg-6">
   <h2>Current Administrators</h2>
-  <% if @admins.length > 0 %>
-    <% @admins.each do |admin| %>
-      <ul>
-        <li><%= link_to "Remove", remove_admin_path(admin), method: :delete, class: "btn btn-danger", remote: true %></p></li>
-        <li><p><%= User.find(admin.user_id).email %></p></li>
-      </ul>
-    <% end %>
-  <% end %>
-
-  <%= form_tag(add_admin_path, method: "post") do %>
+  <div class="add-admin-form">
+    <%= form_tag(add_admin_path, method: "post") do %>
     <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
     <%= submit_tag("Add New Admin") %>
-  <% end %>
+    <% end %>
   </div>
+  <div class="current-admins">
+    <% if @admins.length > 0 %>
+    <% @admins.each do |admin| %>
+    <ul>
+      <li><%= link_to "Remove", remove_admin_path(admin) %></p></li>
+      <li><p><%= User.find(admin.user_id).email %></p></li>
+    </ul>
+    <% end %>
+    <% end %>
+  </div>
+</div>
 </div>

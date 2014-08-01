@@ -7,9 +7,21 @@
 }
 
 .add-admins {
+  background-color: #ebebeb;
+  padding: 20px;
   margin-top: 40px;
+  .add-admin-form {
+    float: left;
+  }
+  .current-admins {
+    padding-left: 40px;
+    float: left;
+  }
   ul {
     padding-left: 0;
+  }
+  li {
+    display: inline-block;
   }
   form {
     margin-top: 40px;

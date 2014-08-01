@@ -2,7 +2,7 @@ class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:manage_families]
 
-  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin, :cancel_adoption]
+  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin, :cancel_adoption, :go_live]
 
   def super_admin
     @admins = Admin.all
@@ -18,24 +18,23 @@ class AdminPagesController < ApplicationController
       flash[:alert] = "Please have user sign up."
       redirect_to super_admin_path
     else
-      user.drop_location_id = 0
-      user.save
-      new_admin = Admin.create!(user_id: user.id, drive_id: drive.id)
+      new_admin = Admin.find_or_create_by_user_id_and_drive_id!(user_id: user.id, drive_id: drive.id)
       redirect_to super_admin_path
     end
   end
 
   def go_live
-    family = Family.find(params[:id])
+    family = Family.find(params[:format])
     family.is_live = true
     family.save
     redirect_to super_admin_path
   end
 
   def remove_admin
+    p "*" * 100
+    p params
     admin = Admin.find(params[:format])
     user = User.find(admin.user_id)
-    user.drop_location_id = nil
     user.save
     admin.destroy
     redirect_to super_admin_path

@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def user_is_super_admin?
-    current_user && current_user.email == ENV["P_EMAIL"]
+    current_user && current_user.email == ENV["P_EMAIL"] || current_user && current_user.email == ENV["SUPER_EMAIL"]
   end
   
 end

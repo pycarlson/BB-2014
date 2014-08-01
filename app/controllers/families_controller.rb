@@ -22,7 +22,7 @@ class FamiliesController < ApplicationController
 
   def create
     family = Family.create!(family_params)
-    family.drive_id = Drive.last.id
+    family.drive_id = Drive.first.id
     family.save
     if user_is_super_admin? 
       redirect_to super_admin_path 
