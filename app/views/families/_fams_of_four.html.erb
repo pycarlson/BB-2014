@@ -1,6 +1,7 @@
 <% if @fams_four.length == 0 %>
-<h2>All of this year's families of four people have already been adopted. Thank you!</h2>
-<% else %>
+<div class="no-fams col-xs-12">
+  <h2>All of this year's families of four or more people have already been adopted. Thank you!</h2>
+</div><% else %>
 <% @fams_four.each do |f| %>
 <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
   <li><h1><%= f.code %></h1></li>

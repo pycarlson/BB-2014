@@ -10,6 +10,20 @@ class AdminPagesController < ApplicationController
     @families = Family.where('is_live = ?', false)
   end
 
+  def close_drive
+    drive = Drive.last
+    drive.status = false
+    drive.save
+    redirect_to super_admin_path
+  end
+
+  def open_drive
+    drive = Drive.last
+    drive.status = true
+    drive.save
+    redirect_to super_admin_path
+  end
+
   def add_admin
     user = User.find_by_email(params[:email])
     drive = Drive.find(Drive.last.id)

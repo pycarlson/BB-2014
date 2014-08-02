@@ -30,16 +30,6 @@ class DrivesController < ApplicationController
     end
   end
 
-  def close_drive
-    drive = Drive.find(params[:id])
-
-    if drive.update_attributes(:status => params[:status])
-      render :nothing => true
-    else
-      render :nothing => true
-    end
-  end
-
   private
 
   def drive_params

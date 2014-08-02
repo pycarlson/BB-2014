@@ -1,18 +1,25 @@
+.no-fams {
+  margin-top: 40px;
+}
+
 .filtering-deets {
   margin: 0 auto;
   text-align: center;
 }
+
 .families-container {
   padding-left: 5%;
   box-sizing: border-box;
   margin: 0 auto;
-  /*height: 400px;*/
+  
   .inner-container {
     padding-top: 0 !important;
   }
+
   h2 {
     text-align: center;
   }
+
   .adoptable-families {
     position: relative;
     border: 1px solid #e7e7e7;
@@ -39,22 +46,27 @@
     padding: 20px;
     background-color: #FFFAFA;
     margin-bottom: 50px;
+
     ul {
       padding: 0;
     }
+
     h1 {
       text-align: left;
     }
+
     .family-copy {
       width: 100%;
       height: 100px;
     }
+
     .btn-primary {
       position: absolute;
       bottom: 20px;
       left: 20px;
       padding: 10px;
     } 
+
     .btn-danger {
       position: absolute;
       bottom: 20px;
@@ -62,6 +74,7 @@
       padding: 10px;
       width: 200px;
     }
+
     .needs li {
       background-color: #27ae60;
       color: #ffffff;
@@ -71,36 +84,39 @@
       margin-bottom: 20px;
       height: 45px;
     }
+
     .sizes {
       background-color: #ffffff;
       border: 1px solid #e7e7e7;
-      /*height: 45px;*/
+
       li {
         display: inline-block;
         padding: 10px;
       }
     }
+
     .family-member {
       padding: 20px;
       margin: 20px 0;
     }  
   }
 
-
-
 #family-size-filter-buttons {
   width: 50%;
   min-height: 25px;
   margin-top: 25px;
   margin: 0 auto;
+
   ul {
     margin: 0;
     padding: 0;
   }
+
   li {
     display: inline;
     padding: 0 20px;
   }
+
   label {
     font-size: 1em;
   }
@@ -108,10 +124,12 @@
 
 .fams {
   display: none;
+
   .buttons {
     position: relative;
     height: 60px;
     width: 100%;
+
     .btn-danger {
       position: absolute;
       bottom: 20px;
@@ -119,6 +137,7 @@
       padding: 10px;
       width: 120px;
     }
+
     .btn-primary {
       position: absolute;
       right: 160px;
@@ -128,18 +147,23 @@
     }
   }
 }
+
 .fams5 .adoptable-families {
   min-height: 700px;
 }
+
 .fams4 .adoptable-families {
   min-height: 450px;
 }
+
 .fams3 .adoptable-families {
   min-height: 300px;
 }
+
 .fams2 .adoptable-families {
   min-height: 320px;
 }
+
 .fams1 .adoptable-families {
   min-height: 200px;
 }

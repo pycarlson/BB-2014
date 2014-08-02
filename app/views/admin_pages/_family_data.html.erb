@@ -21,7 +21,7 @@
     </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
     <% if user_is_super_admin? %>
-      <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+      <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
     <% end %>
     <% end %>
   </ul>

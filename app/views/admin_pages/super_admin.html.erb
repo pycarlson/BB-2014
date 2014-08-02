@@ -1,19 +1,52 @@
 <div class="super-admin">
-  <div class="drive-toggle col-lg-6">
-    <h2>Drives</h2>
-    <ul>
-      <% @drives.each do |drive| %>
-      <li>
-        <%= drive.year %>
-        <%= check_box_tag 'status', drive.id, drive.status, :class => "closeDriveCheckbox" %>
-        <%= link_to "Delete", drive, method: :delete, class: "delete_link", remote: true %>
-        <% end %>
-      </li>
-    </ul>
+  <div class="container-fluid">
+    <div class="super-dash col-lg-12">
+      <h1>Super Admin Dashboard</h1>
+      <div class="drive-manage col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <h2>Drive Option</h2>
+        <ul class="resets">
+          <% @drives.each do |drive| %>
+          <li>
+            <% if drive.status == true %>
+              <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger" %></li>
+            <% elsif drive.status == false %>
+              <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-primary" %></li>
+            <% end %>  
+            <li><%= link_to 'Reset Drive', root_path, class: "btn btn-danger" %></li>
+            <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-danger" %></li>
+            <% end %>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="add-admins col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="additions">
+          <h2>Add Admins</h2>
+          <div class="add-admin-form">
+            <%= form_tag(add_admin_path, method: "post") do %>
+            <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
+            <%= submit_tag("Add New Admin") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="current-admins">
+          <h2>Current Admins</h2>
+          <% if @admins.length > 0 %>
+          <% @admins.each do |admin| %>
+          <ul>
+            <li><%= link_to "Remove", remove_admin_path(admin) %></p></li>
+            <li><p><%= User.find(admin.user_id).email %></p></li>
+          </ul>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="fams-to-go-live col-lg-12">
-    <h2>Families that are ready to go live?</h2>
+    <h2>Families Ready to Go Live</h2>
     <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
       <thead>
         <tr>
@@ -34,28 +67,6 @@
       </tr>
       <% end %>
     </table>
-  </div>
-</div>
-
-
-
-<div class="add-admins col-lg-6">
-  <h2>Current Administrators</h2>
-  <div class="add-admin-form">
-    <%= form_tag(add_admin_path, method: "post") do %>
-    <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
-    <%= submit_tag("Add New Admin") %>
-    <% end %>
-  </div>
-  <div class="current-admins">
-    <% if @admins.length > 0 %>
-    <% @admins.each do |admin| %>
-    <ul>
-      <li><%= link_to "Remove", remove_admin_path(admin) %></p></li>
-      <li><p><%= User.find(admin.user_id).email %></p></li>
-    </ul>
-    <% end %>
-    <% end %>
   </div>
 </div>
 </div>

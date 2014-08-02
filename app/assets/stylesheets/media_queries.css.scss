@@ -35,6 +35,11 @@
   .contact {
     margin-left: 65px !important;
   }
+  .manage-all {
+    .countdown {
+      display: none !important;
+    }
+  }
 }
 
 /* Landscape phones and down */
@@ -65,4 +70,5 @@
   .contact {
     margin-left: 35px !important;
   }
+
 }

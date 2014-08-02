@@ -6,13 +6,17 @@
 .navbar {
   margin-bottom: 0 !important;
   height: 70px;
-  background-color: #FFFAFA;
+  background-color: #ffffff;
 }
 
 .navbar-nav > li {
+  margin-top: 10px;
   float: left;
-  padding-top: 9px;
+  a {
+    padding-top: 9px;
+  }
 }
+
 
 .manage-nav {
   margin: 0 auto;
@@ -43,9 +47,16 @@
   }
 }
 
-.btn-primary {
+.btn {
   color: #ffffff !important;
-  background-color: #27ae60;
+  height: 40px;
+  margin-right: 20px;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+
+.btn-primary {
+  background-color: #27ae60 !important;
   &:hover {
     background-color: #27ae60 !important;
     opacity: .8;
@@ -56,12 +67,16 @@
 }
 
 .btn-danger {
-  color: #ffffff !important;
-  margin-right: 20px;
+  background-color: #E44D12 !important;
+  &:hover {
+    background-color: #E44D12 !important;
+    opacity: .8;
+  }
 }
 
 footer {
   background-color: #FFFAFA;
+  border-top: 1px solid #e7e7e7;
   width: 100%;
   height: 60px;
   position: fixed;
@@ -77,5 +92,8 @@ footer {
     float: right;
     margin-left: 50px;
     margin-top: 20px;
+    a {
+      color: #777777;
+    }
   }
 }

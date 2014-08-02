@@ -4,24 +4,50 @@
     text-align: center;
   }
 }
+.super-dash {
+  background-color: #eeeeee;
+  margin-bottom: 40px;
+  border-radius: 5px; 
+  padding-top: 20px;
+  .btn {
+    padding-top: 9px;
+  }
+}
+
+.resets {
+  padding: 0;
+  margin-bottom: 0;
+  li {
+    display: inline;
+  }
+}
 
 .fams-to-go-live {
-  margin-top: 40px;
+  padding-bottom: 100px;
+  .btn {
+    height: 22px;
+    padding: 0 5px;
+  }
+}
+
+.drive-manage, .add-admins {
+  display: inline-block;
+  padding: 20px;
+  padding-top: 0;
 }
 
 .add-admins {
-  background-color: #ebebeb;
-  padding: 20px;
-  margin-top: 40px;
-  .add-admin-form {
+  float: right;
+  .additions {
     float: left;
   }
   .current-admins {
-    padding-left: 40px;
-    float: left;
+    float: right;
   }
   ul {
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
+    height: 20px;
   }
   li {
     display: inline-block;
@@ -32,11 +58,13 @@
   }
 }
 
+
+
 /*DATA TABLES*/
 
 .manage-all {
   position: relative;
-  padding-bottom: 50px;
+  padding: 30px 0 100px 0;
   h1 {
     text-align: center;
   }
@@ -44,61 +72,24 @@
     display: none;
   }
   .countdown {
-    width: 100%;
     text-align: center;
-    width: 400px;
-    border-radius: 5px;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-bottom: 30px;
-    h2 {
-      padding: 10px;
-      margin: 0;
-      color: #ffffff;
-    }
-
-  }
-
-  .fam-count {
-    /*background-color: #27ae60;*/
-    text-align: center;
-    position: relative;
-    background: image-url('Snowflakes_Clipart.jpg') no-repeat;
-    background-size: 235px;
-    width: 240px;
-    height: 280px;
-    display: inline-block;
-    float: left;
-    margin-top: -100px;
+    position: absolute;
+    top: 30px;
     span {
-      font-size: 50px;
-      position: absolute;
-      top: 115px;
-      left: 70px;
       color: #27ae60;
+      font-size: 46px;
+      line-height: 56px;
     }
   }
-  .adopt-count {
-    text-align: center;
-    position: relative;
-    background: image-url('Snowflakes_Clipart.jpg') no-repeat;
-    background-size: 235px;
-    width: 240px;
-    height: 280px;
-    display: inline-block;
-    float: right;
-    margin-top: -100px;
-    span {
-      font-size: 50px;
-      position: absolute;
-      top: 115px;
-      left: 70px;
-      color: #27ae60;
-    }
-
+  .fam-countdown {
+    left: 10px;
   }
-  .radio-label {
-    font-size: 20px;
+  .adoption-countdown {
+    right: 10px;
+  }
+  .btn {
+    height: 22px;
+    padding: 0 5px;
   }
 }
 /*Fix Firefox bug in Data Tables search field display*/
