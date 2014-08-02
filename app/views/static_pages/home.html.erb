@@ -9,50 +9,42 @@
 <div class="col-xs-1"></div>
 </div>
 <div class="drive-details">
-<div class="row">
+  <div class="row">
 
-  <div class="col-sm-1 col-xs-1"></div>
-  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 drive-description">
-    <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
-    <h2>About this Drive <br>(<%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %>) </h2>
-    <p><%= @drive.blurb %></p>
+    <div class="col-sm-1 col-xs-1"></div>
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 drive-description">
+      <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
+      <h2>About this Drive <br>(<%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %>) </h2>
+      <p><%= @drive.blurb %></p>
+    </div>
+
+    <div class="col-sm-10 col-xs-1"></div>
   </div>
 
-  <div class="col-sm-10 col-xs-1"></div>
-</div>
-
-<div class="see-families">
-  <% if user_signed_in? && user_has_chosen_drop_location %>
+  <div class="see-families">
+    <% if user_signed_in? && user_has_chosen_drop_location %>
     <a href="/families" class="btn btn-lg btn-danger">Browse Families</a>
-  <% elsif user_signed_in? && !user_has_chosen_drop_location %>
+    <% elsif user_signed_in? && !user_has_chosen_drop_location %>
     <a href="#" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#basicModal">Browse Families</a>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-</div>
-
 
 <div class="col-xs-12 locations">
-  <h2>Drop locations and dates:</h2>
-
-  <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
-    <iframe width='300px' height='300px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/pyluftig.j2644813/attribution,zoompan,zoomwheel.html?access_token=pk.eyJ1IjoicHlsdWZ0aWciLCJhIjoiNmstODFPRSJ9.VipvfsNJJu0YxZgBGTjVhQ'></iframe>
-  </div>
-
-  <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
-    <img class="img-resposive" src="http://placehold.it/300x300">
-  </div>
-
-  <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
-    <img class="img-resposive" src="http://placehold.it/300x300">
-  </div>
+  <h1>Gift Drop Locations</h1>
+  <% @drop_locations.each do |dl| %>
+  <ul class="col-lg-4 col-md-2 col-sm-2 col-xs-12">
+    <li><h2><%= dl.name %></h2></li>
+    <li><p><%= dl.street %></p></li>
+    <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
+    <li class="map"><%= render dl.name.downcase %></li>
+  </ul>
+  <% end %>
 </div>
 
 <div class="clearfix"></div>
-
 <div class="row about-bb">
-
   <div class="col-sm-1 col-xs-1"></div>
-
   <div class="col-sm-6 col-xs-10">
     <h2>About <%= Organization.first.name %></h2>
     <p><%= Organization.first.blurb %></p>
@@ -63,12 +55,10 @@
     <p><i class="glyphicon glyphicon-envelope"></i> <%= Organization.first.email %></p>
     <p><i class="glyphicon glyphicon-earphone"></i> <%= Organization.first.phone %> </i></p>
     <p><i class="glyphicon glyphicon-home"></i> <%= Organization.first.address %> <%= Organization.first.zip %></p>
-
-  </div>
+    </div>
 
   <div class="col-sm-1 col-xs-1"></div>
 </div>
-
 
 <%= render "modal" %>
 <% else %>

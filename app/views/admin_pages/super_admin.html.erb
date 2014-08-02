@@ -29,7 +29,7 @@
           <td><%= family.code.upcase %></td>
           <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-primary" %></td>
           <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
-          <td><%= link_to "Delete", family, method: :delete, class: "delete_link", remote: true %></td>
+          <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
         </ul>
       </tr>
       <% end %>

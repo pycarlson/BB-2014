@@ -1,7 +1,11 @@
 <footer>
-<ul class="container-fluid">
-  <div class="col-xs-4"></div>
-  <li><%= link_to 'Shopping Tips', shopping_tips_path %></li>
-  <li><%= link_to 'Frequently Asked Questions', faq_path %></a></li>
-</ul>
+  <ul class="footer-container">
+    <% if user_signed_in? %>
+    <li><%= link_to "My Account", user_path(current_user) %></li>
+    <% end %>
+    <li><p><%= link_to 'Shopping Tips', shopping_tips_path %></p></li>
+    <li><p><%= link_to 'FAQs', faq_path %></p></li>
+  </ul>
 </footer>
+
+

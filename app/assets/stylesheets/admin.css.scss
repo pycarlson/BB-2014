@@ -1,5 +1,8 @@
 .super-admin {
   margin-top: 30px;
+  h1 {
+    text-align: center;
+  }
 }
 
 .fams-to-go-live {
@@ -27,4 +30,78 @@
     margin-top: 40px;
     display: block;
   }
+}
+
+/*DATA TABLES*/
+
+.manage-all {
+  position: relative;
+  padding-bottom: 50px;
+  h1 {
+    text-align: center;
+  }
+  .manage-table {
+    display: none;
+  }
+  .countdown {
+    width: 100%;
+    text-align: center;
+    width: 400px;
+    border-radius: 5px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 30px;
+    h2 {
+      padding: 10px;
+      margin: 0;
+      color: #ffffff;
+    }
+
+  }
+
+  .fam-count {
+    /*background-color: #27ae60;*/
+    text-align: center;
+    position: relative;
+    background: image-url('Snowflakes_Clipart.jpg') no-repeat;
+    background-size: 235px;
+    width: 240px;
+    height: 280px;
+    display: inline-block;
+    float: left;
+    margin-top: -100px;
+    span {
+      font-size: 50px;
+      position: absolute;
+      top: 115px;
+      left: 70px;
+      color: #27ae60;
+    }
+  }
+  .adopt-count {
+    text-align: center;
+    position: relative;
+    background: image-url('Snowflakes_Clipart.jpg') no-repeat;
+    background-size: 235px;
+    width: 240px;
+    height: 280px;
+    display: inline-block;
+    float: right;
+    margin-top: -100px;
+    span {
+      font-size: 50px;
+      position: absolute;
+      top: 115px;
+      left: 70px;
+      color: #27ae60;
+    }
+
+  }
+  .radio-label {
+    font-size: 20px;
+  }
+}
+/*Fix Firefox bug in Data Tables search field display*/
+table.dataTable {
+  clear: both;
 }

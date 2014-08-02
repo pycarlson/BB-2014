@@ -59,9 +59,13 @@ class FamiliesController < ApplicationController
   end
 
   def destroy
-    family = Family.destroy(params[:id])
+    family = Family.find(params[:id])
     family.destroy
-    redirect_to data_tables_path
+    if user_is_super_admin? 
+      redirect_to super_admin_path
+    else
+      redirect_to data_tables_path
+    end
   end 
 
   def go_live

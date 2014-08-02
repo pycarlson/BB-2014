@@ -31,11 +31,7 @@ class AdminPagesController < ApplicationController
   end
 
   def remove_admin
-    p "*" * 100
-    p params
     admin = Admin.find(params[:format])
-    user = User.find(admin.user_id)
-    user.save
     admin.destroy
     redirect_to super_admin_path
   end
@@ -43,15 +39,7 @@ class AdminPagesController < ApplicationController
   def cancel_adoption 
     family = Family.find(params[:family_id])
     user = User.find(family.user_id)
-    user.adoptor = false
-    family.user_id = nil
-    family.adopted = false
-    family.save
-    if user.families.length == 0
-      user.drop_date = nil
-      user.save
-    end
-    
+    undo_adoption(user, family)
     redirect_to data_tables_path
   end
 
@@ -76,6 +64,19 @@ class AdminPagesController < ApplicationController
       end
     end
     @left_unadopted = @total_fams - @adopted_families.count
+  end
+
+  private
+
+   def undo_adoption(user, family)
+    user.adoptor = false
+    family.user_id = nil
+    family.adopted = false
+    family.save
+    if user.families.length == 0
+      user.drop_date = nil
+      user.save
+    end
   end
 
 end

@@ -1,18 +1,21 @@
 <div class="manage-all">
-  <h2>Aopt-a-Family Data</h2>
-  <h4>Total Families: <%= @total_fams %></h4>
-  <h4>Adopted Families: <%= @adopted_families.count %></h4>
-  <h4>Unadoted Families: <%= @left_unadopted %></h4>
+  <h1>Adopt-a-Family Data Tables</h1>
+
+  <div class="fam-count"><h2>Total Families</h2><span><%= @total_fams %></span></div>
+  <div class="adopt-count"><h2>Adopted Families</h2><span><%= @adopted_families.count %></span></div>
+
+  <div class="clearfix"></div>
 
   <div class="manage-nav">
+    <h2>Data Table Options</h2>
     <%= radio_button_tag(:option, "families") %>
-    <%= label_tag(:families, "Families") %>
+    <%= label_tag(:families, "Adopted Families") %>
     <%= radio_button_tag(:option, "adoptors") %>
-    <%= label_tag(:donors, "Adoptors") %>
+    <%= label_tag(:donors, "Adopting Users") %>
     <%= radio_button_tag(:option, "users") %>
-    <%= label_tag(:donors, "Registered Users") %>
+    <%= label_tag(:donors, "All Registered Users") %>
     <%= radio_button_tag(:option, "adoptions", :checked => true) %>
-    <%= label_tag(:adoptions, "Adoptions") %>
+    <%= label_tag(:adoptions, "Current Adoptions") %>
   </div>
 
   <div class="manage-table families-partial">

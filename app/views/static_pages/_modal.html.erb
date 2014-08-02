@@ -3,27 +3,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        <h4 class="modal-title" id="myModalLabel">Please take a moment to choose your preferred gift drop off location. We will filter the families and show you only those living in your chosen location.</h4>
+        <h1>Gift Drop Locations</h1>
+        <p class="modal-title" id="myModalLabel">Please take a moment to choose your preferred gift drop off location. We will filter the families and show you only those living in your chosen location.</p>
       </div>
       <div class="modal-body">
-        <h3>Available Locations</h3>
-        <ul>
-        <% @drop_locations.each do |dl| %>
-        
-        <li><%= dl.name %></li>
-        <li><%= dl.street %></li>
-        <li><%= dl.city %></li>
-        <li><%= dl.state %></li>
-        <li><%= dl.zipcode %></li>
-        <li><%= button_to "Choose Location", add_location_path(:drop_location_id => dl.id), :method => :post %></li>  
-        <br>
-      </ul>
-      <div class="map"><img src="http://www.placehold.it/100x100"></div>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        
+        <div class="locations">
+          <% @drop_locations.each do |dl| %>
+          <ul>
+            <li>
+                <ul class="map-list">
+                  <li class="map"><%= render dl.name.downcase %></li>
+                </ul>
+              </li>
+            <li>
+              <ul class="list">
+                <li><h2><%= dl.name %></h2></li>
+                <li><p><%= dl.street %></p></li>
+                <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
+                <li><%= button_to "Choose Location", add_location_path(:drop_location_id => dl.id), :method => :post, :class => "btn btn-large btn-primary" %></li> 
+              </ul>
+              
+            </ul>
+          <% end %>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
       </div>
     </div>
   </div>
-</div>

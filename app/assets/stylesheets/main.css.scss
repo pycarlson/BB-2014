@@ -1,4 +1,4 @@
-/*$green: #27ae60;
+/*green: #27ae60;
 $blue: #5BC0DE;
 $blue-hover: #004EBC;*/
 /*red: #C9302C*/
@@ -7,12 +7,6 @@ $blue-hover: #004EBC;*/
 body {
   .site-container {
     margin-top: 70px;
-    .col-lg-4 {
-      margin-right: 7.5px;
-      margin-left: 7.5px;
-      width: 31.6%; /* non-css3 fallback */
-      width: calc( 33.33333333% - 15px ) !important; /* css3 calculation */
-    }
   }
   .inner-container {
     padding-top: 10px;
@@ -114,7 +108,23 @@ p {
 
   .locations {
     text-align: center;
-    padding: 20px 40px 40px 40px;
+    padding: 20px 40px 40px 20px;
+    ul {
+      display: inline-block;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    p {
+      margin-bottom: 0;
+      padding-left: 5px;
+    }
+    h2 {
+      padding-left: 5px;
+    }
+    .map {
+      margin-top: 30px;
+    }
   }
 
   .contact {
@@ -131,7 +141,7 @@ p {
   }
 
   .about-bb {
-    background-color: #C4C7CC;
+    background-color: #eeeeee;
     padding: 40px 0;
   }
 
@@ -147,6 +157,32 @@ p {
     .in {
       top: 5% !important;
     }
+  }
+
+  .modal-body {
+    .locations {
+      padding: 20px 0;
+      ul {
+        margin-bottom: 40px;
+        width: 100%;
+        padding: 0;
+        .list {
+          float: right;
+          text-align: left;
+          padding: 0;
+          width: 30%;
+        }
+      }
+    }
+
+    ul.map-list {
+      width: 60%;
+      display: inline-block;
+      margin-top: -20px;
+    }
+  }
+  .modal-footer {
+    border: none;
   }
 
   /*IMPORTS*/
@@ -273,18 +309,7 @@ p {
   }
 }
 
-/*TABLES*/
 
-.manage-all {
-  padding-top: 30px;
-  .manage-table {
-    display: none;
-  }
-}
-/*Fix Firefox bug in Data Tables search field display*/
-table.dataTable {
-  clear: both;
-}
 
 /*FAMILY UPLOADER*/
 
