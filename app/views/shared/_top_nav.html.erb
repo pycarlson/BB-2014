@@ -15,7 +15,7 @@
 
             
             <% if user_signed_in? && user_has_chosen_drop_location %>
-              <li><%= link_to "Browse Families", families_path, :class => "btn btn-danger" %></li>
+              <li><%= link_to "Browse Families", families_path, :class => "btn btn-primary" %></li>
             <% end %>
 
             <% unless user_signed_in? %>

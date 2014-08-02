@@ -4,7 +4,7 @@
 </div><% else %>
 <% @fams_four.each do |f| %>
 <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
-  <li><h1><%= f.code %></h1></li>
+  <li><h1><%= link_to f.code, family_path(f) %></h1></li>
   <% f.family_members.each do |fm| %>
   <li>
     <ul class="fam-members">
@@ -16,7 +16,7 @@
   <li>
     <div class="buttons col-lg-12">
       <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-primary" %>
-      <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-danger" %>
+      <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-success" %>
     </div>
   </li>
 </ul>

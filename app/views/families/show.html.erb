@@ -39,7 +39,7 @@
     <div class="family-copy col-lg-12">
     <% if !family_has_been_adopted?(@family) %>
     <%= link_to "< GO BACK", families_path, :class => "btn btn-primary" %>
-    <%= link_to "ADOPT THIS FAMILY >", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-danger" %>
+    <%= link_to "ADOPT THIS FAMILY >", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-success" %>
     <% end %>
   </div>
 

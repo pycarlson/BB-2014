@@ -1,3 +1,5 @@
+@import 'variables';
+
 .navbar-brand img {
   width: 300px;
   margin-top: -6px;
@@ -6,7 +8,7 @@
 .navbar {
   margin-bottom: 0 !important;
   height: 70px;
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .navbar-nav > li {
@@ -16,7 +18,6 @@
     padding-top: 9px;
   }
 }
-
 
 .manage-nav {
   margin: 0 auto;
@@ -38,39 +39,12 @@
     margin-bottom: 10px;
   }
   .home-link {
-    color: #27ae60;
+    color: $green;
   }
   i {
-    color: #27ae60;
+    color: $green;
     font-size: 26px;
     margin: 0 0 10px 0;
-  }
-}
-
-.btn {
-  color: #ffffff !important;
-  height: 40px;
-  margin-right: 20px;
-  padding-top: 5px;
-  margin-top: 5px;
-}
-
-.btn-primary {
-  background-color: #27ae60 !important;
-  &:hover {
-    background-color: #27ae60 !important;
-    opacity: .8;
-  }
-  .dropdown-toggle btn:hover {
-    background-color: #27ae60 !important;
-  }
-}
-
-.btn-danger {
-  background-color: #E44D12 !important;
-  &:hover {
-    background-color: #E44D12 !important;
-    opacity: .8;
   }
 }
 
