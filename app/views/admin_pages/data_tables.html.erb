@@ -1,19 +1,27 @@
 <div class="manage-all">
-  <h1>Adopt-a-Family Data Tables</h1>
+  <div class="top-holder">
+    <h1>Adopt-a-Family Data Tables</h1>
+    <div class="admin-subnav">
+      <%= link_to 'Home', root_path, :class => "subnav-link" %>
+      <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link" %>
+      <% if user_has_chosen_drop_location %>
+      <%= link_to 'Families', families_path, :class => "subnav-link" %>
+      <% end %>
+    </div>
 
-  <div class="countdown fam-countdown">
-    <div><h2>Families<br><span><%= @total_fams %></span></h2></div>
+    <div class="countdown fam-countdown">
+      <div><h2>Families<br><span><%= @total_fams %></span></h2></div>
+    </div>
+
+    <div class="countdown adoption-countdown">
+      <div><h2>Adoptions<br><span><%= @adopted_families.count %></span></h2></div>
+    </div>
+    
   </div>
-
-  <div class="countdown adoption-countdown">
-    <div><h2>Adoptions<br><span><%= @adopted_families.count %></span></h2></div>
-  </div>
-  
-
   <div class="clearfix"></div>
 
   <div class="manage-nav">
-    <h2>Data Table Options</h2>
+    <h2>Data Table Views</h2>
     <%= radio_button_tag(:option, "families") %>
     <%= label_tag(:families, "All Families") %>
     <%= radio_button_tag(:option, "adoptors") %>

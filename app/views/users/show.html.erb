@@ -1,18 +1,19 @@
+<%= render 'shared/sub_nav' %>
 <div class="row">
   <div class="col-xs-1"></div>
   <div class="col-xs-10">
     <div class="profile-container">
-      <%= render 'shared/sub_nav' %>
-      
-      
-      <h1>Hello <%= current_user.full_name %> and Welcome!!!</h1>
-      <h1>User ID: <%= current_user.id %></h1>
 
-      <p>Welcome to your Brighter Beginnings Adopt-a-Family profile page. Come here to manage your personal information, acquire information about the famil(ies) you will be adopting this year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
+      <p>Hello <%= current_user.full_name %> and welcome to your private Brighter Beginnings Adopt-a-Family account page. Come here to manage your personal information, acquire information about the famil(ies) you adopt each year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
+      
+      <div class="col-sm-4 col-xs-12 column">
+        <h2>Drop Location Details</h2>
+        <% unless current_user.drop_location_id && current_user.drop_location_id != 0 %>
+          <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption. On the home page, just click on the 'Browse Families' button and you'll see a prompt to choose your location.</p>
+        <% end %>
 
-      <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
-      <div class="col-sm-5 col-xs-12">
-        <h2>Your Drop Location Details</h2>
+
+        <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
         <ul>
           <li><p><%= DropLocation.find(current_user.drop_location_id).name %></p></li>
 
@@ -24,21 +25,35 @@
         </ul>
         <% end %>
       </div>
-      <div class="col-xs-1"></div>
 
-      <div class="col-sm-5 col-xs-12">
-        <h2>Your Personal Info</h2>
+      <div class="col-sm-4 col-xs-12 column">
+        <h2>Contact Information</h2>
         <ul>
-          <li><p>Name: <%= current_user.full_name %><p></li>
-          <li><p>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
-          <li><p>Phone: <%= current_user.phone %></p></li>
-          <li><%= link_to 'Edit Your Info', edit_user_path(current_user) %></li>
+          <% if current_user.full_name != nil %>
+            <li><p>Name: <%= current_user.full_name %><p></li>
+          <% end %>
+          
+          <% if current_user.street != nil && current_user.state && current_user.zip %>
+            <li><p>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
+          <% end %>
+
+          <% if current_user.phone != nil %>
+            <li><p>Phone: <%= current_user.phone %></p></li>
+          <% end %>
+
+
+          <li><%= link_to 'Add or Edit Your Personal Info', edit_user_path(current_user) %></li>
+
         </ul>
       </div>
+      
+      <div class="col-sm-3 col-xs-12 column">
+        <h2>Adopted Families</h2>
+        <% unless user_is_a_donor?  %>
+          <p>No famlies adopted yet...</p>
+        <% end %>
 
-      <% if user_is_a_donor?  %>
-      <div class="col-sm-5 col-xs-12">
-        <h2>Your Adopted Families</h2>
+        <% if user_is_a_donor?  %>
         <ul>
           <% current_user.families.each do |f| %>
           <li>

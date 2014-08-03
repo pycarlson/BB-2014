@@ -15,7 +15,7 @@
 
             
             <% if user_signed_in? && user_has_chosen_drop_location %>
-              <li><%= link_to "Browse Families", families_path, :class => "btn btn-primary" %></li>
+              <li><%= link_to "Browse Families", families_path, :class => "btn btn-success" %></li>
             <% end %>
 
             <% unless user_signed_in? %>
@@ -29,7 +29,7 @@
 
             <% if user_signed_in? && user_is_admin? %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown">Admin <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle btn btn-info" data-toggle="dropdown">Admin <b class="caret"></b></a>
               <ul class="dropdown-menu">
 
                 <% if user_is_super_admin? %>

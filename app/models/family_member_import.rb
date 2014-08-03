@@ -12,7 +12,9 @@ class FamilyMemberImport
   
   def initialize(attributes = {}, drive_id = nil)
     attributes.each { |name, value| send("#{name}=", value) }
-    @drive = Drive.last if drive_id != nil
+    @drive = Drive.find(drive_id) if drive_id != nil
+    p "*" * 100
+    p @drive
     @families = []
   end
 
@@ -96,7 +98,7 @@ class FamilyMemberImport
 
   def create_family_associations(family_member, family, drop_location_id)
     family_member.family = family
-    family.drive = @drive
+    family.drive = Drive.last
     family.drop_location_id = drop_location_id
     family.save
   end

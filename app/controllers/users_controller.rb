@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :user_is_super_admin?, only: [:destroy]
+  before_filter :user_can_view_profile, only: [:show,:adoption_confirmation, :edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def edit
     @family = false
     @user = User.find(params[:id])
-    unless current_user.drop_location_id == 0
+    unless current_user.drop_location_id == 0 || current_user.drop_location_id == nil
       @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
     end
   end
@@ -54,5 +55,9 @@ class UsersController < ApplicationController
   protected
   def user_params
     params.require(:user).permit(:full_name, :drop_location_id, :drop_date_id, :company, :zip, :street, :city, :state, :phone, :info_complete)
+  end
+
+  def user_can_view_profile
+    redirect_to root_path unless current_user
   end
 end

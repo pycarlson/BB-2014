@@ -1,22 +1,28 @@
 /*FORM STYLES*/
 .form-page {
-  padding: 30px 30px 100px 30px;
+  padding: 30px 30px 0 30px;
   text-align: left;
-
+  .family-submit {
+    margin-bottom: 100px;
+  }
+  height: auto;
 }
 
-.form-group {
-   margin-right: 20px;
+.form-item {
+  margin: 0 15px;
 }
 
-.form {
-  .left {
-    float: left;
-    width: 50%;
-  }
-  .right {
-    float: right;
-  }
+.make-mem-header {
+  margin-top: 20px;
+}
+
+.add-fam-btn {
+  margin-bottom: 15px;
+}
+
+.reminder {
+  font-size: 15px;
+  font-weight: normal;
 }
 
 

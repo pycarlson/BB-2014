@@ -2,5 +2,11 @@
   <h1>Adopt-a-Family</h1>
   <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
   <h2>Organized by <a href="http://www.brighter-beginnings.org/">Brighter Beginnings</a></h2>
-  <%= link_to 'Home', root_path, :class => "home-link" %>
+  <%= link_to 'Home', root_path, :class => "subnav-link" %>
+  <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link" %>
+  <% if user_has_chosen_drop_location %>
+    <%= link_to 'Families', families_path, :class => "subnav-link" %>
+  <% end %>
 </div>
+
+<!-- <div class="star"><i class="glyphicon glyphicon-star-empty"></i></div> -->

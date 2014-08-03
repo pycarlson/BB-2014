@@ -23,9 +23,9 @@
 
   <div class="see-families">
     <% if user_signed_in? && user_has_chosen_drop_location %>
-    <a href="/families" class="btn btn-lg btn-primary">Browse Families</a>
+    <a href="/families" class="btn btn-lg btn-info">Browse Families</a>
     <% elsif user_signed_in? && !user_has_chosen_drop_location %>
-    <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Browse Families</a>
+    <a href="#" class="btn btn-lg btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
     <% end %>
   </div>
 </div>

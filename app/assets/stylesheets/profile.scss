@@ -1,0 +1,30 @@
+@import 'variables';
+
+.profile-container {
+  margin: 0 auto;
+  margin-top: 30px;
+  .column {
+    background-color: $lightGray;
+    height: 300px;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+  ul {
+    width: 100%;
+    float: left;
+  }
+
+  ul > ul {
+    padding: 0;
+  }
+
+  p {
+    margin-bottom: 50px;
+  }
+
+  ul p {
+    margin-bottom: 5px;
+  }
+
+}

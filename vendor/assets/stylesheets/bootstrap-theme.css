@@ -5,7 +5,7 @@
  */
 
 .btn-default,
-.btn-primary,
+.btn-info,
 .btn-success,
 .btn-info,
 .btn-warning,
@@ -16,13 +16,13 @@
 }
 
 .btn-default:active,
-.btn-primary:active,
+.btn-info:active,
 .btn-success:active,
 .btn-info:active,
 .btn-warning:active,
 .btn-danger:active,
 .btn-default.active,
-.btn-primary.active,
+.btn-info.active,
 .btn-success.active,
 .btn-info.active,
 .btn-warning.active,
@@ -59,7 +59,7 @@
   border-color: #dbdbdb;
 }
 
-.btn-primary {
+.btn-info {
   background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
   background-image: linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%);
   background-repeat: repeat-x;
@@ -68,14 +68,14 @@
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
+.btn-info:hover,
+.btn-info:focus {
   background-color: #2d6ca2;
   background-position: 0 -15px;
 }
 
-.btn-primary:active,
-.btn-primary.active {
+.btn-info:active,
+.btn-info.active {
   background-color: #2d6ca2;
   border-color: #2b669a;
 }
@@ -351,7 +351,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
 }
 
-.panel-primary > .panel-heading {
+.panel-info > .panel-heading {
   background-image: -webkit-linear-gradient(top, #428bca 0%, #357ebd 100%);
   background-image: linear-gradient(to bottom, #428bca 0%, #357ebd 100%);
   background-repeat: repeat-x;

@@ -1,8 +1,0 @@
-<div class="family-being-adopted">
-  <h2>Famlily: <%= @family.code %>, a family of <%= @family.family_members.length %>.</h2>
-  <% @family.family_members.each do |fm| %>
-    <%= fm.first_name %>
-    <%= fm.bio %>
-    <%= fm.age %>
-  <% end %>
-</div>

@@ -2,18 +2,25 @@
   <div class="container-fluid">
     <div class="super-dash col-lg-12">
       <h1>Super Admin Dashboard</h1>
-      <div class="drive-manage col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h2>Drive Option</h2>
+      <div class="admin-subnav">
+        <%= link_to 'Home', root_path, :class => "subnav-link" %>
+        <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link" %>
+        <% if user_has_chosen_drop_location %>
+        <%= link_to 'Families', families_path, :class => "subnav-link" %>
+        <% end %>
+      </div>
+      <div class="drive-manage col-lg-5 col-md-6 col-sm-6 col-xs-12">
+        <h2>Drive Options</h2>
         <ul class="resets">
           <% @drives.each do |drive| %>
           <li>
             <% if drive.status == true %>
-              <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger" %></li>
+            <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger" %></li>
             <% elsif drive.status == false %>
-              <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-primary" %></li>
+            <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-info" %></li>
             <% end %>  
             <li><%= link_to 'Reset Drive', root_path, class: "btn btn-danger" %></li>
-            <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-danger" %></li>
+            <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-success" %></li>
             <% end %>
           </li>
           
@@ -25,9 +32,11 @@
           <h2>Add Admins</h2>
           <div class="add-admin-form">
             <%= form_tag(add_admin_path, method: "post") do %>
-            <%= email_field_tag :email, nil, :placeholder => "new organizer email" %>
-            <%= submit_tag("Add New Admin") %>
-            <% end %>
+            <div class="form-inline">
+              <%= email_field_tag :email, nil, :placeholder => "new organizer email", class: "form-control input-md" %>
+              <%= submit_tag "Add New Admin", :class => "btn btn-success" %>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="current-admins">
@@ -60,7 +69,7 @@
       <tr>
         <ul>
           <td><%= family.code.upcase %></td>
-          <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-info" %></td>
           <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
           <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
         </ul>

@@ -19,6 +19,18 @@
   }
 }
 
+.btn-success {
+  &:hover {
+    background-color: #4cae4c !important;
+  }
+}
+
+.btn-info {
+  &:hover {
+    background-color: #357ebd !important;
+  }
+}
+
 .manage-nav {
   margin: 0 auto;
   max-width: 565px;
@@ -31,20 +43,41 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 0 20px 0;
   h1 {
-    margin-bottom: 10px;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
   }
   h2 {
     margin-bottom: 10px;
   }
-  .home-link {
+  .subnav-link {
     color: $green;
+    margin: 0 40px;
   }
-  i {
+  .present i {
     color: $green;
     font-size: 26px;
     margin: 0 0 10px 0;
+  }
+
+  .star i {
+    color: $star;
+    position: absolute;
+    top: -10;
+    z-index: -5;
+    left: 100px;
+  }
+}
+
+.admin-subnav {
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 0 40px 0;
+  .subnav-link {
+    color: $blue;
+    margin: 0 20px;
   }
 }
 

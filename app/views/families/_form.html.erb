@@ -1,88 +1,129 @@
-
-<%= nested_form_for @family, :html => {:class => "form form-horizontal"} do |f| %>
+<%= nested_form_for @family, :html => {:class => "form"} do |f| %>
 <div class="form-horizontal">
 
   <%= f.hidden_field :drive_id, :value => Drive.last.id %>
 
   <div class="row">
     <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
       <%= f.label :family_code %><br>
-      <%= f.text_field :code, class: "form-control" %>
+      <%= f.text_field :code, class: "form-control", required: :true %>
+      </div>
     </div>
 
     <div class="form-group col-lg-6 col-md-6">
+      <div class="form-item">
       <%= f.label :drop_location %><br>
       <%= f.select(:drop_location_id, @drop_locations.collect {|dl| [dl.name, dl.id]}) %>
+      </div>
     </div>
   </div>
 
-  <h2>Add Family Members</h2>
-      <%= f.fields_for :family_members do |fm| %>
-
-      <div class="row">
-        <div class="form-group col-lg-5 col-md-5">
-          <%= fm.label :first_name %><br>
-          <%= fm.text_field :first_name, class: "form-control" %>
-        </div>
-        <div class="form-group col-lg-2 col-md-2">
-          <%= fm.label :age %><br>
-          <%= fm.text_field :age, class: "form-control" %>
-        </div>
-        <div class="form-group col-lg-5 col-md-5">
-          <%= fm.label :gender %><br>
-          <%= fm.select :gender, options_for_select([['male'], ['female']], :selected => :gender), class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-lg-2 col-md-2">
-          <%= fm.label :pants %><br>
-          <%= fm.text_field :size_pants, class: "form-control" %>
-        </div>
-
-        <div class="form-group col-lg-2 col-md-2">
-          <%= fm.label :shirt %><br>
-          <%= fm.text_field :size_shirt, class: "form-control" %>
-        </div>
-
-        <div class="form-group col-lg-2 col-md-2">
-          <%= fm.label :dress %><br>
-          <%= fm.text_field :size_dress, class: "form-control" %>
-        </div>
-
-        <div class="form-group col-lg-2 col-md-2">
-          <%= fm.label :shoe %><br>
-          <%= fm.text_field :size_shoes, class: "form-control" %>
-        </div>
-      </div>
+  <h2 class="make-mem-header">Add Family Member</h2>
+  <%= f.fields_for :family_members do |fm| %>
 
   <div class="row">
+
+    <div class="form-group col-lg-5 col-md-5">
+      <div class="form-item">
+      <%= fm.label :first_name %><br>
+      <%= fm.text_field :first_name, class: "form-control", required: :true %>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
+      <%= fm.label :age %><br>
+      <%= fm.text_field :age, class: "form-control", required: :true %>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-5 col-md-5">
+      <div class="form-item">
+      <%= fm.label :gender %><br>
+      <%= fm.select :gender, options_for_select([['male'], ['female']], :selected => :gender), class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
+      <%= fm.label :pant_size %><br>
+      <%= fm.text_field :size_pants, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
+      <%= fm.label :shirt_size %><br>
+      <%= fm.text_field :size_shirt, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
+      <%= fm.label :dress_size %><br>
+      <%= fm.text_field :size_dress, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-2 col-md-2">
+      <div class="form-item">
+      <%= fm.label :shoe_size %><br>
+      <%= fm.text_field :size_shoes, class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
     <div class="form-group col-lg-12 col-md-12">
+      <div class="form-item">
       <%= fm.label :bio %><br>
       <%= fm.text_area :bio, class: "form-control", required: :true %>
+      </div>
     </div>
+
   </div>
 
   <div class="row">
     <%= fm.fields_for :needs do |n| %>
-    <div class="form-group col-lg-6 col-md-6">
+    <div class="form-group col-lg-12 col-md-12">
+      <div class="form-item">
       <%= n.label :need %><br>
       <%= n.text_field :item, class: "form-control" %> 
       <%= n.link_to_remove "Remove this need" %>
+      </div>
     </div>
-    <%  end %>
-
-    <%= fm.link_to_add "Add Need", :needs %>
-    <%  end %>
-
-    </div>
-
-    </div>
-    <%= f.link_to_add "Add Another Family Member", :family_members %>
+    <% end %>
   </div>
-</div>
-<%= f.submit class: "btn btn-primary" %>
+
+  <div class="row">
+    <div class="form-group col-lg-12 col-md-12">
+      <div class="form-item" >
+      <%= fm.link_to_add "Add Need", :needs, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <%  end %>
+
+  <div class="row">
+    <div class="form-item">
+    <%= f.link_to_add "Add Another Family Member", :family_members, :class => "btn btn-primary add-fam-btn" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-item">
+    <%= f.submit class: "btn btn-success" %>
+    </div>
+  </div>
 
 <% end %>
-</div>
+<div class="spacer" style="height: 160px;"></div>
 </div>

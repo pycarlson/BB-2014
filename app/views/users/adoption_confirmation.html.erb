@@ -1,6 +1,6 @@
-<div class="confirming-adoption">
+<div class="confirming-adoption col-lg-12">
   
-  <% if @user.info_complete %>
+  <% if user_is_a_donor? %>
 
   <h3>Welcome Back!</h3>
     <p>To complete the adoption process, please check that all your contact information below is correct and click the Adopt button to finalize the process.</p>
@@ -14,11 +14,5 @@
 
   <p>Please remember that at any time you can visit your <%= link_to 'ACCOUNT PAGE', user_path(@user) %> to review the families you have adopted and to update any of your contact information.</p>
 
-  <p>Here are the details about the family you are about to adopt.</p>
-
-  <%= render 'family_being_adopted' %>
-
   <%= render 'form' %>
-  <a href="/families" class="btn btn-default" id="cancel-adoption-process">Cancel Adoption Process</a>
-
 </div>
