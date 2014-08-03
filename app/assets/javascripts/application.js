@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require jquery_nested_form
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require dataTables/jquery.dataTables
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require bootstrap
-//= require jquery.turbolinks
-//= require turbolinks
 //= require_tree .
