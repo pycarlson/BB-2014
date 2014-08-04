@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804013758) do
+ActiveRecord::Schema.define(version: 20140608235920) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -54,15 +54,17 @@ ActiveRecord::Schema.define(version: 20140804013758) do
 
   create_table "families", force: true do |t|
     t.integer  "drive_id"
-    t.boolean  "adopted",                      default: false
-    t.date     "received_at_org",  limit: 255
-    t.date     "given_to_family",  limit: 255
+    t.boolean  "adopted",          default: false
+    t.date     "received_at_org"
+    t.date     "date"
+    t.date     "given_to_family"
     t.string   "code"
     t.integer  "drop_location_id"
     t.integer  "donor_id"
-    t.integer  "num_boxes",                    default: 0
+    t.integer  "num_boxes",        default: 0
+    t.integer  "integer",          default: 0
     t.integer  "drop_date_id"
-    t.boolean  "is_live",                      default: false
+    t.boolean  "is_live",          default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
