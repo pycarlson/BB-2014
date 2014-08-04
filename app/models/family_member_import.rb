@@ -13,8 +13,6 @@ class FamilyMemberImport
   def initialize(attributes = {}, drive_id = nil)
     attributes.each { |name, value| send("#{name}=", value) }
     @drive = Drive.find(drive_id) if drive_id != nil
-    p "*" * 100
-    p @drive
     @families = []
   end
 
@@ -57,7 +55,7 @@ class FamilyMemberImport
       family_member.bio = row["bio"]
       family_member.age = row["age"]
 
-      drop_location_id = row["drop_location_id"]
+      drop_location_id = DropLocation.find_by_name(row["name"]).id
       
       if family_member.save
         check_for_needs(row, family_member)
