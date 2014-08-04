@@ -2,7 +2,7 @@ class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:manage_families]
 
-  before_filter :user_is_super_admin?, only: [:super_admin, :add_admin, :remove_admin, :cancel_adoption, :go_live]
+  before_filter :user_is_super_admin?, except: [:manage_families]
 
   def super_admin
     @admins = Admin.all
@@ -78,6 +78,23 @@ class AdminPagesController < ApplicationController
       end
     end
     @left_unadopted = @total_fams - @adopted_families.count
+  end
+
+  def update_gift_status
+    @family = Family.find(params[:id])
+    drive = Drive.find(Drive.last.id)
+    @family.update_attributes(:given_to_family => params[:given_to_family],
+                              :received_at_org => params[:received_at_org],
+                              :num_boxes => params[:num_boxes])
+    redirect_to data_tables_path
+  end
+
+  def reset_drive
+    Drive.last.families.clear
+    User.all.each do |u|
+      u.families.clear
+    end
+    redirect_to super_admin_path
   end
 
   private

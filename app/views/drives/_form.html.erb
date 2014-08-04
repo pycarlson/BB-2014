@@ -45,8 +45,7 @@
   </div>
 
   <%= f.fields_for :drop_locations do |dl| %>
-    <h3>Drop Location <span class="reminder"><%= dl.link_to_remove "remove" %></span></h3>
-    
+    <h2>Drop Location <span class="remove-link"><%= dl.link_to_remove "remove" %></span></h2>
 
     <%= dl.fields_for :drop_dates do |dd| %>
     <div class="row">

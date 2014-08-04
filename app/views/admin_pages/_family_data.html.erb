@@ -3,6 +3,7 @@
 <tr>
   <th><h2>Family Code</h2></th>
   <th><h2>Adopted?</h2></th>
+  <th><h2>Is Live?</h2></th>
   <th><h2>Edit</h2></th>
 
   <% if user_is_super_admin? %>
@@ -18,6 +19,9 @@
     </td>
     <td>
       <li><%= family.adopted %></li>
+    </td>
+    <td>
+      <li><%= family.is_live %></li>
     </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
     <% if user_is_super_admin? %>

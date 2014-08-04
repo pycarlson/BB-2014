@@ -19,6 +19,18 @@
   }
 }
 
+.dropdown-toggle li {
+  background-color: $white;
+}
+
+.dropdown-menu {
+  background-color: $white;
+}
+
+.main {
+  padding-top: 5px;
+}
+
 .btn-success {
   &:hover {
     background-color: #4cae4c !important;
@@ -40,14 +52,12 @@
 }
 
 .subnav {
-  width: 100%;
+  width: auto;
   margin: 0 auto;
   text-align: center;
   padding: 30px 0 20px 0;
   h1 {
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
+    margin-bottom: 0;
   }
   h2 {
     margin-bottom: 10px;
@@ -60,14 +70,6 @@
     color: $green;
     font-size: 26px;
     margin: 0 0 10px 0;
-  }
-
-  .star i {
-    color: $star;
-    position: absolute;
-    top: -10;
-    z-index: -5;
-    left: 100px;
   }
 }
 

@@ -4,6 +4,16 @@ class StaticPagesController < ApplicationController
   def home
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
+    @families = Family.all
+    @total_fams = Family.count
+    @adopted_families = []
+
+    @families.each do |fam| 
+      if fam.adopted == true
+        @adopted_families << fam
+      end
+    end
+    @left_unadopted = @total_fams - @adopted_families.count
   end
 
   def add_location

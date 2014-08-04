@@ -8,38 +8,51 @@
 </div>
 <div class="col-xs-1"></div>
 </div>
-<div class="drive-details">
-  <div class="row">
 
-    <div class="col-sm-1 col-xs-1"></div>
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 drive-description">
-      <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
-      <h2>About this Drive <br>(<%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %>) </h2>
-      <p><%= @drive.blurb %></p>
+
+<div class="row description">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
+    <h2>About this Drive </h2>
+    <p><%= @drive.blurb %></p>
+  </div>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-4 dates-etc">
+    <div class="row">
+    <div class="present"><i class="glyphicon glyphicon-calendar"></i></div>
+    <h2>Drive Dates</h2>
+    <p><%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %></p>
     </div>
 
-    <div class="col-sm-10 col-xs-1"></div>
-  </div>
+    <div class="row count">
+      <h2><%= @left_unadopted %></h2>
+      <p>Families Still Available for 'Adoption'</p>
+    </div>
 
-  <div class="see-families">
     <% if user_signed_in? && user_has_chosen_drop_location %>
-    <a href="/families" class="btn btn-lg btn-info">Browse Families</a>
+    <%= link_to 'Browse Families Now',families_path, :class => "btn btn-info" %>
     <% elsif user_signed_in? && !user_has_chosen_drop_location %>
-    <a href="#" class="btn btn-lg btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
     <% end %>
   </div>
 </div>
 
-<div class="col-xs-12 locations">
-  <h1>Gift Drop Locations</h1>
+</div>
+
+<div class="row locations">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+  <h2>Gift Drop Locations</h2>
   <% @drop_locations.each do |dl| %>
-  <ul class="col-lg-4 col-md-2 col-sm-2 col-xs-12">
+  <ul class="col-lg-4 col-md-2 col-sm-2 col-xs-12 location">
     <li><h2><%= dl.name %></h2></li>
     <li><p><%= dl.street %></p></li>
     <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
     <li class="map"><%= render dl.name.downcase %></li>
   </ul>
   <% end %>
+  </div>
 </div>
 
 <div class="clearfix"></div>
@@ -50,14 +63,16 @@
     <p><%= Organization.first.blurb %></p>
   </div>
 
-  <div class="contact col-sm-4 col-xs-10">
+  <div class="col-lg-1"></div>
+
+  <div class="contact col-lg-4 col-md-4 col-sm-4 col-xs-10">
     <h2>Contact <%= Organization.first.name %></h2>
     <p><i class="glyphicon glyphicon-envelope"></i> <%= Organization.first.email %></p>
     <p><i class="glyphicon glyphicon-earphone"></i> <%= Organization.first.phone %> </i></p>
     <p><i class="glyphicon glyphicon-home"></i> <%= Organization.first.address %> <%= Organization.first.zip %></p>
-    </div>
+  </div>
 
-  <div class="col-sm-1 col-xs-1"></div>
+  
 </div>
 
 <%= render "modal" %>

@@ -23,6 +23,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   get '/super_admin' => 'admin_pages#super_admin'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
+  post '/update_gift_status' => 'admin_pages#update_gift_status'
+  get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'
   get '/shopping_tips' => 'static_pages#shopping_tips'
   get '/faq' => 'static_pages#faq'

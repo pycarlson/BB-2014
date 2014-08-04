@@ -7,8 +7,10 @@
   <th><h2>Phone</h2></th>
   <th><h2>Email</h2></th>
   <th><h2>Drop Date</h2></th>
+  <th><h2>Boxes</h2></th>
   <th><h2>Received</h2></th>
   <th><h2>Given</h2></th>
+  <th><h2>Update</h2></th>
   <% if user_is_super_admin? %>
     <th><h2>Cancel</h2></th>
   <% end %>  
@@ -37,8 +39,23 @@
         <% end %>
       </li>
     </td>
-    <td>add form</td>
-    <td>add form</td>
+    
+    <%= form_tag("/update_gift_status", ) do %>
+      <%= hidden_field_tag "id", af.id %>
+      <td>
+        <%= text_field_tag :num_boxes, af.num_boxes, :class => "table-input boxes" %>
+      </td>
+      <td>
+        <%= date_field_tag :received_at_org, af.received_at_org, :class => "table-input" %>
+      </td>
+      <td>
+        <%= date_field_tag :given_to_family, af.given_to_family, :class => "table-input" %>
+      </td>
+      <td>
+        <%= submit_tag "Update", :class => "btn btn-success" %>
+      </td>
+    <% end %>
+    
     <% if user_is_super_admin? %>
       <td><%= link_to 'Cancel', cancel_adoption_path(:family_id => af.id), :class => "btn btn-danger" %></td>
     <% end %>
