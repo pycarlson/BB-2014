@@ -1,7 +1,7 @@
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 767px) and (max-width: 959px) { 
   body { 
-    
+
     margin: 0;
     .container {
       width: 100% !important;
@@ -21,6 +21,15 @@
       width: 100% !important;
     }
 
+  }
+  .hide-smaller {
+    display: none;
+  }
+  .about-bb {
+    padding-left: 20px;
+  }
+  .locations {
+    margin-left: 20px;    
   }
   .adoptable-families {
     width: 90% !important;
@@ -56,6 +65,9 @@
     .home-title h1 {
       padding-bottom: 20px;
     }
+  }
+  .dates-etc {
+    margin-left: 10px;
   }
   .adoptable-families {
     width: 90% !important;

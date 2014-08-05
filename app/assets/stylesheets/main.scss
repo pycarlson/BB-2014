@@ -82,18 +82,9 @@ li {
 
 /*HOME STYLES*/
 
-.description .present {
-  i {
-    color: $green;
-    font-size: 20px;
-    float: left;
-    padding-right: 10px;
-  }
-}
-
 .description {
   background-color: $lightGray;
-  padding: 40px 0 20px 0;
+  padding: 40px 0 40px 20px;
   margin-bottom: 40px;
   margin-top: -5px;
   .count h2 {
@@ -103,6 +94,14 @@ li {
   .btn {
     padding-top: 9px;
     margin-left: -15px;
+  }
+  .present {
+    i {
+      color: $green;
+      font-size: 20px;
+      float: left;
+      padding-right: 10px;
+    }
   }
 }
 
@@ -120,8 +119,14 @@ li {
   }
 }
 
+.locations {
+  .drop-title {
+    margin-left: 30px;
+  }
+}
+
 .location {
-  padding: 20px 0 40px 0;
+  padding: 20px 0 40px 30px;
   ul {
     padding: 0;
   }
