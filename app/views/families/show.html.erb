@@ -42,6 +42,11 @@
     <%= link_to '< GO BACK', families_path, :class => "btn btn-info" %>
     <%= link_to "ADOPT THIS FAMILY >", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-success" %>
   </div>
+  <% if user_is_super_admin? %>
+    <div class="super-back-btn col-lg-12 col-md-12 col-sm-12">
+      <%= link_to '< GO BACK TO SUPER ADMIN PAGE', super_admin_path, :class => "btn btn-info" %>
+  </div>
+  <% end %>
 </div>
 
 

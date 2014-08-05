@@ -1,7 +1,7 @@
 <% if @fams_five.length == 0 %>
-  <div class="no-fams col-xs-12">
-    <h2>All of this year's families of five or more people have already been adopted. Thank you!</h2>
-  </div>
+<div class="no-fams col-xs-12">
+  <h2>All of this year's families of five or more people have already been adopted. Thank you!</h2>
+</div>
 <% else %>
 <% @fams_five.each do |f| %>
 
@@ -15,12 +15,14 @@
     </ul>
   </li>
   <% end %>
-  <li>
-    <div class="buttons col-lg-12">
+  <li class="buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="">
       <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
       <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-success" %>
     </div>
   </li>
 </ul>
+
+
 <% end %>
 <% end %>

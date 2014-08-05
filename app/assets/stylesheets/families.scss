@@ -43,24 +43,21 @@
     text-align: left;
   }
   .buttons {
-    position: relative;
-    height: 60px;
-    width: 100%;
+    display: block;
+    margin-top: 40px;
   }
-  
   .btn {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     width: auto;
     padding: 10px;
   }
-  
-  .btn-success {
-    right: 0;
-  }
   .btn-info {
-    right: 90px;
+    right: -15px;
   } 
+  .btn-success {
+    right: 120px;
+  }
 } 
 
 .adoptable-family {
@@ -125,7 +122,10 @@
   .family-member {
     padding: 20px;
   }  
-
+  .super-back-btn {
+    display: block;
+    height: 100px;
+  }
 }
 
 #family-size-filter-buttons {
@@ -147,7 +147,9 @@
 }
 
 .fams {
+  position: relative;
   display: none;
+
 }
 
 .fams5 .adoptable-families {
