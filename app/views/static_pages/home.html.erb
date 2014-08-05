@@ -30,6 +30,10 @@
       <p>Families Still Available for 'Adoption'</p>
     </div>
 
+    <% if !user_signed_in? %>
+    <%= link_to 'Sign In or Sign Up to Browse Families',families_path, :class => "btn btn-info disabled" %>
+    <% end %>
+
     <% if user_signed_in? && user_has_chosen_drop_location %>
     <%= link_to 'Browse Families Now',families_path, :class => "btn btn-info" %>
     <% elsif user_signed_in? && !user_has_chosen_drop_location %>
