@@ -1,8 +1,7 @@
 class AdminPagesController < ApplicationController
   
-  before_filter :user_is_admin?, only: [:manage_families]
-
-  before_filter :user_is_super_admin?, except: [:manage_families]
+  before_filter :user_is_super_admin?, except: [:manage_families, :data_tables]
+  before_filter :user_is_admin?, only: [:data_tables]
 
   def super_admin
     @admins = Admin.all
