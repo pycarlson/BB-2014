@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
     redirect_to user_path(@user)
   end
-
+  
   def adoption_confirmation
     @user = current_user
     @family = Family.find(params[:family_id])

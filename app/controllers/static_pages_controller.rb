@@ -16,6 +16,15 @@ class StaticPagesController < ApplicationController
     @left_unadopted = @total_fams - @adopted_families.count
   end
 
+  def download_tax_receipt_pdf
+    send_file(
+      "#{Rails.root}/public/tax_receipt.pdf",
+        filename: "tax_receipt.pdf",
+        type: "application/pdf"
+      )
+  end
+
+
   def add_location
     user = current_user
     user.drop_location_id = params[:drop_location_id]

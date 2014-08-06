@@ -2,6 +2,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show, :index, :edit, :update]
+
   
   root to: "static_pages#home"
 
@@ -21,6 +22,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   resources :admins, only: [:destroy] 
 
+  get '/download_tax_receipt_pdf' => 'static_pages#download_tax_receipt_pdf'
   get '/super_admin' => 'admin_pages#super_admin'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   post '/update_gift_status' => 'admin_pages#update_gift_status'
