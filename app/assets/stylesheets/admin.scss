@@ -8,11 +8,10 @@
   }
 }
 .super-dash {
-  background-color: #eeeeee;
+  background-color: $lightGray;
   margin-bottom: 40px;
   border-radius: 5px; 
-  padding-top: 20px;
-  padding-right: 50px;
+  padding: 20px 50px 30px 0;
   .btn {
     padding-top: 9px;
     margin-bottom: 30px;

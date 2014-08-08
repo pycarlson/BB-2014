@@ -16,7 +16,7 @@ $(document).ready(function() {
       data: {"status": false}
     });
    }
- });
+  });
 
   $(".makeFamilyLiveCheckbox").bind('change', function(){
     // alert(this);
@@ -34,6 +34,10 @@ $(document).ready(function() {
       data: {"is_live": false}
     });
    }
- });
+  });
 
+
+  if (document.URL == 'http://localhost:3000/users/sign_in' || document.URL == 'http://localhost:3000/users/sign_up') {
+    $('footer').hide();
+  }
 });

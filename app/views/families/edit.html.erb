@@ -1,7 +1,16 @@
 <div class="form-page col-lg-12">
 
-<h2>Edit Family</h2>
+  <h2>Edit Family</h2>
 
-<%= render 'form' %>
+  <% if user_is_super_admin? %>
+  <div class="super-back-btn col-lg-12 col-md-12 col-sm-12">
+    <%= link_to 'GO BACK TO SUPER ADMIN PAGE >', super_admin_path, :class => "btn btn-info" %>
+  </div>
+  <% end %>
+
+
+  <%= render 'form' %>
+
+
 
 </div>

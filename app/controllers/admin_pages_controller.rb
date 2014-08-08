@@ -5,6 +5,7 @@ class AdminPagesController < ApplicationController
 
   def super_admin
     @admins = Admin.all
+    @super_admins = SuperAdmin.all
     @drives = Drive.all
     @families = Family.where('is_live = ?', false)
   end
@@ -36,6 +37,21 @@ class AdminPagesController < ApplicationController
     end
   end
 
+  def add_super_admin
+    user = User.find_by_email(params[:email])
+    drive = Drive.find(Drive.last.id)
+
+    if user == nil
+      flash[:alert] = "Please have user sign up."
+      redirect_to super_admin_path
+    else
+      user.drop_location_id = 0
+      user.save
+      new_super_admin = SuperAdmin.find_or_create_by_user_id_and_drive_id!(user_id: user.id, drive_id: drive.id)
+      redirect_to super_admin_path
+    end
+  end
+
   def go_live
     family = Family.find(params[:format])
     family.is_live = true
@@ -46,6 +62,12 @@ class AdminPagesController < ApplicationController
   def remove_admin
     admin = Admin.find(params[:format])
     admin.destroy
+    redirect_to super_admin_path
+  end
+
+  def remove_super_admin
+    super_admin = SuperAdmin.find(params[:format])
+    super_admin.destroy
     redirect_to super_admin_path
   end
 

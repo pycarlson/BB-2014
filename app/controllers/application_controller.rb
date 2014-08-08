@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_super_admin?
-    if current_user && current_user.email == ENV["P_EMAIL"] || current_user && current_user.email == ENV["SUPER_EMAIL"]
+    if current_user && current_user.email == ENV["P_EMAIL"] || current_user && current_user.email == ENV["SUPER_EMAIL"] || current_user && Drive.last.super_admins.include?(SuperAdmin.find_by_user_id(current_user.id))
       return true
     else
       flash[:alert] = "Sorry. You do not have the correct administrative access to view the page you are trying to access."

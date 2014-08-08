@@ -12,6 +12,41 @@ body {
   }
 }
 
+.flake {
+}
+
+.xs {
+  width: 20px;
+}
+
+.sm {
+  width: 30px;
+}
+
+.md {
+  width: 40px;
+}
+
+.half-opacity {
+  opacity: .5;
+}
+
+.three-opacity {
+  opacity: .75;
+}
+
+.quarter-opacity {
+  opacity: .25;
+}
+
+.lg {
+  width: 50px;
+}
+
+.xl {
+  width: 60px;
+}
+
 .clearfix {
   clear: both;
 }

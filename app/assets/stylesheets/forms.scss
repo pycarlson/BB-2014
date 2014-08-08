@@ -6,6 +6,14 @@
     margin-bottom: 100px;
   }
   height: auto;
+  .super-back-btn {
+    
+    width: 100%;
+    .btn {
+      float: right;
+      padding-top: 9px;
+    }
+  }
 }
 
 .form-item {
@@ -27,5 +35,7 @@
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0;
 }
+
+
 
 
