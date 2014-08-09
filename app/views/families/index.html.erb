@@ -9,19 +9,20 @@
   <div class="families-container">
 
     <div class="fams fams1">
-      <%= render "fams_of_one" %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_two } %>
     </div>
     <div class="fams fams2">
-      <%= render "fams_of_two" %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_two } %>
     </div>
     <div class="fams fams3">
-      <%= render "fams_of_three" %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_three } %>
+      
     </div>
     <div class="fams fams4">
-      <%= render "fams_of_four" %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_four } %>
     </div>
     <div class="fams fams5">
-      <%= render "fams_of_five" %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_five } %>
     </div>
     
   </div>
