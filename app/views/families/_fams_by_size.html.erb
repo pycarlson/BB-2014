@@ -1,6 +1,7 @@
 <% if families.length == 0 %>
-<div class="no-fams col-xs-12">
-  <h2>All of this year's families of five or more people have already been adopted. Thank you!</h2>
+
+<div class="no-fams">
+  <h1>All of this year's families of five or more people have already been adopted. Thank you!</h1>
 </div>
 <% else %>
 <% families.each do |f| %>
@@ -18,7 +19,7 @@
   <li class="buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="">
       <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
-      <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id), :class => "btn btn-success" %>
+      <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id, :id => current_user.id), :class => "btn btn-success" %>
     </div>
   </li>
 </ul>

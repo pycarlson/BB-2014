@@ -27,6 +27,15 @@ class User < ActiveRecord::Base
     return @families
   end
 
+  def create_adopted_family_associations(family)
+    self.adoptor = true
+    family.adopted = true
+    family.save
+    self.families << family
+    UserMailer.adoption_confirmation(self).deliver
+    self.save
+  end
+
   def get_drop_location_name
     unless self.drop_location_id == 0
       DropLocation.find(self.drop_location_id).name
@@ -39,8 +48,7 @@ class User < ActiveRecord::Base
       if u.families.length > 0
         users << u
       end
-      return users
-      p users.inspect
+      users
     end
   end
 end

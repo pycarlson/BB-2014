@@ -5,15 +5,7 @@ class StaticPagesController < ApplicationController
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
     @families = Family.all
-    @total_fams = Family.count
-    @adopted_families = []
-
-    @families.each do |fam| 
-      if fam.adopted == true
-        @adopted_families << fam
-      end
-    end
-    @left_unadopted = @total_fams - @adopted_families.count
+    @left_unadopted = Family.get_total_adoptions
   end
 
   def download_tax_receipt_pdf
@@ -23,7 +15,6 @@ class StaticPagesController < ApplicationController
         type: "application/pdf"
       )
   end
-
 
   def add_location
     user = current_user
@@ -39,9 +30,6 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-  end
-
-  def how_it_works
   end
 
   def contact

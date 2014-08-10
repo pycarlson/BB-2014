@@ -1,7 +1,12 @@
 @import 'variables';
 
 .no-fams {
-  margin-top: 40px;
+  background-color: $lightGray;
+  padding: 20px;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .filtering-deets {
@@ -10,7 +15,7 @@
 }
 
 .families-container {
-  padding-left: 5%;
+  /*padding-left: 5%;*/
   box-sizing: border-box;
   margin: 0 auto;
   .inner-container {

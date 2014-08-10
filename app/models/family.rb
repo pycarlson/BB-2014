@@ -6,6 +6,13 @@ class Family < ActiveRecord::Base
   
   accepts_nested_attributes_for :family_members, :allow_destroy => true
 
+  def self.get_total_adoptions
+    total_fams = Family.count
+    adopted_families = []
+    Family.all.each { |fam| adopted_families << fam if fam.adopted == true }
+    @left_unadopted = total_fams - adopted_families.count
+  end
+
   def drop_off
     date_id = User.find(self.user_id).drop_date_id
     DropDate.find(date_id).date_and_time

@@ -1,15 +1,17 @@
   <%= render 'shared/sub_nav' %>
   
   <div class="inner-container">
-  <div class="col-lg-12 filtering-deets">
+  <div class="filtering-deets">
     <h2>Families Available for Adoption</h2>
     <%= render "filter_by_size_buttons" %>
   </div>
 
+  <div class="clearfix"></div>
+
   <div class="families-container">
 
     <div class="fams fams1">
-      <%= render partial: "fams_by_size", locals: { families: @fams_two } %>
+      <%= render partial: "fams_by_size", locals: { families: @fams_one } %>
     </div>
     <div class="fams fams2">
       <%= render partial: "fams_by_size", locals: { families: @fams_two } %>
