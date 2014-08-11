@@ -22,7 +22,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   resources :admins, only: [:destroy] 
 
-  get '/download_tax_receipt_pdf' => 'static_pages#download_tax_receipt_pdf'
+  get '/download_pdf' => 'static_pages#download_pdf'
   get '/super_admin' => 'admin_pages#super_admin'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   post '/update_gift_status' => 'admin_pages#update_gift_status'

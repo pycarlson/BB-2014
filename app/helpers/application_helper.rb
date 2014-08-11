@@ -1,7 +1,11 @@
 module ApplicationHelper
 
-  def cp(path)
-    "active" if current_page?(path)
+  def nav_link(text, path)
+    if current_page?(path)
+      link_to text, path, class: "active"
+    else
+      link_to text, path
+    end
   end
 
   def family_has_been_adopted?(f)
@@ -15,7 +19,6 @@ module ApplicationHelper
 
   def user_is_super_admin?
     current_user && current_user.email == ENV["P_EMAIL"] || current_user && current_user.email == ENV["SUPER_EMAIL"] || current_user && Drive.last.super_admins.include?(SuperAdmin.find_by_user_id(current_user.id))
-
   end
   
 end

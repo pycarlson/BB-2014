@@ -11,9 +11,5 @@ module UserHelper
   def family_has_been_adopted?(f)
     f.adopted == true
   end
-
-  def is_adopting(family)
-    false
-  end
-
+  
 end
