@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   
-  before_filter :user_is_super_admin?
+  before_filter :user_is_admin?
 
   def new
     @organization = Organization.new
@@ -16,8 +16,9 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find(params[:id])
-    @organization.update_attributes(organization_params)
-    redirect_to admin_path
+    if @organization.update_attributes(organization_params)
+      redirect_to super_admin_path
+    end
   end
 
   private
