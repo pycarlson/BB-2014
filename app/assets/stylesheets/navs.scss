@@ -37,10 +37,17 @@
 
 .manage-nav {
   margin: 0 auto;
-  max-width: 565px;
+  max-width: 585px;
+  text-align: center;
+  label {
+    margin-right: 20px;
+  }
   h2 {
     text-align: center;
   } 
+  .no-rm {
+    margin-right: 0;
+  }
 }
 
 .subnav {

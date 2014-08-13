@@ -14,7 +14,7 @@
           <ul class="nav navbar-nav">
 
             
-            <% if user_signed_in? && user_has_chosen_drop_location %>
+            <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
               <li><%= link_to "Browse Families", families_path, :class => "btn btn-success" %></li>
             <% end %>
 
@@ -35,7 +35,6 @@
                 <% if user_is_super_admin? %>
                   <li><%= link_to "Edit BB Info", edit_organization_path(Organization.first) %></li>
                   <li><%= link_to "Create a Drive", new_drive_path %></li>
-                  <li><%= link_to "Edit Drive", edit_drive_path(Drive.last) %></li>
                   <li><%= link_to "Super Admin", super_admin_path %></li>
                 <% end %>
 

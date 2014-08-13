@@ -10,7 +10,9 @@
   <th><h2>Zip</h2></th>
   <th><h2>Phone</h2></th>
   <th><h2>Company</h2></th>
-  <th><h2>Resend Email</h2></th>
+  <% if user_is_super_admin? %>
+    <th><h2>Resend Email</h2></th>
+  <% end %>
 </tr>
 </thead>
 <% @adoptors.each do |a| %>
@@ -43,7 +45,10 @@
     <td>
       <li><%= a.company %></li>
     </td>
-    <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a), :class => "btn btn-info" %></td>
+    <% if user_is_super_admin? %>
+      <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a), :class => "btn btn-info" %>
+      </td>
+    <% end %>
     <% end %>
   </ul>
 </tr>

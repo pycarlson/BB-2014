@@ -19,7 +19,7 @@
             <% elsif drive.status == false %>
             <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-info" %></li>
             <% end %>  
-            <li><%= link_to 'Reset Drive', reset_drive_path, class: "btn btn-danger" %></li>
+            <li><%= link_to 'Reset Drive', reset_drive_path, class: "btn btn-danger", :confirm => 'This is a desctructive action. All your families and adoptions will be deleted. Would you like to proceed with this action?' %></li>
             <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-success" %></li>
             <% end %>
           </li>
@@ -109,3 +109,4 @@
   </div>
 </div>
 </div>
+

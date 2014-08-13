@@ -23,8 +23,15 @@
     </div>
 
     <div class="row count">
-      <h2><%= @left_unadopted %></h2>
-      <p>Families Still Available for 'Adoption'</p>
+      <h2><%= @countdown %></h2>
+      <p>
+        <% if @countdown == 1 %> 
+          Day
+        <% else %> 
+          Days
+        <% end %> 
+        left until the Adopt-a-Family Giftdrive opens!
+      </p>
     </div>
 
     <% if !user_signed_in? %>

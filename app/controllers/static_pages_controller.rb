@@ -7,8 +7,7 @@ class StaticPagesController < ApplicationController
   def home
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
-    @families = Family.all
-    @left_unadopted = Family.get_total_adoptions
+    @countdown = @drive.countdown
   end
 
   def download_pdf

@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def drive_is_closed?
+    Drive.last.status == false
+  end
+
   def nav_link(text, path)
     if current_page?(path)
       link_to text, path, class: "active"

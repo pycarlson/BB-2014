@@ -40,4 +40,5 @@ $(document).ready(function() {
   if (document.URL == 'http://localhost:3000/users/sign_in' || document.URL == 'http://localhost:3000/users/sign_up') {
     $('footer').hide();
   }
+
 });

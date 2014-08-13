@@ -4,9 +4,9 @@
   <h2>Organized by <a href="http://www.brighter-beginnings.org/">Brighter Beginnings</a></h2>
   <%= link_to 'Home', root_path, :class => "subnav-link" %>
   <% if user_signed_in? %>
-  <%= link_to 'My Profile', user_path(@user), :class => "subnav-link" %>
+  <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link" %>
   <% end %>
-  <% if user_signed_in? && user_has_chosen_drop_location %>
+  <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
     <%= link_to 'Families', families_path, :class => "subnav-link" %>
   <% end %>
 </div>

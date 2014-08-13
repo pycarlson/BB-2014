@@ -1,3 +1,5 @@
+require 'date'
+
 class Drive < ActiveRecord::Base
   has_many :admins, :dependent => :destroy
   has_many :super_admins
@@ -10,6 +12,12 @@ class Drive < ActiveRecord::Base
   after_create :delete_the_past_drive!
   after_create :delete_the_past_drive_adoptions!
   
+  def countdown
+    today = Date.today.yday
+    halloween = Date.new(2014,10,31).yday
+    return (halloween - today)
+  end
+
   def delete_the_past_drive!
     if Drive.all.length > 1 
       Drive.first.destroy

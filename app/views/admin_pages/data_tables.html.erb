@@ -26,10 +26,12 @@
     <%= label_tag(:families, "All Families") %>
     <%= radio_button_tag(:option, "adoptors") %>
     <%= label_tag(:donors, "Adopting Users") %>
-    <%= radio_button_tag(:option, "users") %>
-    <%= label_tag(:donors, "All Registered Users") %>
+    <% if user_is_super_admin? %>
+      <%= radio_button_tag(:option, "users") %>
+      <%= label_tag(:donors, "All Registered Users") %>
+    <% end %>  
     <%= radio_button_tag(:option, "adoptions", :checked => true) %>
-    <%= label_tag(:adoptions, "Current Adoptions") %>
+    <%= label_tag(:adoptions, "Current Adoptions", class: "no-rm") %>
   </div>
 
   <div class="manage-table families-partial">
@@ -38,9 +40,11 @@
   <div class="manage-table adoptions-partial">
     <%= render 'adoption_data' %>
   </div>
-  <div class="manage-table users-partial">
-    <%= render 'all_users' %>
-  </div>
+  <% if user_is_super_admin? %>
+    <div class="manage-table users-partial">
+      <%= render 'all_users' %>
+    </div>
+  <% end %>
   <div class="manage-table donors-partial">
     <%= render 'donor_data' %>
   </div>

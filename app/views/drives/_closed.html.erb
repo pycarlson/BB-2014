@@ -1,3 +1,15 @@
 <div class="closed-drive">
-<h1>USERS WILL SEE THIS PAGE WHEN THE DRIVE IS CLOSED</h1>
+  <h1>USERS WILL SEE THIS PAGE WHEN THE DRIVE IS CLOSED</h1>
+</div>
+
+<div class="until-open">
+  <h2><%= @countdown %></h2>
+  <p>
+    <% if @countdown == 1 %> 
+    Day
+    <% else %> 
+    Days
+    <% end %> 
+    until the<br>Brighter Beginnings <br>Adopt-a-Family Giftdrive opens!
+  </p>
 </div>
