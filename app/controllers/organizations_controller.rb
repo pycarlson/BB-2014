@@ -7,7 +7,10 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.create!(org_params)
+    organization = Organization.create!(org_params)
+    if organization.save
+      redirect_to super_admin_path
+    end
   end
 
   def edit
