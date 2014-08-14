@@ -18,5 +18,4 @@
 //= require bootstrap
 //= require jquery.turbolinks
 //= require turbolinks
-//= require jquery_nested_form
 //= require_tree .
