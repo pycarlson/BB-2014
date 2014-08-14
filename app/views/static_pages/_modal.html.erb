@@ -12,12 +12,12 @@
           <ul>
             <li>
                 <ul class="map-list">
-                  <li class="map"><%= render dl.name.downcase %></li>
+                  <li class="map"><%= render dl.drop_location_name.downcase %></li>
                 </ul>
               </li>
             <li>
               <ul class="list">
-                <li><h2><%= dl.name %></h2></li>
+                <li><h2><%= dl.drop_location_name %></h2></li>
                 <li><p><%= dl.street %></p></li>
                 <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
                 <li><%= button_to "Choose Location", add_location_path(:drop_location_id => dl.id), :method => :post, :class => "btn btn-large btn-info" %></li> 

@@ -21,7 +21,7 @@
 
         <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
         <ul>
-          <li><p><%= DropLocation.find(current_user.drop_location_id).name %></p></li>
+          <li><p><%= DropLocation.find(current_user.drop_location_id).drop_location_name %></p></li>
 
           <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
           <% if user_is_a_donor?  %>
@@ -56,7 +56,7 @@
       <div class="col-sm-3 col-xs-12 column">
         <h2>Adopted Families</h2>
         <% unless user_is_a_donor?  %>
-          <p>No famlies adopted yet...</p>
+          <p>No families adopted yet...</p>
         <% end %>
 
         <% if user_is_a_donor?  %>

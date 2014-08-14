@@ -43,11 +43,11 @@ class FamilyMemberImport
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      family = Family.find_by_code(row["code"]) || Family.new(code: row["code"])
+      family = Family.find_by_code(row["code"].strip) || Family.new(code: row["code"].strip)
       family_member = FamilyMember.where("family_id = ? AND first_name = ?", family.id, row["first_name"]).first || FamilyMember.new
       family_member.attributes = row.to_hash.slice(row["code"])
-      family_member.first_name = row["first_name"]
-      family_member.gender = row["gender"]
+      family_member.first_name = row["first_name"].strip
+      family_member.gender = row["gender"].strip
       family_member.size_pants = row["size_pants"]
       family_member.size_shirt = row["size_shirt"]
       family_member.size_dress = row["size_dress"]
@@ -55,7 +55,7 @@ class FamilyMemberImport
       family_member.bio = row["bio"]
       family_member.age = row["age"]
 
-      drop_location_id = DropLocation.find_by_name(row["name"]).id
+      drop_location_id = DropLocation.find_by_drop_location_name(row["drop_location_name"].strip).id
       
       if family_member.save
         check_for_needs(row, family_member)

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140608235920) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.string   "name"
+    t.string   "drop_location_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -12,6 +12,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
 
   resources :families do 
+    post '/update_gift_status' => 'families#update_gift_status'
+
     resources :family_members do 
       resources :needs
     end
@@ -22,15 +24,16 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   resources :admins, only: [:destroy] 
 
+  get '/data_tables' => 'admin_pages#data_tables'
+
+
   get '/download_pdf' => 'static_pages#download_pdf'
   get '/super_admin' => 'admin_pages#super_admin'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
-  post '/update_gift_status' => 'admin_pages#update_gift_status'
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'
   get '/shopping_tips' => 'static_pages#shopping_tips'
   get '/faq' => 'static_pages#faq'
-  get '/data_tables' => 'admin_pages#data_tables'
   post '/add_location' => 'static_pages#add_location'
   post '/add_admin' => 'admin_pages#add_admin'
   post '/add_super_admin' => 'admin_pages#add_super_admin'

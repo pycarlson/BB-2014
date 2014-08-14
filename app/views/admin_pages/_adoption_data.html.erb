@@ -40,7 +40,7 @@
       </li>
     </td>
     
-    <%= form_tag("/update_gift_status", ) do %>
+    <%= form_tag(family_update_gift_status_path(af)) do %>
       <%= hidden_field_tag "id", af.id %>
       <td>
         <%= text_field_tag :num_boxes, af.num_boxes, :class => "table-input boxes" %>

@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
 
   after_create :update_super_drop_id
 
+  def is_super?
+    super_admin = SuperAdmin.find_by_user_id(self.id)
+    super_admin != nil ? true : false
+  end  
+
   def update_super_drop_id
     if self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER"]
       self.drop_location_id = 0
@@ -38,7 +43,7 @@ class User < ActiveRecord::Base
 
   def get_drop_location_name
     unless self.drop_location_id == 0
-      DropLocation.find(self.drop_location_id).name
+      DropLocation.find(self.drop_location_id).drop_location_name
     end
   end
 

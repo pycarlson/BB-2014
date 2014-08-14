@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
 
-  before_filter :user_is_admin?, except: [:index, :show]
+  before_filter :user_is_admin?, except: [:index, :show, :update_gift_status]
   before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
   before_filter :find_family, except: [:index, :new, :create]
 
@@ -45,10 +45,10 @@ class FamiliesController < ApplicationController
     if @family.update_attributes(family_params)
       @family.is_live = false
       @family.save
-      if user_is_super_admin? 
-        redirect_to super_admin_path 
+      if current_user.is_super? 
+        redirect_to super_admin_path
       else
-        redirect_to families_path
+        redirect_to data_tables_path
       end
     else
       render :edit
@@ -57,17 +57,22 @@ class FamiliesController < ApplicationController
 
   def destroy
     @family.destroy
-    if user_is_super_admin? 
-      redirect_to super_admin_path
-    else
-      redirect_to data_tables_path
-    end
+    redirect_to super_admin_path
   end 
 
   def go_live
     if @family.update_attributes(:is_live => params[:is_live])
       redirect_to super_admin_path 
     end
+  end
+
+  def update_gift_status
+    drive = Drive.find(Drive.last.id)
+    @family.update_attributes(:given_to_family => params[:given_to_family],
+                              :received_at_org => params[:received_at_org],
+                              :num_boxes => params[:num_boxes])
+    
+    redirect_to data_tables_path
   end
 
   def import

@@ -6,7 +6,7 @@ class CreateDropLocations < ActiveRecord::Migration
       t.string   :city
       t.string   :state
       t.string   :zipcode
-      t.string   :name
+      t.string   :drop_location_name
 
       t.timestamps
     end
