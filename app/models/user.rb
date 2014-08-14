@@ -12,8 +12,12 @@ class User < ActiveRecord::Base
   after_create :update_super_drop_id
 
   def is_super?
-    super_admin = SuperAdmin.find_by_user_id(self.id)
-    super_admin != nil ? true : false
+    super_admin = SuperAdmin.find_by_user_id(self.id) 
+    if super_admin != nil || self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER_EMAIL"]
+      true
+    else
+      false
+    end
   end  
 
   def update_super_drop_id
