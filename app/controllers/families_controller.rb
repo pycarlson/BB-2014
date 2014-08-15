@@ -42,8 +42,6 @@ class FamiliesController < ApplicationController
   end
 
   def update
-    p "*" * 100
-    p current_user.is_super?
     if @family.update_attributes(family_params)
       @family.is_live = false
       @family.save

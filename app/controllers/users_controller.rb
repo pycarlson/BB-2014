@@ -27,8 +27,8 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
     @user.save
     if params[:user][:family_id]
-      family = Family.find(params[:user][:family_id])
-      @user.create_adopted_family_associations(family)
+      @family = Family.find(params[:user][:family_id])
+      @user.create_adopted_family_associations(@family)
     end
     redirect_to user_path(@user)
   end

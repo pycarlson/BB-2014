@@ -37,12 +37,13 @@ class User < ActiveRecord::Base
   end
 
   def create_adopted_family_associations(family)
+    family = family
     self.adoptor = true
     family.adopted = true
     family.save
     self.families << family
-    UserMailer.adoption_confirmation(self).deliver
     self.save
+    UserMailer.adoption_confirmation(self, family).deliver
   end
 
   def get_drop_location_name

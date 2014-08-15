@@ -1,4 +1,57 @@
- 
-Thank you for registering!
+<div style="background-color: #eeeeee; padding: 20px;" class="email-container">
+  <h1 style="font-family: 'Alegreya', serif; font-weight: 500; line-height: 46px; font-size: 46px; margin: 0 0 43px 0;">Adopt-a-Family Details</h1>
+  <div class="bb-content">
+    <h2 style="font-family: 'Roboto Condensed', sans-serif; font-weight: normal; font-size: 21px; line-height: 23px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 23px 0;">A few words from Brighter Beginnings:</h2>
+    <p>On behalf of the families served by Brighter Beginnings that you selected to "adopt" to share Holiday gifts, we would like to thank you for your kindness and generosity. Adopting a family for the Holiday Season is a big responsibility and our families are so very thankful for your holiday support.</p>
+    <p>When dropping off your gifts, please package them securely in sturdy boxes with lids and taped securely to close. Boldly write the Family Code (found on the Family Profile) on all four sides and on the top of the box. Label each box with its number (i.e. “1 of 3”, “2 of 3”). Lastly, please bring a filled out donation receipt. A blank copy can be found here: GET RECEIPT</p>
+    <p><strong>For shopping tips, please go here: <%= link_to 'GET SHOPPING TIPS', 'http://adopt-a-family-program.herokuapp.com/shopping_tips' %></strong></p>
+    <% if @dl != nil %>
+      <p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0 0 23px 0;">
+        <strong>Please note your DROP OFF LOCATION as: <%= @dl.street %>, <%= @dl.city %>, <%= @dl.state %></strong>
+      </p>
+    <% end %>
+    <% if @dd != nil %>
+      <p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0 0 23px 0;">
+        <strong>Please note your GIFT DROP DATE as: <%= @dd.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></strong>
+      </p>
+    <% end %>
+    <p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0 0 23px 0;">To edit any of your personal information, please <%= link_to 'VISIT YOUR ACCOUNT', edit_user_path(@user) %></p>
+  </div>
+  <hr>
+  <div class="family-content">
+  <h1 style="font-family: 'Alegreya', serif; font-weight: 500; line-height: 46px; font-size: 46px; margin: 0 0 43px 0;">Family Details</h1>
+  <h2 style="font-family: 'Roboto Condensed', sans-serif; font-weight: normal; font-size: 21px; line-height: 23px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 23px 0;">(Family Code: <%= @family.code.upcase %>)</h2>
+  <% @family.family_members.each do |fm| %>
+  <div>
+    <ul style="margin: 0; padding: 0;">
+      <li style="list-style: none;">
+        <ul style="margin-left: 0; padding: 0;">
+          <li style="list-style: none; margin-bottom: 5px;"><h2 style="font-family: 'Roboto Condensed', sans-serif; font-weight: normal; font-size: 21px; line-height: 23px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0;"><%= fm.first_name %>, <%= fm.age %></h2></li>
+          <li style="list-style: none; margin-bottom: 5px;"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0 0 10px 0;"><%= fm.bio %></p></li>
+        </ul>
+      </li>
+      <li style="list-style: none; padding-left: 20px;"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;" class="need-title"><%= fm.first_name %>'s Needs</p></li>
+      <li style="list-style: none;">
+        <ul style="margin-left: 20px; padding: 0;" class="needs">
+          <% fm.needs.each do |n| %>
+          <li style="list-style: disc; margin-bottom: 5px;"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;"><%= n.item %></p></li>
+          <% end %>  
+        </ul>
+      </li>
+      <li style="list-style: none;" class="sizes">
+        <ul style="margin-left: 20px; padding-left: 20px;">
+          <li style="list-style: disc; margin-bottom: 5px;" class="col-lg-3"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;">Pant Size: <%= fm.size_pants %></p></li>
+          <li style="list-style: disc; margin-bottom: 5px;" class="col-lg-3"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;">Shirt Size: <%= fm.size_shirt %></p></li>
+          <li style="list-style: disc; margin-bottom: 5px;" class="col-lg-3"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;">Dress Size: <%= fm.size_dress %></p></li>
+          <li style="list-style: disc; margin-bottom: 5px;" class="col-lg-3"><p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0;">Shoe Size: <%= fm.size_shoes %></p></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<% end %>
+</div>  
+</div>  
+</div>  
+
 
 
