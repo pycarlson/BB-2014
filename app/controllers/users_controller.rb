@@ -28,7 +28,11 @@ class UsersController < ApplicationController
     @user.save
     if params[:user][:family_id]
       @family = Family.find(params[:user][:family_id])
-      @user.create_adopted_family_associations(@family)
+      if @family.adopted == false
+        @user.create_adopted_family_associations(@family)
+      elsif @family.adopted == true
+        flash[:alert] = "It looks like you will have to go back to searching. This family has already been adopted."
+      end
     end
     redirect_to user_path(@user)
   end
@@ -47,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def get_user
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def user_can_view_profile

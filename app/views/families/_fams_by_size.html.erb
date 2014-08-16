@@ -1,29 +1,25 @@
 <% if families.length == 0 %>
-
-<div class="no-fams">
-  <h1>All families of this size have already been adopted. Thank you!</h1>
-</div>
+  <div class="no-fams">
+    <h1>All families of this size have already been adopted. Thank you!</h1>
+  </div>
 <% else %>
-<% families.each do |f| %>
-
-<ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
-  <li><h1><%= link_to f.code, family_path(f) %></h1></li>
-  <% f.family_members.each do |fm| %>
-  <li>
-    <ul class="fam-members">
-      <li><h2><%= fm.first_name %></h2></li>
-      <li><p><%= truncate(fm.bio, length: 80) %></p></li>
+  <% families.each do |f| %>
+    <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
+      <li><h1><%= link_to f.code, family_path(f) %></h1></li>
+      <% f.family_members.each do |fm| %>
+      <li>
+        <ul class="fam-members">
+          <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
+          <li><p><%= truncate(fm.bio, length: 80) %></p></li>
+        </ul>
+      </li>
+      <% end %>
+      <li class="buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="">
+          <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
+          <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id, :id => current_user.id), :class => "btn btn-success" %>
+        </div>
+      </li>
     </ul>
-  </li>
   <% end %>
-  <li class="buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="">
-      <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
-      <%= link_to "ADOPT", adoption_confirmation_path(:family_id => f.id, :id => current_user.id), :class => "btn btn-success" %>
-    </div>
-  </li>
-</ul>
-
-
-<% end %>
 <% end %>

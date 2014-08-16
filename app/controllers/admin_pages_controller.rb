@@ -106,6 +106,11 @@ class AdminPagesController < ApplicationController
     Drive.last.families.clear
     User.all.each do |u|
       u.families.clear
+      u.drop_date_id = nil
+      unless u.drop_location_id == 0
+        u.drop_location_id = nil
+      end
+      u.save
     end
     redirect_to super_admin_path
   end

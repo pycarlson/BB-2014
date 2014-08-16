@@ -3,6 +3,7 @@
 <thead>  
 <tr>
   <th><h2>Code</h2></th>
+  <th></th>
   <th><h2>Adopter</h2></th>
   <th><h2>Phone</h2></th>
   <th><h2>Email</h2></th>
@@ -22,6 +23,9 @@
   <ul>
     <td>
       <li><%= af.code %></li>
+    </td>
+    <td>
+      <li><%= af.family_members.count %></li>
     </td>
     <td>
       <li><%= User.find(af.user_id).full_name %></li>

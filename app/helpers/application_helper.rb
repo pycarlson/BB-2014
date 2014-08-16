@@ -12,10 +12,6 @@ module ApplicationHelper
     end
   end
 
-  def family_has_been_adopted?(f)
-    f.adopted == true
-  end
-
   protected
   def user_is_admin?
     current_user && Admin.find_by_user_id(current_user.id) || user_is_super_admin?

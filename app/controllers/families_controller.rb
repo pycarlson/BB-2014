@@ -6,7 +6,7 @@ class FamiliesController < ApplicationController
 
 
   def index
-    @families = current_user.filter_families
+    @families = Family.filter_families(current_user)
     @fams_five = Family.get_fams_five_and_more(@families)
     @fams_four = Family.get_fams_four(@families)
     @fams_three = Family.get_fams_three(@families)

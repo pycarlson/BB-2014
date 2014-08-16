@@ -11,6 +11,10 @@ class FamilyMember < ActiveRecord::Base
     Family.find(self.family_id).code
   end
 
+  def get_gender_pronoun
+    self.gender == 'female' ? 'She' : 'He'
+  end
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       FamilyMember.create! row.to_hash

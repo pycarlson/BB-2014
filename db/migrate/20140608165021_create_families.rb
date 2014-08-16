@@ -2,7 +2,7 @@ class CreateFamilies < ActiveRecord::Migration
   def change
     create_table :families do |t|
       t.integer :drive_id
-      t.boolean :adopted, default: :false
+      t.boolean :adopted, :default => false
       t.date    :received_at_org, :date
       t.date    :given_to_family, :date
       t.string  :code

@@ -19,8 +19,18 @@ class Family < ActiveRecord::Base
   end
 
   def self.filter_families(user)
-    Family.where(drop_location_id: user.drop_location_id, is_live: true, user_id: nil)
+    if user.drop_location_id == 0
+      families = Family.where(is_live: true)
+      families = families.select {|f| f if f.adopted == false}
+    else
+      families = Family.where(drop_location_id: user.drop_location_id, is_live: true)
+      families = families.select {|f| f if f.adopted == false}
+    end
   end
+
+  # def has_not_been_adopted?
+  #   self.adopted != true
+  # end
 
   def self.get_fams_five_and_more(families)
     families.select {|f| f if f.family_members.length >= 5 }
