@@ -3,6 +3,7 @@ class FamiliesController < ApplicationController
   before_filter :user_is_admin?, except: [:index, :show, :update_gift_status]
   before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
   before_filter :find_family, except: [:index, :new, :create]
+  before_filter :family_is_in_users_location, only: [:show]
 
 
   def index
@@ -84,6 +85,13 @@ class FamiliesController < ApplicationController
 
   def find_family
     @family = Family.find(params[:id])
+  end
+
+  def family_is_in_users_location
+    unless @family.drop_location_id == current_user.drop_location_id || current_user.drop_location_id == 0
+      flash[:alert] = "The family you're looking for isn't in your chosen drop location." 
+      redirect_to families_path
+    end
   end
 
   def family_params
