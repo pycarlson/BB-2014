@@ -7,6 +7,11 @@ class FamilyMember < ActiveRecord::Base
   has_many :needs, :dependent => :destroy, :inverse_of => :family_member
   accepts_nested_attributes_for :needs, :allow_destroy => true
   
+  validates :first_name, presence: true
+  validates :gender, presence: true
+  validates :age, presence: true
+  validates :bio, presence: true
+
   def get_family_code
     Family.find(self.family_id).code
   end

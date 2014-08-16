@@ -40,7 +40,9 @@
       <li><%= a.zip %></li>
     </td>
     <td>
-      <li><%= a.phone %></li>
+      <% if a.phone %>
+      <li><%= parse_phone_number_string(a.phone) %></li>
+      <% end %>
     </td>
     <td>
       <li><%= a.company %></li>

@@ -34,16 +34,6 @@
 
   </div>
   
-  
-  <div class="row">
-    <div class="form-group col-lg-6">
-      <div class="form-item">
-      <%= f.label :donation_receipt_link %>
-      <%= f.text_field :donation_receipt_link, class: "form-control", placeholder: 'optional - must be a valid url' %>
-      </div>
-    </div>
-  </div>
-
   <%= f.fields_for :drop_locations do |dl| %>
     <h2>Drop Location <span class="remove-link"><%= dl.link_to_remove "remove" %></span></h2>
 
@@ -52,7 +42,7 @@
       <div class="form-group col-lg-12">
         <div class="form-item">
         <%= dd.label :date_and_time %>
-        <%= dd.datetime_select :date_and_time, class: "form-control" %>
+        <%= dd.datetime_select :date_and_time, required: :true, class: "form-control" %>
         <%= dd.link_to_remove "remove" %>
         </div>
       </div>

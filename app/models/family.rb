@@ -6,6 +6,8 @@ class Family < ActiveRecord::Base
   
   accepts_nested_attributes_for :family_members, :allow_destroy => true
 
+  validates :code, presence: true
+
   def self.get_total_adoptions
     total_fams = Family.count
     adopted_families = []
@@ -27,10 +29,6 @@ class Family < ActiveRecord::Base
       families = families.select {|f| f if f.adopted == false}
     end
   end
-
-  # def has_not_been_adopted?
-  #   self.adopted != true
-  # end
 
   def self.get_fams_five_and_more(families)
     families.select {|f| f if f.family_members.length >= 5 }

@@ -7,7 +7,6 @@ class CreateDrives < ActiveRecord::Migration
       t.date   :end_date
       t.string   :fundraising_url
       t.text     :fundraising_blurb
-      t.string   :donation_receipt_link
       t.boolean  :status, default: true
 
       t.timestamps

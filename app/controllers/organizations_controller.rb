@@ -21,6 +21,8 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     if @organization.update_attributes(organization_params)
       redirect_to super_admin_path
+     else
+      render :edit
     end
   end
 

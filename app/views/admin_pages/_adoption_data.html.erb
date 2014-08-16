@@ -31,7 +31,9 @@
       <li><%= User.find(af.user_id).full_name %></li>
     </td>
     <td>
-      <li><%= User.find(af.user_id).phone %></li>
+      <% if User.find(af.user_id).phone %>
+        <li><%= parse_phone_number_string(User.find(af.user_id).phone) %></li>
+      <% end %>
     </td>
     <td>
       <li><%= User.find(af.user_id).email %></li>

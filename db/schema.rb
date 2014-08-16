@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 20140608235920) do
     t.date     "end_date"
     t.string   "fundraising_url"
     t.text     "fundraising_blurb"
-    t.string   "donation_receipt_link"
-    t.boolean  "status",                default: true
+    t.boolean  "status",            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

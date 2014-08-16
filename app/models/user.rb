@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
 
   after_create :update_super_drop_id
 
+  before_save :standardise_number
+
+  def standardise_number
+    if self.phone != nil
+      number = self.phone.gsub!(/\D/, "")
+    end
+  end
+
   def is_super?
     super_admin = SuperAdmin.find_by_user_id(self.id) 
     if super_admin != nil || self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER_EMAIL"]

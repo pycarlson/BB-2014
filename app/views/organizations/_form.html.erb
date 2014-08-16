@@ -5,7 +5,7 @@
     <div class="form-group col-lg-6">
       <div class="form-item">
       <%= f.label :agency_name %><br>
-      <%= f.text_field :name, class: "form-control col-lg-6" %>
+      <%= f.text_field :name, required: :true, class: "form-control col-lg-6" %>
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
     <div class="form-group col-lg-12">
       <div class="form-item">
       <%= f.label :description %><br>
-      <%= f.text_area :blurb, :rows => 6, class: "form-control" %>
+      <%= f.text_area :blurb, required: :true, :rows => 6, class: "form-control" %>
       </div>
     </div>
   </div>
@@ -23,35 +23,35 @@
     <div class="form-group float-right col-lg-4 col-md-6 col-sm-12">
       <div class="form-item">
       <%= f.label :email %><br>
-      <%= f.text_field :email, class: "form-control" %>
+      <%= f.email_field :email, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group float-right col-lg-4 col-md-6 col-sm-12">
       <div class="form-item">
       <%= f.label :phone %><br>
-      <%= f.text_field :phone, class: "form-control" %>
+      <%= f.telephone_field :phone, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group float-right col-lg-4 col-md-6 col-sm-12">
       <div class="form-item">
       <%= f.label :address %><br>
-      <%= f.text_field :address, class: "form-control" %>
+      <%= f.text_field :address, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group  float-right col-lg-4 col-md-6 col-sm-12">
       <div class="form-item">
       <%= f.label :zipcode %><br>
-      <%= f.text_field :zip, class: "form-control" %>
+      <%= f.text_field :zip, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group float-right col-lg-4 col-md-6 col-sm-12">
       <div class="form-item">
       <%= f.label :website_url %><br>
-      <%= f.text_field :website_url, class: "form-control" %>
+      <%= f.url_field :website_url, required: :true, class: "form-control" %>
       </div>
     </div>
   </div>
