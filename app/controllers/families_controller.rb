@@ -23,11 +23,18 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    family = Family.create!(family_params)
-    family.drive_id = Drive.last.id
-    family.save
-    if user_is_super_admin? 
-      redirect_to super_admin_path 
+    @family = Family.find_or_create_by(id: params[:id])
+    @family.update_attributes(family_params)
+    if @family.save
+      @family.drive_id = Drive.last.id
+      @family.save
+    else
+      flash[:alert] = "The family you just tried to create already exists."
+      redirect_to new_family_path
+      return
+    end
+    if current_user.is_super? 
+      redirect_to super_admin_path
     else
       redirect_to data_tables_path
     end

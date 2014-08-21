@@ -7,6 +7,7 @@ class Family < ActiveRecord::Base
   accepts_nested_attributes_for :family_members, :allow_destroy => true
 
   validates :code, presence: true
+  validates :code, uniqueness: true
 
   def self.get_total_adoptions
     total_fams = Family.count
