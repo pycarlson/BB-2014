@@ -5,7 +5,7 @@
 <% else %>
   <% families.each do |f| %>
     <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
-      <li><h1><%= link_to f.code, family_path(f) %></h1></li>
+      <li><h1><%= link_to f.code.upcase, family_path(f) %></h1></li>
       <% f.family_members.each do |fm| %>
       <li>
         <ul class="fam-members">

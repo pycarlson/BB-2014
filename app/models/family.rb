@@ -9,6 +9,12 @@ class Family < ActiveRecord::Base
   validates :code, presence: true
   validates :code, uniqueness: true
 
+  before_save :downcase_family_code
+
+  def downcase_family_code
+    self.code.downcase!
+  end
+
   def self.get_total_adoptions
     total_fams = Family.count
     adopted_families = []
