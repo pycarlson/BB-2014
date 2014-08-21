@@ -38,11 +38,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy(params[:id])
-    respond_to do |format|
-      format.html { redirect_to manage_families_path }
-      format.js
-    end
+    @user.remove_as_admin
+    @user.remove_if_super_admin
+    @user.destroy
+    redirect_to super_admin_path
   end 
 
   protected
@@ -51,7 +50,8 @@ class UsersController < ApplicationController
   end
 
   def get_user
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def user_can_view_profile

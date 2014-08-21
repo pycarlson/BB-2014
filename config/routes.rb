@@ -1,7 +1,7 @@
 BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   devise_for :users
-  resources :users, only: [:show, :index, :edit, :update]
+  resources :users, only: [:show, :index, :edit, :update, :destroy]
 
   
   root to: "static_pages#home"

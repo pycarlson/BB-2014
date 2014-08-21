@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def remove_as_admin
+    if Admin.find_by_user_id(self.id)
+      Admin.find_by_user_id(self.id).destroy
+    end
+  end
+
+  def remove_if_super_admin
+    if SuperAdmin.find_by_user_id(self.id)
+      SuperAdmin.find_by_user_id(self.id).destroy
+    end
+  end
+
   def is_super?
     super_admin = SuperAdmin.find_by_user_id(self.id) 
     if super_admin != nil || self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER_EMAIL"]
