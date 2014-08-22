@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   
-  POSSIBLE_FILE_NAMES = ["tax_receipt.pdf", "test2.pdf"]
+  POSSIBLE_FILE_NAMES = ["Donation_receipt_AAF_2014.pdf"]
 
   http_basic_authenticate_with :name => ENV["P_EMAIL"], :password => ENV["P_GMAIL_USERNAME"]
 

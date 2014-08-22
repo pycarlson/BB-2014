@@ -15,7 +15,7 @@
           <% @drives.each do |drive| %>
           <li>
             <% if drive.status == true %>
-            <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger" %></li>
+            <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger", :confirm => 'Do you really want to close this drive? When you click this button users will no longer be able to view or adopt families.' %></li>
             <% elsif drive.status == false %>
             <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-info" %></li>
             <% end %>  

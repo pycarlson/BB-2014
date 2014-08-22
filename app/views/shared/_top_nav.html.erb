@@ -13,18 +13,22 @@
         <div class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
 
-            
+            <% if user_signed_in? %>
+            <li class="main"><%= nav_link "My Account", user_path(current_user) %></li>
+            <% end %>
+            <li class="main"><%= nav_link 'Shopping Tips', shopping_tips_path %></li>
+            <li class="main"><%= nav_link 'FAQs', faq_path %></li>
             <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
-              <li><%= link_to "Browse Families", families_path, :class => "btn btn-success" %></li>
+            <li><%= link_to "Browse Families", families_path, :class => "btn btn-success" %></li>
             <% end %>
 
             <% unless user_signed_in? %>
-              <li class="main"><%= link_to "Sign In", new_user_session_path %></li>
-              <li class="main"><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li class="main"><%= link_to "Sign In", new_user_session_path %></li>
+            <li class="main"><%= link_to "Sign Up", new_user_registration_path %></li>
             <% end %>
 
             <% if user_signed_in? && !user_is_admin? %>
-              <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <li class="main"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% end %>
 
             <% if user_signed_in? && user_is_admin? %>
@@ -33,9 +37,9 @@
               <ul class="dropdown-menu">
 
                 <% if user_is_super_admin? %>
-                  <li><%= link_to "Edit BB Info", edit_organization_path(Organization.first) %></li>
-                  <li><%= link_to "Create a Drive", new_drive_path %></li>
-                  <li><%= link_to "Super Admin", super_admin_path %></li>
+                <li><%= link_to "Edit BB Info", edit_organization_path(Organization.first) %></li>
+                <li><%= link_to "Create a Drive", new_drive_path %></li>
+                <li><%= link_to "Super Admin", super_admin_path %></li>
                 <% end %>
 
                 <li><%= link_to "Add a Family", new_family_path %></li>
