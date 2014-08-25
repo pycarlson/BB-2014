@@ -9,11 +9,10 @@ class Family < ActiveRecord::Base
   validates :code, presence: true
   validates :code, uniqueness: true
 
-  before_create :standardize_family_code
+  before_create :strip_family_code
 
-  def standardize_family_code
+  def strip_family_code
     self.code.strip!
-    self.code.downcase!
   end
 
   def self.get_total_adoptions
