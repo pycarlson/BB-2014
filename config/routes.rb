@@ -1,15 +1,13 @@
 BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
+  root 'static_pages#home'
+
   devise_for :users
   resources :users, only: [:show, :index, :edit, :update, :destroy]
-
-  
-  root to: "static_pages#home"
 
   resources :drives
 
   resources :family_member_imports, only: [:new, :create]
-
 
   resources :families do 
     post '/update_gift_status' => 'families#update_gift_status'
@@ -26,14 +24,15 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   get '/data_tables' => 'admin_pages#data_tables'
 
+  # match '/signup',  to: 'users#new', via: 'get'
+  match '/faq',  to: 'static_pages#faq', via: 'get'
+  match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
 
   get '/download_pdf' => 'static_pages#download_pdf'
   get '/super_admin' => 'admin_pages#super_admin'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'
-  get '/shopping_tips' => 'static_pages#shopping_tips'
-  get '/faq' => 'static_pages#faq'
   post '/add_location' => 'static_pages#add_location'
   post '/add_admin' => 'admin_pages#add_admin'
   post '/add_super_admin' => 'admin_pages#add_super_admin'
