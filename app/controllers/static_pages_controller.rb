@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
   http_basic_authenticate_with :name => ENV["P_EMAIL"], :password => ENV["P_GMAIL_USERNAME"]
 
   def home
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | Home'
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
     @countdown = @drive.countdown
@@ -31,14 +32,20 @@ class StaticPagesController < ApplicationController
   end
 
   def shopping_tips
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | Shopping Tips'
+
   end
 
   def faq
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | FAQs'
+
   end
 
   def about
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | About'
   end
 
   def contact
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | Contact'
   end
 end
