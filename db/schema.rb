@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608235920) do
+ActiveRecord::Schema.define(version: 20140901151718) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20140608235920) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "families", ["drop_location_id"], name: "index_families_on_drop_location_id"
 
   create_table "family_members", force: true do |t|
     t.integer "family_id"

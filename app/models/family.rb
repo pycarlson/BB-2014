@@ -9,6 +9,7 @@ class Family < ActiveRecord::Base
   validates :code, presence: true
   validates :code, uniqueness: true
 
+  before_save { self.code = code.downcase }
   before_create :strip_family_code
 
   def strip_family_code
