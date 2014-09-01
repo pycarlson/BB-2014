@@ -34,7 +34,7 @@ class FamiliesController < ApplicationController
       return
     end
     if current_user.is_super? 
-      redirect_to super_admin_path
+      redirect_to super_admin_page_path
     else
       redirect_to data_tables_path
     end
@@ -54,7 +54,7 @@ class FamiliesController < ApplicationController
       @family.is_live = false
       @family.save
       if current_user.is_super? 
-        redirect_to super_admin_path
+        redirect_to super_admin_page_path
       else
         redirect_to data_tables_path
       end
@@ -65,12 +65,12 @@ class FamiliesController < ApplicationController
 
   def destroy
     @family.destroy
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end 
 
   def go_live
     if @family.update_attributes(:is_live => params[:is_live])
-      redirect_to super_admin_path 
+      redirect_to super_admin_page_path 
     end
   end
 
@@ -85,7 +85,7 @@ class FamiliesController < ApplicationController
 
   def import
     Family.import(params[:file])
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end 
 
   protected

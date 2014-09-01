@@ -39,7 +39,7 @@
                 <% if user_is_super_admin? %>
                 <li><%= link_to "Edit BB Info", edit_organization_path(Organization.first) %></li>
                 <li><%= link_to "Create a Drive", new_drive_path %></li>
-                <li><%= link_to "Super Admin", super_admin_path %></li>
+                <li><%= link_to "Super Admin", super_admin_page_path %></li>
                 <% end %>
 
                 <li><%= link_to "Add a Family", new_family_path %></li>

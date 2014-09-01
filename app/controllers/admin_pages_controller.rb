@@ -21,72 +21,34 @@ class AdminPagesController < ApplicationController
     @left_unadopted = @total_fams - @adopted_families.count
   end
 
-  def super_admin
+  def super_admin_page
     @admins = Admin.all
     @super_admins = SuperAdmin.all
     @drives = Drive.all
     @families = Family.where('is_live = ?', false)
+    @admin = Admin.new
+    @super_admin = SuperAdmin.new
   end
 
   def close_drive
     drive = Drive.last
     drive.status = false
     drive.save
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end
 
   def open_drive
     drive = Drive.last
     drive.status = true
     drive.save
-    redirect_to super_admin_path
-  end
-
-  def add_admin
-    user = User.find_by_email(params[:email])
-    drive = Drive.find(Drive.last.id)
-
-    if user == nil
-      flash[:alert] = "Please have user sign up."
-      redirect_to super_admin_path
-    else
-      new_admin = Admin.find_or_create_by_user_id_and_drive_id!(user_id: user.id, drive_id: drive.id)
-      redirect_to super_admin_path
-    end
-  end
-
-  def add_super_admin
-    user = User.find_by_email(params[:email])
-    drive = Drive.find(Drive.last.id)
-
-    if user == nil
-      flash[:alert] = "Please have user sign up."
-      redirect_to super_admin_path
-    else
-      user.drop_location_id = 0
-      user.save
-      new_super_admin = SuperAdmin.find_or_create_by_user_id_and_drive_id!(user_id: user.id, drive_id: drive.id)
-      redirect_to super_admin_path
-    end
+    redirect_to super_admin_page_path
   end
 
   def go_live
     family = Family.find(params[:format])
     family.is_live = true
     family.save
-    redirect_to super_admin_path
-  end
-
-  def remove_admin
-    admin = Admin.find(params[:format])
-    admin.destroy
-    redirect_to super_admin_path
-  end
-
-  def remove_super_admin
-    super_admin = SuperAdmin.find(params[:format])
-    super_admin.destroy
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end
 
   def cancel_adoption 
@@ -112,7 +74,7 @@ class AdminPagesController < ApplicationController
       end
       u.save
     end
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end
 
   private

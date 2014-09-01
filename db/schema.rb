@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901151718) do
+ActiveRecord::Schema.define(version: 20140901161152) do
 
   create_table "admins", force: true do |t|
     t.integer  "drive_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140901151718) do
     t.boolean  "is_super",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "drives", force: true do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140901151718) do
     t.datetime "updated_at"
   end
 
+  add_index "families", ["code"], name: "index_families_on_code", unique: true
   add_index "families", ["drop_location_id"], name: "index_families_on_drop_location_id"
 
   create_table "family_members", force: true do |t|
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140901151718) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "users", force: true do |t|

@@ -20,7 +20,7 @@ class FamilyMemberImportsController < ApplicationController
     
     if @family_members.save
       if user_is_super_admin? 
-        redirect_to super_admin_path, notice: "Families imported successfully."
+        redirect_to super_admin_page_path, notice: "Families imported successfully."
       elsif user_is_admin?
         redirect_to data_tables_path, notice: "Families imported successfully."
       end

@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
   def create
     organization = Organization.create!(org_params)
     if organization.save
-      redirect_to super_admin_path
+      redirect_to super_admin_page_path
     end
   end
 
@@ -20,7 +20,7 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     if @organization.update_attributes(organization_params)
-      redirect_to super_admin_path
+      redirect_to super_admin_page_path
      else
       render :edit
     end

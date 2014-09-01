@@ -20,7 +20,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :organizations
   resources :family_member_imports, only: [:index]
 
-  resources :admins, only: [:destroy] 
+  resources :admins, only: [:create, :destroy] 
+  resources :super_admins, only: [:create, :destroy] 
 
   get '/data_tables' => 'admin_pages#data_tables'
 
@@ -29,7 +30,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
 
   get '/download_pdf' => 'static_pages#download_pdf'
-  get '/super_admin' => 'admin_pages#super_admin'
+  get '/super_admin_page' => 'admin_pages#super_admin_page'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'

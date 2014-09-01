@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user.remove_as_admin
     @user.remove_if_super_admin
     @user.destroy
-    redirect_to super_admin_path
+    redirect_to super_admin_page_path
   end 
 
   protected

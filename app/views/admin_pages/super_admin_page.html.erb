@@ -31,10 +31,10 @@
         <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h2>Add Admins</h2>
           <div class="add-admin-form">
-            <%= form_tag(add_admin_path, method: "post") do %>
+            <%= form_for(@admin) do |f| %>
             <div class="form-inline">
-              <%= email_field_tag :email, nil, :placeholder => "new organizer email", class: "form-control input-md" %>
-              <%= submit_tag "Add Admin", :class => "btn btn-success" %>
+              <%= f.email_field :email, class: "form-control input-md" %>
+              <%= f.submit "Add Admin", class: "btn btn-success" %>
               <% end %>
             </div>
           </div>
@@ -43,8 +43,8 @@
           <% if @admins.length > 0 %>
           <% @admins.each do |admin| %>
           <ul>
-            <li><%= link_to "Remove", remove_admin_path(admin) %></p></li>
-            <li><p><%= User.find(admin.user_id).email %></p></li>
+            <li><p><%= link_to "Remove", admin, method: :delete, class: "delete_link"  %></p></li>
+            <li><p><%= admin.email %></p></li>
           </ul>
           <% end %>
           <% end %>
@@ -56,10 +56,10 @@
         <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h2>Add Super Admins</h2>
           <div class="add-admin-form">
-            <%= form_tag(add_super_admin_path, method: "post") do %>
+            <%= form_for(@super_admin) do |f| %>
             <div class="form-inline">
-              <%= email_field_tag :email, nil, :placeholder => "new organizer email", class: "form-control input-md" %>
-              <%= submit_tag "Add Super Admin", :class => "btn btn-success" %>
+              <%= f.email_field :email, class: "form-control input-md" %>
+              <%= f.submit "Add Super Admin", :class => "btn btn-success" %>
               <% end %>
             </div>
           </div>
@@ -68,8 +68,8 @@
           <% if @super_admins.length > 0 %>
           <% @super_admins.each do |super_admin| %>
           <ul>
-            <li><%= link_to "Remove", remove_super_admin_path(super_admin) %></p></li>
-            <li><p><%= User.find(super_admin.user_id).email %></p></li>
+            <li><p><%= link_to "Remove", super_admin, method: :delete, class: "delete_link"  %></p></li>
+            <li><p><%= super_admin.email %></p></li>
           </ul>
           <% end %>
           <% end %>
