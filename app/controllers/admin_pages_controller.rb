@@ -1,7 +1,6 @@
 class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:data_tables]
-  
   before_filter :user_is_super_admin?, except: [:data_tables]
 
   def data_tables
@@ -30,13 +29,6 @@ class AdminPagesController < ApplicationController
     @super_admin = SuperAdmin.new
   end
 
-  def close_drive
-    drive = Drive.last
-    drive.status = false
-    drive.save
-    redirect_to super_admin_page_path
-  end
-
   def open_drive
     drive = Drive.last
     drive.status = true
@@ -44,6 +36,13 @@ class AdminPagesController < ApplicationController
     redirect_to super_admin_page_path
   end
 
+  def close_drive
+    drive = Drive.last
+    drive.status = false
+    drive.save
+    redirect_to super_admin_page_path
+  end
+  
   def go_live
     family = Family.find(params[:format])
     family.is_live = true

@@ -5,6 +5,20 @@ User.create!(:email => 'ajob@brighter-beginnings.org', :password => 'password', 
 User.create!(:email => 'p@me.com', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'jlove@me.com', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'j@me.com', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'cfong@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'kpatterson-hall@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'ccesena@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'iferrey@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'bvillafuerte@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+
+SuperAdmin.create!(email: 'bvillafuerte@brighter-beginnings.org')
+SuperAdmin.create!(email: 'pyluftig@gmail.com')
+SuperAdmin.create!(email: 'ajob@brighter-beginnings.org')
+
+Admin.create!(email: 'kpatterson-hall@brighter-beginnings.org')
+Admin.create!(email: 'ccesena@brighter-beginnings.org')
+Admin.create!(email: 'iferrey@brighter-beginnings.org')
+Admin.create!(email: 'cfong@brighter-beginnings.org')
 
 Drive.create!(year: 2014, blurb: "Thanks to an overwhelming response, Adopt-a-Family 2013 is now closed. Please contact us at adopt-a-family@brighter-beginnings.org for other ways to support our families this holiday season. Years ago, we realized that many of our client families were struggling during the holiday season. To address this need, we launched our Adopt-A-Family program, inviting community members and local companies to 'adopt' one or more families and purchase 'gifts from the heart'. How It Works - Through this 'adoption' process, low-income families are matched with a donor who purchases seasonal gifts and drops them off at one of our centers in Alameda or Contra Costa County. Last year, 250 families, and nearly 1,000 family members had their wish lists fulfilled. Donors contributed time and funds gathering holiday gifts, while others came to our two volunteer wrapping events to add sparkle and holiday magic to the gift bundles before our Staff delivered them to families in need.", start_date: "November 30th, 2014", end_date: "December 25th, 2014", fundraising_url: "http://giftdriver.herokuapp.com")
 
