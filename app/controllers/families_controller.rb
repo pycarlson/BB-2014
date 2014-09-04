@@ -33,11 +33,7 @@ class FamiliesController < ApplicationController
       redirect_to new_family_path
       return
     end
-    if current_user.is_super? 
-      redirect_to super_admin_page_path
-    else
-      redirect_to data_tables_path
-    end
+    redirect_to data_tables_path
   end
 
   def show
@@ -53,11 +49,7 @@ class FamiliesController < ApplicationController
     if @family.update_attributes(family_params)
       @family.is_live = false
       @family.save
-      if current_user.is_super? 
-        redirect_to super_admin_page_path
-      else
-        redirect_to data_tables_path
-      end
+      redirect_to data_tables_path
     else
       render :edit
     end

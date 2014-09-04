@@ -33,12 +33,10 @@ class StaticPagesController < ApplicationController
 
   def shopping_tips
     @page_title = 'Brighter Beginnings Adopt-a-Family Program | Shopping Tips'
-
   end
 
   def faq
     @page_title = 'Brighter Beginnings Adopt-a-Family Program | FAQs'
-
   end
 
   def about
