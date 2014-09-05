@@ -2,17 +2,18 @@ class UsersController < ApplicationController
 
   before_filter :user_is_super_admin?, only: [:destroy]
   before_filter :user_can_view_profile, only: [:show, :adoption_confirmation, :edit, :update]
-  before_filter :get_user
+  before_filter :get_user, except: [:adoption_confirmation]
 
   def show
     redirect_to root_path unless @user
   end
 
   def adoption_confirmation
+    @user = current_user
     # this route just goes to the adoptions page
     @family = Family.find(params[:family_id])
-    unless current_user.drop_location_id == 0
-      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    unless @user.drop_location_id == 0
+      @drop_dates = DropLocation.find(@user.drop_location_id).drop_dates
     end
   end
 
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   def get_user
+
     @user = User.find(params[:id])
   end
 
