@@ -15,9 +15,9 @@
 }
 
 .families-container {
-  /*padding-left: 5%;*/
   box-sizing: border-box;
   margin: 0 auto;
+
   .inner-container {
     padding-top: 0 !important;
   }
@@ -38,28 +38,39 @@
   margin: 15px;
   margin-bottom: 100px;
   width: 45%;
+
   .fam-members {
     width: 50%;
     padding-left: 0;
     float: left;
     margin-bottom: 20px;
   }
+
+  h1 a {
+    color: $green;
+    text-decoration: none;
+  }
+
   h2 {
     text-align: left;
   }
+
   .buttons {
     display: block;
     margin-top: 40px;
   }
+
   .btn {
     position: absolute;
     bottom: 0;
     width: auto;
     padding: 10px;
   }
+
   .btn-info {
     right: -15px;
   } 
+
   .btn-success {
     right: 120px;
   }
@@ -154,7 +165,7 @@
 .fams {
   position: relative;
   display: none;
-
+  padding-left: 70px;
 }
 
 .fams5 .adoptable-families {
