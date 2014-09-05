@@ -26,6 +26,13 @@ DropLocation.create!(:drive_id => Drive.last.id, :drop_location_name => 'Richmon
 DropLocation.create!(:drive_id => Drive.last.id, :drop_location_name => 'Oakland', :street => '2648 International Blvd', :city => 'Oakland', :state => 'CA', :zipcode => '94601')
 DropLocation.create!(:drive_id => Drive.last.id, :drop_location_name => 'Antioch', :street => '512 W 5th St', :city => 'Antioch', :state => 'CA', :zipcode => '94509')
 
+DropDate.create!(date_and_time: '2014-12-21 02:30:00', drop_location_id: 1)
+DropDate.create!(date_and_time: '2014-12-22 04:30:00', drop_location_id: 1)
+DropDate.create!(date_and_time: '2014-12-22 01:30:00', drop_location_id: 2)
+DropDate.create!(date_and_time: '2014-12-21 01:00:00', drop_location_id: 2)
+DropDate.create!(date_and_time: '2014-12-20 09:00:00', drop_location_id: 3)
+DropDate.create!(date_and_time: '2014-12-19 01:30:00', drop_location_id: 3)
+
 Organization.create!(name: "Brighter Beginnings", email: "adopt-a-family@brighter-beginnings.org", phone: "(877) 427-7134", address: "2648 International Blvd, Oakland CA", zip: "94601", website_url: "http://www.brighter-beginnings.org/", blurb: "Thanks to an overwhelming response, Adopt-a-Family 2013 is now closed. Please contact us at adopt-a-family@brighter-beginnings.org for other ways to support our families this holiday season. Years ago, we realized that many of our client families were struggling during the holiday season. To address this need, we launched our Adopt-A-Family program, inviting community members and local companies to 'adopt' one or more families and purchase 'gifts from the heart'. How It Works - Through this 'adoption' process, low-income families are matched with a donor who purchases seasonal gifts and drops them off at one of our centers in Alameda or Contra Costa County. Last year, 250 families, and nearly 1,000 family members had their wish lists fulfilled. Donors contributed time and funds gathering holiday gifts, while others came to our two volunteer wrapping events to add sparkle and holiday magic to the gift bundles before our Staff delivered them to families in need.")
 
 # Family.create!(code: 'famBam', drive_id: Drive.last.id, :is_live => true, drop_location_id: Drive.last.drop_locations.first.id)

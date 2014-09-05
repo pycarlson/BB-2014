@@ -39,11 +39,7 @@
       <li><%= User.find(af.user_id).email %></li>
     </td>
     <td>
-      <li>
-        <% unless User.find(af.user_id).drop_location_id == 0 %>
-          <%= af.drop_off.strftime('%B %d, %Y at %l:%M %p') %>
-        <% end %>
-      </li>
+      
     </td>
     
     <%= form_tag(family_update_gift_status_path(af)) do %>
