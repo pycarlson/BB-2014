@@ -13,7 +13,10 @@ class Organization < ActiveRecord::Base
   before_save :standardise_number
 
   def standardise_number
-    number = self.phone.gsub!(/\D/, "")
+    if self.phone != nil
+      self.phone.gsub!(/\D/, "")
+      self.phone.gsub!(/(\d{3})(\d{3})(\d{4})/, '\1-\2-\3')
+    end
   end
 
 end
