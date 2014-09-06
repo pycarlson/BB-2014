@@ -1,6 +1,8 @@
 BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
-  resources :adoptions
+  resources :adoptions do 
+    post '/update_gift_status' => 'adoptions#update_gift_status'
+  end
 
   root 'static_pages#home'
 
@@ -12,8 +14,6 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :family_member_imports, only: [:new, :create]
 
   resources :families do 
-    post '/update_gift_status' => 'families#update_gift_status'
-
     resources :family_members do 
       resources :needs
     end

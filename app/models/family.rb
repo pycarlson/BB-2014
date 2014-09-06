@@ -2,7 +2,7 @@ class Family < ActiveRecord::Base
   belongs_to :drive
   belongs_to :donor
   belongs_to :user
-  belongs_to :adoption
+  has_one :adoption
   
   has_many :family_members, :dependent => :destroy, :inverse_of => :family
   
@@ -16,6 +16,13 @@ class Family < ActiveRecord::Base
     self.code.strip!
   end
 
+  # def create_adoption_associations(adoption)
+  #   self.adopted = true
+  #   self.adoption_id = adoption.id
+  #   self.save
+  # end
+
+
   def self.get_total_adoptions
     total_fams = Family.count
     adopted_families = []
@@ -26,11 +33,6 @@ class Family < ActiveRecord::Base
   def get_adoptor_phone_number(user_id)
     user = User.find(user_id)
     user.phone
-  end
-
-  def drop_off
-    date_id = User.find(self.user_id).drop_date_id
-    DropDate.find(date_id).date_and_time
   end
 
   def self.filter_families(user)

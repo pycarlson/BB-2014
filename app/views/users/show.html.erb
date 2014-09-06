@@ -26,7 +26,7 @@
           <li><p><%= DropLocation.find(current_user.drop_location_id).drop_location_name %></p></li>
 
           <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
-          <% if user_is_a_donor?  %>
+          <% if current_user.adoptions.length > 0  %>
           <li><p><%= current_user.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
           <% end %>
 
@@ -49,7 +49,6 @@
             <li><p>Phone: <%= current_user.phone %></p></li>
           <% end %>
 
-
           <li><%= link_to 'Add or Edit Your Personal Info', edit_user_path(current_user) %></li>
 
         </ul>
@@ -57,16 +56,14 @@
       
       <div class="col-sm-3 col-xs-12 column">
         <h2>Adopted Families</h2>
-        <% unless user_is_a_donor?  %>
+        <% if current_user.adoptions.length == 0  %>
           <p>No families adopted yet...</p>
-        <% end %>
-
-        <% if user_is_a_donor?  %>
+        <% else %>
         <ul>
-          <% current_user.families.each do |f| %>
+          <% current_user.adoptions.each do |a| %>
           <li>
             <ul class="col-lg-5">
-              <li><p><%= link_to f.code, family_path(f) %></p></li>
+              <li><p><%= link_to Family.find(a.family_id).code, Family.find(a.family_id) %></p></li>
             </ul>
             <% end %>
           </li>

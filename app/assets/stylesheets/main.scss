@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: $linkBlue;
+  color: $linkBlue !important;
 
   &:visited {
     color: $linkBlue !important;

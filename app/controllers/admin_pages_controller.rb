@@ -7,17 +7,9 @@ class AdminPagesController < ApplicationController
     @families = Family.all
     @family_members = FamilyMember.all
     @total_fams = Family.count
-    @adoptors = User.where(adoptor: true)
+    @adoptions = Adoption.all
     @system_users = User.all
-
-    @adopted_families = []
-
-    @families.each do |fam| 
-      if fam.adopted == true
-        @adopted_families << fam
-      end
-    end
-    @left_unadopted = @total_fams - @adopted_families.count
+    @total_adoptions = Adoption.count
   end
 
   def super_admin_page
@@ -29,15 +21,7 @@ class AdminPagesController < ApplicationController
     @super_admin = SuperAdmin.new
     @all_families = Family.all
     @total_fams = Family.count
-
-    @adopted_families = []
-
-    @all_families.each do |fam| 
-      if fam.adopted == true
-        @adopted_families << fam
-      end
-    end
-    @left_unadopted = @total_fams - @adopted_families.count
+    @total_adoptions = Adoption.count
   end
 
   def open_drive

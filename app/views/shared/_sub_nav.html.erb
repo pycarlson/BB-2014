@@ -1,10 +1,9 @@
 <div class="subnav">
-  <!-- <div class="present"><i class="glyphicon glyphicon-gift"></i></div> -->
   <h1>Adopt-a-Family-Program</h1>
   
   <%= link_to 'Home', root_path, :class => "subnav-link btn-clear" %>
   <% if user_signed_in? %>
-  <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link btn-clear" %>
+  <%= link_to 'My Account', user_path(current_user), :class => "subnav-link btn-clear" %>
   <% end %>
   <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
     <%= link_to 'Families', families_path, :class => "subnav-link btn-clear" %>

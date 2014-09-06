@@ -68,15 +68,6 @@ class FamiliesController < ApplicationController
     end
   end
 
-  def update_gift_status
-    drive = Drive.find(Drive.last.id)
-    @family.update_attributes(:given_to_family => params[:given_to_family],
-                              :received_at_org => params[:received_at_org],
-                              :num_boxes => params[:num_boxes])
-    
-    redirect_to data_tables_path
-  end
-
   def import
     Family.import(params[:file])
     redirect_to super_admin_page_path
@@ -96,7 +87,7 @@ class FamiliesController < ApplicationController
   end
 
   def family_params
-    params.require(:family).permit(:id, :drive_id, :adopted_by, :received_at_org, :given_to_family, :code, :drop_location_id, :donor_id, :user_id, :num_boxes, :drop_date_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
+    params.require(:family).permit(:drive_id, :code, :drop_location_id, :user_id, :adoption_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
   end
 
 end

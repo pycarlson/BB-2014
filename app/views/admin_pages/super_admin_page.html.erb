@@ -4,7 +4,7 @@
       <h1>Super Admin Dashboard</h1>
       <div class="admin-subnav">
         <%= link_to 'Home', root_path, :class => "subnav-link" %>
-        <%= link_to 'My Profile', user_path(current_user), :class => "subnav-link" %>
+        <%= link_to 'My Account', user_path(current_user), :class => "subnav-link" %>
         <% if user_has_chosen_drop_location %>
         <%= link_to 'Families', families_path, :class => "subnav-link" %>
         <% end %>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="countdown adoption-countdown">
-        <div><h2>Adoptions<br><span><%= @adopted_families.count %></span></h2></div>
+        <div><h2>Adoptions<br><span><%= @total_adoptions %></span></h2></div>
       </div>
     </div>
 

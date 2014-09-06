@@ -1,8 +1,8 @@
 <%= render 'shared/sub_nav' %>
 
 <div class="adoption-thank-you">
-  <% if family_has_been_adopted?(@family) && current_user.families.include?(@family) %>
-  <p>Thank you for adopting this family, <%= User.find(@family.user_id).full_name %>!</p>
+  <% if family_has_been_adopted?(@family) && current_user.adoptions.include?(Adoption.find(@family.adoption_id)) %>
+  <p>Thank you for adopting this family, <%= User.find(Adoption.find_by_family_id(@family.id).user_id).full_name %>!</p>
   <% elsif family_has_been_adopted?(@family) %>
   <p>This family has already been adopted by another donor.</p>
   <% end %>
@@ -44,7 +44,7 @@
   <div class="family-buttons col-lg-12 col-md-12 col-sm-12">
     <%= link_to '< GO BACK', families_path, :class => "btn btn-info" %>
     
-    <%= link_to "ADOPT THIS FAMILY >", adoption_confirmation_path(:family_id => @family.id), :class => "btn btn-success" %>
+    <%= link_to "ADOPT THIS FAMILY >", new_adoption_path(:family_id => @family.id), :class => "btn btn-success" %>
     </div>
   <% end %>
 </div>

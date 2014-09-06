@@ -1,6 +1,6 @@
 <div class="confirming-adoption col-lg-12">
   
-  <% if user_is_a_donor? %>
+  <% if current_user.adoptions.length > 0 %>
 
   <h3>Welcome Back!</h3>
     <p>To complete the adoption process, please check that all your contact information below is correct and click the Adopt button to finalize the process.</p>

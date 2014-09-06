@@ -1,33 +1,46 @@
 class AdoptionsController < ApplicationController
-  before_action :set_adoption, only: [:show, :edit, :update, :destroy]
 
-  # GET /adoptions
-  # GET /adoptions.json
+  before_action :set_adoption, only: [:show, :edit, :update, :destroy, :update_gift_status]
+
   def index
     @adoptions = Adoption.all
   end
 
-  # GET /adoptions/new
   def new
     @adoption = Adoption.new
+    unless current_user.drop_location_id == 0
+      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    end
   end
 
-  def show
-  end
-
-  # GET /adoptions/1/edit
-  def edit
-  end
-
-  # POST /adoptions
-  # POST /adoptions.json
   def create
-    @adoption = Adoption.new(adoption_params)
-    @user = User.find(params[:adoption][:user_id])
+    family = Family.find(params[:adoption][:family_id])
+    if family.adopted == false
+      @adoption = Adoption.new(adoption_params)
+    elsif family.adopted == true
+      flash[:alert] = "It looks like you will have to go back to searching. This family has already been adopted."
+    end
 
     respond_to do |format|
       if @adoption.save
-        format.html { redirect_to user_path(@user), notice: 'Adoption was successfully created.' }
+        family.adopted = true
+        family.adoption_id = @adoption.id
+        family.save
+
+        user = User.find(@adoption.user_id)
+        user.update_attributes(full_name: @adoption.full_name,
+        street: @adoption.street,
+        city: @adoption.city,
+        state: @adoption.state,
+        zip: @adoption.zip,
+        phone: @adoption.phone,
+        company: @adoption.company,
+        drop_date_id: @adoption.drop_date_id)
+
+        UserMailer.adoption_confirmation(user, family).deliver
+
+        format.html { redirect_to user_path(user), notice: 'Adoption was successfully created.' }
+
       else
         format.html { render action: 'new' }
         format.json { render json: @adoption.errors, status: :unprocessable_entity }
@@ -35,38 +48,28 @@ class AdoptionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /adoptions/1
-  # PATCH/PUT /adoptions/1.json
-  def update
-    respond_to do |format|
-      if @adoption.update(adoption_params)
-        format.html { redirect_to @adoption, notice: 'Adoption was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @adoption.errors, status: :unprocessable_entity }
-      end
-    end
+  def update_gift_status
+    @adoption.update_attributes(:given_to_family => params[:given_to_family],
+                              :received_at_org => params[:received_at_org],
+                              :num_boxes => params[:num_boxes])
+    
+    redirect_to data_tables_path
   end
 
-  # DELETE /adoptions/1
-  # DELETE /adoptions/1.json
   def destroy
     @adoption.destroy
     respond_to do |format|
-      format.html { redirect_to adoptions_url }
+      format.html { redirect_to data_tables_path }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_adoption
       @adoption = Adoption.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def adoption_params
-      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :full_name, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_date_id)
+      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :full_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
     end
-end
+  end

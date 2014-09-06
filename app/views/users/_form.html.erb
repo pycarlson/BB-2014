@@ -1,10 +1,5 @@
 <%= form_for @user, :html => {:class => "form form-horizontal"} do |f| %>
 
-<%= f.hidden_field :family_id, :value => @family.id %>
-<%= f.hidden_field :drive_id, :value => Drive.last.id %>
-<%= f.hidden_field :drop_location_id, :value => current_user.drop_location_id %>
-
-
   <div class="row">  
     
     <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">    
@@ -55,24 +50,8 @@
       </div>
     </div>
 
-    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      Lastly, you have chosen <%= @user.get_drop_location_name %> as your drop location. 
-      Before completing this process, please choose the day you would like to drop 
-      off your gifts.
-    </p>
-
-    <% unless current_user.drop_location_id == 0 %>
-    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="form-item">
-          <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
-      </div>
-    </div>
-    <% end %>
-
-
     <div class="form-item">
-      <%= f.submit 'ADOPT THIS FAMILY NOW!', :class => "btn btn-success" %>
-      <a href="/families" class="btn btn-danger" id="cancel-adoption-process">CANCEL ADOPTION</a>
+      <%= f.submit, :class => "btn btn-success" %>
     </div> 
 
     <% end %>

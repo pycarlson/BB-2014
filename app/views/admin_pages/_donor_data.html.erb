@@ -1,58 +1,61 @@
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
-<thead>
-<tr>
-  <th><h2>User ID</h2></th>
-  <th><h2>Name</h2></th>
-  <th><h2>Email</h2></th>
-  <th><h2>Street</h2></th>
-  <th><h2>City</h2></th>
-  <th><h2>State</h2></th>
-  <th><h2>Zip</h2></th>
-  <th><h2>Phone</h2></th>
-  <th><h2>Company</h2></th>
-  <% if user_is_super_admin? %>
-    <th><h2>Resend Email</h2></th>
-  <% end %>
-</tr>
-</thead>
-<% @adoptors.each do |a| %>
-<tr>
-  <ul>
-    <td>
-      <li><%= a.id %></li>
-    </td>
-    <td>
-      <li><%= a.full_name %></li>
-    </td>
-    <td>
-      <li><%= a.email %></li>
-    </td>
-    <td>
-      <li><%= a.street %></li>
-    </td>
-    <td>
-      <li><%= a.city %></li>
-    </td>
-    <td>
-      <li><%= a.state%></li>
-    </td>
-    <td>
-      <li><%= a.zip %></li>
-    </td>
-    <td>
-      <% if a.phone %>
-      <li><%= a.phone %></li>
+  <thead>
+    <tr>
+      <th><h2>User ID</h2></th>
+      <th><h2>Name</h2></th>
+      <th><h2>Email</h2></th>
+      <th><h2>Street</h2></th>
+      <th><h2>City</h2></th>
+      <th><h2>State</h2></th>
+      <th><h2>Zip</h2></th>
+      <th><h2>Phone</h2></th>
+      <th><h2>Company</h2></th>
+      <% if user_is_super_admin? %>
+      <th><h2>Resend Email</h2></th>
       <% end %>
-    </td>
-    <td>
-      <li><%= a.company %></li>
-    </td>
-    <% if user_is_super_admin? %>
-      <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a, family_id: 3), :class => "btn btn-info" %>
-      </td>
-    <% end %>
-    <% end %>
-  </ul>
-</tr>
+    </tr>
+  </thead>
 
+  <% unless @adoptions.length < 1 %>
+  <% @adoptions.each do |a| %>
+  <tr>
+    <ul>
+      <td>
+        <li><%= a.id %></li>
+      </td>
+      <td>
+        <li><%= a.full_name %></li>
+      </td>
+      <td>
+        <li><%= a.email %></li>
+      </td>
+      <td>
+        <li><%= a.street %></li>
+      </td>
+      <td>
+        <li><%= a.city %></li>
+      </td>
+      <td>
+        <li><%= a.state%></li>
+      </td>
+      <td>
+        <li><%= a.zip %></li>
+      </td>
+      <td>
+        <% if a.phone %>
+        <li><%= a.phone %></li>
+        <% end %>
+      </td>
+      <td>
+        <li><%= a.company %></li>
+      </td>
+      <% if user_is_super_admin? %>
+        <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a, family_id: Family.find(a.family_id)), :class => "btn btn-info" %>
+        </td>
+      <% end %>
+      <% end %>
+
+    </ul>
+  </tr>
+  <% end %>
 </table>

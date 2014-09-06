@@ -1,40 +1,20 @@
 class UsersController < ApplicationController
 
   before_filter :user_is_super_admin?, only: [:destroy]
-  before_filter :user_can_view_profile, only: [:show, :adoption_confirmation, :edit, :update]
-  before_filter :get_user, except: [:adoption_confirmation]
+  before_filter :user_can_view_profile, only: [:show, :edit, :update]
+  before_filter :get_user
 
   def show
     redirect_to root_path unless @user
   end
 
-  def adoption_confirmation
-    @user = current_user
-    # this route just goes to the adoptions page
-    @family = Family.find(params[:family_id])
-    unless @user.drop_location_id == 0
-      @drop_dates = DropLocation.find(@user.drop_location_id).drop_dates
-    end
-  end
-
   def edit
-    @family = false
-    unless current_user.drop_location_id == 0 || current_user.drop_location_id == nil
-      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
-    end
+    
   end
 
   def update
     @user.update_attributes(user_params)
     @user.save
-    if params[:user][:family_id]
-      @family = Family.find(params[:user][:family_id])
-      if @family.adopted == false
-        @user.create_adopted_family_associations(@family)
-      elsif @family.adopted == true
-        flash[:alert] = "It looks like you will have to go back to searching. This family has already been adopted."
-      end
-    end
     redirect_to user_path(@user)
   end
 
@@ -51,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def get_user
-
     @user = User.find(params[:id])
   end
 

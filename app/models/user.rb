@@ -63,16 +63,6 @@ class User < ActiveRecord::Base
     return @families
   end
 
-  def create_adopted_family_associations(family)
-    family = family
-    self.adoptor = true
-    family.adopted = true
-    family.save
-    self.families << family
-    self.save
-    UserMailer.adoption_confirmation(self, family).deliver
-  end
-
   def get_drop_location_name
     unless self.drop_location_id == 0
       DropLocation.find(self.drop_location_id).drop_location_name

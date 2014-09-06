@@ -1,72 +1,68 @@
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-adoptions">
 
-<thead>  
-<tr>
-  <th><h2>Code</h2></th>
-  <th></th>
-  <th><h2>Adopter</h2></th>
-  <th><h2>Phone</h2></th>
-  <th><h2>Email</h2></th>
-  <th><h2>Drop Date</h2></th>
-  <th><h2>Boxes</h2></th>
-  <th><h2>Received</h2></th>
-  <th><h2>Given</h2></th>
-  <th><h2>Update</h2></th>
-  <% if user_is_super_admin? %>
-    <th><h2>Cancel</h2></th>
-  <% end %>  
-</tr>
-</thead>  
+  <thead>  
+    <tr>
+      <th><h2>Code</h2></th>
+      <th><h2>Adopter</h2></th>
+      <th><h2>Phone</h2></th>
+      <th><h2>Email</h2></th>
+      <th><h2>Drop Date</h2></th>
+      <th><h2>Boxes</h2></th>
+      <th><h2>Received</h2></th>
+      <th><h2>Given</h2></th>
+      <th><h2>Update</h2></th>
+      <% if user_is_super_admin? %>
+      <th><h2>Cancel</h2></th>
+      <% end %>  
+    </tr>
+  </thead>  
 
-<% @adopted_families.each do |af| %>
-<tr>
-  <ul>
-    <td>
-      <li><%= af.code %></li>
-    </td>
-    <td>
-      <li><%= af.family_members.count %></li>
-    </td>
-    <td>
-      <li><%= User.find(af.user_id).full_name %></li>
-    </td>
-    <td>
-      <% unless af.get_adoptor_phone_number(af.user_id) == nil %>
-        <li><%= af.get_adoptor_phone_number(af.user_id) %></li>
-      <% end %>
-    </td>
-    <td>
-      <li><%= User.find(af.user_id).email %></li>
-    </td>
-    <td>
-      <li>
-        <% unless User.find(af.user_id).drop_location_id == 0 %>
-          <%= af.drop_off.strftime('%B %d, %Y at %l:%M %p') %>
-        <% end %>
-      </li>
-    </td>
-    
-    <%= form_tag(family_update_gift_status_path(af)) do %>
-      <%= hidden_field_tag "id", af.id %>
+ 
+  <% @adoptions.each do |a| %>
+  <% fam = Family.find(a.family_id) %>
+  <tr>
+    <ul>
       <td>
-        <%= text_field_tag :num_boxes, af.num_boxes, :class => "table-input boxes" %>
+        <li><%= fam.code %></li>
       </td>
       <td>
-        <%= date_field_tag :received_at_org, af.received_at_org, :class => "table-input" %>
+        <li><%= a.full_name %></li>
       </td>
       <td>
-        <%= date_field_tag :given_to_family, af.given_to_family, :class => "table-input" %>
+        <li><%= a.phone %></li>
+      </td>
+      <td>
+        <li><%= a.email %></li>
+      </td>
+      <td>
+        <li>
+          <% unless User.find(a.user_id).drop_location_id == 0 %>
+          <%= a.drop_off.strftime('%B %d, %Y at %l:%M %p') %>
+          <% end %>
+        </li>
+      </td>
+
+      <%= form_tag(adoption_update_gift_status_path(a)) do %>
+      <%= hidden_field_tag "id", a.id %>
+      <td>
+        <%= text_field_tag :num_boxes, a.num_boxes, :class => "table-input boxes" %>
+      </td>
+      <td>
+        <%= date_field_tag :received_at_org, a.received_at_org, :class => "table-input" %>
+      </td>
+      <td>
+        <%= date_field_tag :given_to_family, a.given_to_family, :class => "table-input" %>
       </td>
       <td>
         <%= submit_tag "Update", :class => "btn btn-success" %>
       </td>
-    <% end %>
-    
-    <% if user_is_super_admin? %>
-      <td><%= link_to 'Cancel', cancel_adoption_path(:family_id => af.id), :class => "btn btn-danger" %></td>
-    <% end %>
+      <% end %>
 
-  </ul>
-  <% end %>
-</tr>
+      <% if user_is_super_admin? %>
+      <td><%= link_to "Cancel", a, method: :delete, class: "delete_link"  %></td>
+      <% end %>
+
+    </ul>
+    <% end %>
+  </tr>
 </table>
