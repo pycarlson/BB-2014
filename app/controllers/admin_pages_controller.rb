@@ -27,6 +27,17 @@ class AdminPagesController < ApplicationController
     @families = Family.where('is_live = ?', false)
     @admin = Admin.new
     @super_admin = SuperAdmin.new
+    @all_families = Family.all
+    @total_fams = Family.count
+
+    @adopted_families = []
+
+    @all_families.each do |fam| 
+      if fam.adopted == true
+        @adopted_families << fam
+      end
+    end
+    @left_unadopted = @total_fams - @adopted_families.count
   end
 
   def open_drive
@@ -58,8 +69,9 @@ class AdminPagesController < ApplicationController
   end
 
   def resend_adoption_confirmation_email
+    family = Family.find(params[:family_id])
     user = User.find(params[:format])
-    UserMailer.adoption_confirmation(user).deliver
+    UserMailer.adoption_confirmation(user, family).deliver
     redirect_to data_tables_path
   end
 

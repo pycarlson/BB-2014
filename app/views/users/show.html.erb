@@ -46,7 +46,7 @@
           <% end %>
 
           <% if current_user.phone != nil %>
-            <li><p>Phone: <%= parse_phone_number_string(current_user.phone) %></p></li>
+            <li><p>Phone: <%= current_user.phone %></p></li>
           <% end %>
 
 

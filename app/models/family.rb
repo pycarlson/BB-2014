@@ -21,6 +21,11 @@ class Family < ActiveRecord::Base
     @left_unadopted = total_fams - adopted_families.count
   end
 
+  def get_adoptor_phone_number(user_id)
+    user = User.find(user_id)
+    user.phone
+  end
+
   def drop_off
     date_id = User.find(self.user_id).drop_date_id
     DropDate.find(date_id).date_and_time

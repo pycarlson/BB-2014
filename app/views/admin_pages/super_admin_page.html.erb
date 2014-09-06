@@ -1,6 +1,6 @@
 <div class="super-admin">
   <div class="container-fluid">
-    <div class="super-dash col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="top-holder col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>Super Admin Dashboard</h1>
       <div class="admin-subnav">
         <%= link_to 'Home', root_path, :class => "subnav-link" %>
@@ -9,36 +9,74 @@
         <%= link_to 'Families', families_path, :class => "subnav-link" %>
         <% end %>
       </div>
-      <div class="drive-manage col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <h2>Drive Options</h2>
-        <ul class="resets">
-          <% @drives.each do |drive| %>
-          <li>
-            <% if drive.status == true %>
-            <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger", :confirm => 'Do you really want to close this drive? When you click this button users will no longer be able to view or adopt families.' %></li>
-            <% elsif drive.status == false %>
-            <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-info" %></li>
-            <% end %>  
-            <li><%= link_to 'Reset Drive', reset_drive_path, class: "btn btn-danger", :confirm => 'This is a desctructive action. All your families and adoptions will be deleted. Would you like to proceed with this action?' %></li>
-            <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-success" %></li>
-            <% end %>
-          </li>
-          
-        </ul>
+
+      <div class="countdown fam-countdown">
+        <div><h2>Families<br><span><%= @total_fams %></span></h2></div>
       </div>
 
-      <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
-        <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2>Add Admins</h2>
-          <div class="add-admin-form">
-            <%= form_for(@admin) do |f| %>
-            <div class="form-inline">
-              <%= f.email_field :email, class: "form-control input-md" %>
-              <%= f.submit "Add Admin", class: "btn btn-success" %>
-              <% end %>
-            </div>
+      <div class="countdown adoption-countdown">
+        <div><h2>Adoptions<br><span><%= @adopted_families.count %></span></h2></div>
+      </div>
+    </div>
+
+    <div class="fams-to-go-live col-lg-12">
+      <h1><span><%= @families.count > 0 ? @families.count : "No" %> </span>Families Ready to Go Live</h1>
+      <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
+        <thead>
+          <tr>
+            <th><h2>Family Code</h2></th>
+            <th><h2>Make Live</h2></th>
+            <th><h2>Edit</h2></th>
+            <th><h2>Delete</h2></th>
+          </tr>
+        </thead>
+        <% @families.each do |family| %>
+        <tr>
+          <ul>
+            <td><%= family.code.upcase %></td>
+            <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-info" %></td>
+            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
+            <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
+          </ul>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="super-dash col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="drive-manage col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <h2>Drive Options</h2>
+      <ul class="resets">
+        <% @drives.each do |drive| %>
+        <li>
+          <% if drive.status == true %>
+          <li><%= link_to 'Close Gift Drive', close_drive_path(drive), class: "btn btn-danger", :confirm => 'Do you really want to close this drive? When you click this button users will no longer be able to view or adopt families.' %></li>
+          <% elsif drive.status == false %>
+          <li><%= link_to 'Open Gift Drive', open_drive_path(drive), class: "btn btn-info" %></li>
+          <% end %>  
+          <li><%= link_to 'Reset Drive', reset_drive_path, class: "btn btn-danger", :confirm => 'This is a desctructive action. All your families and adoptions will be deleted. Would you like to proceed with this action?' %></li>
+          <li><%= link_to 'Update Drive Details', edit_drive_path(drive), class: "btn btn-success" %></li>
+          <% end %>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2>Add Admins</h2>
+        <div class="add-admin-form">
+          <%= form_for(@admin) do |f| %>
+          <div class="form-inline">
+            <%= f.email_field :email, class: "form-control input-md" %>
+            <%= f.submit "Add Admin", class: "btn btn-success" %>
+            <% end %>
           </div>
-          <div>
+        </div>
+        <div>
           <h2>Current Admins</h2>
           <% if @admins.length > 0 %>
           <% @admins.each do |admin| %>
@@ -49,21 +87,21 @@
           <% end %>
           <% end %>
         </div>
-        </div>
       </div>
+    </div>
 
-      <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
-        <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2>Add Super Admins</h2>
-          <div class="add-admin-form">
-            <%= form_for(@super_admin) do |f| %>
-            <div class="form-inline">
-              <%= f.email_field :email, class: "form-control input-md" %>
-              <%= f.submit "Add Super Admin", :class => "btn btn-success" %>
-              <% end %>
-            </div>
+    <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2>Add Super Admins</h2>
+        <div class="add-admin-form">
+          <%= form_for(@super_admin) do |f| %>
+          <div class="form-inline">
+            <%= f.email_field :email, class: "form-control input-md" %>
+            <%= f.submit "Add Super Admin", :class => "btn btn-success" %>
+            <% end %>
           </div>
-          <div>
+        </div>
+        <div>
           <h2>Current Super Admins</h2>
           <% if @super_admins.length > 0 %>
           <% @super_admins.each do |super_admin| %>
@@ -74,39 +112,13 @@
           <% end %>
           <% end %>
         </div>
-        </div>
-        
       </div>
-    </div>
-  </div>
-    </div>
-  </div>
 
-  
-
-  <div class="fams-to-go-live col-lg-12">
-    <h2>Families Ready to Go Live</h2>
-    <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
-      <thead>
-        <tr>
-          <th><h2>Family Code</h2></th>
-          <th><h2>Make Live</h2></th>
-          <th><h2>Edit</h2></th>
-          <th><h2>Delete</h2></th>
-        </tr>
-      </thead>
-      <% @families.each do |family| %>
-      <tr>
-        <ul>
-          <td><%= family.code.upcase %></td>
-          <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-info" %></td>
-          <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
-          <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
-        </ul>
-      </tr>
-      <% end %>
-    </table>
+    </div>
   </div>
 </div>
+</div>
+</div>
+
 </div>
 

@@ -31,15 +31,19 @@
       <li><%= User.find(af.user_id).full_name %></li>
     </td>
     <td>
-      <% if User.find(af.user_id).phone %>
-        <li><%= parse_phone_number_string(User.find(af.user_id).phone) %></li>
+      <% unless af.get_adoptor_phone_number(af.user_id) == nil %>
+        <li><%= af.get_adoptor_phone_number(af.user_id) %></li>
       <% end %>
     </td>
     <td>
       <li><%= User.find(af.user_id).email %></li>
     </td>
     <td>
-      
+      <li>
+        <% unless User.find(af.user_id).drop_location_id == 0 %>
+          <%= af.drop_off.strftime('%B %d, %Y at %l:%M %p') %>
+        <% end %>
+      </li>
     </td>
     
     <%= form_tag(family_update_gift_status_path(af)) do %>

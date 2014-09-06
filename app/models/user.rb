@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
 
   def standardise_number
     if self.phone != nil
-      number = self.phone.gsub!(/\D/, "")
+      self.phone.gsub!(/\D/, "")
+      self.phone.gsub!(/(\d{3})(\d{3})(\d{4})/, '\1-\2-\3')
     end
   end
 

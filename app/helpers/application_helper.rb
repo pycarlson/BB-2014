@@ -21,10 +21,6 @@ module ApplicationHelper
     end
   end
 
-  def parse_phone_number_string(number)
-    number.gsub!(/(\d{3})(\d{3})(\d{4})/, '\1-\2-\3')
-  end
-
   protected
   def user_is_admin?
     current_user && Admin.find_by_user_id(current_user.id) || user_is_super_admin?

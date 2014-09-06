@@ -41,14 +41,14 @@
     </td>
     <td>
       <% if a.phone %>
-      <li><%= parse_phone_number_string(a.phone) %></li>
+      <li><%= a.phone %></li>
       <% end %>
     </td>
     <td>
       <li><%= a.company %></li>
     </td>
     <% if user_is_super_admin? %>
-      <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a), :class => "btn btn-info" %>
+      <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a, family_id: 3), :class => "btn btn-info" %>
       </td>
     <% end %>
     <% end %>
