@@ -1,5 +1,7 @@
 BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
+  resources :adoptions
+
   root 'static_pages#home'
 
   devise_for :users

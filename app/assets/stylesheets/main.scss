@@ -13,6 +13,14 @@ body {
   }
 }
 
+a {
+  color: $linkBlue;
+
+  &:visited {
+    color: $linkBlue !important;
+  }
+}
+
 .alert {
  color: $orange;
 }
@@ -42,6 +50,7 @@ border: 1px solid $blueHover;*/
   -o-transition: 0.1s all linear;
   transition: 0.1s all linear;
   -webkit-appearance: none;
+
 }
 
 .btn-clear {
@@ -56,6 +65,10 @@ border: 1px solid $blueHover;*/
     border: 2px solid $green !important;
     color: $white !important;
   }
+
+  &:visited {
+    color: $copyGray !important;
+  }
 }
 
 .btn-info {
@@ -64,6 +77,10 @@ border: 1px solid $blueHover;*/
   &:hover {
     background-color: #357ebd !important;
   }
+
+  &:visited {
+    color: $white !important;
+  }
 }
 
 .btn-success {
@@ -71,6 +88,10 @@ border: 1px solid $blueHover;*/
   background-color: $green;
   &:hover {
     background-color: #4cae4c !important;
+  }
+
+  &:visited {
+    color: $white !important;
   }
 }
 

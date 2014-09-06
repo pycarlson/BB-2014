@@ -2,6 +2,8 @@ class Family < ActiveRecord::Base
   belongs_to :drive
   belongs_to :donor
   belongs_to :user
+  belongs_to :adoption
+  
   has_many :family_members, :dependent => :destroy, :inverse_of => :family
   
   accepts_nested_attributes_for :family_members, :allow_destroy => true

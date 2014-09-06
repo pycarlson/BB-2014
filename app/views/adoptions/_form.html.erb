@@ -1,0 +1,56 @@
+<%= form_for(@adoption) do |f| %>
+<% if @adoption.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@adoption.errors.count, "error") %> prohibited this adoption from being saved:</h2>
+
+  <ul>
+    <% @adoption.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= f.hidden_field :family_id, :value => params[:family_id] %>
+<%= f.hidden_field :drive_id, :value => Drive.last.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
+<div class="field">
+  <%= f.label :full_name %><br>
+  <%= f.text_field :full_name, value: current_user.full_name  %>
+</div>
+<div class="field">
+  <%= f.label :street %><br>
+  <%= f.text_field :street, value: current_user.street %>
+</div>
+<div class="field">
+  <%= f.label :city %><br>
+  <%= f.text_field :city, value: current_user.city %>
+</div>
+<div class="field">
+  <%= f.label :state %><br>
+  <%= f.text_field :state, value: current_user.state %>
+</div>
+<div class="field">
+  <%= f.label :zip %><br>
+  <%= f.text_field :zip, value: current_user.zip %>
+</div>
+<div class="field">
+  <%= f.label :phone %><br>
+  <%= f.text_field :phone, value: current_user.phone %>
+</div>
+<div class="field">
+  <%= f.label :company %><br>
+  <%= f.text_field :company, value: current_user.company %>
+</div>
+<% unless current_user.drop_location_id == 0 || !user_has_chosen_drop_location %>
+<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="form-item">
+    <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
+  </div>
+</div>
+<% end %>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

@@ -5,6 +5,7 @@ class Drive < ActiveRecord::Base
   has_many :super_admins
   has_many :families, :dependent => :destroy
   has_many :drop_locations, :dependent => :destroy
+  has_many :adoptions
 
   accepts_nested_attributes_for :drop_locations
 

@@ -1,6 +1,7 @@
 class DropLocation < ActiveRecord::Base
 
   belongs_to :drive
+  belongs_to :adoption
   has_many :families
   has_many :users
   has_many :drop_dates, :dependent => :destroy

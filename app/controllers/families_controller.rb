@@ -13,6 +13,7 @@ class FamiliesController < ApplicationController
     @fams_three = Family.get_fams_three(@families)
     @fams_two = Family.get_fams_two(@families)
     @fams_one = Family.get_fams_one(@families)
+    @adoption = Adoption.new
   end
 
   def new
@@ -37,6 +38,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    @adoption = Adoption.new
     @drive = Drive.find(@family.drive_id)
   end
 

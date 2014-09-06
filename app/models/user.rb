@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :drop_date
   belongs_to :drop_location
   has_many :families
+  has_many :adoptions
 
   after_create :update_super_drop_id
 
