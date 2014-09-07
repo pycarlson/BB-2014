@@ -9,6 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def cp(path)
+    "active" if current_page?(path)
+  end
+
   def go_back_path(family)
     if family.family_members.length >= 5
       families_of_five_or_more_path
@@ -23,14 +27,6 @@ module ApplicationHelper
 
   def drive_is_closed?
     Drive.last.status == false
-  end
-
-  def nav_link(text, path)
-    if current_page?(path)
-      link_to text, path, class: "active"
-    else
-      link_to text, path
-    end
   end
 
   protected

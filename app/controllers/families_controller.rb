@@ -13,21 +13,25 @@ class FamiliesController < ApplicationController
   def families_of_two_and_under
     @families = Family.filter_families(current_user)
     @fams_two_and_under = Family.get_fams_two(@families)
+    @family_size = 'two people and fewer'
   end
 
   def families_of_three
     @families = Family.filter_families(current_user)
     @fams_three = Family.get_fams_three(@families)
+    @family_size = 'three people'
   end
 
   def families_of_four
     @families = Family.filter_families(current_user)
     @fams_four = Family.get_fams_four(@families)
+    @family_size = 'four people'
   end
 
   def families_of_five_or_more
     @families = Family.filter_families(current_user)
     @fams_five_or_more = Family.get_fams_five_and_more(@families)
+    @family_size = 'five or more people'
   end
 
   def new

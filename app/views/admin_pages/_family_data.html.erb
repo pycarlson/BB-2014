@@ -27,9 +27,9 @@
     <td>
       <li><%= family.is_live %></li>
     </td>
-    <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
+    <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
     <% if user_is_super_admin? %>
-      <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
+      <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
     <% end %>
     <% end %>
   </ul>

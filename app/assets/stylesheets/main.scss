@@ -2,6 +2,11 @@
 @import 'font-awesome';
 
 /*BASE STYLES*/
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   .site-container {
     margin-top: 70px;
@@ -9,25 +14,47 @@ body {
   }
   .inner-container {
     padding-top: 10px;
-
   }
 }
 
 a {
-  color: $linkBlue !important;
+  color: $linkBlue;
+}
 
-  &:visited {
-    color: $linkBlue !important;
-  }
+#notice {
+  color: $green;
 }
 
 .alert {
  color: $orange;
 }
 
-.notice {
-/*  background-color: $blue;
-border: 1px solid $blueHover;*/
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }
 
 .clearfix {
@@ -45,12 +72,12 @@ border: 1px solid $blueHover;*/
   margin-right: 20px;
   margin-top: 5px;
   border: none;
+  color: $white !important;
   -webkit-transition: 0.1s all linear;
   -moz-transition: 0.1s all linear;
   -o-transition: 0.1s all linear;
   transition: 0.1s all linear;
   -webkit-appearance: none;
-
 }
 
 .btn-clear {
@@ -60,37 +87,27 @@ border: 1px solid $blueHover;*/
   padding: 10px 20px;
   border-radius: 5px;
 
-  &:visited {
-    color: $copyGray !important;
-  }
-
   &:hover {
     background-color: $green !important;
-    border: 2px solid $green !important;
+    border: 2px solid $green;
     color: $white !important;
   }
 }
 
 .btn-info {
-  color: $white !important;
+  color: $white;
   background-color: $blue !important;
   &:hover {
     background-color: #357ebd !important;
   }
-
-  &:visited {
-    color: $white !important;
-  }
 }
 
 .btn-success {
-  color: $white !important;
   background-color: $green !important;
+  color: $white !important;
+
   &:hover {
     background-color: #4cae4c !important;
-  }
-
-  &:visited {
     color: $white !important;
   }
 }

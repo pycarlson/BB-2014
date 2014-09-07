@@ -1,16 +1,16 @@
 <div id="family-size-filter-buttons">
   <ul>
     <li>
-      <%= link_to '1 - 2', families_of_two_and_under_path, :class => "btn btn-sm btn-clear" %>
+      <%= link_to '1 - 2', families_of_two_and_under_path, :class => "btn btn-sm btn-clear #{cp(families_of_two_and_under_path)}" %>
     </li>
     <li>
-      <%= link_to '3', families_of_three_path, :class => "btn btn-sm btn-clear" %>
+      <%= link_to '3', families_of_three_path, :class => "btn btn-sm btn-clear #{cp(families_of_three_path)}" %>
     </li>
     <li>
-       <%= link_to '4', families_of_four_path, :class => "btn btn-sm btn-clear" %>
+       <%= link_to '4', families_of_four_path, :class => "btn btn-sm btn-clear #{cp(families_of_four_path)}" %>
     </li>
     <li>
-       <%= link_to '5 +', families_of_five_or_more_path, :class => "btn btn-sm btn-clear" %>
+       <%= link_to '5 +', families_of_five_or_more_path, :class => "btn btn-sm btn-clear #{cp(families_of_five_or_more_path)}" %>
     </li>
   </ul>
 </div>

@@ -20,9 +20,14 @@
   float: left;
   a {
     padding-top: 9px;
-    color: $copyGray !important;
   }
+
+  
 }
+
+.btn-succes {
+    color: $white !important;
+  }
 
 .dropdown-toggle li {
   background-color: $white;
@@ -55,7 +60,6 @@
   margin: 0 auto;
   text-align: center;
   padding: 30px 0;
-  border-radius: 5px;
   margin-top: 70px;
   margin-bottom: 20px;
   background: $lightGray image-url("snowy-background.jpg");
@@ -75,6 +79,7 @@
     border: 1px solid $lightGray !important;
     margin: 5px 5px 20px 5px;
     text-decoration: none;
+    color: $white !important;
   }
 
   .present i {
@@ -92,33 +97,5 @@
   .subnav-link {
     color: $blue;
     margin: 0 20px;
-  }
-}
-
-footer {
-  background-color: #FFFAFA;
-  border-top: 1px solid $borderGray;
-  width: 100%;
-  height: 60px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  .footer-container {
-    margin: 0 auto;
-    width: 1170px;
-    margin-right: 20px;
-    margin-bottom: 0;
-  }
-  li {
-    float: right;
-    margin-left: 50px;
-    margin-top: 20px;
-    a {
-      color: $copyGray;
-    }
-  }
-  .active {
-    color: $green;
-    font-weight: bold;
   }
 }

@@ -81,10 +81,9 @@
   <% end %>
 
   <div class="form-item">
-    <%= f.submit :class => "btn btn-success" %>
+    <%= f.submit 'ADOPT THIS FAMILY NOW!', :class => "btn btn-success" %>
   </div> 
-  <a href="/families" class="btn btn-danger" id="cancel-adoption-process">CANCEL ADOPTION</a>
-
+    <%= link_to 'CANCEL', family_path(Family.find(params[:family_id])), :id => "cancel-adoption-process", :class => "btn btn-danger" %>
 </div>
 <% end %>
 </div>
