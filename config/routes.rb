@@ -14,6 +14,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :family_member_imports, only: [:new, :create]
 
   resources :families do 
+   
     resources :family_members do 
       resources :needs
     end
@@ -31,6 +32,10 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/faq',  to: 'static_pages#faq', via: 'get'
   match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
 
+  match '/families_of_five_or_more',  to: 'families#families_of_five_or_more', via: 'get'
+  match '/families_of_four',  to: 'families#families_of_four', via: 'get'
+  match '/families_of_three',  to: 'families#families_of_three', via: 'get'
+  match '/families_of_two_and_under',  to: 'families#families_of_two_and_under', via: 'get'
   get '/download_pdf' => 'static_pages#download_pdf'
   get '/super_admin_page' => 'admin_pages#super_admin_page'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'

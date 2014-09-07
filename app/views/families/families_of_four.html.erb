@@ -1,0 +1,7 @@
+<%= render 'shared/sub_nav' %>
+<div class="inner-container">
+<%= render 'family_pages' %>
+  <div class="families-container">
+    <%= render partial: "fams_by_size", locals: { families: @fams_four } %>
+  </div>
+</div>

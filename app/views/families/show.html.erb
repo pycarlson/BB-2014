@@ -42,7 +42,7 @@
   <% end %>
   <% unless family_has_been_adopted?(@family) %>
   <div class="family-buttons col-lg-12 col-md-12 col-sm-12">
-    <%= link_to '< GO BACK', families_path, :class => "btn btn-info" %>
+    <%= link_to '< GO BACK', go_back_path(@family), :class => "btn btn-info" %>
     
     <%= link_to "ADOPT THIS FAMILY >", new_adoption_path(:family_id => @family.id), :class => "btn btn-success" %>
     </div>

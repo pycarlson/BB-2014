@@ -1,19 +1,33 @@
 class FamiliesController < ApplicationController
 
-  before_filter :user_is_admin?, except: [:index, :show, :update_gift_status]
-  before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
-  before_filter :find_family, except: [:index, :new, :create]
+  before_filter :user_is_admin?, only: [:new, :edit, :create, :update]
+  before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status, :go_live]
+  before_filter :find_family, except: [:index, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
   before_filter :family_is_in_users_location, only: [:show]
 
 
   def index
+    redirect_to families_of_five_or_more_path
+  end
+
+  def families_of_two_and_under
     @families = Family.filter_families(current_user)
-    @fams_five = Family.get_fams_five_and_more(@families)
-    @fams_four = Family.get_fams_four(@families)
+    @fams_two_and_under = Family.get_fams_two(@families)
+  end
+
+  def families_of_three
+    @families = Family.filter_families(current_user)
     @fams_three = Family.get_fams_three(@families)
-    @fams_two = Family.get_fams_two(@families)
-    @fams_one = Family.get_fams_one(@families)
-    @adoption = Adoption.new
+  end
+
+  def families_of_four
+    @families = Family.filter_families(current_user)
+    @fams_four = Family.get_fams_four(@families)
+  end
+
+  def families_of_five_or_more
+    @families = Family.filter_families(current_user)
+    @fams_five_or_more = Family.get_fams_five_and_more(@families)
   end
 
   def new

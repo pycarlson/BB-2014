@@ -10,7 +10,7 @@
       <li>
         <ul class="fam-members">
           <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
-          <li><p><%= truncate(fm.bio, length: 80) %></p></li>
+          <li><p><%= truncate(fm.bio, length: 70) %></p></li>
         </ul>
       </li>
       <% end %>

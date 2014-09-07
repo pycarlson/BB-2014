@@ -9,6 +9,18 @@ module ApplicationHelper
     end
   end
 
+  def go_back_path(family)
+    if family.family_members.length >= 5
+      families_of_five_or_more_path
+    elsif family.family_members.length == 4
+      families_of_four_path
+    elsif family.family_members.length == 3
+      families_of_three_path
+    elsif family.family_members.length <=2 
+      families_of_two_and_under_path
+    end
+  end
+
   def drive_is_closed?
     Drive.last.status == false
   end

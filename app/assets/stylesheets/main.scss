@@ -56,24 +56,24 @@ border: 1px solid $blueHover;*/
 .btn-clear {
   margin-top: 0px;
   border: 2px solid $lightGray;
-  color: $copyGray;
+  color: $copyGray !important;
   padding: 10px 20px;
   border-radius: 5px;
+
+  &:visited {
+    color: $copyGray !important;
+  }
 
   &:hover {
     background-color: $green !important;
     border: 2px solid $green !important;
     color: $white !important;
   }
-
-  &:visited {
-    color: $copyGray !important;
-  }
 }
 
 .btn-info {
   color: $white !important;
-  background-color: $blue;
+  background-color: $blue !important;
   &:hover {
     background-color: #357ebd !important;
   }
@@ -85,7 +85,7 @@ border: 1px solid $blueHover;*/
 
 .btn-success {
   color: $white !important;
-  background-color: $green;
+  background-color: $green !important;
   &:hover {
     background-color: #4cae4c !important;
   }

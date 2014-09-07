@@ -16,13 +16,6 @@ class Family < ActiveRecord::Base
     self.code.strip!
   end
 
-  # def create_adoption_associations(adoption)
-  #   self.adopted = true
-  #   self.adoption_id = adoption.id
-  #   self.save
-  # end
-
-
   def self.get_total_adoptions
     total_fams = Family.count
     adopted_families = []
@@ -38,10 +31,10 @@ class Family < ActiveRecord::Base
   def self.filter_families(user)
     if user.drop_location_id == 0
       families = Family.where(is_live: true)
-      families = families.select {|f| f if f.adopted == false}
+      families.select {|f| f if f.adopted == false}
     else
       families = Family.where(drop_location_id: user.drop_location_id, is_live: true)
-      families = families.select {|f| f if f.adopted == false}
+      families.select {|f| f if f.adopted == false}
     end
   end
 
@@ -58,11 +51,7 @@ class Family < ActiveRecord::Base
   end
 
   def self.get_fams_two(families)
-    families.select {|f| f if f.family_members.length == 2 }
-  end
-
-  def self.get_fams_one(families)
-    families.select {|f| f if f.family_members.length == 1 }
+    families.select {|f| f if f.family_members.length <= 2 }
   end
 
 end

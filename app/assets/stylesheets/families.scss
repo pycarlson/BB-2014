@@ -3,6 +3,7 @@
 .no-fams {
   background-color: $lightGray;
   padding: 20px;
+  margin-left: -70px;
   width: 500px;
   margin: 0 auto;
   text-align: center;
@@ -12,11 +13,16 @@
 .filtering-deets {
   margin: 0 auto;
   text-align: center;
+
+  a {
+    padding: 5px 5px 0 5px;
+  }
 }
 
 .families-container {
   box-sizing: border-box;
   margin: 0 auto;
+  padding-left: 65px;
 
   .inner-container {
     padding-top: 0 !important;
@@ -42,6 +48,7 @@
   .fam-members {
     width: 50%;
     padding-left: 0;
+    padding-right: 10px;
     float: left;
     margin-bottom: 20px;
   }
@@ -155,17 +162,20 @@
   }
   li {
     display: inline;
-    padding: 0 20px;
+    padding: 0 10px;
   }
   label {
     font-size: 1em;
+  }
+
+  .btn {
+    padding: 5px;
+    height: 30px;
   }
 }
 
 .fams {
   position: relative;
-  display: none;
-  padding-left: 70px;
 }
 
 .fams5 .adoptable-families {
