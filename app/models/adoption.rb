@@ -8,7 +8,8 @@ class Adoption < ActiveRecord::Base
   validates :drive_id, 
             :user_id,
             :family_id,
-            :full_name,
+            :first_name,
+            :last_name,
             :email,
             :street,
             :city,
@@ -30,5 +31,14 @@ class Adoption < ActiveRecord::Base
   def drop_off
     date_id = User.find(self.user_id).drop_date_id
     DropDate.find(date_id).date_and_time
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |adoption|
+        csv << adoption.attributes.values_at(*column_names)
+      end
+    end
   end
 end

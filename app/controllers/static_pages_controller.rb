@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
     user = current_user
     user.drop_location_id = params[:drop_location_id]
     user.save
-    redirect_to families_path
+    redirect_to all_families_path
   end
 
   def shopping_tips

@@ -1,5 +1,5 @@
 <div class="top-holder">
-  <h1>Adopt-a-Family Data Tables</h1>
+  <h1>Adopt-a-Family Admin</h1>
   <div class="admin-subnav">
     <%= link_to 'Home', root_path, :class => "subnav-link" %>
     <%= link_to 'My Account', user_path(current_user), :class => "subnav-link" %>
@@ -18,26 +18,6 @@
 
 </div>
 <div class="clearfix"></div>
-
-<div class="manage-nav">
-  <h2>Data Table Views</h2>
-
-  <ul>
-    <li>
-      <%= link_to 'Families', family_data_path, :class => "btn btn-sm btn-clear #{cp(family_data_path)}" %>
-    </li>
-    <li>
-      <%= link_to 'All Users', user_data_path, :class => "btn btn-sm btn-clear #{cp(user_data_path)}" %>
-    </li>
-    <li>
-     <%= link_to 'Adopting Users', donor_data_path, :class => "btn btn-sm btn-clear #{cp(donor_data_path)}" %>
-   </li>
-   <li>
-    <%= link_to 'Adoptions', adoption_data_path, :class => "btn btn-sm btn-clear #{cp(adoption_data_path)}" %>
-   </li>
- </ul>
-</div>
-
 
 
 

@@ -2,6 +2,14 @@ class FamilyMembersController < ApplicationController
   
   before_filter :user_is_admin?
 
+  def index
+    @family_members = FamilyMember.order(:family_id)
+    respond_to do |format|
+      format.html
+      format.csv { render text: @family_members.to_csv }
+    end
+  end
+
   def new
     @family_member = FamilyMember.new
     @family_members.needs.build
@@ -9,7 +17,7 @@ class FamilyMembersController < ApplicationController
 
   def create
     FamilyMember.create!(family_params)
-    redirect_to manage_families_path
+    redirect_to family_data_path
   end
   
   def edit
@@ -19,7 +27,7 @@ class FamilyMembersController < ApplicationController
   def update
     @family_member = FamilyMember.find(params[:id])
     if @family_member.update_attributes(family_member_params)
-      redirect_to admin_path
+      redirect_to family_data_path
     else
       render :edit
     end
@@ -28,7 +36,7 @@ class FamilyMembersController < ApplicationController
   def destroy
     FamilyMember.destroy(params[:id])
     respond_to do |format|
-      format.html { redirect_to admin_path }
+      format.html { redirect_to family_data_path }
       format.js
     end
   end

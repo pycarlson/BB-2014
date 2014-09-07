@@ -6,7 +6,7 @@
         <%= link_to 'Home', root_path, :class => "subnav-link" %>
         <%= link_to 'My Account', user_path(current_user), :class => "subnav-link" %>
         <% if user_has_chosen_drop_location %>
-        <%= link_to 'Families', families_path, :class => "subnav-link" %>
+        <%= link_to 'Families', all_families_path, :class => "subnav-link" %>
         <% end %>
       </div>
 
@@ -115,9 +115,23 @@
       </div>
 
     </div>
+    <div class="clearfix"></div>
+    <div class="downloads">
+      <h2>Data Downloads</h2>
+      <ul>
+        <li><%= link_to 'User Data', users_path(format: "csv"), class: 'btn btn-med btn-info' %></li>
+        <li><%= link_to 'Adoptions Data', adoptions_path(format: "csv"), class: 'btn btn-med btn-info' %></li>
+        <li><%= link_to 'Families Data', families_path(format: "csv"), class: 'btn btn-med btn-info' %></li>
+        <li><%= link_to 'Family Members Data', family_members_path(format: "csv"), class: 'btn btn-med btn-info' %></li>
+      </ul> 
+    </div>
   </div>
+
 </div>
 </div>
+
+
+
 </div>
 
 </div>

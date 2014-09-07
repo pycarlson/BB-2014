@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @adoption %> |
-<%= link_to 'Back', adoptions_path %>
+<%= link_to 'Back', user_path(User.find(@adoption.user_id)) %>

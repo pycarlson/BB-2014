@@ -19,7 +19,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      t.string  :full_name
+      t.string  :first_name
+      t.string  :last_name
       t.string  :company
       t.string  :street
       t.string  :city

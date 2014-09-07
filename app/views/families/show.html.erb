@@ -2,7 +2,7 @@
 
 <div class="adoption-thank-you">
   <% if family_has_been_adopted?(@family) && current_user.adoptions.include?(Adoption.find(@family.adoption_id)) %>
-  <p>Thank you for adopting this family, <%= User.find(Adoption.find_by_family_id(@family.id).user_id).full_name %>!</p>
+  <p>Thank you for adopting this family, <%= User.find(Adoption.find_by_family_id(@family.id).user_id).first_name %> <%= User.find(Adoption.find_by_family_id(@family.id).user_id).last_name %>!</p>
   <% elsif family_has_been_adopted?(@family) %>
   <p>This family has already been adopted by another donor.</p>
   <% end %>

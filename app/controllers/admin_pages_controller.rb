@@ -9,22 +9,18 @@ class AdminPagesController < ApplicationController
 
   def adoption_data
     @adoptions = Adoption.all
-    @family_members = FamilyMember.all
   end
 
   def user_data
     @system_users = User.all
-    @family_members = FamilyMember.all
   end
 
   def donor_data
     @adoptions = Adoption.all
-    @family_members = FamilyMember.all
   end
 
   def family_data
     @families = Family.all
-    @family_members = FamilyMember.all
   end
 
   def super_admin_page
@@ -87,17 +83,17 @@ class AdminPagesController < ApplicationController
     redirect_to super_admin_page_path
   end
 
-  private
+  # private
 
-   def undo_adoption(user, family)
-    user.adoptor = false
-    family.user_id = nil
-    family.adopted = false
-    family.save
-    if user.families.length == 0
-      user.drop_date = nil
-      user.save
-    end
-  end
+  #  def undo_adoption(user, family)
+  #   user.adoptor = false
+  #   family.user_id = nil
+  #   family.adopted = false
+  #   family.save
+  #   if user.families.length == 0
+  #     user.drop_date = nil
+  #     user.save
+  #   end
+  # end
 
 end

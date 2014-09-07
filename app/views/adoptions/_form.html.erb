@@ -19,8 +19,14 @@
 <div class="row">  
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">    
-    <div class="form-item"><%= f.label :full_name %>
-      <%= f.text_field :full_name, value: current_user.full_name, class: "form-control" %>
+    <div class="form-item"><%= f.label :first_name %>
+      <%= f.text_field :first_name, value: current_user.first_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">    
+    <div class="form-item"><%= f.label :last_name %>
+      <%= f.text_field :last_name, value: current_user.last_name, class: "form-control" %>
     </div>
   </div>
 
@@ -79,6 +85,7 @@
     </div>
   </div>
   <% end %>
+  <div class="clearfix"></div>
 
   <div class="form-item">
     <%= f.submit 'ADOPT THIS FAMILY NOW!', :class => "btn btn-success" %>

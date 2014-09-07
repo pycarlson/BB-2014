@@ -2,11 +2,19 @@ class FamiliesController < ApplicationController
 
   before_filter :user_is_admin?, only: [:new, :edit, :create, :update]
   before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status, :go_live]
-  before_filter :find_family, except: [:index, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
+  before_filter :find_family, except: [:index, :all_families, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
   before_filter :family_is_in_users_location, only: [:show]
 
 
   def index
+    @families = Family.order(:code)
+    respond_to do |format|
+      format.html
+      format.csv { render text: @families.to_csv }
+    end
+  end
+
+  def all_families
     redirect_to families_of_five_or_more_path
   end
 
@@ -100,7 +108,7 @@ class FamiliesController < ApplicationController
   def family_is_in_users_location
     unless @family.drop_location_id == current_user.drop_location_id || current_user.drop_location_id == 0
       flash[:alert] = "The family you're looking for isn't in your chosen drop location." 
-      redirect_to families_path
+      redirect_to all_families_path
     end
   end
 

@@ -3,7 +3,11 @@ class AdoptionsController < ApplicationController
   before_action :set_adoption, only: [:show, :edit, :update, :destroy, :update_gift_status]
 
   def index
-    @adoptions = Adoption.all
+    @adoptions = Adoption.order(:family_id)
+    respond_to do |format|
+      format.html
+      format.csv { render text: @adoptions.to_csv }
+    end
   end
 
   def new
@@ -28,7 +32,8 @@ class AdoptionsController < ApplicationController
         family.save
 
         user = User.find(@adoption.user_id)
-        user.update_attributes(full_name: @adoption.full_name,
+        user.update_attributes(first_name: @adoption.first_name,
+        last_name: @adoption.last_name,
         street: @adoption.street,
         city: @adoption.city,
         state: @adoption.state,
@@ -70,6 +75,6 @@ class AdoptionsController < ApplicationController
     end
 
     def adoption_params
-      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :full_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
+      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
     end
   end

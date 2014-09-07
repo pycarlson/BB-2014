@@ -7,7 +7,7 @@
   }
   height: auto;
   .super-back-btn {
-    
+
     width: 100%;
     .btn {
       float: right;
@@ -40,4 +40,17 @@
   padding-top: 10px;
 }
 
+.top-holder {
+  height: 120px;
+  margin-bottom: 20px;
 
+  h1 {
+    text-align: center;
+  }
+
+  .admin-subnav {
+    position: absolute;
+    top: 80px;
+    right: 39%;
+  }
+}

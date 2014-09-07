@@ -6,6 +6,6 @@
   <%= link_to 'My Account', user_path(current_user), :class => "subnav-link btn-clear" %>
   <% end %>
   <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
-    <%= link_to 'Families', families_path, :class => "subnav-link btn-clear" %>
+    <%= link_to 'Families', all_families_path, :class => "subnav-link btn-clear" %>
   <% end %>
 </div>

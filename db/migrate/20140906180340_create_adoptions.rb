@@ -4,7 +4,8 @@ class CreateAdoptions < ActiveRecord::Migration
       t.integer  :drive_id
       t.integer  :user_id
       t.integer  :family_id
-      t.string   :full_name
+      t.string   :first_name
+      t.string   :last_name
       t.string   :email
       t.string   :street
       t.string   :city

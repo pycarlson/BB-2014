@@ -35,11 +35,11 @@
     </div>
 
     <% if !user_signed_in? %>
-    <%= link_to 'Sign In or Sign Up to Browse Families',families_path, :class => "btn btn-info disabled" %>
+    <%= link_to 'Sign In or Sign Up to Browse Families', all_families_path, :class => "btn btn-info disabled" %>
     <% end %>
 
     <% if user_signed_in? && user_has_chosen_drop_location %>
-    <%= link_to 'Browse Families Now',families_path, :class => "btn btn-info" %>
+    <%= link_to 'Browse Families Now', all_families_path, :class => "btn btn-info" %>
     <% elsif user_signed_in? && !user_has_chosen_drop_location %>
     <a href="#" class="btn btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
     <% end %>

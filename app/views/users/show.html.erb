@@ -6,7 +6,7 @@
   <div class="col-xs-10">
     <div class="profile-container">
 
-      <p>Hello <%= current_user.full_name %> and welcome to your private Brighter Beginnings Adopt-a-Family account page. Come here to manage your personal information, acquire information about the famil(ies) you adopt each year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
+      <p>Hello <%= current_user.first_name %> and welcome to your private Brighter Beginnings Adopt-a-Family account page. Come here to manage your personal information, acquire information about the famil(ies) you adopt each year, and even to remind yourself about when and where you've scheduled your gift drop off.</p>
 
       <p>Remember that you can receive a tax break for your gift donations. <%= link_to 'Download your in-kind donation tax receipt form here', download_pdf_path(:file => 'Donation_receipt_AAF_2014.pdf') %>.</p>
       
@@ -37,8 +37,9 @@
       <div class="col-sm-4 col-xs-12 column">
         <h2>Contact Information</h2>
         <ul>
-          <% if current_user.full_name != nil %>
-            <li><p>Name: <%= current_user.full_name %><p></li>
+          <% if current_user.first_name != nil %>
+            <li><p>Name: <%= current_user.first_name %><p></li>
+            <li><p>Name: <%= current_user.last_name %><p></li>
           <% end %>
           
           <% if current_user.street != nil && current_user.state && current_user.zip %>

@@ -7,21 +7,22 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users
-  resources :users, only: [:show, :index, :edit, :update, :destroy]
+  
+  resources :users
 
   resources :drives
 
-  resources :family_member_imports, only: [:new, :create]
+  resources :family_member_imports, only: [:index, :new, :create]
 
   resources :families do 
-   
     resources :family_members do 
       resources :needs
     end
   end
 
+  resources :family_members, only: [:index] 
+
   resources :organizations
-  resources :family_member_imports, only: [:index]
 
   resources :admins, only: [:create, :destroy] 
   resources :super_admins, only: [:create, :destroy] 
@@ -30,6 +31,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/faq',  to: 'static_pages#faq', via: 'get'
   match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
   match '/super_admin_page' => 'admin_pages#super_admin_page', via: 'get'
+  match '/all_families',  to: 'families#all_families', via: 'get'
   match '/families_of_five_or_more',  to: 'families#families_of_five_or_more', via: 'get'
   match '/families_of_four',  to: 'families#families_of_four', via: 'get'
   match '/families_of_three',  to: 'families#families_of_three', via: 'get'
