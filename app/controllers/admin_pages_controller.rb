@@ -4,12 +4,25 @@ class AdminPagesController < ApplicationController
   before_filter :user_is_super_admin?, except: [:data_tables]
 
   def data_tables
-    @families = Family.all
     @family_members = FamilyMember.all
     @total_fams = Family.count
-    @adoptions = Adoption.all
-    @system_users = User.all
     @total_adoptions = Adoption.count
+  end
+
+  def adoption_data
+    @adoptions = Adoption.all
+  end
+
+  def user_data
+    @system_users = User.all
+  end
+
+  def donor_data
+    @adoptions = Adoption.all
+  end
+
+  def family_data
+    @families = Family.all
   end
 
   def super_admin_page

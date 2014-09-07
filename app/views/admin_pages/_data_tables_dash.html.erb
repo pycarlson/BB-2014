@@ -1,0 +1,44 @@
+<div class="top-holder">
+  <h1>Adopt-a-Family Data Tables</h1>
+  <div class="admin-subnav">
+    <%= link_to 'Home', root_path, :class => "subnav-link" %>
+    <%= link_to 'My Account', user_path(current_user), :class => "subnav-link" %>
+    <% if user_has_chosen_drop_location %>
+    <%= link_to 'Families', families_path, :class => "subnav-link" %>
+    <% end %>
+  </div>
+
+  <div class="countdown fam-countdown">
+    <div><h2>Families<br><span><%= @total_fams %></span></h2></div>
+  </div>
+
+  <div class="countdown adoption-countdown">
+    <div><h2>Adoptions<br><span><%= @total_adoptions %></span></h2></div>
+  </div>
+
+</div>
+<div class="clearfix"></div>
+
+<div class="manage-nav">
+  <h2>Data Table Views</h2>
+
+  <ul>
+    <li>
+      <%= link_to 'Families', family_data_path, :class => "btn btn-sm btn-clear #{cp(family_data_path)}" %>
+    </li>
+    <li>
+      <%= link_to 'All Users', user_data_path, :class => "btn btn-sm btn-clear #{cp(user_data_path)}" %>
+    </li>
+    <li>
+     <%= link_to 'Adopting Users', donor_data_path, :class => "btn btn-sm btn-clear #{cp(donor_data_path)}" %>
+   </li>
+   <li>
+    <%= link_to 'Adoptions', adoption_data_path, :class => "btn btn-sm btn-clear #{cp(adoption_data_path)}" %>
+   </li>
+ </ul>
+</div>
+
+
+
+
+

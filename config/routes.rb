@@ -27,8 +27,6 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :super_admins, only: [:create, :destroy] 
 
   get '/data_tables' => 'admin_pages#data_tables'
-
-  # match '/signup',  to: 'users#new', via: 'get'
   match '/faq',  to: 'static_pages#faq', via: 'get'
   match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
 
@@ -36,6 +34,10 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/families_of_four',  to: 'families#families_of_four', via: 'get'
   match '/families_of_three',  to: 'families#families_of_three', via: 'get'
   match '/families_of_two_and_under',  to: 'families#families_of_two_and_under', via: 'get'
+  match '/adoption_data',  to: 'admin_pages#adoption_data', via: 'get'
+  match '/user_data',  to: 'admin_pages#user_data', via: 'get'
+  match '/donor_data',  to: 'admin_pages#donor_data', via: 'get'
+  match '/family_data',  to: 'admin_pages#family_data', via: 'get'
   get '/download_pdf' => 'static_pages#download_pdf'
   get '/super_admin_page' => 'admin_pages#super_admin_page'
   get '/cancel_adoption' => 'admin_pages#cancel_adoption'

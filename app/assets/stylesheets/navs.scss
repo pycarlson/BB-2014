@@ -99,3 +99,13 @@
     margin: 0 20px;
   }
 }
+
+.manage-nav li {
+  display: inline;
+
+  .active {
+    background-color: $green !important;
+    color: $white !important;
+    border: 1px solid $green;
+  }
+}
