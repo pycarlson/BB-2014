@@ -1,28 +1,30 @@
 class AdminPagesController < ApplicationController
   
-  before_filter :user_is_admin?, only: [:data_tables]
-  before_filter :user_is_super_admin?, except: [:data_tables]
+  before_filter :user_is_admin?, only: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data]
+  before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data]
 
   def data_tables
-    @family_members = FamilyMember.all
-    @total_fams = Family.count
-    @total_adoptions = Adoption.count
+    redirect_to adoption_data_path
   end
 
   def adoption_data
     @adoptions = Adoption.all
+    @family_members = FamilyMember.all
   end
 
   def user_data
     @system_users = User.all
+    @family_members = FamilyMember.all
   end
 
   def donor_data
     @adoptions = Adoption.all
+    @family_members = FamilyMember.all
   end
 
   def family_data
     @families = Family.all
+    @family_members = FamilyMember.all
   end
 
   def super_admin_page

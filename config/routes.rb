@@ -26,10 +26,10 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   resources :admins, only: [:create, :destroy] 
   resources :super_admins, only: [:create, :destroy] 
 
-  get '/data_tables' => 'admin_pages#data_tables'
+  match '/data_tables' => 'admin_pages#data_tables', via: 'get'
   match '/faq',  to: 'static_pages#faq', via: 'get'
   match '/shopping_tips',  to: 'static_pages#shopping_tips', via: 'get'
-
+  match '/super_admin_page' => 'admin_pages#super_admin_page', via: 'get'
   match '/families_of_five_or_more',  to: 'families#families_of_five_or_more', via: 'get'
   match '/families_of_four',  to: 'families#families_of_four', via: 'get'
   match '/families_of_three',  to: 'families#families_of_three', via: 'get'
@@ -39,17 +39,12 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/donor_data',  to: 'admin_pages#donor_data', via: 'get'
   match '/family_data',  to: 'admin_pages#family_data', via: 'get'
   get '/download_pdf' => 'static_pages#download_pdf'
-  get '/super_admin_page' => 'admin_pages#super_admin_page'
-  get '/cancel_adoption' => 'admin_pages#cancel_adoption'
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'
   post '/add_location' => 'static_pages#add_location'
   post '/add_admin' => 'admin_pages#add_admin'
   post '/add_super_admin' => 'admin_pages#add_super_admin'
-  get '/remove_admin' => 'admin_pages#remove_admin'
-  get '/remove_super_admin' => 'admin_pages#remove_super_admin'
   get '/close_drive' => 'admin_pages#close_drive'
   get '/open_drive' => 'admin_pages#open_drive'
   get '/go_live' => 'admin_pages#go_live'
-  get '/adoption_confirmation' => 'users#adoption_confirmation'
 end
