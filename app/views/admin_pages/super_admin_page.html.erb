@@ -20,7 +20,7 @@
     </div>
 
     <div class="fams-to-go-live col-lg-12">
-      <h1><span><%= @families.count > 0 ? @families.count : "No" %> </span>Families Ready to Go Live</h1>
+      <h1><span><%= family_count(@families) %> </span> Ready to Go Live</h1>
       <table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
         <thead>
           <tr>
