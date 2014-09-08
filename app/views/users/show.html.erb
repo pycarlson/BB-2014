@@ -38,8 +38,8 @@
         <h2>Contact Information</h2>
         <ul>
           <% if current_user.first_name != nil %>
-            <li><p>Name: <%= current_user.first_name %><p></li>
-            <li><p>Name: <%= current_user.last_name %><p></li>
+            <li><p>First Name: <%= current_user.first_name %><p></li>
+            <li><p>Last Name: <%= current_user.last_name %><p></li>
           <% end %>
           
           <% if current_user.street != nil && current_user.state && current_user.zip %>

@@ -72,13 +72,14 @@
     </div>
   </div>
 
+  <% unless current_user.drop_location_id == 0 || !user_has_chosen_drop_location %>
+
   <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     Lastly, you have chosen <%= current_user.get_drop_location_name %> as your drop location. 
     Before completing this process, please choose the day you would like to drop 
     off your gifts.
   </p>
-
-  <% unless current_user.drop_location_id == 0 || !user_has_chosen_drop_location %>
+  
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="form-item">
       <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>

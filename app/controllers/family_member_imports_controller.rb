@@ -20,7 +20,7 @@ class FamilyMemberImportsController < ApplicationController
     
     if @family_members.save
       if user_is_admin? 
-        redirect_to data_tables_path, notice: "Families imported successfully."
+        redirect_to family_data_path, notice: "Families imported successfully."
       end
     else
       render :new, notice: "It looks like something is wrong."

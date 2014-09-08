@@ -62,6 +62,11 @@ class AdoptionsController < ApplicationController
   end
 
   def destroy
+    fam = Family.find(@adoption.family_id)
+    fam.adopted = false
+    fam.adoption_id = nil
+    fam.save
+
     @adoption.destroy
     respond_to do |format|
       format.html { redirect_to data_tables_path }
