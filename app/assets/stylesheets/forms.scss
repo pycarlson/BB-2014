@@ -1,4 +1,6 @@
 /*FORM STYLES*/
+@import 'variables';
+
 .form-page {
   padding: 30px 30px 0 30px;
   text-align: left;
@@ -53,4 +55,8 @@
     top: 80px;
     right: 39%;
   }
+}
+
+.needs-row a {
+  color: $linkBlue !important;
 }

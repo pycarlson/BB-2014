@@ -11,11 +11,11 @@
       </div>
 
       <div class="countdown fam-countdown">
-        <div><h2>Families<br><span><%= @total_fams %></span></h2></div>
+        <div><h2>Families<br><span><%= Family.count %></span></h2></div>
       </div>
 
       <div class="countdown adoption-countdown">
-        <div><h2>Adoptions<br><span><%= @total_adoptions %></span></h2></div>
+        <div><h2>Adoptions<br><span><%= Adoption.count %></span></h2></div>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         <tr>
           <ul>
             <td><%= family.code.upcase %></td>
-            <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-info" %></td>
+            <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-small btn-success" %></td>
             <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
             <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
           </ul>

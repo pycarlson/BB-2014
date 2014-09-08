@@ -56,13 +56,6 @@ class AdminPagesController < ApplicationController
     redirect_to super_admin_page_path
   end
 
-  def cancel_adoption 
-    family = Family.find(params[:family_id])
-    user = User.find(family.user_id)
-    undo_adoption(user, family)
-    redirect_to data_tables_path
-  end
-
   def resend_adoption_confirmation_email
     family = Family.find(params[:family_id])
     user = User.find(params[:format])
@@ -71,29 +64,15 @@ class AdminPagesController < ApplicationController
   end
 
   def reset_drive
-    Drive.last.families.clear
     User.all.each do |u|
-      u.families.clear
-      u.drop_date_id = nil
-      unless u.drop_location_id == 0
-        u.drop_location_id = nil
-      end
-      u.save
+      u.adoptions.clear
     end
+
+    Adoption.all.each do |a|
+      a.destroy
+    end
+    Drive.last.families.clear
     redirect_to super_admin_page_path
   end
-
-  # private
-
-  #  def undo_adoption(user, family)
-  #   user.adoptor = false
-  #   family.user_id = nil
-  #   family.adopted = false
-  #   family.save
-  #   if user.families.length == 0
-  #     user.drop_date = nil
-  #     user.save
-  #   end
-  # end
 
 end
