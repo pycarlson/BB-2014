@@ -57,7 +57,7 @@
       <li><h2><%= dl.drop_location_name %></h2></li>
       <li><p><%= dl.street %></p></li>
       <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
-      <li class="map"><%= render dl.drop_location_name.downcase %></li>
+      <li class="map"><%= render "shared/#{dl.drop_location_name.downcase}" %></li>
     </ul>
     <% end %>
   </div>
@@ -82,7 +82,7 @@
   
 </div>
 
-<%= render "modal" %>
+<%= render "shared/modal" %>
 <% else %>
 <%= render "drives/closed" %>
 <% end %>

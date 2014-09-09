@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @drive = Drive.last
+    @drop_locations = @drive.drop_locations
     redirect_to root_path unless @user
   end
 

@@ -13,7 +13,10 @@
       <div class="col-sm-4 col-xs-12 column">
         <h2>Drop Location Details</h2>
         <% unless current_user.drop_location_id && current_user.drop_location_id != 0 || user_is_admin? %>
-          <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption. On the home page, just click on the 'Browse Families' button and you'll see a prompt to choose your location.</p>
+          <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption.</p>
+
+          <a href="#" class="btn btn-medium btn-success drop-loc-button" data-toggle="modal" data-target="#basicModal">
+          Choose Drop Location</a>
         <% end %>
 
         <% if current_user.drop_location_id == 0 or user_is_super_admin? %>
@@ -72,10 +75,9 @@
       </ul>
       <% end %>
     </div>
-
-
-    
   </div>
 </div>
 </div>
 </div>
+
+<%= render "shared/modal" %>

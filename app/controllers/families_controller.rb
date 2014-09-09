@@ -4,6 +4,7 @@ class FamiliesController < ApplicationController
   before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status, :go_live]
   before_filter :find_family, except: [:index, :all_families, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
   before_filter :family_is_in_users_location, only: [:show]
+  before_filter :user_is_logged_id?
 
 
   def index
@@ -100,6 +101,13 @@ class FamiliesController < ApplicationController
   end 
 
   protected
+
+  def user_is_logged_id? 
+    unless current_user
+      flash[:alert] = "Please sign in or sign up to view families."
+      redirect_to root_path
+    end
+  end
 
   def find_family
     @family = Family.find(params[:id])
