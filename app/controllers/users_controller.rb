@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    p current_user.drop_location_id
+    p "*" * 100
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
     redirect_to root_path unless @user
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
 
   protected
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :drop_location_id, :drop_date_id, :company, :zip, :street, :city, :state, :phone, :info_complete)
+    params.require(:user).permit(:first_name, :last_name, :drop_location_id, :drop_date_id, :company, :zip, :street, :city, :state, :phone, :password, :password_confirmation)
   end
 
   def get_user

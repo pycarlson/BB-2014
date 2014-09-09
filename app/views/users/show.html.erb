@@ -12,7 +12,7 @@
       
       <div class="col-sm-4 col-xs-12 column">
         <h2>Drop Location Details</h2>
-        <% unless current_user.drop_location_id && current_user.drop_location_id != 0 %>
+        <% unless current_user.drop_location_id || current_user.drop_location_id == 0 %>
           <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption.</p>
 
           <a href="#" class="btn btn-medium btn-success drop-loc-button" data-toggle="modal" data-target="#basicModal">
