@@ -74,12 +74,18 @@
 
   <% unless current_user.drop_location_id == 0 || !user_has_chosen_drop_location %>
 
+  <% if @new %>
   <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     Lastly, you have chosen <%= current_user.get_drop_location_name %> as your drop location. 
-    Before completing this process, please choose the day you would like to drop 
-    off your gifts.
+    Before completing this process, please choose when you would like to drop 
+    off your gifts from the day and time options provided below. If at some point you need to edit your drop day and time details, you may do so by going to your personal Account Page and choosing the edit option next to your adopted famil(ies). 
   </p>
-  
+  <% else %>
+  <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    Update yor drop time and date here:. 
+  </p>
+  <% end %>
+
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="form-item">
       <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
@@ -88,10 +94,17 @@
   <% end %>
   <div class="clearfix"></div>
 
+  <% if @new %>
   <div class="form-item">
     <%= f.submit 'ADOPT THIS FAMILY NOW!', :class => "btn btn-success" %>
   </div> 
-    <%= link_to 'CANCEL', family_path(Family.find(params[:family_id])), :id => "cancel-adoption-process", :class => "btn btn-danger" %>
+  <%= link_to 'CANCEL', family_path(Family.find(params[:family_id])), :id => "cancel-adoption-process", :class => "btn btn-danger" %>
 </div>
+<% else %>
+<div class="form-item">
+  <%= f.submit :class => "btn btn-success" %>
+</div> 
+
+<% end %>
 <% end %>
 </div>

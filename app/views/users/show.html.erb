@@ -67,7 +67,7 @@
           <% current_user.adoptions.each do |a| %>
           <li>
             <ul class="col-lg-5">
-              <li><p><%= link_to Family.find(a.family_id).code, Family.find(a.family_id) %></p></li>
+              <li><p><%= link_to 'edit', edit_adoption_path(a) %><%= link_to Family.find(a.family_id).code, Family.find(a.family_id) %></p></li>
             </ul>
             <% end %>
           </li>

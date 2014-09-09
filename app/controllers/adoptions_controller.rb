@@ -11,6 +11,7 @@ class AdoptionsController < ApplicationController
   end
 
   def new
+    @new = true
     @adoption = Adoption.new
     unless current_user.drop_location_id == 0
       @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
@@ -50,6 +51,13 @@ class AdoptionsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @adoption.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit 
+    @editing = true
+    unless current_user.drop_location_id == 0
+      @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
     end
   end
 
