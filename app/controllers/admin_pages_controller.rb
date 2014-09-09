@@ -66,12 +66,18 @@ class AdminPagesController < ApplicationController
   def reset_drive
     User.all.each do |u|
       u.adoptions.clear
+      unless u.drop_location_id == 0
+        u.drop_location_id = nil
+        u.drop_date_id = nil
+        u.save
+      end
     end
 
     Adoption.all.each do |a|
       a.destroy
     end
     Drive.last.families.clear
+    flash[:notice] = "The Adopt-a-Family Program is now reset for next year - families, adoptions, user drop locations and drop dates have been deleted."
     redirect_to super_admin_page_path
   end
 

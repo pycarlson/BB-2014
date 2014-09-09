@@ -1,3 +1,4 @@
+
 <div class="super-admin">
   <div class="container-fluid">
     <div class="top-holder col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -35,8 +36,8 @@
           <ul>
             <td><%= family.code.upcase %></td>
             <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-small btn-success" %></td>
-            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link" %></td>
-            <td><%= link_to "Delete", family, method: :delete, class: "delete_link"  %></td>
+            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
+            <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
           </ul>
         </tr>
         <% end %>

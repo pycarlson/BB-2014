@@ -84,8 +84,6 @@ ActiveRecord::Schema.define(version: 20140906180340) do
     t.datetime "updated_at"
   end
 
-  add_index "families", ["code"], name: "index_families_on_code", unique: true
-
   create_table "family_members", force: true do |t|
     t.integer "family_id"
     t.string  "first_name"

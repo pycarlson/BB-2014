@@ -8,7 +8,7 @@ class Family < ActiveRecord::Base
   
   accepts_nested_attributes_for :family_members, :allow_destroy => true
 
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: {case_sensitive: false}
 
   before_create :strip_family_code
 

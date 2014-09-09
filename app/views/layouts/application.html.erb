@@ -18,17 +18,16 @@
 
   <%= render 'shared/top_nav'%>
   <div class="container-fluid site-container">
-
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+    <p class="notice"><%= notice %></p>
     <% end %>
 
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+    <p class="alert"><%= alert %></p>
     <% end %>
-
-    <%= yield %>
     
+    <%= yield %>
+
   </div>
 
   

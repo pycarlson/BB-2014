@@ -21,18 +21,25 @@ a {
   color: $linkBlue;
 }
 
-#notice {
-  color: $green;
-}
-
 .alert {
- color: $orange;
+  background-color: #d43f3a;
+  color: $white;
+  margin-bottom: 0;
+  padding: 10px 0 14px 22px;
+  border-radius: 0;
 }
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #d43f3a;
   display: table;
+}
+
+.notice {
+  background-color: $green;
+  color: $white;
+  margin-bottom: 0;
+  padding: 10px 0 14px 22px;
 }
 
 #error_explanation {
@@ -49,7 +56,7 @@ a {
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
-    color: #fff;
+    color: $white;
   }
   ul li {
     font-size: 12px;

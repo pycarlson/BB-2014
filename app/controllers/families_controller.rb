@@ -60,7 +60,7 @@ class FamiliesController < ApplicationController
       redirect_to new_family_path
       return
     end
-    redirect_to data_tables_path
+    redirect_to family_data_path
   end
 
   def show
