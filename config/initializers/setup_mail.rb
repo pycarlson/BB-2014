@@ -9,3 +9,4 @@ ActionMailer::Base.smtp_settings = {
 }
 
 ActionMailer::Base.default_url_options[:host] = "http://adopt-a-family-program.herokuapp.com/"
+

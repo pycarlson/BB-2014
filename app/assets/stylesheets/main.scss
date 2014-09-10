@@ -21,6 +21,10 @@ a {
   color: $linkBlue;
 }
 
+.no-rm {
+  margin-right: 0;
+}
+
 .alert {
   background-color: #d43f3a;
   color: $white;
@@ -119,6 +123,10 @@ a {
   }
 }
 
+.btn-families {
+  background-clip: $orange;
+}
+
 h1 {
   font-family: 'Alegreya', serif;
   font-weight: 500;
@@ -159,15 +167,19 @@ li {
   padding: 40px 0 40px 20px;
   margin-bottom: 40px;
   margin-top: -5px;
+
   .count h2 {
     color: $green;
     font-size: 50px;
   }
+
   .btn {
     padding-top: 9px;
     margin-left: -15px;
   }
+
   .present {
+
     i {
       color: $green;
       font-size: 20px;
@@ -179,11 +191,13 @@ li {
 
 .home-top-row {
   margin-top: -5px;
+
   .home-title {
     width: 100%;
     min-height: 190px;
     background-image: image-url("snowy-background.jpg");
     text-align: center;
+
     h1 {
       color: $white;
       padding-top: 48px;

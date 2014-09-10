@@ -13,8 +13,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    p current_user.drop_location_id
-    p "*" * 100
     @drive = Drive.last
     @drop_locations = @drive.drop_locations
     redirect_to root_path unless @user

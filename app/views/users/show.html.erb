@@ -58,8 +58,8 @@
         </ul>
       </div>
       
-      <div class="col-sm-3 col-xs-12 column">
-        <h2>Adopted Families</h2>
+      <div class="col-sm-3 col-xs-12 column no-rm">
+        <h2>Adoptions</h2>
         <% if current_user.adoptions.length == 0  %>
           <p>No families adopted yet...</p>
         <% else %>
@@ -67,7 +67,7 @@
           <% current_user.adoptions.each do |a| %>
           <li>
             <ul class="col-lg-5">
-              <li><p><%= link_to 'edit', edit_adoption_path(a) %><%= link_to Family.find(a.family_id).code, Family.find(a.family_id) %></p></li>
+              <li><p>Family <%= Family.find(a.family_id).code %> <%= link_to 'View', Family.find(a.family_id) %> or <%= link_to 'Edit', edit_adoption_path(a) %> </p></li>
             </ul>
             <% end %>
           </li>

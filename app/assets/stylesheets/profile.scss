@@ -5,14 +5,16 @@
   margin-top: 30px;
   .column {
     background-color: $lightGray;
-    height: 300px;
+    min-height: 230px;
     padding: 20px;
-    margin-right: 20px;
+    margin: 20px 15px 20px 0;
     border-radius: 5px;
+    width: 32%;
   }
   ul {
     width: 100%;
     float: left;
+    padding: 0;
   }
 
   ul > ul {
@@ -26,10 +28,8 @@
   ul p {
     margin-bottom: 5px;
   }
-
-
 }
 
 .drop-loc-button {
-    padding-top: 10px;
-  }
+  padding-top: 10px;
+}
