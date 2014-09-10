@@ -5,9 +5,9 @@
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-donors">
   <thead>
     <tr>
-      <th><h2>User ID</h2></th>
-      <th><h2>First Name</h2></th>
-      <th><h2>Last Name</h2></th>
+      <th><h2>Last</h2></th>
+      <th><h2>First</h2></th>
+      <th><h2>Fam</h2></th>
       <th><h2>Email</h2></th>
       <th><h2>Street</h2></th>
       <th><h2>City</h2></th>
@@ -26,13 +26,13 @@
   <tr>
     <ul>
       <td>
-        <li><%= a.id %></li>
+        <li><%= a.last_name %></li>
       </td>
       <td>
         <li><%= a.first_name %></li>
       </td>
       <td>
-        <li><%= a.last_name %></li>
+        <li><%= Family.find(a.family_id).code %></li>
       </td>
       <td>
         <li><%= a.email %></li>
