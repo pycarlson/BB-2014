@@ -1,24 +1,36 @@
 @import 'variables';
 
-.closed-drive {
+.closed {
   text-align: center;
-  height: 60px;
-  width: 100%;
-  margin-top: 100px;
+  background: image_url('large-snowy-background.jpg') no-repeat;
+  min-height: 800px;
+  background-position: 0 -20px;
 }
 
-.until-open {
+.closed-wrapper {
   text-align: center;
-  width: 705px;
-  height: 500px;
+  height: 100%;
+  background-color: rgba(255,255,255,.6);
+  padding: 40px;
+  color: $green;
+  width: 900px;
   margin: 0 auto;
+  margin-top: 60px;
+  line-height: 30px;
+  border-radius: 5px;
+
+  h1 {
+    line-height: 70px;
+  }
+
+  span {
+    font-size: 100px;
+    padding: 25px;
+    display: block;
+  }
+
   h2 {
     font-size: 100px;
-    line-height: 150px;
-    color: $green;
-  }
-  p {
-    font-size: 50px;
-    line-height: 70px;
+    color: #8EACD1;
   }
 }

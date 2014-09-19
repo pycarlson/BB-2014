@@ -1,15 +1,20 @@
-<div class="closed-drive">
-  <h1>USERS WILL SEE THIS PAGE WHEN THE DRIVE IS CLOSED</h1>
+<div class="closed">
+  <div class="col-xs-1"></div>
+  
+  <div class="clearfix"></div>
+
+  <div class="closed-wrapper">
+    <h1>Welcome to the <%= @drive.year %> <br>Brighter Beginnings Adopt-a-Family<br>Holiday Gift Giving Program <span><%= @countdown %></span>
+
+      <% if @countdown == 1 %> 
+      Day
+      <% else %> 
+      Days
+      <% end %> 
+      until the Brighter Beginnings Adopt-a-Family Giftdrive opens!
+    </h1>
+  </div>
+
+
 </div>
 
-<div class="until-open">
-  <h2><%= @countdown %></h2>
-  <p>
-    <% if @countdown == 1 %> 
-    Day
-    <% else %> 
-    Days
-    <% end %> 
-    until the<br>Brighter Beginnings <br>Adopt-a-Family Giftdrive opens!
-  </p>
-</div>
