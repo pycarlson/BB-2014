@@ -7,7 +7,7 @@
     <tr>
       <th><h2>Last</h2></th>
       <th><h2>First</h2></th>
-      <th><h2>Fam</h2></th>
+      <th><h2>#</h2></th>
       <th><h2>Email</h2></th>
       <th><h2>Street</h2></th>
       <th><h2>City</h2></th>
@@ -15,52 +15,46 @@
       <th><h2>Zip</h2></th>
       <th><h2>Phone</h2></th>
       <th><h2>Company</h2></th>
-      <% if user_is_super_admin? %>
-      <th><h2>Resend Email</h2></th>
-      <% end %>
     </tr>
   </thead>
 
   <% unless @adoptions.length < 1 %>
-  <% @adoptions.each do |a| %>
+  <% unique_users(@adoptions).each do |u| %>
   <tr>
     <ul>
       <td>
-        <li><%= a.last_name %></li>
+        <li><%= u.last_name %></li>
       </td>
       <td>
-        <li><%= a.first_name %></li>
+        <li><%= u.first_name %></li>
       </td>
       <td>
-        <li><%= Family.find(a.family_id).code %></li>
+        <li><%= u.adoptions.count %></li>
       </td>
       <td>
-        <li><%= a.email %></li>
+        <li><%= u.email %></li>
       </td>
       <td>
-        <li><%= a.street %></li>
+        <li><%= u.street %></li>
       </td>
       <td>
-        <li><%= a.city %></li>
+        <li><%= u.city %></li>
       </td>
       <td>
-        <li><%= a.state%></li>
+        <li><%= u.state%></li>
       </td>
       <td>
-        <li><%= a.zip %></li>
+        <li><%= u.zip %></li>
       </td>
       <td>
-        <% if a.phone %>
-        <li><%= a.phone %></li>
+        <% if u.phone %>
+        <li><%= u.phone %></li>
         <% end %>
       </td>
       <td>
-        <li><%= a.company %></li>
+        <li><%= u.company %></li>
       </td>
-      <% if user_is_super_admin? %>
-        <td><%= link_to "Resend", resend_adoption_confirmation_email_path(a, family_id: Family.find(a.family_id)), :class => "btn btn-info" %>
-        </td>
-      <% end %>
+      
       <% end %>
 
     </ul>

@@ -7,6 +7,7 @@
   <thead>  
     <tr>
       <th><h2>Fam</h2></th>
+      <th><h2>DL</h2></th>
       <th><h2>First</h2></th>
       <th><h2>Last</h2></th>
       <th><h2>Phone</h2></th>
@@ -17,6 +18,9 @@
       <th><h2>Given</h2></th>
       <th><h2>Update</h2></th>
       <% if user_is_super_admin? %>
+      <th><h2>Resend Email</h2></th>
+      <% end %>
+      <% if user_is_super_admin? %>
       <th><h2>Cancel</h2></th>
       <% end %>  
     </tr>
@@ -24,11 +28,13 @@
 
  
   <% @adoptions.each do |a| %>
-  <% fam = Family.find(a.family_id) %>
   <tr>
     <ul>
       <td>
-        <li><%= fam.code %></li>
+        <li><%= a.family_code %></li>
+      </td>
+      <td>
+        <li><%= a.drop_location_name %></li>
       </td>
       <td>
         <li><%= a.first_name %></li>
@@ -45,7 +51,7 @@
       <td>
         <li>
           <% unless User.find(a.user_id).drop_location_id == 0 %>
-          <%= a.drop_off.strftime('%B %d, %Y at %l:%M %p') %>
+          <%= a.drop_off.strftime('%b %d') %>
           <% end %>
         </li>
       </td>
@@ -64,6 +70,10 @@
       <td>
         <%= submit_tag "Update", :class => "btn btn-success" %>
       </td>
+      <% end %>
+      <% if user_is_super_admin? %>
+        <td><%= link_to "Resend", resend_adoption_confirmation_email_path(User.find(a.user_id), family_id: Family.find(a.family_id)), :class => "btn btn-info" %>
+        </td>
       <% end %>
 
       <% if user_is_super_admin? %>

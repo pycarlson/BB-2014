@@ -12,57 +12,62 @@
 </div>
 <% end %>
 
-<%= f.hidden_field :family_id, :value => params[:family_id] %>
+<%= f.hidden_field :family_id, :value => @family.id %>
+<%= f.hidden_field :family_code, :value => @family.code %>
 <%= f.hidden_field :drive_id, :value => Drive.last.id %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
+<% unless current_user.drop_location_id == 0 %>
+<%= f.hidden_field :drop_location_id, :value => DropLocation.find(current_user.drop_location_id).id %>
+<%= f.hidden_field :drop_location_name, :value => DropLocation.find(current_user.drop_location_id).drop_location_name %>
+<% end %>
 
 <div class="row">  
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">    
     <div class="form-item"><%= f.label :first_name %>
-      <%= f.text_field :first_name, value: current_user.first_name, class: "form-control" %>
+      <%= f.text_field :first_name, value: current_user.first_name, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">    
     <div class="form-item"><%= f.label :last_name %>
-      <%= f.text_field :last_name, value: current_user.last_name, class: "form-control" %>
+      <%= f.text_field :last_name, value: current_user.last_name, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">  
     <div class="form-item"><%= f.label :email %>
-      <%= f.text_field :email, value: current_user.email, class: "form-control" %>
+      <%= f.text_field :email, value: current_user.email, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">   
     <div class="form-item"><%= f.label :street %>
-      <%= f.text_field :street, value: current_user.street, class: "form-control" %>
+      <%= f.text_field :street, value: current_user.street, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">   
     <div class="form-item"><%= f.label :city %>
-      <%= f.text_field :city, value: current_user.city, class: "form-control" %>
+      <%= f.text_field :city, value: current_user.city, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">     
     <div class="form-item"><%= f.label :state %>
-      <%= f.text_field :state, value: current_user.state, class: "form-control" %>
+      <%= f.text_field :state, value: current_user.state, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">   
     <div class="form-item"><%= f.label :zipcode %>
-      <%= f.text_field :zip, value: current_user.zip, class: "form-control" %>
+      <%= f.text_field :zip, value: current_user.zip, class: "form-control", required: :true %>
     </div>
   </div>
 
   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">   
     <div class="form-item"><%= f.label :phone %>
-      <%= f.text_field :phone, value: current_user.phone, class: "form-control" %>
+      <%= f.text_field :phone, value: current_user.phone, class: "form-control", required: :true %>
     </div>
   </div>
 
@@ -88,7 +93,7 @@
 
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="form-item">
-      <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date_and_time.strftime('%B %d, %Y at %l:%M %p'), dd.id]}) %>
+      <%= f.select(:drop_date_id, @drop_dates.collect {|dd| [dd.date.strftime('%B %d, %Y'), dd.id]}) %>
     </div>
   </div>
   <% end %>

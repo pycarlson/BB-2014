@@ -3,7 +3,7 @@ class DropDate < ActiveRecord::Base
   belongs_to :adoption
   has_many :users
 
-  validates :date_and_time, presence: true
+  validates :date, :start_time, :end_time, presence: true
   validates :drop_location_id, presence: true
 
 end

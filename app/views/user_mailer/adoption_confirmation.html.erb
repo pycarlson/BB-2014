@@ -19,7 +19,7 @@
     <% end %>
     <% if @dd != nil %>
     <p style="font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 23px; margin: 0 0 23px 0;">
-      <strong>Please note your GIFT DROP DATE as: <%= @dd.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></strong>
+      <strong>Please note your GIFT DROP DATE as: <%= @dd.date.strftime('%B %d, %Y') %></strong>
     </p>
     <% end %>
     

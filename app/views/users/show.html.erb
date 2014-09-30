@@ -30,7 +30,10 @@
 
           <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
           <% if current_user.adoptions.length > 0  %>
-          <li><p><%= current_user.drop_date.date_and_time.strftime('%B %d, %Y at %l:%M %p') %></p></li>
+          <li>
+            <p>Your gifts can be dropped off anytime between <%= current_user.drop_date.start_time.strftime('%l:%M %p') %> and <%= current_user.drop_date.end_time.strftime('%l:%M %p') %> on <%= current_user.drop_date.date.strftime('%B %d, %Y') %>.</p>
+            <p>(To change your drop date, click on the adoptions 'edit' link in your adoptions list.)</p>
+          </li>
           <% end %>
 
         </ul>
@@ -41,17 +44,18 @@
         <h2>Contact Information</h2>
         <ul>
           <% if current_user.first_name != nil %>
-            <li><p>First Name: <%= current_user.first_name %><p></li>
-            <li><p>Last Name: <%= current_user.last_name %><p></li>
+            <li><p><%= current_user.first_name %> <%= current_user.last_name %><p></li>
           <% end %>
           
           <% if current_user.street != nil && current_user.state && current_user.zip %>
-            <li><p>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
+            <li><p><%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
           <% end %>
 
           <% if current_user.phone != nil %>
-            <li><p>Phone: <%= current_user.phone %></p></li>
+            <li><p><%= current_user.phone %></p></li>
           <% end %>
+
+          <li><p><%= current_user.email %></p></li>
 
           <li><%= link_to 'Add or Edit Your Personal Info', edit_user_path(current_user) %></li>
 

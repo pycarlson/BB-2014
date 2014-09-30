@@ -1,25 +1,25 @@
 
 <%= nested_form_for @drive, :html => {:class => "form form-horizontal"} do |f| %>
-  <div class="form-horizontal">
+<div class="form-horizontal">
   <div class="row">  
     <div class="form-group col-lg-2 col-md-2 col-sm-2 col-xs-12">
       <div class="form-item">
-      <%= f.label :Year %>
-      <%= f.text_field :year, required: :true, class: "form-control" %>
+        <%= f.label :Year %>
+        <%= f.text_field :year, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12">
       <div class="form-item">
-      <%= f.label :start_date %>
-      <%= f.date_field :start_date, required: :true, class: "form-control" %>
+        <%= f.label :start_date %>
+        <%= f.date_field :start_date, required: :true, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12">
       <div class="form-item">
-      <%= f.label :end_date %>
-      <%= f.date_field :end_date, required: :true, class: "form-control" %>
+        <%= f.label :end_date %>
+        <%= f.date_field :end_date, required: :true, class: "form-control" %>
       </div>
     </div>
   </div>
@@ -28,41 +28,21 @@
 
     <div class="form-group col-lg-10 col-md-12">
       <div class="form-item">
-      <%= f.label :blurb %><br>
-      <%= f.text_area :blurb, class: "form-control", :rows => "10", required: :true %>
+        <%= f.label :blurb %><br>
+        <%= f.text_area :blurb, class: "form-control", :size => "10x6", required: :true %>
       </div>
     </div>
 
   </div>
   
   <%= f.fields_for :drop_locations do |dl| %>
-    <h2>Drop Location <span class="remove-link"><%= dl.link_to_remove "remove" %></span></h2>
-
-    <%= dl.fields_for :drop_dates do |dd| %>
-    <div class="row">
-      <div class="form-group col-lg-12">
-        <div class="form-item">
-        <%= dd.label :date_and_time %>
-        <%= dd.datetime_select :date_and_time, required: :true, class: "form-control" %>
-        <%= dd.link_to_remove "remove" %>
-        </div>
-      </div>
-    </div>
-    <%  end %>
-  
-  <div class="row">
-    <div class="form-group col-lg-12">
-      <div class="form-item">
-      <%= dl.link_to_add "add drop date and time", :drop_dates %>
-      </div>
-    </div>
-  </div>
+  <h2>Drop Location <span class="remove-link"><%= dl.link_to_remove "remove" %></span></h2>
 
   <div class="row">
     <div class="form-group col-lg-2 col-md-6 col-xs-12">
       <div class="form-item">
         <div><%= dl.label :Name %><br>
-        <%= dl.text_field :drop_location_name, class: "form-control" %>
+          <%= dl.text_field :drop_location_name, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -70,7 +50,7 @@
     <div class="form-group col-lg-3 col-md-6 col-md-3 col-xs-12">
       <div class="form-item">  
         <div><%= dl.label :Street %><br>
-        <%= dl.text_field :street, class: "form-control" %>
+          <%= dl.text_field :street, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -78,7 +58,7 @@
     <div class="form-group col-lg-2 col-md-6 col-md-3 col-xs-12">
       <div class="form-item">
         <div><%= dl.label :City %><br>
-        <%= dl.text_field :city, class: "form-control" %>
+          <%= dl.text_field :city, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -86,7 +66,7 @@
     <div class="form-group col-lg-2 col-md-6 col-md-3 col-xs-12">
       <div class="form-item">
         <div><%= dl.label :State %><br>
-        <%= dl.text_field :state, class: "form-control" %>
+          <%= dl.text_field :state, class: "form-control" %>
         </div>    
       </div>    
     </div>
@@ -94,9 +74,41 @@
     <div class="form-group col-lg-2 col-md-6 col-md-3 col-xs-12">
       <div class="form-item">
         <div><%= dl.label :Zipcode %><br>
-        <%= dl.text_field :zipcode, class: "form-control" %>
+          <%= dl.text_field :zipcode, class: "form-control" %>
         </div>
       </div>  
+    </div>
+
+    <%= dl.fields_for :drop_dates do |dd| %>
+    <div class="row drop-date-form">
+      <div class="form-group col-lg-3">
+        <div class="form-item">
+          <%= dd.label :date %>
+          <%= dd.date_select :date, required: :true, class: "form-control" %>
+          <%= dd.link_to_remove "remove" %>
+        </div>
+      </div>
+      <div class="form-group col-lg-2">
+        <div class="form-item">
+          <%= dd.label :start %>
+          <%= dd.time_select :start_time, required: :true, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group col-lg-2">
+        <div class="form-item">
+          <%= dd.label :end %>
+          <%= dd.time_select :end_time, required: :true, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-lg-12">
+      <div class="form-item">
+        <%= dl.link_to_add "add drop date and time", :drop_dates %>
+      </div>
     </div>
   </div>
 
@@ -105,7 +117,7 @@
   <div class="row">
     <div class="form-group col-xs-12">
       <div class="form-item">
-      <%= f.link_to_add "add drop location", :drop_locations %>
+        <%= f.link_to_add "add drop location", :drop_locations %>
       </div> 
     </div> 
   </div>
@@ -114,7 +126,7 @@
 <div class="row">
   <div class="form-group col-xs-12">
     <div class="form-item">
-    <%= f.submit class: "btn btn-success" %>
+      <%= f.submit class: "btn btn-success" %>
     </div> 
   </div>
 </div>

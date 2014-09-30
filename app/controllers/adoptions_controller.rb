@@ -3,7 +3,7 @@ class AdoptionsController < ApplicationController
   before_action :set_adoption, only: [:show, :edit, :update, :destroy, :update_gift_status]
 
   def index
-    @adoptions = Adoption.order(:family_id)
+    @adoptions = Adoption.order(drop_location_id: :asc, family_code: :asc)
     respond_to do |format|
       format.html
       format.csv { render text: @adoptions.to_csv }
@@ -11,6 +11,7 @@ class AdoptionsController < ApplicationController
   end
 
   def new
+    @family = Family.find(params[:family_id])
     @new = true
     @adoption = Adoption.new
     unless current_user.drop_location_id == 0
@@ -55,9 +56,29 @@ class AdoptionsController < ApplicationController
   end
 
   def edit 
+    @family = Family.find(@adoption.family_id)
     @editing = true
     unless current_user.drop_location_id == 0
       @drop_dates = DropLocation.find(current_user.drop_location_id).drop_dates
+    end
+  end
+
+  def update 
+    user = current_user
+    if @adoption.update_attributes(adoption_params)
+      user = User.find(@adoption.user_id)
+      user.update_attributes(first_name: @adoption.first_name,
+      last_name: @adoption.last_name,
+      street: @adoption.street,
+      city: @adoption.city,
+      state: @adoption.state,
+      zip: @adoption.zip,
+      phone: @adoption.phone,
+      company: @adoption.company,
+      drop_date_id: @adoption.drop_date_id)
+      redirect_to user_path(user)
+    else
+      render :edit
     end
   end
 
@@ -88,6 +109,6 @@ class AdoptionsController < ApplicationController
     end
 
     def adoption_params
-      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
+      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :family_code, :first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_location_name, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
     end
   end

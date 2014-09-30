@@ -7,7 +7,6 @@ class Adoption < ActiveRecord::Base
 
   validates :drive_id, 
             :user_id,
-            :family_id,
             :first_name,
             :last_name,
             :email,
@@ -16,7 +15,6 @@ class Adoption < ActiveRecord::Base
             :state,
             :zip,
             :phone,
-            :company,
             presence: true
 
   before_save :standardise_number
@@ -30,7 +28,7 @@ class Adoption < ActiveRecord::Base
 
   def drop_off
     date_id = User.find(self.user_id).drop_date_id
-    DropDate.find(date_id).date_and_time
+    DropDate.find(date_id).date
   end
 
   def self.to_csv

@@ -33,7 +33,7 @@ class DrivesController < ApplicationController
   private
 
   def drive_params
-    params.require(:drive).permit(:id, :year, :blurb, :start_date, :end_date, :fundraising_url, :fundraising_blurb, :donation_receipt_link, drop_locations_attributes: [:id, :drive_id, :name, :street, :city, :state, :zipcode, drop_dates_attributes: [:id, :date_and_time, :drop_location_id]])
+    params.require(:drive).permit(:id, :year, :blurb, :start_date, :end_date, :fundraising_url, :fundraising_blurb, :donation_receipt_link, drop_locations_attributes: [:id, :drive_id, :name, :street, :city, :state, :zipcode, drop_dates_attributes: [:id, :date, :start_time, :end_time, :drop_location_id]])
   end
 
 end

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140906180340) do
     t.integer  "drive_id"
     t.integer  "user_id"
     t.integer  "family_id"
+    t.string   "family_code"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -35,10 +36,11 @@ ActiveRecord::Schema.define(version: 20140906180340) do
     t.string   "phone"
     t.string   "company"
     t.integer  "drop_location_id"
+    t.string   "drop_location_name"
     t.integer  "drop_date_id"
     t.date     "received_at_org"
     t.date     "given_to_family"
-    t.integer  "num_boxes",        default: 0
+    t.integer  "num_boxes",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,7 +58,9 @@ ActiveRecord::Schema.define(version: 20140906180340) do
   end
 
   create_table "drop_dates", force: true do |t|
-    t.datetime "date_and_time"
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
     t.integer  "drop_location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
