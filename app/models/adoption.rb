@@ -28,7 +28,9 @@ class Adoption < ActiveRecord::Base
   end
 
   def convert_drop_date
-    if self.drop_location_id == 0
+    user = User.find(self.user_id)
+    
+    if user.drop_location_id == 0
       self.drop_off_date = "staff"
     else
       self.drop_off_date = DropDate.find(self.drop_date_id).date.strftime('%b %d')
