@@ -20,6 +20,7 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
     if @organization.update_attributes(organization_params)
+      flash[:notice] = "Organization details successfully updated."
       redirect_to super_admin_page_path
      else
       render :edit

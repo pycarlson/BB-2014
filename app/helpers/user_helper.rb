@@ -8,6 +8,10 @@ module UserHelper
     current_user.families.length > 0
   end
 
+  def has_adopted?(u)
+    u.adoptions.length > 0 ? "yes" : "no"
+  end
+
   def family_has_been_adopted?(f)
     f.adopted == true
   end

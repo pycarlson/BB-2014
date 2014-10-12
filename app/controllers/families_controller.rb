@@ -61,6 +61,7 @@ class FamiliesController < ApplicationController
       redirect_to new_family_path
       return
     end
+    flash[:notice] = "Famil(ies) created successfully."
     redirect_to family_data_path
   end
 
@@ -78,6 +79,7 @@ class FamiliesController < ApplicationController
     if @family.update_attributes(family_params)
       @family.is_live = false
       @family.save
+      flash[:notice] = "Family updated successfully."
       redirect_to data_tables_path
     else
       render :edit

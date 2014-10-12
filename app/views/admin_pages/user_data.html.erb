@@ -1,11 +1,12 @@
 
 <div class="manage-all">
 <%= render 'data_tables_dash' %>
+<%= render "layouts/errors" %>
 
 <table class="datatable table table-striped table-scrollable table-bordered" id="manage-users">
 <thead>
 <tr>
-  <th><h2>User ID</h2></th>
+  <th><h2>Adoptor?</h2></th>
   <th><h2>First Name</h2></th>
   <th><h2>Last Name</h2></th>
   <th><h2>Email</h2></th>
@@ -22,7 +23,7 @@
 <tr>
   <ul>
     <td>
-      <li><%= u.id %></li>
+      <li><%= has_adopted?(u) %></li>
     </td>
     <td>
       <li><%= u.first_name %></li>

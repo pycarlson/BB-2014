@@ -18,7 +18,11 @@ class DrivesController < ApplicationController
 
   def update
     @drive = Drive.find(params[:id])
-    @drive.update_attributes(drive_params)
+    if @drive.update_attributes(drive_params)
+      flash[:notice] = "Gift drive updated successfully."
+    else
+      render :edit
+    end
     redirect_to root_path
   end
 

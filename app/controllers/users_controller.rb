@@ -23,8 +23,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params)
-    @user.save
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Your personal information was updated successfully."
+    else
+      render :edit
+    end
     redirect_to user_path(@user)
   end
 
