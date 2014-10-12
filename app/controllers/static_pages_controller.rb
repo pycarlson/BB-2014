@@ -31,6 +31,20 @@ class StaticPagesController < ApplicationController
     redirect_to all_families_path
   end
 
+  def update_drop_location
+    user = User.find(params[:user_id])
+    redirect_to root_path unless user.id == current_user.id
+    if User.has_adoptions(user)
+      flash[:alert] = "It looks like you have already adopted one or more families from your current drop location. Please contact Brighter Beginnings if you still want to change your drop location preference."
+      redirect_to user_path(user)
+    else
+      user.drop_location_id = nil
+      user.save
+      flash[:notice] = "You can now choose a new location. Click on the 'choose location' button below or the 'browse families' button in the Navigation bar at the top of the page."
+      redirect_to user_path(user)
+    end  
+  end
+
   def shopping_tips
     @page_title = 'Brighter Beginnings Adopt-a-Family Program | Shopping Tips'
   end

@@ -44,6 +44,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'
   post '/add_location' => 'static_pages#add_location'
+  get '/update_drop_location' => 'static_pages#update_drop_location'
   post '/add_admin' => 'admin_pages#add_admin'
   post '/add_super_admin' => 'admin_pages#add_super_admin'
   get '/close_drive' => 'admin_pages#close_drive'

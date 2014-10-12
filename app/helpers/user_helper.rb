@@ -12,6 +12,14 @@ module UserHelper
     f.adopted == true
   end
 
+  def get_user_dl_name(user)
+    if user.drop_location_id == nil || user.drop_location_id == 0
+      nil
+    else
+      DropLocation.find(user.drop_location_id).drop_location_name
+    end
+  end
+
   def unique_users(adoptions)
     users = []
     adoptions.all.each do |a|

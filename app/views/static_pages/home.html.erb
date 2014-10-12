@@ -35,7 +35,7 @@
     </div>
 
     <% if !user_signed_in? %>
-    <%= link_to 'Sign In or Sign Up to Browse Families', all_families_path, :class => "btn btn-info disabled" %>
+    <%= link_to 'Sign In or Sign Up to Browse Families', new_user_session_path, :class => "btn btn-info" %>
     <% end %>
 
     <% if user_signed_in? && user_has_chosen_drop_location %>

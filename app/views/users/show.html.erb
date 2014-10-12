@@ -25,7 +25,9 @@
 
 
         <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
+
         <ul>
+
           <li><p><%= DropLocation.find(current_user.drop_location_id).drop_location_name %></p></li>
 
           <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
@@ -35,7 +37,7 @@
             <p>(To change your drop date, click on the adoptions 'edit' link in your adoptions list.)</p>
           </li>
           <% end %>
-
+          <li><%= link_to 'Change Drop Location', update_drop_location_path(:user_id => current_user.id), class: 'btn btn-medium btn-info' %></li>
         </ul>
         <% end %>
       </div>
@@ -57,7 +59,8 @@
 
           <li><p><%= current_user.email %></p></li>
 
-          <li><%= link_to 'Add or Edit Your Personal Info', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Add or Edit My Personal Info', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Change My Password', edit_user_registration_path(current_user) %></li>
 
         </ul>
       </div>

@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     end
   end  
 
+  def self.has_adoptions(user)
+    user.adoptions.length > 0
+  end
+
   def update_super_drop_id
     if self.email == ENV["P_EMAIL"] || self.email == ENV["SUPER"]
       self.drop_location_id = 0
@@ -80,10 +84,11 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv
+    wanted_columns = [:first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company]
     CSV.generate do |csv|
-      csv << column_names
-      all.each do |user|
-        csv << user.attributes.values_at(*column_names)
+      csv << wanted_columns
+      all.each do |adoption|
+        csv << adoption.attributes.with_indifferent_access.values_at(*wanted_columns)
       end
     end
   end

@@ -109,6 +109,6 @@ class AdoptionsController < ApplicationController
     end
 
     def adoption_params
-      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :family_code, :first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_location_name, :drop_date_id, :received_at_org, :given_to_family, :num_boxes)
+      params.require(:adoption).permit(:drive_id, :user_id, :family_id, :family_code, :first_name, :last_name, :email, :street, :city, :state, :zip, :phone, :company, :drop_location_id, :drop_location_name, :drop_date_id, :drop_off_date, :received_at_org, :given_to_family, :num_boxes)
     end
   end
