@@ -8,6 +8,8 @@ User.create!(:email => 'cfong@brighter-beginnings.org', :password => 'password',
 User.create!(:email => 'kpatterson-hall@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'ccesena@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'iferrey@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'nhunter@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
+User.create!(:email => 'dwinokur@brighter-beginnings.org', :password => 'password', :password_confirmation => 'password')
 
 User.create!(:email => 'p@me.com', :password => 'password', :password_confirmation => 'password')
 User.create!(:email => 'jlove@me.com', :password => 'password', :password_confirmation => 'password')
@@ -21,6 +23,8 @@ Admin.create!(email: 'cfong@brighter-beginnings.org', user_id: 4, drive_id: Driv
 Admin.create!(email: 'kpatterson-hall@brighter-beginnings.org', user_id: 5, drive_id: Drive.last.id)
 Admin.create!(email: 'ccesena@brighter-beginnings.org', user_id: 6, drive_id: Drive.last.id)
 Admin.create!(email: 'iferrey@brighter-beginnings.org', user_id: 7, drive_id: Drive.last.id)
+Admin.create!(email: 'nhunter@brighter-beginnings.org', user_id: 8, drive_id: Drive.last.id)
+Admin.create!(email: 'dwinokur@brighter-beginnings.org', user_id: 9, drive_id: Drive.last.id)
 
 DropLocation.create!(:drive_id => Drive.last.id, :drop_location_name => 'Richmond', :street => ' 2727 Macdonald Ave', :city => 'Richmond', :state => 'CA', :zipcode => '94804')
 DropLocation.create!(:drive_id => Drive.last.id, :drop_location_name => 'Oakland', :street => '2648 International Blvd', :city => 'Oakland', :state => 'CA', :zipcode => '94601')
