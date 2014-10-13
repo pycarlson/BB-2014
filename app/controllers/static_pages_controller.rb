@@ -2,8 +2,6 @@ class StaticPagesController < ApplicationController
   
   POSSIBLE_FILE_NAMES = ["Donation_receipt_AAF_2014.pdf"]
 
-  http_basic_authenticate_with :name => ENV["P_EMAIL"], :password => ENV["P_GMAIL_USERNAME"]
-
   def home
     @page_title = 'Brighter Beginnings Adopt-a-Family Program | Home'
     @drive = Drive.last

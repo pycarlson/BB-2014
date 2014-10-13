@@ -19,9 +19,9 @@
             <li class="main"><%= link_to 'Shopping Tips', shopping_tips_path, :class => 'btn btn-clear' %></li>
             <li class="main"><%= link_to 'FAQs', faq_path, :class => 'btn btn-clear' %></li>
 
-            <% if user_signed_in? && user_has_chosen_drop_location %>
+            <% if user_signed_in? && user_has_chosen_drop_location && Drive.last.status == true %>
             <li class="main"><%= link_to 'Browse Families', all_families_path, :class => "btn btn-info bro-fams" %></li>
-            <% elsif user_signed_in? && !user_has_chosen_drop_location %>
+            <% elsif user_signed_in? && !user_has_chosen_drop_location  && Drive.last.status == true %>
             <li class="main"><a href="#" class="btn btn-info bro-fams" data-toggle="modal" data-target="#basicModal">Browse Families</a></li>
             <% end %>
 
