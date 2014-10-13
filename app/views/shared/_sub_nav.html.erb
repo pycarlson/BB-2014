@@ -2,7 +2,7 @@
   <h1>Adopt-a-Family Program</h1>
   
   <%= link_to 'Home', root_path, :class => "subnav-link btn-clear" %>
-  <% if user_signed_in? %>
+  <% if user_signed_in? && Drive.last.status == true %>
   <%= link_to 'My Account', user_path(current_user), :class => "subnav-link btn-clear" %>
   <% end %>
   <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
