@@ -28,8 +28,6 @@ class AdminPagesController < ApplicationController
     @super_admins = SuperAdmin.all
     @drives = Drive.all
     @families = Family.where('is_live = ?', false)
-    @admin = Admin.new
-    @super_admin = SuperAdmin.new
     @all_families = Family.all
     @total_fams = Family.count
     @total_adoptions = Adoption.count

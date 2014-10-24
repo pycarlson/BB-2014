@@ -69,15 +69,7 @@
 
     <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
       <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h2>Add Admins</h2>
-        <div class="add-admin-form">
-          <%= form_for(@admin) do |f| %>
-          <div class="form-inline">
-            <%= f.email_field :email, class: "form-control input-md" %>
-            <%= f.submit "Add Admin", class: "btn btn-success" %>
-            <% end %>
-          </div>
-        </div>
+        <h2><%= link_to 'Add Admin &#187;'.html_safe, new_admin_path(@admin), class: "button green" %></h2>
         <div>
           <h2>Current Admins</h2>
           <% if @admins.length > 0 %>
@@ -94,15 +86,7 @@
 
     <div class="add-admins col-lg-4 col-md-6 col-sm-6 col-xs-12">
       <div class="additions col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h2>Add Super Admins</h2>
-        <div class="add-admin-form">
-          <%= form_for(@super_admin) do |f| %>
-          <div class="form-inline">
-            <%= f.email_field :email, class: "form-control input-md" %>
-            <%= f.submit "Add Super Admin", :class => "btn btn-success" %>
-            <% end %>
-          </div>
-        </div>
+        <h2><%= link_to 'Add Super Admin &#187;'.html_safe, new_super_admin_path(@super_admin), class: "button green" %></h2>
         <div>
           <h2>Current Super Admins</h2>
           <% if @super_admins.length > 0 %>

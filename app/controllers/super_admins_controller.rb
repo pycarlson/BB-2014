@@ -2,6 +2,10 @@ class SuperAdminsController < ApplicationController
 
   before_filter :user_is_super_admin?
 
+  def new
+    @super_admin = SuperAdmin.new
+  end
+
   def create
     user = User.find_by_email(params[:super_admin][:email])
     drive = Drive.find(Drive.last.id)

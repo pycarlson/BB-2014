@@ -1,0 +1,7 @@
+<%= form_for(@super_admin) do |f| %>
+<div class="form-inline col-sm-4">
+  <%= f.label :staff_email %>
+  <%= f.email_field :email, class: "form-control input-md" %>
+  <%= f.submit "Add Super Admin", class: "btn btn-success" %>
+  <% end %>
+</div>

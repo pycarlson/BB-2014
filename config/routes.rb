@@ -24,8 +24,8 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
 
   resources :organizations
 
-  resources :admins, only: [:create, :destroy] 
-  resources :super_admins, only: [:create, :destroy] 
+  resources :admins, only: [:new, :create, :destroy] 
+  resources :super_admins, only: [:new, :create, :destroy] 
 
   match '/data_tables' => 'admin_pages#data_tables', via: 'get'
   match '/faq',  to: 'static_pages#faq', via: 'get'
