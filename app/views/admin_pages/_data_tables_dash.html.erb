@@ -6,6 +6,9 @@
     <% if user_has_chosen_drop_location %>
     <%= link_to 'Families', all_families_path, :class => "subnav-link" %>
     <% end %>
+    <% if user_is_super_admin? %>
+    <%= link_to 'Super Admin', super_admin_page_path, :class => "subnav-link" %>
+    <% end %>
   </div>
 
   <div class="countdown fam-countdown">

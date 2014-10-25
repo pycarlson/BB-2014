@@ -8,6 +8,7 @@
     margin-bottom: 0;
   }
 }
+
 .super-dash {
   width: 100%;
   background-color: $lightGray;
@@ -83,29 +84,26 @@
   margin-bottom: 20px;
   background-color: $lightGray;
 
-  .admin-subnav {
-    padding-bottom: 0;
-  }
-
   .countdown {
     text-align: center;
     position: absolute;
     top: 20px;
+
     span {
       color: #27ae60;
       font-size: 46px;
       line-height: 56px;
     }
   }
+
   .fam-countdown {
     left: 20px;
   }
+  
   .adoption-countdown {
     right: 20px;
   }
 }
-
-
 
 /*DATA TABLES*/
 

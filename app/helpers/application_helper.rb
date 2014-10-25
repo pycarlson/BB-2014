@@ -29,6 +29,10 @@ module ApplicationHelper
     end
   end
 
+  def user_is_super?
+    SuperAdmin.all.include?(current_user)
+  end
+
   def drive_is_closed?
     Drive.last.status == false
   end

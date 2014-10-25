@@ -8,4 +8,7 @@
   <% if user_signed_in? && user_has_chosen_drop_location && !drive_is_closed? %>
     <%= link_to 'Families', all_families_path, :class => "subnav-link btn-clear" %>
   <% end %>
+  <% if user_is_super_admin? %>
+    <%= link_to 'Super Admin', super_admin_page_path, :class => "subnav-link btn-clear" %>
+    <% end %>
 </div>

@@ -58,7 +58,7 @@
 
           <li><p><%= current_user.email %></p></li>
 
-          <li><%= link_to 'Add or Edit My Personal Info', edit_user_path(current_user) %></li>
+          <li class="let-user-edit"><%= link_to 'Add or Edit My Personal Info', edit_user_path(current_user) %></li>
           <li><%= link_to 'Change My Password', edit_user_registration_path(current_user) %></li>
 
         </ul>
