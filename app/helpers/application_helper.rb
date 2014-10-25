@@ -9,6 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def drive_has_started
+    DateTime.now > '2014-10-30'
+  end
+
   def cp(path)
     "active" if current_page?(path)
   end

@@ -23,7 +23,7 @@
       <h2>Drive Dates</h2>
       <p><%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %></p>
     </div>
-
+    <% unless drive_has_started %>
     <div class="row count">
       <h2><%= @countdown %></h2>
       <p>
@@ -35,6 +35,7 @@
         left until the Adopt-a-Family Giftdrive opens!
       </p>
     </div>
+    <% end %>
 
     <% if !user_signed_in? %>
     <%= link_to 'Sign In or Sign Up to Browse Families', new_user_session_path, :class => "btn btn-info" %>
