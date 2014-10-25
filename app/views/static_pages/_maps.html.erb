@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10 locations">
+    <h2 class="drop-title">Gift Drop Locations</h2>
+    <% @drop_locations.each do |dl| %>
+    <ul class="col-lg-4 col-md-6 col-sm-6 col-xs-10 location">
+      <li><h2><%= dl.drop_location_name %></h2></li>
+      <li><p><%= dl.street %></p></li>
+      <li><p><%= dl.city %>, <%= dl.zipcode %></p></li>
+      <li><h2 class="home-dd">Drop Dates</h2></li>
+      <li>
+        <% dl.drop_dates.each do |dd| %>
+        <ul>
+          <li><p><%= dd.date.strftime('%B %d') %>, <%= dd.start_time.strftime('%l:%M %p').downcase %> &mdash; <%= dd.end_time.strftime('%l:%M %p').downcase %></p></li>
+        </ul>
+        <% end %>
+      </li>
+      <li class="map"><%= render "shared/#{dl.drop_location_name.downcase}" %></li>
+    </ul>
+    <% end %>
+  </div>
+</div>
