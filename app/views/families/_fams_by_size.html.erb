@@ -4,24 +4,19 @@
 </div>
 <% else %>
 <% families.each do |f| %>
-<div class="adoptable-families-container">
-  <ul class="adoptable-families col-lg-6 col-md-6 col-sm-11 col-xs-11">
-    <li><h1><%= link_to f.code.upcase, family_path(f) %></h1></li>
-    <% f.family_members.each do |fm| %>
-    <li>
-      <ul class="fam-members">
-        <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
-        <li><p><%= truncate(fm.bio, length: 70) %></p></li>
-      </ul>
-    </li>
-    <% end %>
-    <li class="buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="">
-        <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
-        <%= link_to "ADOPT", new_adoption_path(@adoption, :family_id => f.id, :id => current_user.id), :class => "btn btn-success" %>
-      </div>
-    </li>
-  </ul>
-</div>
+<ul class="adoptable-family-on-index">
+  <li><h1><%= link_to f.code.upcase, family_path(f) %></h1></li>
+  <% f.family_members.each do |fm| %>
+  <li>
+    <ul>
+      <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
+    </ul>
+  </li>
+  <% end %>
+  <li class="buttons">
+    <%= link_to "ADOPT", new_adoption_path(@adoption, :family_id => f.id, :id => current_user.id), :class => "btn btn-success" %>
+    <%= link_to 'LEARN MORE', family_path(f), :class => "btn btn-info" %>
+  </li>
+</ul>
 <% end %>
 <% end %>

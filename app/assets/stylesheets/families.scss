@@ -26,6 +26,7 @@
 .families-container {
   box-sizing: border-box;
   margin: 0 auto;
+  width: 90%;
 
   .inner-container {
     padding-top: 0 !important;
@@ -38,51 +39,34 @@
   }
 }
 
-.adoptable-families {
+.adoptable-family-on-index {
+  box-sizing: border-box;
   position: relative;
   border: 1px solid $borderGray;
   background-color: $lightGray;
   border-radius: 3px;
   padding: 20px;
-  margin: 15px;
-  margin-bottom: 100px;
-  width: 45%;
+  margin: 20px 10px;
+  width: 23.4%;
+  height: auto;
+  float: left;
 
-  .fam-members {
-    width: 50%;
-    padding-left: 0;
-    padding-right: 10px;
-    float: left;
+  h1 {
     margin-bottom: 20px;
-  }
 
-  h1 a {
-    color: $green;
-    text-decoration: none;
+    a {
+      color: $green;
+      text-decoration: none;
+    }
   }
 
   h2 {
     text-align: left;
   }
 
-  .buttons {
-    display: block;
-    margin-top: 40px;
-  }
-
   .btn {
-    position: absolute;
-    bottom: 0;
-    width: auto;
     padding: 10px;
-  }
-
-  .btn-info {
-    right: -15px;
-  } 
-
-  .btn-success {
-    right: 120px;
+    margin: 0 20px 0 0;
   }
 } 
 
@@ -166,6 +150,10 @@
   }
 }
 
+.buttons {
+  padding-top: 10px;
+}
+
 #family-size-filter-buttons {
   width: 50%;
   min-height: 25px;
@@ -198,30 +186,6 @@
   }
 }
 
-.fams {
-  position: relative;
-}
-
-.fams5 .adoptable-families {
-  min-height: 700px;
-}
-
-.fams4 .adoptable-families {
-  min-height: 450px;
-}
-
-.fams3 .adoptable-families {
-  min-height: 300px;
-}
-
-.fams2 .adoptable-families {
-  min-height: 320px;
-}
-
-.fams1 .adoptable-families {
-  min-height: 200px;
-}
-
 .adoption-thank-you {
   text-align: center;
   width: 100%;
@@ -236,7 +200,4 @@
   margin-left: 15px;
 }
 
-.adoptable-families-container {
-  padding-left: 65px;
-}
 
