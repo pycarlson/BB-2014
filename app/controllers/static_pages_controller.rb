@@ -51,11 +51,4 @@ class StaticPagesController < ApplicationController
     @page_title = 'Brighter Beginnings Adopt-a-Family Program | Frequently Asked Questions'
   end
 
-  def about
-    @page_title = 'Brighter Beginnings Adopt-a-Family Program | About'
-  end
-
-  def contact
-    @page_title = 'Brighter Beginnings Adopt-a-Family Program | Contact'
-  end
 end

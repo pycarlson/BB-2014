@@ -1,14 +1,18 @@
 class Organization < ActiveRecord::Base
 
-  validates :name, presence: true
-  validates :blurb, presence: true
-  validates :email, presence: true
-  validates :phone, presence: true
-  validates :address, presence: true
-  validates :zip, presence: true
-  validates :website_url, presence: true
+  validates :name, 
+            :blurb, 
+            :email, 
+            :phone, 
+            :address, 
+            :zip, 
+            :website_url, 
+            presence: true
 
-  validates :email, uniqueness: true
+  validates :email, 
+            :phone,
+            :address,
+            uniqueness: true
 
   before_save :standardise_number
 

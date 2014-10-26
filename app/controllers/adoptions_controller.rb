@@ -76,6 +76,7 @@ class AdoptionsController < ApplicationController
       phone: @adoption.phone,
       company: @adoption.company,
       drop_date_id: @adoption.drop_date_id)
+      flash[:notice] = "Your adoption changes were updated successfully."
       redirect_to user_path(user)
     else
       render :edit

@@ -5,14 +5,11 @@ class Drive < ActiveRecord::Base
   has_many :super_admins
   has_many :families, :dependent => :destroy
   has_many :drop_locations, :dependent => :destroy
-  has_many :adoptions
+  has_many :adoptions, :dependent => :destroy
 
   accepts_nested_attributes_for :drop_locations
 
-  validates :year, presence: true
-  validates :blurb, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :year, :blurb, :start_date, :end_date, presence: true
   
   after_create :delete_the_past_drive_families!
   after_create :delete_the_past_drive!

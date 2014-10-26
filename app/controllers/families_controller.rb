@@ -91,17 +91,6 @@ class FamiliesController < ApplicationController
     redirect_to super_admin_page_path
   end 
 
-  def go_live
-    if @family.update_attributes(:is_live => params[:is_live])
-      redirect_to super_admin_page_path 
-    end
-  end
-
-  def import
-    Family.import(params[:file])
-    redirect_to super_admin_page_path
-  end 
-
   protected
 
   def user_is_logged_id? 

@@ -2,15 +2,14 @@ class FamilyMember < ActiveRecord::Base
 
   belongs_to :family
   belongs_to :drop_location
-  belongs_to :family
-
   has_many :needs, :dependent => :destroy, :inverse_of => :family_member
   accepts_nested_attributes_for :needs, :allow_destroy => true
   
-  validates :first_name, presence: true
-  validates :gender, presence: true
-  validates :age, presence: true
-  validates :bio, presence: true
+  validates :first_name, 
+            :gender, 
+            :age, 
+            :bio, 
+            presence: true
 
   def get_family_code
     Family.find(self.family_id).code

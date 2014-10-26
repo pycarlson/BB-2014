@@ -3,12 +3,11 @@ class Family < ActiveRecord::Base
   belongs_to :donor
   belongs_to :user
   has_one :adoption
-  
   has_many :family_members, :dependent => :destroy, :inverse_of => :family
   
   accepts_nested_attributes_for :family_members, :allow_destroy => true
 
-  validates :code, presence: true, uniqueness: {case_sensitive: false}
+  validates :code, presence: true, uniqueness: { case_sensitive: false }
 
   before_create :strip_family_code
 
