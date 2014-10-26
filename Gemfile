@@ -29,15 +29,15 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda'
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
-  gem 'zeus'
+  # gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara'
+  # gem 'zeus'
 end
 
 group :production, :staging do

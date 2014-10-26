@@ -48,7 +48,7 @@ class StaticPagesController < ApplicationController
   end
 
   def faq
-    @page_title = 'Brighter Beginnings Adopt-a-Family Program | FAQs'
+    @page_title = 'Brighter Beginnings Adopt-a-Family Program | Frequently Asked Questions'
   end
 
   def about
