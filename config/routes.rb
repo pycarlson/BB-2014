@@ -51,4 +51,5 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   get '/close_drive' => 'admin_pages#close_drive'
   get '/open_drive' => 'admin_pages#open_drive'
   get '/go_live' => 'admin_pages#go_live'
+  get '/go_live_data' => 'admin_pages#go_live_data'
 end

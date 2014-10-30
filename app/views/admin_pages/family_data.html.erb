@@ -13,6 +13,7 @@
   <th><h2>Edit</h2></th>
 
   <% if user_is_super_admin? %>
+    <th><h2>Go Live</h2></th>
     <th><h2>Delete</h2></th>
   <% end %>
 </tr>
@@ -34,6 +35,7 @@
     </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
     <% if user_is_super_admin? %>
+      <td><%= link_to 'Make Family Live!', go_live_data_path(family), class: "btn btn-small btn-success" %></td>
       <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
     <% end %>
     <% end %>
