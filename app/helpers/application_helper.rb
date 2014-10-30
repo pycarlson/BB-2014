@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def drive_has_started
-    DateTime.now > '2014-10-30'
+    DateTime.now > '2014-11-07'
   end
 
   def cp(path)
