@@ -1,7 +1,7 @@
 class FamiliesController < ApplicationController
 
   before_filter :user_is_admin?, only: [:new, :edit, :create, :update]
-  before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status, :go_live]
+  before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
   before_filter :find_family, except: [:index, :all_families, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
   before_filter :family_is_in_users_location, only: [:show]
   before_filter :user_is_logged_id?
@@ -87,19 +87,12 @@ class FamiliesController < ApplicationController
   end
 
   def destroy
-    @family.destroy
-    redirect_to super_admin_page_path
-  end 
-
-  def go_live
-    if @family.update_attributes(:is_live => params[:is_live])
-      redirect_to super_admin_page_path 
+    family = Family.find(params[:id])
+    if family.adoption
+      Adoption.find(family.adoption_id).destroy
     end
-  end
-
-  def import
-    Family.import(params[:file])
-    redirect_to super_admin_page_path
+    family.destroy
+    redirect_to family_data_path
   end 
 
   protected

@@ -21,33 +21,7 @@
         <div><h2>Adoptions<br><span><%= Adoption.count %></span></h2></div>
       </div>
     </div>
-
-    <div class="fams-to-go-live col-lg-12">
-      <h1><span><%= family_count(@families) %> </span> Ready to Go Live</h1>
-      <table class="datatable table table-scrollable table-bordered" id="manage-families">
-        <thead>
-          <tr>
-            <th><h2>Family Code</h2></th>
-            <th><h2>Make Live</h2></th>
-            <th><h2>Edit</h2></th>
-            <th><h2>Delete</h2></th>
-          </tr>
-        </thead>
-        <% @families.each do |family| %>
-        <tr>
-          <ul>
-            <td><%= family.code.upcase %></td>
-            <td><%= link_to 'Make Family Live!', go_live_path(family), class: "btn btn-small btn-success" %></td>
-            <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
-            <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
-          </ul>
-        </tr>
-        <% end %>
-      </table>
-    </div>
   </div>
-
-
 
   <div class="super-dash col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="drive-manage col-lg-4 col-md-4 col-sm-12 col-xs-12">
