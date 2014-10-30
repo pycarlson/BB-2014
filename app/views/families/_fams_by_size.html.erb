@@ -9,7 +9,7 @@
   <% f.family_members.each do |fm| %>
   <li>
     <ul>
-      <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
+      <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %>, <%= parse_gender_on_index(fm) %></h2></li>
     </ul>
   </li>
   <% end %>

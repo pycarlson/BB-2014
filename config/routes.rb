@@ -40,6 +40,7 @@ BrighterBeginningsAdoptAFamilyProgram::Application.routes.draw do
   match '/user_data',  to: 'admin_pages#user_data', via: 'get'
   match '/donor_data',  to: 'admin_pages#donor_data', via: 'get'
   match '/family_data',  to: 'admin_pages#family_data', via: 'get'
+  match '/family_member_data',  to: 'admin_pages#family_member_data', via: 'get'
   get '/download_pdf' => 'static_pages#download_pdf'
   get '/reset_drive' => 'admin_pages#reset_drive'
   get '/resend_adoption_confirmation_email' => 'admin_pages#resend_adoption_confirmation_email'

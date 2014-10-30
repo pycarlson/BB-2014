@@ -23,6 +23,10 @@ class AdminPagesController < ApplicationController
     @families = Family.all
   end
 
+  def family_member_data
+    @family_members = FamilyMember.order(:family_id)
+  end
+
   def super_admin_page
     @admins = Admin.all
     @super_admins = SuperAdmin.all

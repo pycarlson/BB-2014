@@ -1,0 +1,45 @@
+<%= render "layouts/errors" %>
+<div class="manage-all">
+
+<%= render 'data_tables_dash' %>
+
+<table class="datatable table table-striped table-scrollable table-bordered" id="manage-families">
+<thead>
+<tr>
+  <th><h2>Family Code</h2></th>
+  <th><h2>First Name</h2></th>
+  <th><h2>Age</h2></th>
+  <th><h2>Gender</h2></th>
+  <th><h2>Needs</h2></th>
+  <th><h2>Bio</h2></th>
+  <th><h2>Edit</h2></th>
+</tr>
+</thead>
+<% @family_members.each do |fm| %>
+<tr>
+  <ul>
+    <td>
+      <li><%= get_family_code(fm) %></li>
+    </td>
+    <td>
+      <li><%= fm.first_name %></li>
+    </td>
+    <td>
+      <li><%= number_with_precision(fm.age, precision: 0) %></li>
+    </td>
+    <td>
+      <li><%= fm.gender %></li>
+    </td>
+    <td>
+      <li><%= fm.needs.count %></li>
+    </td>
+    <td>
+      <li><%= fm.bio %></li>
+    </td>
+    <td><%= link_to "Edit", edit_family_path(Family.find(fm.family_id)), class: "edit_link btn btn-small btn-info" %></td>
+    
+    <% end %>
+  </ul>
+</tr>
+</table>
+</div>
