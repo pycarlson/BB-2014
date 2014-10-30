@@ -80,7 +80,7 @@ class FamiliesController < ApplicationController
       @family.is_live = false
       @family.save
       flash[:notice] = "Family updated successfully."
-      redirect_to data_tables_path
+      redirect_to family_data_path
     else
       render :edit
     end
