@@ -13,12 +13,12 @@
 <div class="col-lg-10 col-md-10 col-sm-10 adoptable-family">
 
   <h1><%= @family.code.upcase %></h1>
-  <% @family.family_members.each do |fm| %>
+  <% order_peeps(@family).each do |fm| %>
   <div class="col-lg-12 col-md-12 col-sm-12 family-member">
     <ul>
       <li>
         <ul>
-          <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %>, <%= parse_gender_on_show(fm) %></h2></li>
+          <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %>, <%= parse_gender(fm) %></h2></li>
           <li><p><%= fm.bio %></p></li>
         </ul>
       </li>

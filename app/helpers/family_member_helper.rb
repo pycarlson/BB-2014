@@ -1,11 +1,7 @@
 module FamilyMemberHelper
 
-  def parse_gender_on_index(fm)
+  def parse_gender(fm)
     fm.gender.chars.first == ("f" || "F" || "g" || "G") ? "F" : "M"
-  end
-
-  def parse_gender_on_show(fm)
-    fm.gender.chars.first == ("f" || "F" || "g" || "G") ? "girl" : "boy"
   end
 
   def get_family_code(fm)
