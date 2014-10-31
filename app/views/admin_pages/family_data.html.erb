@@ -35,7 +35,14 @@
     </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
     <% if user_is_super_admin? %>
-      <td><%= link_to 'Make Family Live!', go_live_path(id: family.id), class: "btn btn-small btn-success" %></td>
+      <td>
+        <% if family.is_live == true %>
+        <%= link_to 'Make Family Live!', go_live_path(id: family.id), disabled: :true, class: "btn btn-small btn-success" %>
+        <% else %>
+        <%= link_to 'Make Family Live!', go_live_path(id: family.id), class: "btn btn-small btn-success" %>
+        <% end %>
+      </td>
+      
       <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
     <% end %>
     <% end %>
