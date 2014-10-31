@@ -1,7 +1,7 @@
 class AdminPagesController < ApplicationController
   
   before_filter :user_is_admin?, only: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data]
-  before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data, :go_live, :go_live_data]
+  before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data, :go_live]
 
   def data_tables
     redirect_to adoption_data_path
@@ -52,14 +52,7 @@ class AdminPagesController < ApplicationController
   end
   
   def go_live
-    family = Family.find(params[:format])
-    family.is_live = true
-    family.save
-    redirect_to super_admin_page_path
-  end
-
-  def go_live_data
-    family = Family.find(params[:format])
+    family = Family.find(params[:id])
     family.is_live = true
     family.save
     redirect_to family_data_path
