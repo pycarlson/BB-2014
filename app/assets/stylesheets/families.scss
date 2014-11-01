@@ -1,5 +1,13 @@
 @import 'variables';
 
+.red-link {
+  color: $red;
+}
+
+.green-link {
+  color: $green;
+}
+
 .no-fams {
   background-color: $lightGray;
   padding: 20px;
@@ -200,6 +208,10 @@
 
 #cancel-adoption-process {
   margin-left: 15px;
+}
+
+.fams-5 .adoptable-family-on-index {
+  min-height: 500px;
 }
 
 
