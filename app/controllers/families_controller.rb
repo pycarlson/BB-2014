@@ -116,7 +116,7 @@ class FamiliesController < ApplicationController
   end
 
   def family_params
-    params.require(:family).permit(:drive_id, :code, :drop_location_id, :user_id, :adoption_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, needs_attributes: [:id, :item, :family_member_id]])
+    params.require(:family).permit(:drive_id, :code, :drop_location_id, :user_id, :adoption_id, :is_live, :members, family_members_attributes: [:id, :first_name, :family_id, :gender, :size_pants, :size_shirt, :size_dress, :size_shoes, :bio, :age, '_destroy', needs_attributes: [:id, :item, :family_member_id, '_destroy']])
   end
 
 end
