@@ -7,6 +7,7 @@
 <thead>
 <tr>
   <th><h2>Family Code</h2></th>
+  <th><h2>Drop Location</h2></th>
   <th><h2>Members</h2></th>
   <th><h2>Adopted?</h2></th>
   <th><h2>Is Live?</h2></th>
@@ -23,6 +24,9 @@
   <ul>
     <td>
       <li><%= family.code.upcase %></li>
+    </td>
+    <td>
+      <li><%= get_dl_name(family) %></li>
     </td>
     <td>
       <li><%= family.family_members.count %></li>
