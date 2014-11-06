@@ -20,7 +20,7 @@ gem 'bootstrap-modal-rails'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'mail'
-gem 'actionpack-action_caching'
+# gem 'actionpack-action_caching'
 
 group :development do
   gem 'quiet_assets'

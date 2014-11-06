@@ -3,7 +3,7 @@ class AdminPagesController < ApplicationController
   before_filter :user_is_admin?, only: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data]
   before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data, :go_live]
 
-  caches_action :adoption_data, :user_data, :donor_data, :family_data, :family_member_data
+  # caches_action :adoption_data, :user_data, :donor_data, :family_data, :family_member_data
   
   def data_tables
     redirect_to adoption_data_path
