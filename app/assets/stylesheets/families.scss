@@ -54,7 +54,7 @@
   background-color: $lightGray;
   border-radius: 3px;
   padding: 20px;
-  margin: 20px 10px;
+  margin: 10px;
   width: 23.4%;
   height: auto;
   float: left;
@@ -211,7 +211,19 @@
 }
 
 .fams-5 .adoptable-family-on-index {
-  min-height: 500px;
+  min-height: 510px;
+}
+
+.fams-4 .adoptable-family-on-index {
+  min-height: 380px;
+}
+
+.fams-3 .adoptable-family-on-index {
+  min-height: 340px;
+}
+
+.fams-2 .adoptable-family-on-index {
+  min-height: 280px;
 }
 
 
