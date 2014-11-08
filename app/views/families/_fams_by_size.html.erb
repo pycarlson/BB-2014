@@ -1,6 +1,6 @@
 <% if families.length == 0 %>
 <div class="no-fams">
-  <h1>All families of <%= @family_size %> have already been adopted. Thank you!</h1>
+  <h1>All <%= get_user_dl_name(current_user) %> families of <%= @family_size %> have already been adopted. Thank you!</h1>
 </div>
 <% else %>
 <% families.each do |f| %>
