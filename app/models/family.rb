@@ -38,8 +38,20 @@ class Family < ActiveRecord::Base
     end
   end
 
-  def self.get_fams_five_and_more(families)
-    families.select {|f| f if f.family_members.length >= 5 }
+  def self.get_fams_eight(families)
+    families.select {|f| f if f.family_members.count >= 8 }
+  end
+
+  def self.get_fams_seven(families)
+    families.select {|f| f if f.family_members.length == 7 }
+  end
+
+  def self.get_fams_six(families)
+    families.select {|f| f if f.family_members.length == 6 }
+  end
+
+  def self.get_fams_five(families)
+    families.select {|f| f if f.family_members.length == 5 }
   end
 
   def self.get_fams_four(families)

@@ -2,7 +2,7 @@ class FamiliesController < ApplicationController
 
   before_filter :user_is_admin?, only: [:new, :edit, :create, :update]
   before_filter :user_is_super_admin?, only: [:destroy, :toggle_live_status]
-  before_filter :find_family, except: [:index, :all_families, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five_or_more]
+  before_filter :find_family, except: [:index, :all_families, :new, :create, :families_of_two_and_under, :families_of_three, :families_of_four, :families_of_five, :families_of_six, :families_of_seven, :families_of_eight]
   before_filter :family_is_in_users_location, only: [:show]
   before_filter :user_is_logged_id?
 
@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
   end
 
   def all_families
-    redirect_to families_of_five_or_more_path
+    redirect_to families_of_five_path
   end
 
   def families_of_two_and_under
@@ -37,10 +37,28 @@ class FamiliesController < ApplicationController
     @family_size = 'four people'
   end
 
-  def families_of_five_or_more
+  def families_of_five
     @families = Family.filter_families(current_user)
-    @fams_five_or_more = Family.get_fams_five_and_more(@families)
-    @family_size = 'five or more people'
+    @fams_five = Family.get_fams_five(@families)
+    @family_size = 'five people'
+  end
+
+  def families_of_six
+    @families = Family.filter_families(current_user)
+    @fams_six = Family.get_fams_six(@families)
+    @family_size = 'six people'
+  end
+
+  def families_of_seven
+    @families = Family.filter_families(current_user)
+    @fams_seven = Family.get_fams_seven(@families)
+    @family_size = 'seven people'
+  end
+
+  def families_of_eight
+    @families = Family.filter_families(current_user)
+    @fams_eight = Family.get_fams_eight(@families)
+    @family_size = 'eight or more people'
   end
 
   def new

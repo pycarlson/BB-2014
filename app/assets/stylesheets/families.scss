@@ -35,6 +35,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   width: 90%;
+  padding: 30px 0 50px 0;
 
   .inner-container {
     padding-top: 0 !important;
@@ -210,8 +211,20 @@
   margin-left: 15px;
 }
 
+.fams-8 .adoptable-family-on-index {
+  min-height: 600px;
+}
+
+.fams-7 .adoptable-family-on-index {
+  min-height: 560px;
+}
+
+.fams-6 .adoptable-family-on-index {
+  min-height: 480px;
+}
+
 .fams-5 .adoptable-family-on-index {
-  min-height: 510px;
+  min-height: 420px;
 }
 
 .fams-4 .adoptable-family-on-index {
