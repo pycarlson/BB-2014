@@ -18,8 +18,14 @@ module ApplicationHelper
   end
 
   def go_back_path(family)
-    if family.family_members.length >= 5
-      families_of_five_or_more_path
+    if family.family_members.length >= 8
+      families_of_eight_path
+    elsif family.family_members.length == 7
+      families_of_seven_path
+    elsif family.family_members.length == 6
+      families_of_six_path
+    elsif family.family_members.length == 5
+      families_of_five_path
     elsif family.family_members.length == 4
       families_of_four_path
     elsif family.family_members.length == 3
