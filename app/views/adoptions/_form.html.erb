@@ -1,17 +1,5 @@
 <%= form_for(@adoption, :html => {:class => "form form-horizontal"}) do |f| %>
 
-<% if @adoption.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@adoption.errors.count, "error") %> prohibited this adoption from being saved:</h2>
-
-  <ul>
-    <% @adoption.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
 <%= f.hidden_field :family_id, :value => @family.id %>
 <%= f.hidden_field :family_code, :value => @family.code %>
 <%= f.hidden_field :drive_id, :value => Drive.last.id %>
