@@ -160,9 +160,13 @@ li {
 
     i {
       color: $green;
-      font-size: 20px;
+      font-size: 24px;
       float: left;
       margin-right: 10px;
+    }
+
+    i.fa-calendar {
+      font-size: 20px;
     }
   }
 }

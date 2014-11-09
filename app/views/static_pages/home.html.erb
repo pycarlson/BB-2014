@@ -12,14 +12,14 @@
 <div class="row description">
   <div class="col-lg-1"></div>
   <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10">
-    <div class="present"><i class="glyphicon glyphicon-gift"></i></div>
+    <div class="present"><i class="fa fa-gift"></i></div>
     <h2>About this Drive </h2>
     <p><%= @drive.blurb.html_safe %></p>
   </div>
   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 dates-etc">
     <div class="row">
-      <div class="present"><i class="glyphicon glyphicon-calendar"></i></div>
+      <div class="present"><i class="fa fa-calendar"></i></div>
       <h2>Drive Dates</h2>
       <p><%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %></p>
     </div>
