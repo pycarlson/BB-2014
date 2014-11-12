@@ -1,16 +1,15 @@
-<div class="row about-bb">
-  <div class="col-lg-1"></div>
-  <div class="col-lg-6 col-md-6 col-xs-6 col-xs-10">
-    <h2>About <%= Organization.first.name %></h2>
-    <p><%= Organization.first.blurb.html_safe %></p>
-  </div>
-
-  <div class="col-lg-1"></div>
-
-  <div class="contact col-lg-4 col-md-4 col-sm-4 col-xs-10">
-    <h2>Contact <%= Organization.first.name %></h2>
-    <p><i class="fa fa-envelope"></i> <%= Organization.first.email %></p>
-    <p><i class="fa fa-phone"></i> <%= Organization.first.phone %> </i></p>
-    <p><i class="fa fa-globe"></i> <%= Organization.first.address %> <%= Organization.first.zip %></p>
+<div class="about-bb">
+  <div class="grid-fluid">
+    <div class="container">
+      <div class="about">
+        <h2>About <%= Organization.first.name %></h2>
+        <p><%= Organization.first.blurb.html_safe %></p>
+      </div>
+    <div class="contact">
+      <h2>Contact <%= Organization.first.name %></h2>
+      <p><i class="fa fa-envelope"></i> <%= Organization.first.email %></p>
+      <p><i class="fa fa-phone"></i> <%= Organization.first.phone %> </i></p>
+      <p><i class="fa fa-globe"></i> <%= Organization.first.address %> <%= Organization.first.zip %></p>
+    </div>
   </div>
 </div>

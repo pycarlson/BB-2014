@@ -74,7 +74,7 @@
       </td>
       <% end %>
       <% if user_is_super_admin? %>
-        <td><%= link_to "Resend", resend_adoption_confirmation_email_path(User.find(a.user_id), family_id: Family.find(a.family_id)), :class => "btn btn-info" %>
+        <td><%= link_to "Resend", resend_adoption_confirmation_email_path(User.find(a.user_id), family_id: Family.find(a.family_id)), :class => "btn btn-blue" %>
         </td>
       <% end %>
 

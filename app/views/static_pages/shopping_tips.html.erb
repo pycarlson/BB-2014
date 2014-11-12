@@ -1,41 +1,37 @@
 <% provide(:title, 'Shopping Tips') %>
-
 <%= render 'shared/sub_nav' %>
-<div class="shopping-tips">
-  <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <h1>Shopping Tips</h1>
+<div class="grid-fluid">
+  <div class="container shopping-tips">
+    <h1>Shopping Tips</h1>
 
-        <div class="tip-group">
-          <h2>GIFTS (the client profile provides you with specific needs of the family)</h2>
-          <ul>
-            <li><i class="fa fa-check"></i><p>Please provide at least one fun and one practical gift for each family member.</p></li>
-            <li><i class="fa fa-check"></i><p>Wrap and tag each gift.</p></li>
-          </ul>
+    <div class="tip-group">
+      <h2>GIFTS (the client profile provides you with specific needs of the family)</h2>
+      <ul>
+        <li><p><i class="fa fa-check"></i>Please provide at least one fun and one practical gift for each family member.</p></li>
+        <li><p><i class="fa fa-check"></i>Wrap and tag each gift.</p></li>
+      </ul>
 
-          <h2>FOOD (optional)</h2>
-          <ul>
-            <li><i class="fa fa-check"></i><p>If desired, provide for a nice holiday meal (or more) by purchasing grocery gift certificates available at all major grocery stores.</p></li>
-            <li><i class="fa fa-check"></i><p>We welcome canned food and other non-perishables if boxed securely with no box weighing over 30 lbs.</p></li> 
-          </ul>
+      <h2>FOOD (optional)</h2>
+      <ul>
+        <li><p><i class="fa fa-check"></i>If desired, provide for a nice holiday meal (or more) by purchasing grocery gift certificates available at all major grocery stores.</p></li>
+        <li><p><i class="fa fa-check"></i>We welcome canned food and other non-perishables if boxed securely with no box weighing over 30 lbs.</p></li> 
+      </ul>
 
-          <h2>PACKAGING</h2>
-          <ul>
-            <li><i class="fa fa-check"></i><p>Place all items in sturdy boxes with lids and tape securely to close</p></li> 
-            <li><i class="fa fa-check"></i><p>Maximum weight for boxes is 30 lbs.</p></li> 
-            <li><i class="fa fa-check"></i><p>Boldly write the Family Code Number (found on the Family Profile) on all 4 sides and the top of each box.</p></li> 
-            <li><i class="fa fa-check"></i><p>Label each box with its number (i.e. "1 of 3", "2 of 3", "3 of 3").</p></li> 
-          </ul>
+      <h2>PACKAGING</h2>
+      <ul>
+        <li><p><i class="fa fa-check"></i>Place all items in sturdy boxes with lids and tape securely to close</p></li> 
+        <li><p><i class="fa fa-check"></i>Maximum weight for boxes is 30 lbs.</p></li> 
+        <li><p><i class="fa fa-check"></i>Boldly write the Family Code Number (found on the Family Profile) on all 4 sides and the top of each box.</p></li> 
+        <li><p><i class="fa fa-check"></i>Label each box with its number (i.e. "1 of 3", "2 of 3", "3 of 3").</p></li> 
+      </ul>
 
-          <h2>DELIVERY LOCATION AND DROP OFF DATES – directions are on the website</h2>
-          <ul>
-            <li><i class="fa fa-check"></i><p>Gifts must be dropped off at the location associated with the family (i.e. Richmond family, Richmond drop off).</p></li> 
-            <li><i class="fa fa-check"></i><p>Please bring your adopted family profile form and the in-kind donor receipt form (<%= link_to 'found here', download_pdf_path(:file => 'Donation_receipt_AAF_2014.pdf') %>), filled out, to the drop-off site.</p></li> 
-          </ul>
-        </div>
-
-        <p class="note">*Please note that only new items are accepted at this time of the year (November/December) for your “adopted” family.</p>
-      </div>
+      <h2>DELIVERY LOCATION AND DROP OFF DATES – directions are on the website</h2>
+      <ul>
+        <li><p><i class="fa fa-check"></i>Gifts must be dropped off at the location associated with the family (i.e. Richmond family, Richmond drop off).</p></li> 
+        <li><p><i class="fa fa-check"></i>Please bring your adopted family profile form and the in-kind donor receipt form (<%= link_to 'found here', download_pdf_path(:file => 'Donation_receipt_AAF_2014.pdf') %>), filled out, to the drop-off site.</p></li> 
+      </ul>
     </div>
+
+    <p>*Please note that only new items are accepted at this time of the year (November/December) for your “adopted” family.</p>
   </div>
+</div>

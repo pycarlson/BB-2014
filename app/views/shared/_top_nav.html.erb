@@ -1,4 +1,4 @@
-    <!-- Fixed navbar -->
+<!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -14,15 +14,15 @@
           <ul class="nav navbar-nav">
 
             <% if user_signed_in? && Drive.last.status == true %>
-            <li class="main"><%= link_to "My Account", user_path(current_user), :class => 'btn btn-clear' %></li>
+            <li class="main"><%= link_to "My Account", user_path(current_user), :class => 'btn btn-nofill' %></li>
             <% end %>
-            <li class="main"><%= link_to 'Shopping Tips', shopping_tips_path, :class => 'btn btn-clear' %></li>
-            <li class="main"><%= link_to 'FAQs', faq_path, :class => 'btn btn-clear' %></li>
+            <li class="main"><%= link_to 'Shopping Tips', shopping_tips_path, :class => 'btn btn-nofill' %></li>
+            <li class="main"><%= link_to 'FAQs', faq_path, :class => 'btn btn-nofill' %></li>
 
             <% if user_signed_in? && user_has_chosen_drop_location && Drive.last.status == true %>
-            <li class="main"><%= link_to 'Browse Families', all_families_path, :class => "btn btn-info bro-fams" %></li>
+            <li class="main"><%= link_to 'Browse Families', all_families_path, :class => "btn btn-blue" %></li>
             <% elsif user_signed_in? && !user_has_chosen_drop_location && Drive.last.status == true %>
-            <li class="main"><a href="#" class="btn btn-info bro-fams" data-toggle="modal" data-target="#basicModal">Browse Families</a></li>
+            <li class="main"><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#basicModal">Browse Families</a></li>
             <% end %>
 
             <% unless user_signed_in? %>
@@ -35,8 +35,8 @@
             <% end %>
 
             <% if user_signed_in? && user_is_admin? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-info" data-toggle="dropdown">Admin <b class="caret"></b></a>
+            <li class="main dropdown">
+              <a href="#" class="dropdown-toggle btn btn-blue" data-toggle="dropdown">Admin <b class="caret"></b></a>
               <ul class="dropdown-menu">
 
                 <% if user_is_super_admin? %>

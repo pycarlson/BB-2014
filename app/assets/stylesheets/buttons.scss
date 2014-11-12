@@ -1,0 +1,51 @@
+@import 'variables';
+
+.btn {
+  height: 40px;
+  border-radius: 5px;
+  padding: 8px 10px 0 10px;
+  -webkit-transition: 0.1s all linear;
+  -moz-transition: 0.1s all linear;
+  -o-transition: 0.1s all linear;
+  transition: 0.1s all linear;
+  -webkit-appearance: none;
+}
+
+.small-btn {
+
+}
+
+.btn-nofill {
+  border: 2px solid $lightGray;
+  color: $copyGray;
+
+  &:hover {
+    background-color: $green;
+    border: 2px solid $green;
+    color: $white;
+  }
+}
+
+.btn-blue {
+  color: $white !important;
+  background-color: $blue !important;
+
+  &:hover {
+    background-color: #357ebd !important;
+    color: $white !important;
+  }
+}
+
+.btn-success {
+  background-color: $green !important;
+  color: $white !important;
+
+  &:hover {
+    background-color: #4cae4c !important;
+    color: $white !important;
+  }
+}
+
+.btn-families {
+  background-clip: $orange;
+}

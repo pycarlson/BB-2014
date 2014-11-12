@@ -1,65 +1,44 @@
-
-<div class="row home-top-row">
-  <div class="col-xs-1"></div>
-  <% if @drive.status == true %>
-  <div class="col-xs-10 home-title">
-    <h1>Welcome to the <%= @drive.year %> Brighter Beginnings<br> Adopt-a-Family Holiday Gift Giving Program</h1>
-  </div>
+<% if @drive.status == true %>
+<div class="welcome">
+  <h1>Welcome to the <%= @drive.year %> Brighter Beginnings<br> Adopt-a-Family Holiday Gift Giving Program</h1>
 </div>
 
 <%= render "layouts/errors" %>
+<div class="description">
+  <div class="grid-fluid">
+    <div class="container">
+      <ul class="about-gd">
+        <li><h2><i class="fa fa-gift"></i>About this Drive </h2></li>
+        <li><p><%= @drive.blurb.html_safe %></p></li>
+      </ul>
+      <ul class="dates-etc">
+        <li><h2><i class="fa fa-calendar"></i></i>Drive Dates</h2></li>
+        <li><%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %></li>
+        <li>
+          <% if !user_signed_in? %>
+          <%= link_to 'Sign In or Sign Up to Browse Families', new_user_session_path, :class => "btn btn-info" %>
+          <% end %>
 
-<div class="row description">
-  <div class="col-lg-1"></div>
-  <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10">
-    <div class="present"><i class="fa fa-gift"></i></div>
-    <h2>About this Drive </h2>
-    <p><%= @drive.blurb.html_safe %></p>
-  </div>
-  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 dates-etc">
-    <div class="row">
-      <div class="present"><i class="fa fa-calendar"></i></div>
-      <h2>Drive Dates</h2>
-      <p><%= @drive.start_date.strftime('%B %d, %Y') %> &mdash; <%= @drive.end_date.strftime('%B %d, %Y') %></p>
+          <% if user_signed_in? && user_has_chosen_drop_location %>
+          <%= link_to 'Browse Families Now', all_families_path, :class => "btn btn-blue" %>
+          <% elsif user_signed_in? && !user_has_chosen_drop_location %>
+          <a href="#" class="btn btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
+          <% end %>
+        </li>
+      </ul>
     </div>
-    <% unless drive_has_started %>
-    <div class="row count">
-      <h2><%= @countdown %></h2>
-      <p>
-        <% if @countdown == 1 %> 
-        Day
-        <% else %> 
-        Days
-        <% end %> 
-        left until the Adopt-a-Family Giftdrive opens!
-      </p>
-    </div>
-    <% end %>
-
-    <% if !user_signed_in? %>
-    <%= link_to 'Sign In or Sign Up to Browse Families', new_user_session_path, :class => "btn btn-info" %>
-    <% end %>
-
-    <% if user_signed_in? && user_has_chosen_drop_location %>
-    <%= link_to 'Browse Families Now', all_families_path, :class => "btn btn-info" %>
-    <% elsif user_signed_in? && !user_has_chosen_drop_location %>
-    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#basicModal">Browse Families</a>
-    <% end %>
   </div>
-</div>
-
 </div>
 
 <%= render "maps" %>
 <%= render "bb_info" %>
 <%= render "shared/modal" %>
 
-</div>
 <% else %>
 <%= render "drives/closed" %>
 <% end %>
 
+</div>
 
 
 
