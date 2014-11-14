@@ -17,7 +17,7 @@ class Drive < ActiveRecord::Base
   
   def countdown
     today = Date.today.yday
-    halloween = Date.new(2014,10,31).yday
+    halloween = Date.new(2014,11,8).yday
     return (halloween - today)
   end
 

@@ -56,4 +56,19 @@ FactoryGirl.define do
     zip "94606"
     website_url "google.com"
   end
+
+  # factory :adoption do
+  #   drive
+  #   user
+  #   family_id 1
+  #   full_name "MyString"
+  #   street "MyString"
+  #   city "MyString"
+  #   state "MyString"
+  #   zip "MyString"
+  #   phone "MyString"
+  #   company "MyString"
+  #   drop_location_id 1
+  #   drop_date_id 1
+  # end
 end
