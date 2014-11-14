@@ -1,15 +1,15 @@
 <% if families.length == 0 %>
 <div class="no-fams">
-  <h1>All families of <%= @family_size %> have already been adopted. Thank you!</h1>
+  <h1>All <%= get_user_dl_name(current_user) %> families of <%= @family_size %> have already been adopted. Thank you!</h1>
 </div>
 <% else %>
 <% families.each do |f| %>
 <ul class="adoptable-family-on-index">
   <li><h1><%= link_to f.code.upcase, family_path(f) %></h1></li>
-  <% f.family_members.each do |fm| %>
+  <% order_peeps(f).each do |fm| %>
   <li>
     <ul>
-      <li><h2><%= fm.first_name %>, age <%= number_with_precision(fm.age, precision: 0) %></h2></li>
+      <li><h2><%= fm.first_name %>, <%= number_with_precision(fm.age, precision: 0) %>, <%= parse_gender(fm) %></h2></li>
     </ul>
   </li>
   <% end %>
@@ -20,3 +20,4 @@
 </ul>
 <% end %>
 <% end %>
+<div class="clearfix"></div>

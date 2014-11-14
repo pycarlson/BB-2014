@@ -1,8 +1,10 @@
 class AdminPagesController < ApplicationController
   
-  before_filter :user_is_admin?, only: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data]
-  before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data]
+  before_filter :user_is_admin?, only: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data]
+  before_filter :user_is_super_admin?, except: [:data_tables, :adoption_data, :user_data, :donor_data, :family_data, :family_member_data, :go_live]
 
+  # caches_action :adoption_data, :user_data, :donor_data, :family_data, :family_member_data
+  
   def data_tables
     redirect_to adoption_data_path
   end
@@ -21,6 +23,10 @@ class AdminPagesController < ApplicationController
 
   def family_data
     @families = Family.all
+  end
+
+  def family_member_data
+    @family_members = FamilyMember.order(:family_id)
   end
 
   def super_admin_page
@@ -48,10 +54,10 @@ class AdminPagesController < ApplicationController
   end
   
   def go_live
-    family = Family.find(params[:format])
+    family = Family.find(params[:id])
     family.is_live = true
     family.save
-    redirect_to super_admin_page_path
+    redirect_to family_data_path
   end
 
   def resend_adoption_confirmation_email

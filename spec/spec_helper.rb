@@ -14,11 +14,15 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-RSpec.configure do |config|
+require 'devise'
 
+RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
   end
+
+
+  config.include Devise::TestHelpers, :type => :controller
 
   config.order = :random
 # The settings below are suggested to provide a good initial experience

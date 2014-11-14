@@ -1,12 +1,19 @@
 @import 'variables';
 
+.red-link {
+  color: $red;
+}
+
+.green-link {
+  color: $green;
+}
+
 .no-fams {
   background-color: $lightGray;
   padding: 20px;
   width: 60%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 60px;
   border-radius: 5px;
 
   h1 {
@@ -17,6 +24,7 @@
 .filtering-deets {
   margin: 0 auto;
   text-align: center;
+  padding-top: 20px;
 
   a {
     padding: 5px 5px 0 5px;
@@ -27,6 +35,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   width: 90%;
+  padding: 30px 0 50px 0;
 
   .inner-container {
     padding-top: 0 !important;
@@ -46,7 +55,7 @@
   background-color: $lightGray;
   border-radius: 3px;
   padding: 20px;
-  margin: 20px 10px;
+  margin: 10px;
   width: 23.4%;
   height: auto;
   float: left;
@@ -61,6 +70,7 @@
   }
 
   h2 {
+    text-transform: none;
     text-align: left;
   }
 
@@ -199,6 +209,34 @@
 
 #cancel-adoption-process {
   margin-left: 15px;
+}
+
+.fams-8 .adoptable-family-on-index {
+  min-height: 600px;
+}
+
+.fams-7 .adoptable-family-on-index {
+  min-height: 520px;
+}
+
+.fams-6 .adoptable-family-on-index {
+  min-height: 460px;
+}
+
+.fams-5 .adoptable-family-on-index {
+  min-height: 420px;
+}
+
+.fams-4 .adoptable-family-on-index {
+  min-height: 380px;
+}
+
+.fams-3 .adoptable-family-on-index {
+  min-height: 340px;
+}
+
+.fams-2 .adoptable-family-on-index {
+  min-height: 280px;
 }
 
 

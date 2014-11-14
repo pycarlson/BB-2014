@@ -1,0 +1,61 @@
+@media (max-width: 800px) {
+
+  .container {
+    width: 100% !important;
+    padding: 0 20px !important;
+  }
+
+  .welcome {
+    padding: 0 20px;
+  }
+
+  .location {
+    width: 100%;
+  }
+  
+  .description ul {
+    width: 100%;
+  }
+
+  .about, .contact {
+    width: 100%;
+  }
+
+  .navbar ul {
+    padding-top: 0;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .additions {
+    width: 100%;
+
+    &.admin {
+      margin-bottom: 30px;
+    }
+  }
+
+  .top-holder {
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: auto;
+
+    .countdown {
+      display: none;
+    }
+  }
+
+  .admin-subnav {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 580px) {
+
+
+}

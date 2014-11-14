@@ -52,6 +52,10 @@
     height: 22px;
     padding: 0 5px;
   }
+
+  table {
+    background-color: $white;
+  }
 }
 
 .drive-manage, .add-admins {
@@ -137,6 +141,14 @@ table.dataTable {
   clear: both;
 }
 
+#manage-adoptions, #manage-families,
+#manage-donors, #manage-family-members,
+#manage-users {
+  tr:nth-child(even) {
+    background-color: #E4E4E4;
+  }
+}
+
 .downloads {
   height: 100px;
   padding-left: 60px;
@@ -145,3 +157,4 @@ table.dataTable {
     display: inline;
   }
 }
+

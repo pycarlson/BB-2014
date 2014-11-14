@@ -7,12 +7,14 @@
 <thead>
 <tr>
   <th><h2>Family Code</h2></th>
+  <th><h2>Drop Location</h2></th>
   <th><h2>Members</h2></th>
   <th><h2>Adopted?</h2></th>
   <th><h2>Is Live?</h2></th>
   <th><h2>Edit</h2></th>
 
   <% if user_is_super_admin? %>
+    <th><h2>Go Live</h2></th>
     <th><h2>Delete</h2></th>
   <% end %>
 </tr>
@@ -22,6 +24,9 @@
   <ul>
     <td>
       <li><%= family.code.upcase %></li>
+    </td>
+    <td>
+      <li><%= get_dl_name(family) %></li>
     </td>
     <td>
       <li><%= family.family_members.count %></li>
@@ -34,6 +39,14 @@
     </td>
     <td><%= link_to "Edit", edit_family_path(family), class: "edit_link btn btn-small btn-info" %></td>
     <% if user_is_super_admin? %>
+      <td>
+        <% if family.is_live == true %>
+        <%= link_to 'Make Family Live!', go_live_path(id: family.id), disabled: :true, class: "btn btn-small btn-success" %>
+        <% else %>
+        <%= link_to 'Make Family Live!', go_live_path(id: family.id), class: "btn btn-small btn-success" %>
+        <% end %>
+      </td>
+      
       <td><%= link_to "Delete", family, method: :delete, class: "delete_link btn btn-small btn-danger"  %></td>
     <% end %>
     <% end %>

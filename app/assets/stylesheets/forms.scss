@@ -55,10 +55,10 @@
   }
 }
 
-.needs-row a {
-  color: $linkBlue !important;
+.needs-row {
+  position: relative;
+  display: block !important;
 }
-
 .input-md {
   color: black !important;
 }

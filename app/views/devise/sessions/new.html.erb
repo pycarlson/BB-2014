@@ -1,6 +1,11 @@
-<div class="row register">
+
+<div class="register">
+<%= render "layouts/errors" %>
+
   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+
   <div class="col-lg-4 col-md-4 col-sm-8 col-xs-10 form-holder">
+
   <h2>Sign in</h2>
 
   <%= form_for(resource, :html => {:class => "form"}, as: resource_name, url: session_path(resource_name)) do |f| %>
