@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse pull-right">
           <ul class="nav navbar-nav">
 
-            <% if user_signed_in? && Drive.last.status == true %>
+            <% if user_signed_in? %>
             <li class="main"><%= link_to "My Account", user_path(current_user), :class => 'btn btn-clear' %></li>
             <% end %>
             <li class="main"><%= link_to 'Shopping Tips', shopping_tips_path, :class => 'btn btn-clear' %></li>

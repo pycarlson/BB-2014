@@ -12,75 +12,85 @@
       <div class="col-sm-4 col-xs-12 column">
         <h2>Drop Location Details</h2>
         <% unless current_user.drop_location_id || current_user.drop_location_id == 0 %>
-          <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption.</p>
+        <p>You haven't yet chosen your preferred drop location. You will need to do so before being able to view the families available for adoption.</p>
 
-          <a href="#" class="btn btn-medium btn-success drop-loc-button" data-toggle="modal" data-target="#basicModal">
-          Choose Drop Location</a>
-        <% end %>
-
-        <% if current_user.drop_location_id == 0 or user_is_super_admin? %>
-          <p>As a super administrator on the site, you are not required to choose a drop location and will be able to view and/or adopt families from all locations at all times.</p>
-        <% end %>
-
-
-        <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
-
-        <ul>
-
-          <li><p><%= DropLocation.find(current_user.drop_location_id).drop_location_name %></p></li>
-
-          <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
-          <% if current_user.adoptions.length > 0  %>
-          <li>
-            <p>Your gifts can be dropped off anytime between <%= current_user.drop_date.start_time.strftime('%l:%M %p') %> and <%= current_user.drop_date.end_time.strftime('%l:%M %p') %> on <%= current_user.drop_date.date.strftime('%B %d, %Y') %>.</p>
-            <p>(To change your drop date, click on the adoptions 'edit' link in your adoptions list.)</p>
-          </li>
-          <% end %>
-          <li><%= link_to 'Change Drop Location', update_drop_location_path(:user_id => current_user.id), class: 'btn btn-medium btn-info' %></li>
-        </ul>
-        <% end %>
-      </div>
-
-      <div class="col-sm-4 col-xs-12 column">
-        <h2>Contact Information</h2>
-        <ul>
-          <% if current_user.first_name != nil %>
-            <li><p><%= current_user.first_name %> <%= current_user.last_name %><p></li>
-          <% end %>
-          
-          <% if current_user.street != nil && current_user.state && current_user.zip %>
-            <li><p><%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
-          <% end %>
-
-          <% if current_user.phone != nil %>
-            <li><p><%= current_user.phone %></p></li>
-          <% end %>
-
-          <li><p><%= current_user.email %></p></li>
-
-          <li class="let-user-edit"><%= link_to 'Add or Edit My Personal Info', edit_user_path(current_user) %></li>
-        </ul>
-      </div>
-      
-      <div class="col-sm-3 col-xs-12 column no-rm">
-        <h2>Adoptions</h2>
-        <% if current_user.adoptions.length == 0  %>
-          <p>No families adopted yet...</p>
+        <% if @drive.status == false %>
+        <%= link_to "2014's gift drive is now closed", '#', class: "btn btn-medium btn-success drop-loc-button", disabled: :true %>
         <% else %>
-        <ul>
-          <% current_user.adoptions.each do |a| %>
-          <li>
-            <ul class="col-lg-5">
-              <li><p>Family <%= Family.find(a.family_id).code %> <%= link_to 'View', Family.find(a.family_id) %> or <%= link_to 'Edit', edit_adoption_path(a) %> </p></li>
-            </ul>
+        <a href="#" class="btn btn-medium btn-success drop-loc-button" data-toggle="modal" data-target="#basicModal">
+          Choose Drop Location</a>
+          <% end %>
+          <% end %>
+
+          <% if current_user.drop_location_id == 0 or user_is_super_admin? %>
+          <p>As a super administrator on the site, you are not required to choose a drop location and will be able to view and/or adopt families from all locations at all times.</p>
+          <% end %>
+
+
+          <% if current_user.drop_location_id && current_user.drop_location_id != 0 %>
+
+          <ul>
+
+            <li><p><%= DropLocation.find(current_user.drop_location_id).drop_location_name %></p></li>
+
+            <li><p><%= DropLocation.find(current_user.drop_location_id).street %>, <%= DropLocation.find(current_user.drop_location_id).city %>, <%= DropLocation.find(current_user.drop_location_id).zipcode %></p></li>
+            <% if current_user.adoptions.length > 0  %>
+            <li>
+              <p>Your gifts can be dropped off anytime between <%= current_user.drop_date.start_time.strftime('%l:%M %p') %> and <%= current_user.drop_date.end_time.strftime('%l:%M %p') %> on <%= current_user.drop_date.date.strftime('%B %d, %Y') %>.</p>
+              <p>(To change your drop date, click on the adoptions 'edit' link in your adoptions list.)</p>
+            </li>
             <% end %>
+            <li>
+              <% if @drive.status == false %>
+              <%= link_to "2014's gift drive is now close", '#', class: "btn btn-medium btn-success drop-loc-button", disabled: :true %>
+              <% else %>
+              <%= link_to 'Change Drop Location', update_drop_location_path(:user_id => current_user.id), class: 'btn btn-medium btn-info' %>
+              <% end %>
+            </li>
+          </ul>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4 col-xs-12 column">
+          <h2>Contact Information</h2>
+          <ul>
+            <% if current_user.first_name != nil %>
+            <li><p><%= current_user.first_name %> <%= current_user.last_name %><p></li>
+            <% end %>
+
+            <% if current_user.street != nil && current_user.state && current_user.zip %>
+            <li><p><%= current_user.street %>, <%= current_user.city %>, <%= current_user.zip %>, <%= current_user.state %></p></li>
+            <% end %>
+
+            <% if current_user.phone != nil %>
+            <li><p><%= current_user.phone %></p></li>
+            <% end %>
+
+            <li><p><%= current_user.email %></p></li>
+
+            <li class="let-user-edit"><%= link_to 'Add or Edit My Personal Info', edit_user_path(current_user) %></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-3 col-xs-12 column no-rm">
+          <h2>Adoptions</h2>
+          <% if current_user.adoptions.length == 0  %>
+          <p>No families adopted yet...</p>
+          <% else %>
+          <ul>
+            <% current_user.adoptions.each do |a| %>
+            <li>
+              <ul class="col-lg-5">
+                <li><p>Family <%= Family.find(a.family_id).code %> <%= link_to 'View', Family.find(a.family_id) %> or <%= link_to 'Edit', edit_adoption_path(a) %> </p></li>
+              </ul>
+              <% end %>
+            </li>
           </li>
-        </li>
-      </ul>
-      <% end %>
+        </ul>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>
 </div>
 
