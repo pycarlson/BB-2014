@@ -25,7 +25,7 @@ gem 'mail'
 group :development do
   gem 'quiet_assets'
   gem 'sextant'
-  gem 'debugger'
+  gem 'byebug'
   gem 'sqlite3'
 end
 
